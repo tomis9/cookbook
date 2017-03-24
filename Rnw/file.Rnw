@@ -1,0 +1,23 @@
+\documentclass[12pt, a4paper]{article}
+
+%%% polskie znaki
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%%% grafika
+\usepackage{graphicx}
+
+%%% rozmiar papieru, marginesy
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\begin{document}
+
+Krótki tutorial do plików Rnw. 
+\\~\\
+Vim jest skonfigurowany w ten sposób, że po naciśnięciu <F2> plik się skompiluje, a po naciśnięciu <F3> otworzy się pdf. (Ale trzeba mieć otworzone R, czyli na pcozątek ,rf).
+
+<<>>=
+plot(1:10)
+@
+
+\end{document}
