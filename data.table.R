@@ -54,3 +54,20 @@ DT[,sum(v),by=x]
 # zwykły group by po dwóch kolumnach: x i y
 system.time(ss <- DT[,sum(v),by="x,y"])
 
+
+# tutorial ze strony https://campus.datacamp.com/courses/data-table-data-manipulation-r-tutorial/chapter-one-datatable-novice?ex=1
+
+library(data.table)
+DT <- data.table(A=1:6, B=letters[1:3], C=rnorm(6), D=TRUE)
+
+# where
+DT[3:5,]
+DT[3:5]  # domyślne są wiersze
+
+# select
+DT[, .(B, C)]
+DT[, .(Total=sum(A), Mean=mean(C))]
+
+# group
+DT[, .(MySum=sum(C), MyMean=mean(C)), by=.(B)]
+
