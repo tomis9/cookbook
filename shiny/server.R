@@ -1,33 +1,40 @@
 # przykładowy program w shiny
+# aby uruchomić aplikację: runApp("./shiny")
 
 library(shiny)
 library(ggplot2)
 library(plotly)
 
+inputBins <- 10
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
-  # Expression that generates a histogram. The expression is
-  # wrapped in a call to renderPlot to indicate that:
-  #
-  #  1) It is "reactive" and therefore should re-execute automatically
-  #     when inputs change
-  #  2) Its output type is a plot
+    r <- reactiveValues()
 
-  output$distPlot <- renderPlot({
-    x    <- faithful[, 2]  # Old Faithful Geyser data
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    er <- observeEvent(input$bins, {
+        r$inputBins <- input$bins
+        output$distPlot <- renderPlot(f())
+    })
 
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-  })
+    rysujPlot <- renderPlot({
+        x    <- faithful[, 2]
+        bins <- seq(min(x), max(x), length.out = inputBins + 1)
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    })
 
-  output$tab2plot <- renderPlotly({
-      plot_ly(mtcars, x = ~mpg, y = ~wt)
-#      d <- data.frame(a=letters[1:10], b=1:10)
-#      p <- ggplot(d, aes(x=a, y=b)) +
-#          geom_point()
-#      ggplotly(p)
-  })
+    f <- function() {
+        x    <- faithful[, 2]
+        inputBins <- r$inputBins
+        bins <- seq(min(x), max(x), length.out = inputBins  + 1)
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    }
+
+    output$many <- renderUI({
+      lapply(1:10, function(i) {
+        id <- paste0("p", i)
+        numericInput(id, NULL, 0) 
+      })
+    })
+
 })
 
