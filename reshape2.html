@@ -119,20 +119,60 @@ $(document).ready(function () {
 </div>
 
 
-<div id="tomis9s-r-cookbook" class="section level1">
-<h1>tomis9’s R cookbook</h1>
-<div id="contents" class="section level3">
-<h3>Contents:</h3>
-<div id="libraries" class="section level5">
-<h5>libraries:</h5>
-<ul>
-<li><a href="reshape2.html">reshape2</a></li>
-</ul>
-</div>
-<div id="useful-but-easily-forgettable-solutions" class="section level5">
-<h5>useful, but easily forgettable solutions:</h5>
-</div>
-</div>
+<div id="reshape2---tutorial" class="section level1">
+<h1>reshape2 - tutorial</h1>
+<p><a href="index.html">back to the main page</a></p>
+<hr />
+<p>In fact there are only two functions worth mentioning: <em>dcast</em>, which is equivalent to MS Excel pivot table, and <em>melt</em>, which does the opposite or unpivots a table.</p>
+<pre class="r"><code>library(reshape2)
+
+d &lt;- data.frame(konto = paste(rep(7, 9), 1:9, sep=&quot;&quot;),
+                styczen = rnorm(9, 10, 1),
+                luty = rnorm(9, 10, 2),
+                marzec = rnorm(9, 10, 3))
+d</code></pre>
+<pre><code>##   konto styczen   luty marzec
+## 1    71   9.485  9.419  9.552
+## 2    72  10.216  6.648 10.655
+## 3    73  11.038 11.078  4.865
+## 4    74  10.362 10.098  9.864
+## 5    75  11.419 10.940  4.808
+## 6    76  10.628 11.546 15.487
+## 7    77   9.448  9.198  6.462
+## 8    78   8.773  9.041  9.710
+## 9    79  10.450  8.201 12.178</code></pre>
+<hr />
+<p>Transormation into a normalized table:</p>
+<pre class="r"><code>dn &lt;- melt(d, &quot;konto&quot;, variable.name = &quot;miesiac&quot;, value.name = &quot;przychody&quot;)
+head(dn)</code></pre>
+<pre><code>##   konto miesiac przychody
+## 1    71 styczen     9.485
+## 2    72 styczen    10.216
+## 3    73 styczen    11.038
+## 4    74 styczen    10.362
+## 5    75 styczen    11.419
+## 6    76 styczen    10.628</code></pre>
+<pre class="r"><code>tail(dn)</code></pre>
+<pre><code>##    konto miesiac przychody
+## 22    74  marzec     9.864
+## 23    75  marzec     4.808
+## 24    76  marzec    15.487
+## 25    77  marzec     6.462
+## 26    78  marzec     9.710
+## 27    79  marzec    12.178</code></pre>
+<hr />
+<p>And back to the previous format using a pivot:</p>
+<pre class="r"><code>dcast(dn, konto ~ miesiac, value.var = &quot;przychody&quot;)</code></pre>
+<pre><code>##   konto styczen   luty marzec
+## 1    71   9.485  9.419  9.552
+## 2    72  10.216  6.648 10.655
+## 3    73  11.038 11.078  4.865
+## 4    74  10.362 10.098  9.864
+## 5    75  11.419 10.940  4.808
+## 6    76  10.628 11.546 15.487
+## 7    77   9.448  9.198  6.462
+## 8    78   8.773  9.041  9.710
+## 9    79  10.450  8.201 12.178</code></pre>
 </div>
 
 

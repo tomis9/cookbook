@@ -1,0 +1,9 @@
+# tomis9's R cookbook
+
+###Contents:
+
+##### libraries:
+
+* [reshape2](reshape2.html) 
+
+##### useful, but easily forgettable solutions:
