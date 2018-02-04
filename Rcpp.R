@@ -1,0 +1,21 @@
+# http://adv-r.had.co.nz/Rcpp.html
+library(Rcpp)
+cppFunction('int add(int x, int y, int z) {
+  int sum = x + y + z;
+  return sum;
+}')
+add
+add(1, 2, 3)
+
+
+cppFunction('NumericVector pdistC(double x, NumericVector ys) {
+  int n = ys.size();
+  NumericVector out(n);
+
+  for(int i = 0; i < n; ++i) {
+    out[i] = sqrt(pow(ys[i] - x, 2.0));
+  }
+  return out;
+}')
+
+
