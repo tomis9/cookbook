@@ -15,6 +15,8 @@ p <- ggplot(d, aes(x=a, y=b)) +
 
 ggplotly(p)
 
+# ustawienie językowe dla polskich znaków przy eksporcie do pdf
+Sys.setlocale(category="LC_CTYPE", locale="pl_PL.utf8")
 
 # R for data science
 
