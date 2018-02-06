@@ -132,47 +132,47 @@ d &lt;- data.frame(konto = paste(rep(7, 9), 1:9, sep=&quot;&quot;),
                 marzec = rnorm(9, 10, 3))
 d</code></pre>
 <pre><code>##   konto styczen   luty marzec
-## 1    71   9.485  9.419  9.552
-## 2    72  10.216  6.648 10.655
-## 3    73  11.038 11.078  4.865
-## 4    74  10.362 10.098  9.864
-## 5    75  11.419 10.940  4.808
-## 6    76  10.628 11.546 15.487
-## 7    77   9.448  9.198  6.462
-## 8    78   8.773  9.041  9.710
-## 9    79  10.450  8.201 12.178</code></pre>
+## 1    71  10.066  7.019 11.933
+## 2    72  10.387  8.418 11.938
+## 3    73  11.370  8.538 11.084
+## 4    74  10.008 11.344  5.021
+## 5    75   9.566  9.470  8.611
+## 6    76   9.160 11.298  8.801
+## 7    77   9.283 12.989  6.371
+## 8    78  10.664  6.279  5.783
+## 9    79   9.699  7.276 13.455</code></pre>
 <hr />
 <p>Transormation into a normalized table:</p>
 <pre class="r"><code>dn &lt;- melt(d, &quot;konto&quot;, variable.name = &quot;miesiac&quot;, value.name = &quot;przychody&quot;)
 head(dn)</code></pre>
 <pre><code>##   konto miesiac przychody
-## 1    71 styczen     9.485
-## 2    72 styczen    10.216
-## 3    73 styczen    11.038
-## 4    74 styczen    10.362
-## 5    75 styczen    11.419
-## 6    76 styczen    10.628</code></pre>
+## 1    71 styczen    10.066
+## 2    72 styczen    10.387
+## 3    73 styczen    11.370
+## 4    74 styczen    10.008
+## 5    75 styczen     9.566
+## 6    76 styczen     9.160</code></pre>
 <pre class="r"><code>tail(dn)</code></pre>
 <pre><code>##    konto miesiac przychody
-## 22    74  marzec     9.864
-## 23    75  marzec     4.808
-## 24    76  marzec    15.487
-## 25    77  marzec     6.462
-## 26    78  marzec     9.710
-## 27    79  marzec    12.178</code></pre>
+## 22    74  marzec     5.021
+## 23    75  marzec     8.611
+## 24    76  marzec     8.801
+## 25    77  marzec     6.371
+## 26    78  marzec     5.783
+## 27    79  marzec    13.455</code></pre>
 <hr />
 <p>And back to the previous format using a pivot:</p>
 <pre class="r"><code>dcast(dn, konto ~ miesiac, value.var = &quot;przychody&quot;)</code></pre>
 <pre><code>##   konto styczen   luty marzec
-## 1    71   9.485  9.419  9.552
-## 2    72  10.216  6.648 10.655
-## 3    73  11.038 11.078  4.865
-## 4    74  10.362 10.098  9.864
-## 5    75  11.419 10.940  4.808
-## 6    76  10.628 11.546 15.487
-## 7    77   9.448  9.198  6.462
-## 8    78   8.773  9.041  9.710
-## 9    79  10.450  8.201 12.178</code></pre>
+## 1    71  10.066  7.019 11.933
+## 2    72  10.387  8.418 11.938
+## 3    73  11.370  8.538 11.084
+## 4    74  10.008 11.344  5.021
+## 5    75   9.566  9.470  8.611
+## 6    76   9.160 11.298  8.801
+## 7    77   9.283 12.989  6.371
+## 8    78  10.664  6.279  5.783
+## 9    79   9.699  7.276 13.455</code></pre>
 </div>
 
 
