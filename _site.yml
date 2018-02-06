@@ -1,0 +1,15 @@
+name: "tomis9_r_cookbook"
+navbar:
+  title: "tomis9's R cookbook"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Libraries"
+      menu:
+        - text: reshape2
+          href: reshape2.html
+    - text: "Solutions"
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
