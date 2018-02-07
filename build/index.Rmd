@@ -1,4 +1,7 @@
-Some tips and tricks of a regular everyday R programmer who's trying to manifest his hipsterity by coding in [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) (*me*, in one word). Feel free to create pull requests to the repo of this blog at https://github.com/tomis9/tomis9.github.io or just read, copy-paste whatever you need and leave this awesome blog in peace :)
+***
+A bunch of tips and tricks from a regular everyday R programmer who's trying to manifest his hipsterity by coding in [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) (*me*, in one word). Feel free to create pull requests to the [repo](https://github.com/tomis9/tomis9.github.io) of this blog or just read, copy-paste whatever you need and leave this awesome blog in peace :)
+
+***
 
 ###Contents:
 
@@ -6,4 +9,12 @@ Some tips and tricks of a regular everyday R programmer who's trying to manifest
 
 * [reshape2](./html/reshape2.html) 
 
+* [RMySQL](./html/RMySQL.html)
+
+* [data.table](./html/data.table.html)
+
+* [dplyr](./html/dplyr.html)
+
 ##### useful, but easily forgettable solutions:
+
+* [classes](classes.html)

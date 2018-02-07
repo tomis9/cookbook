@@ -2,3 +2,18 @@ body {
     background-color: white;
     background-image: url('back.jpg');
 }
+
+.main-container {
+    background-color: rgba(255, 255, 255, 0.1);
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+.main-container:hover {
+    background-color: rgba(255, 255, 255, 0.93);
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
