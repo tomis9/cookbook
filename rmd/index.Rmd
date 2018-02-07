@@ -1,7 +1,0 @@
-###Contents:
-
-##### libraries:
-
-* [reshape2](./html/reshape2.html) 
-
-##### useful, but easily forgettable solutions:

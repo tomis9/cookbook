@@ -9,7 +9,10 @@ navbar:
         - text: reshape2
           href: reshape2.html
     - text: "Solutions"
+      menu: 
+        - text: don't know yet
 output:
   html_document:
     theme: cosmo
     highlight: textmate
+    css: style.css

@@ -1,0 +1,9 @@
+Some tips and tricks of a regular everyday R programmer who's trying to manifest his hipsterity by coding in [vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) (*me*, in one word). Feel free to create pull requests to the repo of this blog at https://github.com/tomis9/tomis9.github.io or just read, copy-paste whatever you need and leave this awesome blog in peace :)
+
+###Contents:
+
+##### libraries:
+
+* [reshape2](./html/reshape2.html) 
+
+##### useful, but easily forgettable solutions:
