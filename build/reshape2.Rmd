@@ -1,6 +1,6 @@
 # reshape2 - tutorial
 
-[back to the main page](../index.html)
+[back to the main page](index.html)
 
 ***
 

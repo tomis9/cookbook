@@ -3,11 +3,11 @@ navbar:
   title: "tomis9's R cookbook"
   left:
     - text: "Home"
-      href: ../index.html
+      href: index.html
     - text: "Libraries"
       menu:
         - text: reshape2
-          href: html/reshape2.html
+          href: reshape2.html
     - text: "Solutions"
       menu: 
         - text: don't know yet

@@ -7,13 +7,13 @@ A bunch of tips and tricks from a regular everyday R programmer who's trying to 
 
 ##### libraries:
 
-* [reshape2](./html/reshape2.html) 
+* [reshape2](reshape2.html) 
 
-* [RMySQL](./html/RMySQL.html)
+* [RMySQL](RMySQL.html)
 
-* [data.table](./html/data.table.html)
+* [data.table](data.table.html)
 
-* [dplyr](./html/dplyr.html)
+* [dplyr](dplyr.html)
 
 ##### useful, but easily forgettable solutions:
 

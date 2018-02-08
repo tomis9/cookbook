@@ -177,7 +177,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
+  <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -187,7 +187,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="html/reshape2.html">reshape2</a>
+      <a href="reshape2.html">reshape2</a>
     </li>
   </ul>
 </li>
@@ -219,7 +219,7 @@ $(document).ready(function () {
 
 <div id="reshape2---tutorial" class="section level1">
 <h1>reshape2 - tutorial</h1>
-<p><a href="../index.html">back to the main page</a></p>
+<p><a href="index.html">back to the main page</a></p>
 <hr />
 <p>In fact there are only two functions worth mentioning: <em>dcast</em>, which is equivalent to MS Excel pivot table, and <em>melt</em>, which does the opposite or unpivots a table.</p>
 <pre class="r"><code>library(reshape2)
@@ -230,47 +230,47 @@ d &lt;- data.frame(konto = paste(rep(7, 9), 1:9, sep=&quot;&quot;),
                 marzec = rnorm(9, 10, 3))
 d</code></pre>
 <pre><code>##   konto styczen   luty marzec
-## 1    71  10.783 12.095  6.662
-## 2    72  10.820 10.640  9.810
-## 3    73  11.500 14.086 11.981
-## 4    74   8.725  8.495 12.116
-## 5    75  10.034 10.508  7.838
-## 6    76  11.384  7.442  5.236
-## 7    77  10.974  8.381 13.080
-## 8    78  10.250  3.116  7.358
-## 9    79   9.425 11.557 11.612</code></pre>
+## 1    71  10.358  8.535  9.112
+## 2    72  11.309  8.390 11.152
+## 3    73   9.647  7.590 14.180
+## 4    74  10.781  9.925 10.607
+## 5    75  10.928  9.717  4.290
+## 6    76  11.767 10.626 12.438
+## 7    77  11.092 13.109 10.805
+## 8    78   8.457 12.479  4.475
+## 9    79   8.914 10.945  8.321</code></pre>
 <hr />
 <p>Transormation into a normalized table:</p>
 <pre class="r"><code>dn &lt;- melt(d, &quot;konto&quot;, variable.name = &quot;miesiac&quot;, value.name = &quot;przychody&quot;)
 head(dn)</code></pre>
 <pre><code>##   konto miesiac przychody
-## 1    71 styczen    10.783
-## 2    72 styczen    10.820
-## 3    73 styczen    11.500
-## 4    74 styczen     8.725
-## 5    75 styczen    10.034
-## 6    76 styczen    11.384</code></pre>
+## 1    71 styczen    10.358
+## 2    72 styczen    11.309
+## 3    73 styczen     9.647
+## 4    74 styczen    10.781
+## 5    75 styczen    10.928
+## 6    76 styczen    11.767</code></pre>
 <pre class="r"><code>tail(dn)</code></pre>
 <pre><code>##    konto miesiac przychody
-## 22    74  marzec    12.116
-## 23    75  marzec     7.838
-## 24    76  marzec     5.236
-## 25    77  marzec    13.080
-## 26    78  marzec     7.358
-## 27    79  marzec    11.612</code></pre>
+## 22    74  marzec    10.607
+## 23    75  marzec     4.290
+## 24    76  marzec    12.438
+## 25    77  marzec    10.805
+## 26    78  marzec     4.475
+## 27    79  marzec     8.321</code></pre>
 <hr />
 <p>And back to the previous format using a pivot:</p>
 <pre class="r"><code>dcast(dn, konto ~ miesiac, value.var = &quot;przychody&quot;)</code></pre>
 <pre><code>##   konto styczen   luty marzec
-## 1    71  10.783 12.095  6.662
-## 2    72  10.820 10.640  9.810
-## 3    73  11.500 14.086 11.981
-## 4    74   8.725  8.495 12.116
-## 5    75  10.034 10.508  7.838
-## 6    76  11.384  7.442  5.236
-## 7    77  10.974  8.381 13.080
-## 8    78  10.250  3.116  7.358
-## 9    79   9.425 11.557 11.612</code></pre>
+## 1    71  10.358  8.535  9.112
+## 2    72  11.309  8.390 11.152
+## 3    73   9.647  7.590 14.180
+## 4    74  10.781  9.925 10.607
+## 5    75  10.928  9.717  4.290
+## 6    76  11.767 10.626 12.438
+## 7    77  11.092 13.109 10.805
+## 8    78   8.457 12.479  4.475
+## 9    79   8.914 10.945  8.321</code></pre>
 </div>
 
 
