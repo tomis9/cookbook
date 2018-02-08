@@ -6,11 +6,22 @@ navbar:
       href: index.html
     - text: "Libraries"
       menu:
+        - text: data.table
+          href: data.table.html
+        - text: dplyr
+          href: dplyr.html
+        - text: ggplot2
+          href: ggplot2.html
+        - text: lubridate
+          href: lubridate.html
         - text: reshape2
           href: reshape2.html
     - text: "Solutions"
       menu: 
-        - text: don't know yet
+        - text: classes
+          href: classes.html
+        - text: nls
+          href: nls.html
 output:
   html_document:
     theme: cosmo

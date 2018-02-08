@@ -1,0 +1,29 @@
+# lubridate - tutorial
+
+```{r}
+library(lubridate)
+
+# przetwórz char na datę za pomocą np. ymd (year-month-day)
+d <- ymd("2017-03-03")
+year(d)
+month(d)
+day(d)
+
+# ciekawa funkcja --teraz--
+n <- now()
+hour(n)
+minute(n)
+second(n)
+
+# dzień tygodnia
+wday(d)  # numerowanie od niedzieli...
+day(d) <- 5
+wday(d)
+
+# dodawanie i odejmowanie dat
+d
+d + years(1)  # zwróć uwagę na liczbę mnogą: yearS
+d - months(2)  # tu podobnie: monthS
+
+# jest też parę innych funkcji - lubridate.pdf
+```
