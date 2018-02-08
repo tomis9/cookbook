@@ -1,4 +1,4 @@
-# R_libs
+# tomis9.github.io
 
-my short tutorials to R libraries
+https://tomis9.github.io/
 
