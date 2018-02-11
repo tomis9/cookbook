@@ -252,13 +252,18 @@ $(document).ready(function () {
 <div id="debugging" class="section level1">
 <h1>debugging</h1>
 <p><em>this tutorial is not finished yet</em></p>
+<p>A pretty good tutorial is available <a href="https://www.youtube.com/watch?v=-yy_3htRHdU">here</a>. A pretty good article about debugging in R is available <a href="http://seananderson.ca/2013/08/23/debugging-r.html">here</a>.</p>
 <p>Functions frequently used for debugging purposes:</p>
 <ul>
-<li><code>browser()</code></li>
-<li><code>traceback()</code></li>
+<li><code>browser()</code> - rarely used directly, but important to understand how <code>debug()</code> works,</li>
+<li><code>debug()</code> and <code>undebug()</code>- the most important debugging functions,</li>
+<li><code>traceback()</code> - a quick view of where the bug may come from.</li>
+<li><code>trace()</code> - not covered in this tutorial,</li>
+<li><code>recover()</code> - not covered in this tutorial.</li>
 </ul>
+<hr />
 <div id="a-simple-example-of-browser" class="section level3">
-<h3>A simple example of browser:</h3>
+<h3>A simple example of <code>browser()</code>:</h3>
 <pre class="r"><code>my_function &lt;- function(x) {
   print(x)
   stop(&quot;This is an error.&quot;)
@@ -267,9 +272,9 @@ $(document).ready(function () {
 my_function(x = 2)</code></pre>
 <pre><code>## [1] 2</code></pre>
 <pre><code>## Error in my_function(x = 2): This is an error.</code></pre>
-<p><code>{r}browser()</code> function:</p>
+<p>a <code>browser()</code> function usage:</p>
 <pre class="r"><code>my_function &lt;- function(x) {
-  browser()  
+  browser()  # just add this line of code into your function's definition 
   print(x)
   stop(&quot;This is an error.&quot;)
   print(x + 10)
@@ -280,25 +285,43 @@ my_function(x = 2)</code></pre>
 ## [1] 2
 ## debug at &lt;text&gt;#4: stop(&quot;This is an error.&quot;)</code></pre>
 <pre><code>## Error in my_function(x = 2): This is an error.</code></pre>
-<p>in order to quit <code>browser()</code>, type <em>Q</em> and hit <em>Enter</em>.</p>
+<p>Right now you are in <code>my_function()</code>’s environment, which you can check by typing <em>environment()</em> or <em>ls()</em>. Type <em>n</em> until you get to the line of code code which produces an error. <em><a href="Tip:*" class="uri">Tip:*</a> To skip a loop, type </em>c*.</p>
+<p>In order to quit <code>browser()</code> earlier, type <em>Q</em> and hit <em>Enter</em>.</p>
+<hr />
+</div>
+<div id="a-simple-example-of-debug" class="section level3">
+<h3>A simple example of <code>debug()</code>:</h3>
+<p>Let’s assume that you write some code:</p>
+<pre class="r"><code>my_inside_function &lt;- function(x_inside) {
+  print(paste(&quot;x_inside: &quot;, x_inside + 10))
+  print(&quot;after error&quot;)
+}
+my_function &lt;- function(x) {
+  print(x)
+  my_inside_function(&quot;some text&quot;)
+  print(x + 10)
+}
+my_function(x = 2)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## Error in x_inside + 10: non-numeric argument to binary operator</code></pre>
+<p>which produces an error. You don’t know yet where exactly the error ocurred, so now you should write:</p>
+<pre class="r"><code>debug(my_function)
+my_function(x = 2)</code></pre>
+<p>to start searching for the bug right from the top. A new, weird-looking prompt appears: it is the same prompt as invoked by the <code>browser()</code> function, inside <code>my_function</code>. Type <code>ls()</code> and you will see that you actually <em>are</em> inside of <code>my_function</code>’s environment. Hit <kbd>n</kbd> a couple of times until you reach the error. The last</p>
+<hr />
 </div>
 <div id="a-simple-example-of-traceback" class="section level3">
 <h3>A simple example of traceback:</h3>
 <p>(from R docs)</p>
 <pre class="r"><code>foo &lt;- function(x) { print(1); bar(2) }
 bar &lt;- function(x) { x + a.variable.which.does.not.exist }
-## Not run: 
-foo(2) # gives a strange error</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre><code>## Error in bar(2): object 'a.variable.which.does.not.exist' not found</code></pre>
-<pre class="r"><code>traceback()</code></pre>
-<pre><code>## No traceback available</code></pre>
-<pre class="r"><code>## End(Not run)
+foo(2) # gives a strange error
+traceback()
+## End(Not run)
 ## 2: bar(2)
 ## 1: foo(2)
-bar</code></pre>
-<pre><code>## function(x) { x + a.variable.which.does.not.exist }</code></pre>
-<pre class="r"><code>## Ah, this is the culprit ...
+bar
+## Ah, this is the culprit ...
 
 ## This will print the stack trace at the time of the error.
 options(error = function() traceback(2))</code></pre>
