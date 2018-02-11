@@ -24,6 +24,8 @@ A bunch of tips and tricks from a regular everyday R programmer who's trying to 
 
 * [nls](nls.html)
 
+* [debugging](debugging.html)
+
 ##### vim
 
 * [rTags](rTags.html)

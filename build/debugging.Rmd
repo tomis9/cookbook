@@ -1,0 +1,51 @@
+# debugging
+
+*this tutorial is not finished yet*
+
+Functions frequently used for debugging purposes:
+
+* `browser()`
+* `traceback()`
+
+### A simple example of browser:
+
+```{r, error = TRUE}
+my_function <- function(x) {
+  print(x)
+  stop("This is an error.")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+
+`{r}browser()` function:
+```{r, error = TRUE}
+my_function <- function(x) {
+  browser()  
+  print(x)
+  stop("This is an error.")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+in order to quit `browser()`, type *Q* and hit *Enter*.
+
+
+### A simple example of traceback:
+(from R docs)
+
+```{r, error = TRUE}
+foo <- function(x) { print(1); bar(2) }
+bar <- function(x) { x + a.variable.which.does.not.exist }
+## Not run: 
+foo(2) # gives a strange error
+traceback()
+## End(Not run)
+## 2: bar(2)
+## 1: foo(2)
+bar
+## Ah, this is the culprit ...
+
+## This will print the stack trace at the time of the error.
+options(error = function() traceback(2))
+```

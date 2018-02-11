@@ -22,6 +22,8 @@ navbar:
           href: classes.html
         - text: nls
           href: nls.html
+        - text: debugging
+          href: debugging.html
     - text: vim + R
       menu:
         - text: rTags
