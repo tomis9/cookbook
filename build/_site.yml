@@ -22,6 +22,10 @@ navbar:
           href: classes.html
         - text: nls
           href: nls.html
+    - text: vim + R
+      menu:
+        - text: rTags
+          href: rTags.html
 output:
   html_document:
     theme: cosmo
