@@ -1,0 +1,29 @@
+# RMySQL
+
+***
+
+### example connection and data download
+
+***
+
+```{r, eval = FALSE}
+host_name  <- ""
+db_name <- ""
+creds <- read.table("~/pass/")
+
+query <- "select * from my_table"
+
+con <- RMySQL::dbConnect(
+  drv      = RMySQL::MySQL(), 
+  user     = as.character(creds[1,1]), 
+  password = as.character(creds[1,2]), 
+  host     = host_name, 
+  dbname   = db_name
+)
+
+rs <- RMySQL::dbSendQuery(con, query)
+d <- data.table::as.data.table(RMySQL::dbFetch(rs, n = -1))
+
+RMySQL::dbClearResult(rs)
+RMySQL::dbDisconnect(con)
+```
