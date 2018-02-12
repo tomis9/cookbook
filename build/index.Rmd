@@ -18,6 +18,8 @@ A bunch of tips and tricks from a regular everyday R programmer who's trying to 
 
 * [reshape2](reshape2.html) 
 
+* [RMySQL](RMySQL.html)
+
 ##### useful, but easily forgettable solutions:
 
 * [classes](classes.html)

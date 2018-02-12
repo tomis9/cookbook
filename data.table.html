@@ -201,6 +201,9 @@ $(document).ready(function () {
     <li>
       <a href="reshape2.html">reshape2</a>
     </li>
+    <li>
+      <a href="RMySQL.html">RMySQL</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -265,19 +268,19 @@ dt &lt;- data.table(x=c(&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;a&quot;,
 ## [1,] dt      5    2  1 x,v     
 ## Total: 1MB</code></pre>
 <pre class="r"><code>dt[x==&quot;b&quot;,]  # tak mogę</code></pre>
-<pre><code>##    x       v
-## 1: b -2.4153
-## 2: b  1.3503
-## 3: b  0.5455</code></pre>
+<pre><code>##    x        v
+## 1: b -0.52124
+## 2: b -0.36596
+## 3: b  0.07601</code></pre>
 <pre class="r"><code># df[x==&quot;b&quot;,]  # a tak nie</code></pre>
 <p>w tabeli warto ustalić klucz</p>
 <pre class="r"><code>setkey(dt, x)</code></pre>
 <p>żeby można było zrobić na przykład tak</p>
 <pre class="r"><code>dt[&quot;b&quot;]  # ta jakby dt[x==&quot;b&quot;,], bo x jest domyślny</code></pre>
-<pre><code>##    x       v
-## 1: b -2.4153
-## 2: b  1.3503
-## 3: b  0.5455</code></pre>
+<pre><code>##    x        v
+## 1: b -0.52124
+## 2: b -0.36596
+## 3: b  0.07601</code></pre>
 <p>JOIN inny przykład - duża tabela - uzasadnienie, że binary search jest szybsze od vector scan</p>
 <pre class="r"><code>grpsize &lt;- ceiling(1e8/26^2)
 system.time(DF &lt;- data.frame(x=rep(LETTERS, each=26*grpsize),
@@ -285,21 +288,21 @@ system.time(DF &lt;- data.frame(x=rep(LETTERS, each=26*grpsize),
                              v=runif(grpsize*26^2),
                              stringsAsFactors=F))</code></pre>
 <pre><code>##    user  system elapsed 
-##   5.008   0.148   5.159</code></pre>
+##   5.000   0.132   5.133</code></pre>
 <pre class="r"><code>system.time(ans1 &lt;- DF[DF$x=='R' &amp; DF$y=='h',])  # 'vector scan'</code></pre>
 <pre><code>##    user  system elapsed 
-##   1.528   0.096   1.624</code></pre>
+##   1.544   0.088   1.633</code></pre>
 <pre class="r"><code>DT &lt;- as.data.table(DF)
 system.time(setkey(DT,x,y))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.620   0.100   0.723</code></pre>
+##   0.636   0.032   0.671</code></pre>
 <pre class="r"><code>system.time(ans2 &lt;- DT[list('R', 'h')])  # binary search</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.004   0.000   0.004</code></pre>
+##   0.004   0.000   0.003</code></pre>
 <pre class="r"><code># list można zapisać jako .
 system.time(ans2 &lt;- DT[.('R', 'h')])  # binary search</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.004</code></pre>
+##   0.004   0.000   0.003</code></pre>
 <pre class="r"><code># chociaż to, co wykonaliśmy wyżej, to tak naprawdę join z listą ('R', 'h'),
 # czyli zawierającą jeden wiersz i dwie kolumny - jest to pierwszy argument
 # i nazywa się i
@@ -308,40 +311,40 @@ identical(ans1$v, ans2$v)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code># GROUP
 DT[,sum(v)]</code></pre>
-<pre><code>## [1] 50002718</code></pre>
+<pre><code>## [1] 50000502</code></pre>
 <pre class="r"><code>DT[,sum(v),by=x]</code></pre>
 <pre><code>##     x      V1
-##  1: A 1923157
-##  2: B 1922973
-##  3: C 1922645
-##  4: D 1923359
-##  5: E 1923218
-##  6: F 1923784
-##  7: G 1923088
-##  8: H 1923152
-##  9: I 1922634
-## 10: J 1923362
-## 11: K 1923009
-## 12: L 1924423
-## 13: M 1923730
-## 14: N 1922699
-## 15: O 1923862
-## 16: P 1922913
-## 17: Q 1923823
-## 18: R 1923348
-## 19: S 1923464
-## 20: T 1922592
-## 21: U 1923310
-## 22: V 1922440
-## 23: W 1923181
-## 24: X 1923091
-## 25: Y 1922831
-## 26: Z 1922629
+##  1: A 1923024
+##  2: B 1923799
+##  3: C 1922650
+##  4: D 1923441
+##  5: E 1922402
+##  6: F 1923236
+##  7: G 1923419
+##  8: H 1923332
+##  9: I 1923730
+## 10: J 1922736
+## 11: K 1923454
+## 12: L 1924192
+## 13: M 1923460
+## 14: N 1922880
+## 15: O 1922308
+## 16: P 1922635
+## 17: Q 1922297
+## 18: R 1923290
+## 19: S 1922954
+## 20: T 1922634
+## 21: U 1923841
+## 22: V 1922916
+## 23: W 1923140
+## 24: X 1922227
+## 25: Y 1923175
+## 26: Z 1923330
 ##     x      V1</code></pre>
 <pre class="r"><code># zwykły group by po dwóch kolumnach: x i y
 system.time(ss &lt;- DT[,sum(v),by=&quot;x,y&quot;])</code></pre>
 <pre><code>##    user  system elapsed 
-##   1.276   0.060   1.340</code></pre>
+##   1.496   0.036   1.535</code></pre>
 <pre class="r"><code># tutorial ze strony https://campus.datacamp.com/courses/data-table-data-manipulation-r-tutorial/chapter-one-datatable-novice?ex=1
 
 library(data.table)
@@ -349,33 +352,33 @@ DT &lt;- data.table(A=1:6, B=letters[1:3], C=rnorm(6), D=TRUE)
 
 # where
 DT[3:5,]</code></pre>
-<pre><code>##    A B     C    D
-## 1: 3 c 1.851 TRUE
-## 2: 4 a 1.055 TRUE
-## 3: 5 b 1.006 TRUE</code></pre>
+<pre><code>##    A B       C    D
+## 1: 3 c -0.3390 TRUE
+## 2: 4 a -2.6702 TRUE
+## 3: 5 b  0.3384 TRUE</code></pre>
 <pre class="r"><code>DT[3:5]  # domyślne są wiersze</code></pre>
-<pre><code>##    A B     C    D
-## 1: 3 c 1.851 TRUE
-## 2: 4 a 1.055 TRUE
-## 3: 5 b 1.006 TRUE</code></pre>
+<pre><code>##    A B       C    D
+## 1: 3 c -0.3390 TRUE
+## 2: 4 a -2.6702 TRUE
+## 3: 5 b  0.3384 TRUE</code></pre>
 <pre class="r"><code># select
 DT[, .(B, C)]</code></pre>
 <pre><code>##    B       C
-## 1: a -0.5972
-## 2: b -1.8737
-## 3: c  1.8512
-## 4: a  1.0555
-## 5: b  1.0062
-## 6: c  1.6224</code></pre>
+## 1: a  1.1078
+## 2: b  0.7301
+## 3: c -0.3390
+## 4: a -2.6702
+## 5: b  0.3384
+## 6: c -1.4060</code></pre>
 <pre class="r"><code>DT[, .(Total=sum(A), Mean=mean(C))]</code></pre>
-<pre><code>##    Total   Mean
-## 1:    21 0.5107</code></pre>
+<pre><code>##    Total    Mean
+## 1:    21 -0.3732</code></pre>
 <pre class="r"><code># group
 DT[, .(MySum=sum(C), MyMean=mean(C)), by=.(B)]</code></pre>
-<pre><code>##    B   MySum  MyMean
-## 1: a  0.4583  0.2291
-## 2: b -0.8675 -0.4338
-## 3: c  3.4736  1.7368</code></pre>
+<pre><code>##    B  MySum  MyMean
+## 1: a -1.562 -0.7812
+## 2: b  1.068  0.5342
+## 3: c -1.745 -0.8725</code></pre>
 <pre class="r"><code># tutorial ze strony
 # https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html
 

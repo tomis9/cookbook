@@ -16,6 +16,8 @@ navbar:
           href: lubridate.html
         - text: reshape2
           href: reshape2.html
+        - text: RMySQL
+          href: RMySQL.html
     - text: "Solutions"
       menu: 
         - text: classes
