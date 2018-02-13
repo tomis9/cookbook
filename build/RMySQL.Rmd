@@ -6,6 +6,28 @@
 
 ***
 
+##### just querying
+```{r, eval = FALSE}
+host_name  <- ""
+db_name <- ""
+creds <- read.table("~/pass/")
+
+query <- "delete from my_table;"
+
+con <- RMySQL::dbConnect(
+  drv      = RMySQL::MySQL(), 
+  user     = as.character(creds[1,1]), 
+  password = as.character(creds[1,2]), 
+  host     = host_name, 
+  dbname   = db_name
+)
+
+RMySQL::dbSendQuery(con, query)
+
+RMySQL::dbDisconnect(con)
+```
+
+##### retrieving data from db
 ```{r, eval = FALSE}
 host_name  <- ""
 db_name <- ""
@@ -27,3 +49,32 @@ d <- data.table::as.data.table(RMySQL::dbFetch(rs, n = -1))
 RMySQL::dbClearResult(rs)
 RMySQL::dbDisconnect(con)
 ```
+
+##### sending data to db
+```{r, eval = FALSE}
+host_name  <- ""
+db_name <- ""
+creds <- read.table("~/pass/")
+
+con <- RMySQL::dbConnect(
+  drv      = RMySQL::MySQL(), 
+  user     = as.character(creds[1,1]), 
+  password = as.character(creds[1,2]), 
+  host     = host_name, 
+  dbname   = db_name
+)
+
+dt <- data.frame(id = 1:10, name = letters[1:10])
+
+RMySQL::dbWriteTable(
+  con, 
+  name = "table_name", 
+  value = dt, 
+  overwrite = FALSE,
+  append = TRUE,
+  row.names = F
+)
+
+RMySQL::dbDisconnect(con)
+```
+

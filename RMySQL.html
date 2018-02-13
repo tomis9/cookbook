@@ -261,6 +261,28 @@ $(document).ready(function () {
 <div id="example-connection-and-data-download" class="section level3">
 <h3>example connection and data download</h3>
 <hr />
+<div id="just-querying" class="section level5">
+<h5>just querying</h5>
+<pre class="r"><code>host_name  &lt;- &quot;&quot;
+db_name &lt;- &quot;&quot;
+creds &lt;- read.table(&quot;~/pass/&quot;)
+
+query &lt;- &quot;delete from my_table;&quot;
+
+con &lt;- RMySQL::dbConnect(
+  drv      = RMySQL::MySQL(), 
+  user     = as.character(creds[1,1]), 
+  password = as.character(creds[1,2]), 
+  host     = host_name, 
+  dbname   = db_name
+)
+
+RMySQL::dbSendQuery(con, query)
+
+RMySQL::dbDisconnect(con)</code></pre>
+</div>
+<div id="retrieving-data-from-db" class="section level5">
+<h5>retrieving data from db</h5>
 <pre class="r"><code>host_name  &lt;- &quot;&quot;
 db_name &lt;- &quot;&quot;
 creds &lt;- read.table(&quot;~/pass/&quot;)
@@ -280,6 +302,34 @@ d &lt;- data.table::as.data.table(RMySQL::dbFetch(rs, n = -1))
 
 RMySQL::dbClearResult(rs)
 RMySQL::dbDisconnect(con)</code></pre>
+</div>
+<div id="sending-data-to-db" class="section level5">
+<h5>sending data to db</h5>
+<pre class="r"><code>host_name  &lt;- &quot;&quot;
+db_name &lt;- &quot;&quot;
+creds &lt;- read.table(&quot;~/pass/&quot;)
+
+con &lt;- RMySQL::dbConnect(
+  drv      = RMySQL::MySQL(), 
+  user     = as.character(creds[1,1]), 
+  password = as.character(creds[1,2]), 
+  host     = host_name, 
+  dbname   = db_name
+)
+
+dt &lt;- data.frame(id = 1:10, name = letters[1:10])
+
+RMySQL::dbWriteTable(
+  con, 
+  name = &quot;table_name&quot;, 
+  value = dt, 
+  overwrite = FALSE,
+  append = TRUE,
+  row.names = F
+)
+
+RMySQL::dbDisconnect(con)</code></pre>
+</div>
 </div>
 </div>
 
