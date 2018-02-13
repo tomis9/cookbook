@@ -1,0 +1,12 @@
+# sqldf - tutorial
+
+`sqldf` package lets you treat any data.frame object as a sql table.  You can write queries just line in a database. Pretty useless, comparing to, say, data.table, dplyr or tidyverse.
+
+
+```{r}
+library(sqldf)
+
+sqldf('select * from mtcars where mpg > 21')
+
+sqldf('select mpg, cyl, disp from mtcars where cyl = 6')
+```
