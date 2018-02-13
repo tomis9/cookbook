@@ -18,6 +18,8 @@ navbar:
           href: reshape2.html
         - text: RMySQL
           href: RMySQL.html
+        - text: sqldf
+          href: sqldf.html
     - text: "Solutions"
       menu: 
         - text: classes

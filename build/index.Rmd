@@ -20,6 +20,8 @@ A bunch of tips and tricks from a regular everyday R programmer who's trying to 
 
 * [RMySQL](RMySQL.html)
 
+* [sqldf](sqldf.html)
+
 ##### useful, but easily forgettable solutions:
 
 * [classes](classes.html)
