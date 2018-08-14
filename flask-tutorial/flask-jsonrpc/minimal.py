@@ -26,19 +26,68 @@
 # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+import os
+import sys
+
 from flask import Flask
+
+PROJECT_DIR, PROJECT_MODULE_NAME = os.path.split(
+    os.path.dirname(os.path.realpath(__file__))
+)
+
+FLASK_JSONRPC_PROJECT_DIR = os.path.join(PROJECT_DIR, os.pardir)
+if os.path.exists(FLASK_JSONRPC_PROJECT_DIR) \
+        and not FLASK_JSONRPC_PROJECT_DIR in sys.path:
+    sys.path.append(FLASK_JSONRPC_PROJECT_DIR)
+
 from flask_jsonrpc import JSONRPC
 
-# Flask application
 app = Flask(__name__)
-
-# Flask-JSONRPC
 jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
-
 
 @jsonrpc.method('App.index')
 def index():
-    return 'Welcome to Flask JSON-RPC'
+    return u'Welcome to Flask JSON-RPC'
+
+@jsonrpc.method('App.hello')
+def hello(name):
+    return u'Hello {0}'.format(name)
+
+@jsonrpc.method('App.helloDefaultArgs')
+def hello_default_args(string='Flask JSON-RPC'):
+    return u'We salute you {0}'.format(string)
+
+@jsonrpc.method('App.helloDefaultArgsValidate(string=str) -> str', validate=True)
+def hello_default_args_validate(string='Flask JSON-RPC'):
+    return u'We salute you {0}'.format(string)
+
+@jsonrpc.method('App.argsValidateJSONMode(a1=Number, a2=String, a3=Boolean, a4=Array, a5=Object) -> Object')
+def args_validate_json_mode(a1, a2, a3, a4, a5):
+    return u'Number: {0}, String: {1}, Boolean: {2}, Array: {3}, Object: {4}'.format(a1, a2, a3, a4, a5)
+
+@jsonrpc.method('App.argsValidatePythonMode(a1=int, a2=str, a3=bool, a4=list, a5=dict) -> object')
+def args_validate_python_mode(a1, a2, a3, a4, a5):
+    return u'int: {0}, str: {1}, bool: {2}, list: {3}, dict: {4}'.format(a1, a2, a3, a4, a5)
+
+@jsonrpc.method('App.notify')
+def notify(string):
+    pass
+
+@jsonrpc.method('App.fails')
+def fails(string):
+    raise ValueError
+
+@jsonrpc.method('App.sum(Number, Number) -> Number', validate=True)
+def sum_(a, b):
+    return a + b
+
+@jsonrpc.method('App.subtract(Number, Number) -> Number', validate=True)
+def subtract(a, b):
+    return a - b
+
+@jsonrpc.method('App.divide(Number, Number) -> Number', validate=True)
+def divide(a, b):
+    return a / float(b)
 
 
 if __name__ == '__main__':
