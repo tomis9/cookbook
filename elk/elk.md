@@ -58,7 +58,7 @@ sudo service elasticsearch start
 
 ## on debian
 
-debina/jessie64
+debian/jessie64
 
 sudo apt-get install vim
 sudo apt-get install tmux
