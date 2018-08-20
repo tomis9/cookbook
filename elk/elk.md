@@ -80,6 +80,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
 sudo apt-get update
 sudo apt-get install oracle-java8-installer
 
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
 sudo apt-get update && sudo apt-get install elasticsearch
 
@@ -118,3 +119,10 @@ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee 
 sudo apt-get update && sudo apt-get install logstash
 
 sudo service logstash start
+
+
+example logstash (remember about tmux)
+sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
+
+and then write anythin in the console:
+hello buddy
