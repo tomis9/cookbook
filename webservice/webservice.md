@@ -136,10 +136,18 @@ pkill gunicorn
 
 in another terminal session. Or with Ctrl+c if you feel like doing something a little bit brutal.
 
-Ok, weel, it seems like you don;t really need nginx unless there is a heavy traffic on your webservice. But gunicron may be useful.
+Ok, weel, it seems like you don't really need nginx unless there is a heavy traffic on your webservice. But gunicron may be useful.
 
 ### docker
 
-I have already made a short [tutorial on docker](.). In our particular flasky case we could use it in that way:
+I have already made a short [tutorial on docker](.). 
 
+In case of flask application, simply follo this [tutorial (Dockerize your Flask aaplication)](https://runnable.com/docker/python/dockerize-your-flask-application).
 
+[A pretty good tutorial on Docker](https://djangostars.com/blog/what-is-docker-and-how-to-use-it-with-python/#3)
+
+[A list of useful Docker resources](https://www.fullstackpython.com/docker.html)
+
+### marathon
+
+[tutorial](https://docs.mesosphere.com/1.7/usage/tutorials/docker-app/)
