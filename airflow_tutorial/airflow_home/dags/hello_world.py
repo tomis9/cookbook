@@ -3,8 +3,11 @@ from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 
+import time
+
 
 def print_hello():
+    time.sleep(5)
     return 'Hello world!'
 
 
