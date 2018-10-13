@@ -54,3 +54,9 @@ One third of this tutorial should be enough :)
 
 
 Plus - how to use it on [gitlab](https://gitlab.iiit.pl/help/user/project/container_registry).
+
+
+### A good [book](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
+
+docker volumes
+
