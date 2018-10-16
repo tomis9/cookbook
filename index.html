@@ -100,6 +100,9 @@
         <br>
         docker rmi $(docker images -q)
         <br>
+        docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis
+        <br>
+
         <h3>Linux stuff</h3>
 
         <a href="https://docker-curriculum.com/">
