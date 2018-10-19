@@ -1,3 +1,4 @@
 flask-tutorial/blueprint/__pycache__/*
 airflow_tutorial/venv/*
 elk/.vagrant/*
+logging_tutorial/.idea/*
