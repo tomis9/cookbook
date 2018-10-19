@@ -1,12 +1,15 @@
 import logging
 
-logging.basicConfig(filename='logs.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+handler = logging.FileHandler('logs.log')
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 logger.warning('some warning')
 
 logger.warning('another warning')
 
-1 / 0
-
-logger.warning('theoretically after 1/0')
