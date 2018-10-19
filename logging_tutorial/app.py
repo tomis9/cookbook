@@ -1,7 +1,8 @@
 import logging
 
+logging.basicConfig(filename='logs.log', level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-logging.warning('some warning')
+logger.warning('some warning')
 
-
-logging.warning('another warning')
+logger.warning('another warning')
