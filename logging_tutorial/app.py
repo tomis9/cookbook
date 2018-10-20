@@ -1,15 +1,13 @@
 import logging
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logging.basicConfig(filename='./logs.log')
 
-handler = logging.FileHandler('logs.log')
-handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+logger1 = logging.getLogger(__name__)
+logger1.setLevel(logging.DEBUG)
 
-logger.warning('some warning')
 
-logger.warning('another warning')
+logger2 = logging.getLogger('logger2')
+logger2.setLevel(logging.DEBUG)
 
+logger1.debug('info 1')
+logger2.debug('info 2')
