@@ -1,5 +1,7 @@
 import logging
 
+logger = logging.getLogger('import_app.py')
+
 
 def func():
-    logging.info('hello form import app')
+    logger.info('hello form import app')
