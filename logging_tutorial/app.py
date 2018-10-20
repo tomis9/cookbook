@@ -5,12 +5,12 @@ from import_app import func
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 
-logging.basicConfig(filename='./logs.log', level=logging.INFO)
-logger = logging.getLogger('app.py')
-logger.setLevel(logging.INFO)
+logger = logging.getLogger('app')
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.FileHandler('./logs.log'))
 
-logger.info('debug one')
+logger.debug('debug one')
 
 func()
 
-logger.info('debug two')
+logger.debug('debug two')
