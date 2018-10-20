@@ -7,7 +7,10 @@ for handler in logging.root.handlers[:]:
 
 logger = logging.getLogger('app')
 logger.setLevel(logging.DEBUG)
-logger.addHandler(logging.FileHandler('./logs.log'))
+hdl = logging.FileHandler('./logs.log')
+format_str = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+hdl.setFormatter(logging.Formatter(format_str))
+logger.addHandler(hdl)
 
 logger.debug('debug one')
 
