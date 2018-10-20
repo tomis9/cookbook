@@ -1,13 +1,9 @@
 import logging
-
-logging.basicConfig(filename='./logs.log')
-
-logger1 = logging.getLogger(__name__)
-logger1.setLevel(logging.DEBUG)
+from import_app import func
 
 
-logger2 = logging.getLogger('logger2')
-logger2.setLevel(logging.DEBUG)
+logging.basicConfig(filename='./logs.log', level=logging.INFO)
 
-logger1.debug('info 1')
-logger2.debug('info 2')
+logging.info('debug one')
+
+func()
