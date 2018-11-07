@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+    background-image: url('back.jpg');
+}
+
+.main-container {
+    background-color: rgba(255, 255, 255, 0.93);
+  -webkit-transition: background-color 5s;
+  -moz-transition: background-color 5s;
+  -o-transition: background-color 5s;
+  transition: background-color 5s;
+}
+
+/* .main-container:hover {
+    background-color: rgba(255, 255, 255, 0.93);
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  transition: background-color 500ms;
+} */

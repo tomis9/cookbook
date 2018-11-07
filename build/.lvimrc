@@ -1,0 +1,10 @@
+map <c-d> :echo "blabla"<CR>
+
+function! RMakeRmarkdown()
+    let rmddir = expand("%:p:h")
+    let file_dir = expand("%:t")
+    let markdown_string = "rmarkdown::render('" . file_dir . "', output_dir = '..')"
+    execute '!R -e "' . markdown_string . '"'
+endfunction
+
+map <F5> :call RMakeRmarkdown()<CR>

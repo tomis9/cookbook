@@ -1,0 +1,39 @@
+name: "tomis9_r_cookbook"
+navbar:
+  title: "tomis9's R cookbook"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Libraries"
+      menu:
+        - text: data.table
+          href: data.table.html
+        - text: dplyr
+          href: dplyr.html
+        - text: ggplot2
+          href: ggplot2.html
+        - text: lubridate
+          href: lubridate.html
+        - text: reshape2
+          href: reshape2.html
+        - text: RMySQL
+          href: RMySQL.html
+        - text: sqldf
+          href: sqldf.html
+    - text: "Solutions"
+      menu: 
+        - text: classes
+          href: classes.html
+        - text: nls
+          href: nls.html
+        - text: debugging
+          href: debugging.html
+    - text: vim + R
+      menu:
+        - text: rTags
+          href: rTags.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    css: style.css

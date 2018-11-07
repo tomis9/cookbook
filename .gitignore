@@ -1,0 +1,14 @@
+.Rhistory
+.RData
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.docx
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.tex
+*.sty
+*.csv

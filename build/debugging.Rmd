@@ -1,0 +1,86 @@
+# debugging
+
+*this tutorial is not finished yet*
+
+A pretty good tutorial is available [here](https://www.youtube.com/watch?v=-yy_3htRHdU).
+A pretty good article about debugging in R is available [here](http://seananderson.ca/2013/08/23/debugging-r.html).
+
+Functions frequently used for debugging purposes:
+
+* `browser()` - rarely used directly, but important to understand how `debug()` works,
+* `debug()` and `undebug()`- the most important debugging functions,
+* `traceback()` - a quick view of where the bug may come from.
+* `trace()` - not covered in this tutorial,
+* `recover()` - not covered in this tutorial.
+
+***
+### A simple example of `browser()`:
+
+```{r, error = TRUE}
+my_function <- function(x) {
+  print(x)
+  stop("This is an error.")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+
+a `browser()` function usage:
+```{r, error = TRUE}
+my_function <- function(x) {
+  browser()  # just add this line of code into your function's definition 
+  print(x)
+  stop("This is an error.")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+Right now you are in `my_function()`'s environment, which you can check by typing *environment()* or *ls()*. Type *n* until you get to the line of code code which produces an error.
+*Tip:* To skip a loop, type *c*.
+
+In order to quit `browser()` earlier, type *Q* and hit *Enter*.
+
+***
+
+### A simple example of `debug()`:
+
+Let's assume that you write some code:
+
+```{r, error = TRUE}
+my_inside_function <- function(x_inside) {
+  print(paste("x_inside: ", x_inside + 10))
+  print("after error")
+}
+my_function <- function(x) {
+  print(x)
+  my_inside_function("some text")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+which produces an error. You don't know yet where exactly the error ocurred, so now you should write:
+```{r, eval = FALSE}
+debug(my_function)
+my_function(x = 2)
+```
+to start searching for the bug right from the top. A new, weird-looking prompt appears: it is the same prompt as invoked by the `browser()` function, inside `my_function`. Type `ls()` and you will see that you actually *are* inside of `my_function`'s environment. Hit <kbd>n</kbd> a couple of times until you reach the error. The last 
+
+***
+
+### A simple example of traceback:
+(from R docs)
+
+```{r, error = TRUE, eval = FALSE}
+foo <- function(x) { print(1); bar(2) }
+bar <- function(x) { x + a.variable.which.does.not.exist }
+foo(2) # gives a strange error
+traceback()
+## End(Not run)
+## 2: bar(2)
+## 1: foo(2)
+bar
+## Ah, this is the culprit ...
+
+## This will print the stack trace at the time of the error.
+options(error = function() traceback(2))
+```

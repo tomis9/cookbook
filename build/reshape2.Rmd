@@ -1,0 +1,29 @@
+# reshape2 - tutorial
+
+[back to the main page](index.html)
+
+***
+
+In fact there are only two functions worth mentioning: *dcast*, which is equivalent to MS Excel pivot table, and *melt*, which does the opposite or unpivots a table.
+
+```{r}
+library(reshape2)
+
+d <- data.frame(konto = paste(rep(7, 9), 1:9, sep=""),
+                styczen = rnorm(9, 10, 1),
+                luty = rnorm(9, 10, 2),
+                marzec = rnorm(9, 10, 3))
+d
+```
+***
+Transormation into a normalized table:
+```{r}
+dn <- melt(d, "konto", variable.name = "miesiac", value.name = "przychody")
+head(dn)
+tail(dn)
+```
+***
+And back to the previous format using a pivot:
+```{r}
+dcast(dn, konto ~ miesiac, value.var = "przychody")
+```
