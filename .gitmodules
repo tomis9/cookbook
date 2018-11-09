@@ -1,0 +1,3 @@
+[submodule "tomis9_cookbook/themes/casper-two"]
+	path = tomis9_cookbook/themes/casper-two
+	url = https://github.com/eueung/hugo-casper-two.git
