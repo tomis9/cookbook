@@ -1,4 +1,4 @@
-baseurl         = "/"
+baseurl         = "https://tomis9.github.io"
 theme           = "casper-two"
 languageCode    = "en-US"
 disqusShortname = ""
@@ -6,29 +6,27 @@ paginate        = 6
 #SectionPagesMenu = "main"
 
 [params]
-  title       = "Hugo Casper Two"
-  subtitle    = "Port of Casper 2.x for Hugo"
+  title       = "tomis9's cookbook"
+  subtitle    = "or my personal programming tutorials and snippets"
 
-  cover       = "img/blog-cover.jpg"
-  description = "Here is a description of your site."
+  cover       = "header.jpeg"
+  description = "to jest description, ciekawe gdzie ono sie pojawia"
   metaDescription = ""
   googleAnalytics = ""
   customCSS = []
   RSSLink = ""
 
-  twitterName = "faketryghost"
-  fbName = "fakeghost"
-  githubName = "eueung"
+  githubName = "tomis9"
 
-  logo = "hugo-logo.png"
+  logo = ""
   orgName = "EM"
   orgWebsite = "https://www.telematika.org"
   orgDescription = "Here is a description placeholder for your org"
 
   author = "EM"
   authorAvatar = "img/ghost-icon.png"
-  authorLocation = "Bandung, ID"
-  authorWebsite = "https://eueung.github.io"
+  authorLocation = "Warsaw, Poland"
+  authorWebsite = "https://tomis9.github.io"
   authorDescription = "Describe yourself.."
 
   pageNotFoundTitle = "404 - Page not found"
@@ -39,22 +37,35 @@ paginate        = 6
 [permalinks]
   post = "/:slug/"
 
+# weight wskazuje na kolejność
+
 [[menu.main]]
-  name = "Home"
+  name = "home"
   url = "/"
   weight = 200
 
 [[menu.main]]
-  name = "Go"
-  url = "/tags/golang/"
+  name = "Python"
+  url = "/tags/python/"
   weight = 100
 
 [[menu.main]]
-  name = "Food"
-  url = "/categories/food/"
+  name = "R"
+  url = "/R/"
   weight = 99
 
 [[menu.main]]
-  name = "External"
+  name = "DevOps"
+  url = "/tags/DevOps/"
+  weight = 98
+
+[[menu.main]]
+  name = "Big Data"
   url = "https://google.com/"
-  weight = 95
+  weight = 97
+
+[[menu.main]]
+  name = "Data engineering"
+  url = "https://google.com/"
+  weight = 96
+
