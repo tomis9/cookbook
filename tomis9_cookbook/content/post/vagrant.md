@@ -1,4 +1,10 @@
-## vagrant
+---
+title: "vagrant"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+image: "vagrant.jpg"
+tags: ["DevOps"]
+---
 
 Vagrant may be useful for testing. It's a little bit more convenient than a traditional VM with a full GUI. 
 

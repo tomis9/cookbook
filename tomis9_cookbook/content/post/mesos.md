@@ -1,4 +1,10 @@
-## mesos
+---
+title: "mesos"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+image: "mesos.png"
+tags: ["DevOps"]
+---
 
 A [quick introduction](http://iankent.uk/blog/a-quick-introduction-to-apache-mesos/)
 
