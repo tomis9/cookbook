@@ -10,7 +10,7 @@ paginate        = 6
   subtitle    = "or my personal programming tutorials and snippets"
 
   cover       = "header.jpeg"
-  description = "to jest description, ciekawe gdzie ono sie pojawia"
+  description = "programming tutorials and snippets prepared by tomis9"
   metaDescription = ""
   googleAnalytics = ""
   customCSS = []
@@ -19,15 +19,15 @@ paginate        = 6
   githubName = "tomis9"
 
   logo = ""
-  orgName = "EM"
-  orgWebsite = "https://www.telematika.org"
-  orgDescription = "Here is a description placeholder for your org"
+  orgName = "blabla orgName"
+  orgWebsite = "blabla orgWebsite"
+  orgDescription = "blabla orgDescription"
 
-  author = "EM"
+  author = "tomis9"
   authorAvatar = "img/ghost-icon.png"
   authorLocation = "Warsaw, Poland"
   authorWebsite = "https://tomis9.github.io"
-  authorDescription = "Describe yourself.."
+  authorDescription = "A regular everyday data scientist who's trying to manifest his hipsterity by coding in vim"
 
   pageNotFoundTitle = "404 - Page not found"
 
