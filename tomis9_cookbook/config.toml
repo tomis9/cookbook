@@ -9,7 +9,7 @@ paginate        = 6
   title       = "tomis9's cookbook"
   subtitle    = "or my personal programming tutorials and snippets"
 
-  cover       = "header.jpeg"
+  cover       = "home.jpg"
   description = "programming tutorials and snippets prepared by tomis9"
   metaDescription = ""
   googleAnalytics = ""
