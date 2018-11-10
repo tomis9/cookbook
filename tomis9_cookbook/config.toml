@@ -24,7 +24,7 @@ paginate        = 6
   orgDescription = "blabla orgDescription"
 
   author = "tomis9"
-  authorAvatar = "img/ghost-icon.png"
+  authorAvatar = "avatar.png"
   authorLocation = "Warsaw, Poland"
   authorWebsite = "https://tomis9.github.io"
   authorDescription = "A regular everyday data scientist who's trying to manifest his hipsterity by coding in vim"
