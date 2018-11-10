@@ -1,4 +1,4 @@
-baseurl         = "https://tomis9.github.io"
+baseurl         = ""
 theme           = "casper-two"
 languageCode    = "en-US"
 disqusShortname = ""
