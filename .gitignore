@@ -3,3 +3,17 @@ airflow_tutorial/venv/*
 elk/.vagrant/*
 logging_tutorial/.idea/*
 logging_tutorial/logs.log
+.Rhistory
+.RData
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.docx
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.tex
+*.sty
+*.csv

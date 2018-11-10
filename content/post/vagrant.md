@@ -2,7 +2,7 @@
 title: "vagrant"
 date: 2018-11-09T23:01:35+01:00
 draft: false
-image: "vagrant.jpg"
+image: "vagrant.png"
 tags: ["DevOps"]
 ---
 
