@@ -57,7 +57,7 @@ title           = "tomis9's cookbook"
 
 [[menu.main]]
   name = "DevOps"
-  url = "/tags/DevOps/"
+  url = "/categories/DevOps/"
   weight = 98
 
 [[menu.main]]

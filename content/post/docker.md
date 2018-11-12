@@ -3,7 +3,7 @@ title: "docker"
 date: 2018-11-09T23:01:35+01:00
 draft: false
 image: "whale.jpg"
-tags: ["DevOps"]
+categories: ["DevOps"]
 ---
 
 You can download it from [here](https://www.docker.com/products/docker-engine#/linux) or simply download and install with `sudo apt install docker.io`.
