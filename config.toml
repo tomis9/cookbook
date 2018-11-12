@@ -1,4 +1,4 @@
-baseurl         = ""
+baseurl         = "https://tomis9.github.io"
 theme           = "casper-two"
 languageCode    = "en-US"
 disqusShortname = ""
@@ -7,8 +7,8 @@ paginate        = 6
 
 [params]
   title       = "tomis9's cookbook"
-  subtitle    = "or my personal programming tutorials and snippets"
-
+  # subtitle    = "or my personal programming tutorials and snippets"
+  subtitle = "WIP: moving to HUGO"
   cover       = "home.jpg"
   description = "programming tutorials and snippets prepared by tomis9"
   metaDescription = ""
@@ -32,7 +32,7 @@ paginate        = 6
   pageNotFoundTitle = "404 - Page not found"
 
   #casper or caspertwo
-  singleViewStyle = "casper"
+  singleViewStyle = "caspertwo"
 
 [permalinks]
   post = "/:slug/"
