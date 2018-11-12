@@ -17,3 +17,4 @@ logging_tutorial/logs.log
 *.tex
 *.sty
 *.csv
+public/*

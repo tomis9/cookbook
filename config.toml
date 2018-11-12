@@ -3,6 +3,7 @@ theme           = "casper-two"
 languageCode    = "en-US"
 disqusShortname = ""
 paginate        = 6
+title           = "tomis9's cookbook"
 #SectionPagesMenu = "main"
 
 [params]
