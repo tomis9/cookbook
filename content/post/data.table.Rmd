@@ -93,56 +93,56 @@ DT[, .(MySum=sum(C), MyMean=mean(C)), by=.(B)]
 # https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html
 
 library(data.table)
-flights <- fread("https://raw.githubusercontent.com/ismayc/pnwflights14/master/data/flights.csv")
-DT <-  data.table(ID=c("b","b","b","a","a","c"), a =1:6, b = 7:12, c = 13:18)
-
-# Take DT, subset rows using i, then calculate j, grouped by by.
-# i
-ans <- flights[origin == "JFK" & month == 6L]
-ans <- flights[1:2]  # dwa pierwsze wiersze
-ans <- flights[order(origin, -dest)]
-# j
-ans <- flights[, arr_delay]  # zwraca wektor
-ans <- flights[, list(arr_delay)]  # zwraca data.table
-ans <- flights[, .(arr_delay, dep_delay)]  # kolumn nie można oddzielić ","
-ans <- flights[, list(arr_delay, dep_delay)]  # to samo, co wyżej
-ans <- flights[, .(ad = arr_delay, dd = dep_delay)]  # " = " - spacje
-ans <- flights[, sum((arr_delay + dep_delay) < 0)]  # < 0 zamienia to, co jest w nawiasie, na wektor binarny
-ans <- flights[(arr_delay + dep_delay) < 0, length(arr_delay + dep_delay)]  # to samo, co wyżej, tylko inaczej - length działa jak count w SQL
-
-# i, j
-ans <- flights[origin == "JFK" & month == 6L, 
-               .(m_arr = mean(arr_delay), m_dep = mean(dep_delay))]  # where i mean w SQL
-ans <- flights[origin == "JFK" & month == 6L, length(dest)]  # zamiast dest mogłoby być * w SQLu
-ans <- flights[origin == "JFK" & month == 6L, .N]  # .N = count(*)
-cols <- c("arr_delay", "dep_delay")
-ans <- flights[, cols, with=F]  # sposób na listę kolumn z zewnątrz
-ans <- flights[, !cols, with=F]  # "odznaczenie" kolumn - standardowo
-ans <- flights[, day:year, with=F]
-
-# by - grupowanie
-ans <- flights[, .N, by = origin]  # .N jest traktowane jak count(*)
-ans <- flights[carrier == "AA", .N, by = origin]
-ans <- flights[carrier == "AA", 
-               .(arr_d = mean(arr_delay), dep_d = mean(dep_delay)), 
-               by = .(origin, dest, month)]  # bardziej skomplikowanie
-
-# keyby - grupowanie + sortowanie
-ans <- flights[carrier == "AA", 
-               .(arr_d = mean(arr_delay), dep_d = mean(dep_delay)), 
-               keyby = .(origin, dest, month)]  # jedyna różnica: keyby
-ans <- flights[carrier == "AA", .N, 
-               by = .(origin, dest)][order(origin, -dest)]  # sortowanie desc
-ans <- flights[, .N, .(dep_delay>0, arr_delay>0)]  # case w group by
-DT <-  data.table(ID=c("b","b","b","a","a","c"), a =1:6, b = 7:12, c = 13:18)
-DT[, print(.SD), by = ID]  # .SD w połączeniu z by dzieli dt na podzbiory
-ans <- DT[, lapply(.SD, mean), by = ID]
-
-# update
-DT[, c := letters[1:.N]]
-# nowa kolumna, usunięcie kolumny
-DT[, d := rnorm(.N)]
-DT[, b := NULL]
+# flights <- fread("https://raw.githubusercontent.com/ismayc/pnwflights14/master/data/flights.csv")
+# DT <-  data.table(ID=c("b","b","b","a","a","c"), a =1:6, b = 7:12, c = 13:18)
+# 
+# # Take DT, subset rows using i, then calculate j, grouped by by.
+# # i
+# ans <- flights[origin == "JFK" & month == 6L]
+# ans <- flights[1:2]  # dwa pierwsze wiersze
+# ans <- flights[order(origin, -dest)]
+# # j
+# ans <- flights[, arr_delay]  # zwraca wektor
+# ans <- flights[, list(arr_delay)]  # zwraca data.table
+# ans <- flights[, .(arr_delay, dep_delay)]  # kolumn nie można oddzielić ","
+# ans <- flights[, list(arr_delay, dep_delay)]  # to samo, co wyżej
+# ans <- flights[, .(ad = arr_delay, dd = dep_delay)]  # " = " - spacje
+# ans <- flights[, sum((arr_delay + dep_delay) < 0)]  # < 0 zamienia to, co jest w nawiasie, na wektor binarny
+# ans <- flights[(arr_delay + dep_delay) < 0, length(arr_delay + dep_delay)]  # to samo, co wyżej, tylko inaczej - length działa jak count w SQL
+# 
+# # i, j
+# ans <- flights[origin == "JFK" & month == 6L, 
+#                .(m_arr = mean(arr_delay), m_dep = mean(dep_delay))]  # where i mean w SQL
+# ans <- flights[origin == "JFK" & month == 6L, length(dest)]  # zamiast dest mogłoby być * w SQLu
+# ans <- flights[origin == "JFK" & month == 6L, .N]  # .N = count(*)
+# cols <- c("arr_delay", "dep_delay")
+# ans <- flights[, cols, with=F]  # sposób na listę kolumn z zewnątrz
+# ans <- flights[, !cols, with=F]  # "odznaczenie" kolumn - standardowo
+# ans <- flights[, day:year, with=F]
+# 
+# # by - grupowanie
+# ans <- flights[, .N, by = origin]  # .N jest traktowane jak count(*)
+# ans <- flights[carrier == "AA", .N, by = origin]
+# ans <- flights[carrier == "AA", 
+#                .(arr_d = mean(arr_delay), dep_d = mean(dep_delay)), 
+#                by = .(origin, dest, month)]  # bardziej skomplikowanie
+# 
+# # keyby - grupowanie + sortowanie
+# ans <- flights[carrier == "AA", 
+#                .(arr_d = mean(arr_delay), dep_d = mean(dep_delay)), 
+#                keyby = .(origin, dest, month)]  # jedyna różnica: keyby
+# ans <- flights[carrier == "AA", .N, 
+#                by = .(origin, dest)][order(origin, -dest)]  # sortowanie desc
+# ans <- flights[, .N, .(dep_delay>0, arr_delay>0)]  # case w group by
+# DT <-  data.table(ID=c("b","b","b","a","a","c"), a =1:6, b = 7:12, c = 13:18)
+# DT[, print(.SD), by = ID]  # .SD w połączeniu z by dzieli dt na podzbiory
+# ans <- DT[, lapply(.SD, mean), by = ID]
+# 
+# # update
+# DT[, c := letters[1:.N]]
+# # nowa kolumna, usunięcie kolumny
+# DT[, d := rnorm(.N)]
+# DT[, b := NULL]
 
 # joiny https://rstudio-pubs-static.s3.amazonaws.com/52230_5ae0d25125b544caab32f75f0360e775.html
 Employees <- data.table(Employee = 1:6,
