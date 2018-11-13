@@ -1,22 +1,33 @@
-language: go
+language: r
+dist: trusty
+sudo: false
 
-go:
-  - master # This uses automatically the latest version of go
+branches:
+  only:
+    - master
+
+cache:
+  packages: yes
+  directories:
+    - $HOME/bin
 
 install:
-  - go get github.com/spf13/hugo # This provides the latest version of Hugo to Travis CI
+  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "data.table", "data.table", "data.table", "car", "dplyr", "data.table", "data.table", "plotly", "tidyverse", "ggplot2", "plotly", "tidyverse", "sqldf"))'
+
+before_script:
+  - "Rscript -e 'blogdown::install_hugo()'"
 
 script:
-  - hugo # This commands builds your website on travis
+  - "Rscript -e 'blogdown::build_site()'"
 
 deploy:
-  local_dir: public # Default static site output dir for Hugo
-  repo: tomis9/tomis9.github.io # This is the slug of the repo you want to deploy your site to
-  target_branch: master # GitHub pages branch to deploy to (in other cases it can be gh-pages)
+  local_dir: public
   provider: pages
+  repo: tomis9/tomis9.github.io 
+  target_branch: master 
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN # This is the authentication which you will setup in the next step in travis-ci dashboard
+  github_token: $GITHUB_TOKEN
   email: tomis9@buziaczek.pl
-  name: "tomis9"
+  name: tomis9
   on:
     branch: master

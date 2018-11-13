@@ -1,14 +1,14 @@
-# Classes
+---
+title: "Classes"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
 
-[back to the main page](index.html)
-
-***
-###### *Programowanie w języku R, s. 463-488*
-
-Object oriented programming in R is unfortunately painfully awful comparing to Python (which seems to be the only reasonable alternative for data science programming). Have a look:
+Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming). Have a look:
 
 
-Creating a new class in S4
+### Creating a new class in S4
 ```{r}
 setClass('Polygon', 
          slots = c(x = 'numeric', y = 'numeric'),
@@ -20,14 +20,14 @@ a new object
 w1 <- new('Polygon', x = 1:3, y = c(1, 1, 2))
 ```
 
-Attributes
+### Attributes
 ```{r}
 slotNames(w1)
 w1@x  
 w1@y
 ```
 
-Methods
+### Methods
 
 print overloading or show
 ```{r}
@@ -43,7 +43,7 @@ setMethod(
 print(w1)
 ```
 
-Inheritance
+### Inheritance
 ```{r}
 setClass(
   'Triangle',
@@ -57,7 +57,7 @@ class(t1)
 # new('Triangle', x=c(1, 2, 3, 4), y=c(1, 1, 3, 4))  # error
 ```
 
-Initialize
+### Initialize
 
 *this part of the tutorial is not finished yet*
 ```{r}

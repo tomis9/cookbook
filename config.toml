@@ -47,12 +47,12 @@ title           = "tomis9's cookbook"
 
 [[menu.main]]
   name = "Python"
-  url = "/tags/python/"
+  url = "/categories/python/"
   weight = 100
 
 [[menu.main]]
   name = "R"
-  url = "/R/"
+  url = "/categories/R/"
   weight = 99
 
 [[menu.main]]

@@ -18,3 +18,6 @@ logging_tutorial/logs.log
 *.sty
 *.csv
 public/*
+content/post/*html
+static/rmarkdown-libs/*
+static/post/*

@@ -1,3 +1,9 @@
+---
+title: "reshape2"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
 # reshape2 - tutorial
 
 [back to the main page](index.html)

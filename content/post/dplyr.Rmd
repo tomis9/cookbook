@@ -1,3 +1,9 @@
+---
+title: "dplyr"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
 # dplyr - tutorial
 
 tutorial based on
@@ -6,12 +12,7 @@ http://genomicsclass.github.io/book/pages/dplyr <- tutorial.html
 ```{r}
 # install.packages('dplyr')
 library(dplyr)
-# install.packages('downloader')
-library(downloader)
-url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv"
-filename <- "msleep_ggplot2.csv"
-if (!file.exists(filename)) download(url,filename)
-msleep <- read.csv("msleep_ggplot2.csv")
+msleep <- read.csv("https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv")
 head(msleep)
 
 # select - just like in SQL

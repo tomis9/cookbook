@@ -1,3 +1,9 @@
+---
+title: "sqldf"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
 # sqldf - tutorial
 
 `sqldf` package lets you treat any data.frame object as a sql table.  You can write queries just line in a database. Pretty useless, comparing to, say, data.table, dplyr or tidyverse.
