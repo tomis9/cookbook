@@ -4,7 +4,32 @@ date: 2018-11-09T23:01:35+01:00
 draft: false
 image: "whale.jpg"
 categories: ["DevOps"]
+tags: ["docker"]
 ---
+
+## Easily forgettable solutions
+
+## 1. What is docker and why would you use it?
+
+What is it?
+
+* "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux." Comparing to Python, it's basically a virtualenv, but for the whole OS. Or this is some sort of a virtual machine.
+
+* it's a program, which lets you to encapsulate your software into its own, the most basic "OS" (known as "image" in docker's world) and run it on any machine/server, which has docker installed;
+
+* docker is almost the same thing as virtual machines, but faster, lighter and (IMHO) more simple.
+
+Why would you use it?
+
+* you could use it for the same reasons as [virtual machines](https://tomis9.github.io/vagrant);
+
+* but images (which are analogue to virtual machines in [vagrant](https://tomis9.github.io/vagrant)'s world) build and start faster;
+
+* you can easily build your own image using a Dockerfile and integreate it into your [CI/CD pipeline](https://tomis9.github.io/gitlab-ci);
+
+* you can develop software on your laptop and as far as you test in docker container, you can be 100% sure the code will run on a server in production.
+
+## 2. Installation
 
 You can download it from [here](https://www.docker.com/products/docker-engine#/linux) or simply download and install with `sudo apt install docker.io`.
 
