@@ -12,7 +12,7 @@ cache:
     - $HOME/bin
 
 install:
-  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "data.table", "data.table", "data.table", "car", "dplyr", "data.table", "data.table", "plotly", "tidyverse", "ggplot2", "plotly", "tidyverse", "sqldf"))'
+  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "data.table", "data.table", "data.table", "car", "dplyr", "data.table", "data.table", "plotly", "tidyverse", "ggplot2", "plotly", "tidyverse", "sqldf", "blogdown"))'
 
 before_script:
   - "Rscript -e 'blogdown::install_hugo()'"
