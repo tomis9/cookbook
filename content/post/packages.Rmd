@@ -1,0 +1,23 @@
+---
+title: "packages"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
+
+An example of creating package 'decisionTree':
+
+```{r}
+library(devtools)
+library(roxygen2)
+
+setwd('~/.R/my_libs')
+create('decisionTree')
+setwd('./decisionTree')
+
+document()  # creates manual/documentation
+
+setwd('..')
+install('decisionTree')  # install package
+
+```
