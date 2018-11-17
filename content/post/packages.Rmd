@@ -8,16 +8,16 @@ categories: ["R"]
 An example of creating package 'decisionTree':
 
 ```{r}
-library(devtools)
-library(roxygen2)
-
-setwd('~/.R/my_libs')
-create('decisionTree')
-setwd('./decisionTree')
-
-document()  # creates manual/documentation
-
-setwd('..')
-install('decisionTree')  # install package
+# library(devtools)
+# library(roxygen2)
+# 
+# setwd('~/.R/my_libs')
+# create('decisionTree')
+# setwd('./decisionTree')
+# 
+# document()  # creates manual/documentation
+# 
+# setwd('..')
+# install('decisionTree')  # install package
 
 ```

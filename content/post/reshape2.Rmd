@@ -2,34 +2,56 @@
 title: "reshape2"
 date: 2018-11-09T23:01:35+01:00
 draft: false
+image: "R.png"
 categories: ["R"]
+tags: ["R", "data.table", "dataframes"]
 ---
-# reshape2 - tutorial
 
-[back to the main page](index.html)
+## 1. What is reshape2 and why would you use it?
 
-***
+`reshape2` is an R package that let's you change the shape of any dataframe, i.e. to pivot and to "unpivot".
+
+Keep in mind that if your favourite R package for dataframes manipulation is [data.table](https://tomis9.github.io/data.table), functions *dcast* and *melt* are already in this package and work exactly the same as those in `reshape2`.
+
+## 2. A "Hello World" example
 
 In fact there are only two functions worth mentioning: *dcast*, which is equivalent to MS Excel pivot table, and *melt*, which does the opposite or unpivots a table.
 
-```{r}
-library(reshape2)
 
-d <- data.frame(konto = paste(rep(7, 9), 1:9, sep=""),
-                styczen = rnorm(9, 10, 1),
-                luty = rnorm(9, 10, 2),
-                marzec = rnorm(9, 10, 3))
-d
-```
 ***
-Transormation into a normalized table:
+An example dataframe:
 ```{r}
-dn <- melt(d, "konto", variable.name = "miesiac", value.name = "przychody")
-head(dn)
-tail(dn)
+d <- data.frame(
+  account_no = paste(rep(7, 5), 1:5, sep=""),
+  Jan = rnorm(5, 10, 1),
+  Feb = rnorm(5, 10, 2),
+  Mar = rnorm(5, 10, 3)
+)
+print(d)
 ```
+
+***
+Transormation into a normalized table (unpivot):
+```{r}
+dn <- reshape2::melt(
+  data = d, 
+  id.vars = "account_no", 
+  variable.name = "month", 
+  value.name = "revenue"
+)
+print(dn)
+```
+
 ***
 And back to the previous format using a pivot:
 ```{r}
-dcast(dn, konto ~ miesiac, value.var = "przychody")
+reshape2::dcast(
+  data = dn, 
+  formula = account_no ~ month, 
+  value.var = "revenue"
+)
 ```
+
+## 3. Links
+
+A pretty nice and much longer tutorial is available [here](https://seananderson.ca/2013/10/19/reshape/).

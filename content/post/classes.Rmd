@@ -5,10 +5,15 @@ draft: false
 categories: ["R"]
 ---
 
-Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming). Have a look:
+## 1. Why would you use OOP in R?
 
+Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming). 
 
-### Creating a new class in S4
+However, there are certain cases when OOP may come up helpful:
+
+* when you write your own package and you want users to work on an object your function returns (print, summary, plot)
+
+## Creating a new class in S4
 ```{r}
 setClass('Polygon', 
          slots = c(x = 'numeric', y = 'numeric'),
@@ -20,7 +25,7 @@ a new object
 w1 <- new('Polygon', x = 1:3, y = c(1, 1, 2))
 ```
 
-### Attributes
+## Attributes
 ```{r}
 slotNames(w1)
 w1@x  
