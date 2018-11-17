@@ -14,8 +14,6 @@ funkcje:
 
 techniczne:
 
-6. uzupełnienie travisa o blogdowna
-
 7. pobieranie pliku z kodem, tzn. kod powinien się automatycznie wczytywać do blogposta z pliku
 i byłoby dobrze, gdyby znajdował się w tym samym folderze w content, co plik Rmd z artykułem...
 ciekawe, czy da się to ogarnąć; ewentualnie może być w innym folderze, nawet nie w content, tylko np. w static

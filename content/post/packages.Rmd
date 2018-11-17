@@ -3,21 +3,42 @@ title: "packages"
 date: 2018-11-09T23:01:35+01:00
 draft: false
 categories: ["R"]
+image: "R.png"
+tags: ["R"]
 ---
 
-An example of creating package 'decisionTree':
+## 1. What are R packages and why woul you use them?
 
-```{r}
-# library(devtools)
-# library(roxygen2)
-# 
-# setwd('~/.R/my_libs')
-# create('decisionTree')
-# setwd('./decisionTree')
-# 
-# document()  # creates manual/documentation
-# 
-# setwd('..')
-# install('decisionTree')  # install package
+* R packaging is a convenient way to store and share your R code. 
 
+* It lets you incorporate testing with [testthat](https://tomis9.github.io/testthat).
+
+* It lets you easily list dependencies with [packrat](https://tomis9.github.io/packrat).
+
+* You can easily version your code.
+
+You may say: well, I can benefit from all of these advantages by simply keeping my code in a git repo and you know what? You would be right. Maybe except the dependencies, however you could take care of them providing a file similar to python's requirements.
+
+In general, I don't recommend encapsulating your code into a package, unless you want to publish it on cran. Your workflow will require one more step whenever you change your code, i.e. reinstalling the package.
+
+## 2. A "Hello World" example
+
+```{r, eval = FALSE}
+library(devtools)
+library(roxygen2)
+
+setwd('~/.R/my_libs')
+create('hello_world_package')
+setwd('./hello_world_package')
+
+document()  # creates manual/documentation
+
+setwd('..')
+install('hello_world_package')  # install package
 ```
+
+## 3. Useful links
+
+A nice basic tutorial on writing R packages is [here](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/).
+
+***
