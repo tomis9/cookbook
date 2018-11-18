@@ -1,3 +1,13 @@
+---
+title: "Rcpp"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R", "C++"]
+---
+
+## A "Hello World" example
+
+```{r}
 # http://adv-r.had.co.nz/Rcpp.html
 library(Rcpp)
 cppFunction('int add(int x, int y, int z) {
@@ -17,5 +27,6 @@ cppFunction('NumericVector pdistC(double x, NumericVector ys) {
   }
   return out;
 }')
+```
 
-
+***
