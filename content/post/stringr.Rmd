@@ -1,0 +1,28 @@
+---
+title: "stringr"
+date: 2017-03-02T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
+
+## 1. Why would you use stringr?
+
+Actually, you wouldn't, because stringr has been completely replaced by stringi.
+
+## 2. A "Hello World" example
+
+```{r}
+library(stringr)
+
+str_c("a", "b", "c")
+
+str_length("abcdefg")
+
+str_sub("tomek", 2, 4)
+
+str_trim("   abc  ")
+
+str_replace("blanana", "na", "HEJ")
+```
+
+***
