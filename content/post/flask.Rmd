@@ -1,0 +1,92 @@
+---
+title: "flask"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["python", "webservice"]
+---
+
+### A minimal example of flask
+
+```{python, eval = FALSE}
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+
+
+
+### A minimal example of flask-JSONRPC
+
+app.py:
+```{python, eval = FALSE}
+from flask import Flask
+from flask_jsonrpc import JSONRPC
+
+# Flask application
+app = Flask(__name__)
+
+# Flask-JSONRPC
+jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
+
+
+@jsonrpc.method('App.index')
+def index():
+    return 'Welcome to Flask JSON-RPC'
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
+```
+
+
+[That](https://github.com/cenobites/flask-jsonrpc) is a very short intro to flas-JSONRPC.
+
+Check if it works:
+
+```
+curl -i -X POST \
+   -H "Content-Type: application/json; indent=4" \
+   -d '{
+    "jsonrpc": "2.0",
+    "method": "App.index",
+    "params": {},
+    "id": "1"
+}' http://localhost:5000/api
+```
+
+### A minimal example of flask blueprint:
+
+app.py:
+```{python, eval = FALSE}
+from flask import Flask
+from simple_page import blueprint
+
+app = Flask(__name__)
+app.register_blueprint(blueprint)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+simple_page.py:
+```{python, eval = FALSE}
+from flask import Blueprint
+
+blueprint = Blueprint('simple_page', __name__)
+
+
+@blueprint.route('/')
+def show():
+    return "Hello from blueprint\n"
+```
+
+***
