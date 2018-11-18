@@ -1,3 +1,14 @@
+---
+title: "sqlAlchemy"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["python", "SQL"]
+tags: ["python", "SQL"]
+---
+
+## A minimal example
+
+```{python, eval = FALSE}
 import sqlalchemy
 import os
 
@@ -24,3 +35,6 @@ result = connection.execute("select * from t1")
 print(result.fetchall())
 
 connection.close()
+```
+
+***
