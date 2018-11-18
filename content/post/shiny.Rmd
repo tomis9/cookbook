@@ -9,7 +9,7 @@ categories: ["R"]
 
 ui.R
 
-```{r}
+```{r, eval = FALSE}
 # przykładowy program w shiny
 # aby uruchomić aplikację: runApp()
 
@@ -40,10 +40,9 @@ shinyUI(fluidPage(
 ```
 
 ***
-
 server.R
 
-```{r}
+```{r, eval = FALSE}
 # przykładowy program w shiny
 # aby uruchomić aplikację: runApp("./shiny")
 

@@ -8,7 +8,7 @@ tags: ["python", "statistics"]
 
 ## A minimal example
 
-```{python}
+```{python, eval = FALSE}
 import sklearn.linear_model
 import pandas as pd
 import io
@@ -28,8 +28,8 @@ X = white_wine.iloc[:, :-1]
 
 ls = sklearn.linear_model.LinearRegression()
 ls.fit(X, y)
-ls.intercept_
-ls.coef_
+print(ls.intercept_)
+print(ls.coef_)
 ```
 
 ***

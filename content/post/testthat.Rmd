@@ -9,7 +9,7 @@ categories: ["R", "TDD"]
 
 real_roots.R
 
-```{r}
+```{r, eval = FALSE}
 real.roots <- function(a, b, c) {
     if (a == 0.)
         stop("Leading term cannot be zero")
@@ -31,7 +31,7 @@ real.roots <- function(a, b, c) {
 
 test_real_roots.R
 
-```{r}
+```{r, eval = FALSE}
 source("real_roots.R")
 
 test_that("Distinct roots", {
