@@ -38,7 +38,6 @@ title           = "tomis9's cookbook"
 [permalinks]
   post = "/:slug/"
 
-# weight wskazuje na kolejność
 
 [[menu.main]]
   name = "home"
@@ -61,12 +60,7 @@ title           = "tomis9's cookbook"
   weight = 98
 
 [[menu.main]]
-  name = "Big Data"
-  url = "https://google.com/"
-  weight = 97
-
-[[menu.main]]
   name = "Data engineering"
-  url = "https://google.com/"
+  url = "/categories/data-engineering"
   weight = 96
 
