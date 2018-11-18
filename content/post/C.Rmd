@@ -1,0 +1,62 @@
+---
+title: "C"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R", "C"]
+---
+
+## A minimal example
+```{c}
+#include <R.h> 
+#include <Rmath.h> 
+#include <math.h>
+#include <stdio.h>
+
+void fun(double *X, int *p, int *n, double *phi, double *w) {
+    int i, j, k, l;
+    double sos;
+    k = 0;
+    for (i=0; i<*n-1; i++) {
+        for (j=i+1; j<*n; j++) {
+            sos = 0.;
+            for (l=0; l<*p; l++) {
+                sos += pow(X[l + (*p) * i] - X[l + (*p) * j],2.);
+            }
+            w[k] = exp(-(*phi) * sos);
+            k += 1;
+        }
+    }
+}
+```
+
+
+```{r}
+# d <- as.matrix(iris[,1:4])
+d <- matrix(1:4, 2)
+# for (i in 1:5) d <- rbind(d, d)
+n <- nrow(d)
+
+X <- t(d)
+phi <- 0.5
+dyn.load("fun.so")
+storage.mode(X) <- "double"
+p <- as.integer(nrow(X))
+n <- as.integer(ncol(X))
+phi <- as.double(phi)
+w <- double(n*(n-1)/2)
+system.time(sol <- .C('fun',X=X,p=p,n=n,phi=phi,w=w))
+weights=sol$w
+weights
+
+gaussianKernel <- function(x, y) exp(-sum((x - y) ^ 2) / 2) # phi to / 2
+A <- matrix(0, nrow=n, ncol=n)
+system.time(
+for (i in 1:n) {
+    for (j in 1:n) {
+        A[i, j] <- gaussianKernel(d[i, ], d[j, ])    
+    }
+}
+)
+```
+
+***
