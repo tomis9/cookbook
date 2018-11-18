@@ -1,3 +1,14 @@
+---
+title: "sklearn - linear regression"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["python", "statistics"]
+tags: ["python", "statistics"]
+---
+
+## A minimal example
+
+```{python}
 import sklearn.linear_model
 import pandas as pd
 import io
@@ -19,3 +30,6 @@ ls = sklearn.linear_model.LinearRegression()
 ls.fit(X, y)
 ls.intercept_
 ls.coef_
+```
+
+***
