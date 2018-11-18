@@ -6,7 +6,7 @@ categories: ["R", "C"]
 ---
 
 ## A minimal example
-```{c}
+```{c, eval = FALSE}
 #include <R.h> 
 #include <Rmath.h> 
 #include <math.h>
@@ -30,7 +30,7 @@ void fun(double *X, int *p, int *n, double *phi, double *w) {
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 # d <- as.matrix(iris[,1:4])
 d <- matrix(1:4, 2)
 # for (i in 1:5) d <- rbind(d, d)
