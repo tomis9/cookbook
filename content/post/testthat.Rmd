@@ -1,3 +1,37 @@
+---
+title: "testthat"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R", "TDD"]
+---
+
+## A minimal example
+
+real_roots.R
+
+```{r}
+real.roots <- function(a, b, c) {
+    if (a == 0.)
+        stop("Leading term cannot be zero")
+
+    delta <- b * b - 4 * a * c # discriminant
+
+    if (delta < 0)
+       rr <- c()
+    else if (delta == 0)
+       rr <- c(-b / (2 * a))
+    else
+        rr <- c((-b - sqrt(delta)) / (2 * a),
+                (-b + sqrt(delta)) / (2 * a))
+
+    return(rr)
+}
+
+```
+
+test_real_roots.R
+
+```{r}
 source("real_roots.R")
 
 test_that("Distinct roots", {
@@ -46,3 +80,6 @@ test_that("Bogus tests", {
     expect_that( length(x), equals(2.7) )
     expect_that( x, is_a("data.frame") )
 })
+```
+
+***
