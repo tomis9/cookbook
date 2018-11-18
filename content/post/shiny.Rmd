@@ -1,3 +1,49 @@
+---
+title: "shiny"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+---
+
+## A minimal application:
+
+ui.R
+
+```{r}
+# przykładowy program w shiny
+# aby uruchomić aplikację: runApp()
+
+library(shiny)
+
+shinyUI(fluidPage(
+
+  titlePanel("Hello Shiny!"),
+
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins",
+        "Number of bins:",
+        min = 1,
+        max = 50,
+        value = 30),
+      selectInput("select", label = h3("Select box"), 
+        choices = as.list(1:12), 
+        selected = 1)
+    ),
+
+    mainPanel(
+      plotOutput("distPlot"),
+      uiOutput("many")
+    )
+  )
+))
+```
+
+***
+
+server.R
+
+```{r}
 # przykładowy program w shiny
 # aby uruchomić aplikację: runApp("./shiny")
 
@@ -37,4 +83,5 @@ shinyServer(function(input, output) {
     })
 
 })
+```
 
