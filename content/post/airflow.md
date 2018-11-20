@@ -5,14 +5,13 @@ draft: false
 categories: ["python", "data-engineering"]
 ---
 
+## 1. What is airflow and why would you use it?
 
-[tutorial 1](http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/)
+* airflow lets you manage your dataflow as a graph (direct acyclic graph or DAG), wchich consists of separate Tasks, and schedule them
 
-[tutorial 2](https://airflow.apache.org/tutorial.html)
+*Wait*, you may say, *I can do that with cron!*
 
-DAG - Direct Acyclic Graph
-
-DAGs are composed of Tasks
+Yes, you can, but:
 
 #### Installation
 
@@ -22,4 +21,8 @@ pip install airflow
 
 or you can use virtualenv. Or pyenv + virtualenv, which I recommend.
 
-And follow the instructions from tutorial 1.
+## 3. Useful links
+
+[tutorial 1](http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/)
+
+[tutorial 2](https://airflow.apache.org/tutorial.html)
