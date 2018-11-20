@@ -4,32 +4,40 @@ date: 2018-11-09T23:01:35+01:00
 draft: false
 categories: ["R"]
 ---
+
+a nice image would be a meme "why you no data.table"
+
 # dplyr - tutorial
 
 tutorial based on
-http://genomicsclass.github.io/book/pages/dplyr <- tutorial.html
+http://genomicsclass.github.io/book/pages/dplyr_tutorial.html
 
 ```{r}
-# install.packages('dplyr')
 library(dplyr)
-#msleep <- read.csv("https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv")
-#head(msleep)
-#
-## select - just like in SQL
-#sleepData <- select(msleep, name, sleep_total)
-#head(sleepData)
-#
-#head(select(msleep, -name))
-#
-## where clause
-#filter(msleep, sleep_total >= 16)
-#filter(msleep, sleep_total >= 16, bodywt >= 1)
-#
-## pipe
-#head(select(msleep, name, sleep_total))
-#
-## just like in bash - pass the first argument to a function
-#msleep %>% 
-#    select(name, sleep_total) %>% 
-#    head
-#```
+msleep <- read.csv("https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv")
+head(msleep)
+
+# select - just like in SQL
+sleepData <- select(msleep, name, sleep_total)
+head(sleepData)
+
+head(select(msleep, -name))
+
+# where clause
+filter(msleep, sleep_total >= 16)
+filter(msleep, sleep_total >= 16, bodywt >= 1)
+
+# pipe
+head(select(msleep, name, sleep_total))
+
+# just like in bash - pass the first argument to a function
+msleep %>% 
+    select(name, sleep_total) %>% 
+    head
+```
+
+mutate - creates new columns
+
+arrange - order
+
+group_by + summarise
