@@ -33,7 +33,7 @@ title           = "tomis9's cookbook"
   pageNotFoundTitle = "404 - Page not found"
 
   #casper or caspertwo
-  singleViewStyle = "caspertwo"
+  singleViewStyle = "casper"
 
 [permalinks]
   post = "/:slug/"

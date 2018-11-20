@@ -6,7 +6,7 @@ categories: ["python"]
 ---
 
 app.py
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 import logging.config
 import json
 from import_app import func
@@ -30,7 +30,7 @@ logger.debug('debug two')
 ```
 
 import_app.py
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 import logging
 
 

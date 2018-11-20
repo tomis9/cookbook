@@ -7,7 +7,7 @@ categories: ["python", "webservice"]
 
 ### A minimal example of flask
 
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 from flask import Flask
 
 app = Flask(__name__)
@@ -21,13 +21,10 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-
-
-
 ### A minimal example of flask-JSONRPC
 
 app.py:
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 from flask import Flask
 from flask_jsonrpc import JSONRPC
 
@@ -47,12 +44,11 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 ```
 
-
 [That](https://github.com/cenobites/flask-jsonrpc) is a very short intro to flas-JSONRPC.
 
 Check if it works:
 
-```
+```{bash, eval = FALSE}
 curl -i -X POST \
    -H "Content-Type: application/json; indent=4" \
    -d '{
@@ -66,7 +62,7 @@ curl -i -X POST \
 ### A minimal example of flask blueprint:
 
 app.py:
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 from flask import Flask
 from simple_page import blueprint
 
@@ -78,7 +74,7 @@ if __name__ == '__main__':
 ```
 
 simple_page.py:
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 from flask import Blueprint
 
 blueprint = Blueprint('simple_page', __name__)

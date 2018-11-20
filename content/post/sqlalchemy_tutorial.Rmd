@@ -8,7 +8,7 @@ tags: ["python", "SQL"]
 
 ## A minimal example
 
-```{python, eval = FALSE}
+```{python, eval = FALSE, python.reticulate = FALSE}
 import sqlalchemy
 import os
 
