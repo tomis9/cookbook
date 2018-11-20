@@ -1,3 +1,10 @@
+---
+title: "python @property"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["python"]
+---
+
 ## @property
 
 @property - pythonic way to use getters and setters.
