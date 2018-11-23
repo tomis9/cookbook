@@ -1,6 +1,6 @@
 ---
 title: "reshape2"
-date: 2018-11-09T23:01:35+01:00
+date: 2017-03-01T13:07:39+01:00
 draft: false
 image: "R.png"
 categories: ["R"]
@@ -17,8 +17,6 @@ Keep in mind that if your favourite R package for dataframes manipulation is [da
 
 In fact there are only two functions worth mentioning: *dcast*, which is equivalent to MS Excel pivot table, and *melt*, which does the opposite or unpivots a table.
 
-
-***
 An example dataframe:
 ```{r}
 d <- data.frame(
@@ -30,7 +28,6 @@ d <- data.frame(
 print(d)
 ```
 
-***
 Transormation into a normalized table (unpivot):
 ```{r}
 dn <- reshape2::melt(
@@ -42,7 +39,6 @@ dn <- reshape2::melt(
 print(dn)
 ```
 
-***
 And back to the previous format using a pivot:
 ```{r}
 reshape2::dcast(
