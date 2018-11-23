@@ -4,7 +4,7 @@ date: 2018-08-18T14:25:43+02:00
 draft: false
 image: "vagrant.png"
 categories: ["DevOps"]
-tags: ["DevOps", "VM"]
+tags: ["draft", "DevOps", "VM"]
 ---
 
 ## 1. What is vagrant and why would you use it?

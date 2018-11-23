@@ -5,6 +5,7 @@ draft: false
 categories: ["R"]
 image: "R.png"
 tags: ["R"]
+tags: ["draft"]
 ---
 
 ## 1. What are R packages and why woul you use them?

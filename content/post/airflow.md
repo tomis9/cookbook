@@ -3,6 +3,7 @@ title: "airflow"
 date: 2018-11-09T23:01:35+01:00
 draft: false
 categories: ["python", "data-engineering"]
+tags: ["draft"]
 ---
 
 ## 1. What is airflow and why would you use it?

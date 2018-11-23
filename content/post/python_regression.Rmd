@@ -3,7 +3,7 @@ title: "sklearn - linear regression"
 date: 2018-11-09T23:01:35+01:00
 draft: false
 categories: ["python", "statistics"]
-tags: ["python", "statistics"]
+tags: ["draft", "python", "statistics"]
 ---
 
 ## A minimal example

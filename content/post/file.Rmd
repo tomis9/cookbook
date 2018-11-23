@@ -1,5 +1,9 @@
 ---
 title: "Rmarkdown total basics"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["R"]
+tags: ["draft"]
 ---
 
 Before you begin, check out a very nice cheatsheet available at 
