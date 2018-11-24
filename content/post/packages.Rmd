@@ -4,8 +4,7 @@ date: 2018-11-09T23:01:35+01:00
 draft: false
 categories: ["R"]
 image: "R.png"
-tags: ["R"]
-tags: ["draft"]
+tags: ["draft", "R"]
 ---
 
 ## 1. What are R packages and why woul you use them?
