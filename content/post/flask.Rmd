@@ -6,9 +6,11 @@ categories: ["python", "webservice"]
 tags: ["draft"]
 ---
 
-### A minimal example of flask
+### A "Hello World" example
 
-```{python, eval = FALSE, python.reticulate = FALSE}
+Let's start with a very simple flask application (hello.py):
+
+```{python}
 from flask import Flask
 
 app = Flask(__name__)
@@ -21,6 +23,29 @@ def hello():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
+
+which prints out "Hello, World!" on the screen. 
+Start the application with
+```
+python hello.py
+```
+
+Everything should go smooth as long as you use python3 and have flask installed (if not, `pip3 install flask` should do the job).
+
+So, this is the simplest possible application in flask. How about some explanation?
+
+1. We create an instance of class `Flask` named `app`. Which is a pretty good name for an app.
+
+2. If anybody *request*s our app via '/' route, our *response* will be "Hello, World!". For a local server at 127.0.0.1 host, '/' route is just 127.0.0.1/.
+
+3. Finally, if we run this application non-interactively (via ipython-console, for example), so it's `__name__` would be `__main__`, the `app` instance we created in the first step, will `run`.
+
+Now you can see the app's greeting to the world in your web browser at 127.0.0.1:5000 or you can send a request by curl:
+```{bash}
+curl 127.0.0.1:5000
+```
+and receive a response.
+
 
 ### A minimal example of flask-JSONRPC
 
