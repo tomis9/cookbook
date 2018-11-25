@@ -1,10 +1,53 @@
 ---
 title: "logging"
-date: 2018-11-09T23:01:35+01:00
+date: 2018-10-20T00:15:21+02:00
 draft: false
+image: "python.png"
 categories: ["python"]
-tags: ["draft"]
+tags: ["draft", "python", "logging"]
 ---
+
+## 1. What is logging and why would you use it?
+
+* Logging, in general, provides information about the execution of a program outside, e.g. to stdout or to a file. Why would that be useful?
+
+* You may get the information if all the parts of the program executed correctly, for example where and when errors occured.
+
+* You may get the information of how and when the program was executed, e.g. who was using it's functionalities.
+
+`logging` module, which is one of python's standard modules, provides you with a couple of functios and objects, which make logging easy and standardised.
+
+## 2. "Hello World" examples
+
+* ### Basic configuration
+
+```{python}
+import logging
+
+logging.basicConfig(filename='logs.log', level=logging.INFO)
+
+logging.warning('some warning')
+logging.warning('another warning')
+```
+
+or using a `logger`:
+
+```{python}
+import logging
+
+logging.basicConfig(filename='logs.log', level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+logger.warning('some warning')
+logger.warning('another warning')
+```
+
+Why it'a a good idea to use `logger` instead of a basic `logging`?
+
+
+* ### Not so basic configuration
+
+* ### Keeping configuration in a separate file
 
 app.py
 ```{python, eval = FALSE, python.reticulate = FALSE}
@@ -82,4 +125,4 @@ config.json
   }
 }
 ```
-
+https://www.toptal.com/python/in-depth-python-logging
