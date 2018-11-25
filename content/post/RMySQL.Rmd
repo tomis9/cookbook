@@ -1,87 +1,103 @@
 ---
-title: "RMySQL"
-date: 2018-11-09T23:01:35+01:00
+title: "RMariaDB (former RMySQL)"
+date: 2018-02-12T12:17:56+01:00
 draft: false
 categories: ["R"]
-tags: ["draft"]
+tags: ["R", "SQL"]
 ---
-# RMySQL
 
-***
+## 1. What is RMariaDB and why would you use it?
 
-### example connection and data download
+* `RMariaDB` is an R package available at CRAN that let's you connect to various SQL databases easily.
 
-***
+Why did I switch from RMySQL to RMariaDB? Because of invalid long integer format when downloading data from a database. A pretty nasty bug in RMySQL, which was resolved in RMariaDB.
 
-##### just querying
+
+## 2. Usage
+
+
+* ### just querying
 ```{r, eval = FALSE}
-host_name  <- ""
-db_name <- ""
-creds <- read.table("~/pass/")
+host_name  <- "localhost"
+db_name <- "test"
+creds <- readLines("~/.my.cnf")
+user <- gsub(".*=", "", creds[grepl("user", creds)])
+password <- gsub(".*=", "", creds[grepl("password", creds)])
 
 query <- "delete from my_table;"
 
-con <- RMySQL::dbConnect(
-  drv      = RMySQL::MySQL(), 
-  user     = as.character(creds[1,1]), 
-  password = as.character(creds[1,2]), 
+con <- RMariaDB::dbConnect(
+  drv      = RMariaDB::MariaDB(), 
+  user     = user,
+  password = password,
   host     = host_name, 
   dbname   = db_name
 )
 
-RMySQL::dbSendQuery(con, query)
-
-RMySQL::dbDisconnect(con)
+RMariaDB::dbSendQuery(con, query)
+RMariaDB::dbDisconnect(con)
 ```
 
-##### retrieving data from db
+* ### retrieving data from db
 ```{r, eval = FALSE}
-host_name  <- ""
-db_name <- ""
-creds <- read.table("~/pass/")
+host_name  <- "localhost"
+db_name <- "test"
+creds <- readLines("~/.my.cnf")
+user <- gsub(".*=", "", creds[grepl("user", creds)])
+password <- gsub(".*=", "", creds[grepl("password", creds)])
 
-query <- "select * from my_table"
+query <- "select * from my_table;"
 
-con <- RMySQL::dbConnect(
-  drv      = RMySQL::MySQL(), 
-  user     = as.character(creds[1,1]), 
-  password = as.character(creds[1,2]), 
+con <- RMariaDB::dbConnect(
+  drv      = RMariaDB::MariaDB(), 
+  user     = user,
+  password = password,
   host     = host_name, 
   dbname   = db_name
 )
 
-rs <- RMySQL::dbSendQuery(con, query)
-d <- data.table::as.data.table(RMySQL::dbFetch(rs, n = -1))
+rs <- RMariaDB::dbSendQuery(con, query)
+d <- data.table::as.data.table(RMariaDB::dbFetch(rs, n = -1))
+RMariaDB::dbClearResult(rs)
 
-RMySQL::dbClearResult(rs)
-RMySQL::dbDisconnect(con)
+# equivalent to select * from my_table;
+d <- dbReadTable(con, "my_table")
+
+RMariaDB::dbDisconnect(con)
 ```
 
-##### sending data to db
+* ### sending data to db
 ```{r, eval = FALSE}
-host_name  <- ""
-db_name <- ""
-creds <- read.table("~/pass/")
+host_name  <- "localhost"
+db_name <- "test"
+creds <- readLines("~/.my.cnf")
+user <- gsub(".*=", "", creds[grepl("user", creds)])
+password <- gsub(".*=", "", creds[grepl("password", creds)])
 
-con <- RMySQL::dbConnect(
-  drv      = RMySQL::MySQL(), 
-  user     = as.character(creds[1,1]), 
-  password = as.character(creds[1,2]), 
+con <- RMariaDB::dbConnect(
+  drv      = RMariaDB::MariaDB(), 
+  user     = user,
+  password = password,
   host     = host_name, 
   dbname   = db_name
 )
 
-dt <- data.frame(id = 1:10, name = letters[1:10])
+# data.frame's colnames should be the same as in database
+dt <- data.frame(id = 1:10, text = letters[1:10])
 
-RMySQL::dbWriteTable(
-  con, 
-  name = "table_name", 
+RMariaDB::dbWriteTable(
+  conn = con, 
+  name = "my_table", 
   value = dt, 
   overwrite = FALSE,
   append = TRUE,
   row.names = F
 )
 
-RMySQL::dbDisconnect(con)
+RMariaDB::dbDisconnect(con)
 ```
 
+## 3. Useful links
+
+* [github page with an informative README](https://github.com/r-dbi/RMariaDB)
+* [cran README](https://cran.r-project.org/web/packages/RMariaDB/README.html)
