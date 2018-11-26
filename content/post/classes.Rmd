@@ -1,9 +1,10 @@
 ---
-title: "Classes"
-date: 2018-11-09T23:01:35+01:00
+title: "classes - S4"
+date: 2018-02-04T12:00:04+01:00
 draft: false
+image: "R.png"
 categories: ["R"]
-tags: ["draft"]
+tags: ["R", "OOP"]
 ---
 
 ## 1. Why would you use OOP in R?
@@ -12,33 +13,50 @@ Object oriented programming in R is unfortunately rather complicated comparing t
 
 However, there are certain cases when OOP may come up helpful:
 
-* when you write your own package and you want users to work on an object your function returns (print, summary, plot)
+* when you write your own package and you want users to work on an object that your function returns (print, summary, plot);
 
-## Creating a new class in S4
+* learning OOP in R is a good investment, because it let's you understand better how functions like print, plot etc. work.
+
+## 2. Creating a new class in S4
+
+Let's define a new class:
 ```{r}
-setClass('Polygon', 
-         slots = c(x = 'numeric', y = 'numeric'),
-         )
+setClass(
+  Class = 'Polygon', 
+  slots = c(x = 'numeric', y = 'numeric'),
+)
 ```
+where `Polygon` is it's name and `slots` are it's attributes.
 
-a new object
+A new instance of class `Polygon`:
+
 ```{r}
 w1 <- new('Polygon', x = 1:3, y = c(1, 1, 2))
 ```
 
-## Attributes
+## 3. Attributes
+
+If you've ever wondered what `@` in R means, here's the answer:
+
 ```{r}
 slotNames(w1)
 w1@x  
 w1@y
 ```
 
-### Methods
+It provides access to inctance attributes. You can also overwrite current attributes simply with:
 
-print overloading or show
+```{r}
+w1@x <- c(3, 2, 1)
+```
+
+### 4. Methods
+
+Let's create a simple method `show` which prints a description of our object.
+
 ```{r}
 setMethod(
-  'show',
+  f = 'show',
   signature = c(object = 'Polygon'),
   function(object) {
     cat(sprintf('This is a polygon with %d sides.\n', length(object@x)))
@@ -46,10 +64,15 @@ setMethod(
     cat('\n')
   }
 )
+
 print(w1)
 ```
 
-### Inheritance
+Yes, so far OOP in R looks extremely complicated and non-intuitive comparing to Python.
+
+### 5. Inheritance
+
+A simple example of inheritance:
 ```{r}
 setClass(
   'Triangle',
@@ -60,27 +83,7 @@ setClass(
 
 t1 <- new('Triangle', x=c(1, 2, 3), y=c(1, 1, 3))
 class(t1)
-# new('Triangle', x=c(1, 2, 3, 4), y=c(1, 1, 3, 4))  # error
+show(t1)
 ```
 
-### Initialize
-
-*this part of the tutorial is not finished yet*
-```{r}
-setClass("A", representation(a = "numeric"), "VIRTUAL")
-setClass("B", representation(b = "numeric"), contains = "A")
-
-setMethod("initialize", "A", function(.Object, data){
-  .Object@a <- data[1]
-  .Object
-})
-
-setMethod("initialize", "B", function(.Object, data){
-  .Object@b <- data[2]
-  .Object <- callNextMethod(.Object, data)
-  .Object
-})
-
-Cl <- setClass("Cl", representation(a = "data.frame", b = "list"))
-myCl <- Cl(a = data.frame(a = 1:3, b = letters[1:3]))
-```
+You can see that a new class `Trinagle` ingerits `x` and `y` attributes and `show` method from class `Polygon`. It also adds a validity check, which produces an error if the number of vertices is different than 3.
