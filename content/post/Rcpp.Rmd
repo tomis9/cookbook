@@ -42,7 +42,7 @@ You can check that this actually is a C++ function simply by:
 add
 ```
 
-## 3. Using R's numeric vecotr as input and output
+## 3. Using R's numeric vector as input and output
 
 A slighlty more complicated function, which calculates a distance between a value and a vector of values:
 
