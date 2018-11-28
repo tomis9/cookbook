@@ -3,8 +3,8 @@ title: "logging"
 date: 2018-10-20T00:15:21+02:00
 draft: false
 image: "python.png"
-categories: ["python"]
-tags: ["python", "logging"]
+categories: ["python", "R"]
+tags: ["python", "R", "logging"]
 ---
 
 ## 1. What is logging and why would you use it?
@@ -15,9 +15,11 @@ tags: ["python", "logging"]
 
 `logging` module, which is available in python's standard library, contains various functions and objects, which make logging easy and standardised.
 
-## 2. "Hello World" examples
+## Python
 
-### Basic configuration
+##3 2. "Hello World" examples
+
+#### Basic configuration
 
 ```{python}
 import logging
@@ -48,7 +50,7 @@ logging.warning('another warning')
 logging.error('some error')
 ```
 
-### Not so basic configuration
+#### Not so basic configuration
 
 ```{python}
 import logging
@@ -64,7 +66,7 @@ logger.addHandler(hdl)
 logger.debug('some debug')
 ```
 
-### Keeping configuration in a dictionary
+#### Keeping configuration in a dictionary
 
 ```{python}
 config = {
@@ -104,7 +106,7 @@ logger = logging.getLogger(__name__)
 logger.debug('some debug')
 ```
 
-### Keeping configuration in a separate file
+#### Keeping configuration in a separate file
 
 *app.py*
 
@@ -157,7 +159,7 @@ logger.debug('some debug')
 }
 ```
 
-## 3. Tips and tricks
+#### Tips and tricks
 
 * resetting basic config set in another file
 
@@ -166,5 +168,10 @@ for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 ```
 
-## 4. Useful links
+#### Useful links
 https://www.toptal.com/python/in-depth-python-logging
+
+## R
+
+futile.logger
+
