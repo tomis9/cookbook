@@ -26,7 +26,7 @@ https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-pra
 ```{python, eval = FALSE, python.reticulate = FALSE}
 import logging
 
-FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(filename='logs.log', level=logging.INFO, format=FORMAT)
 
 logging.debug('some debug')
@@ -126,7 +126,7 @@ logger.debug('some debug')
 ```
 
 *config.json*
-```{json}
+```
 {
   "version": 1,
   "disable_existing_loggers": "False",
@@ -164,7 +164,7 @@ logger.debug('some debug')
 
 * resetting basic config set in another file
 
-```{python}
+```{python, eval = FALSE, python.reticulate = FALSE}
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 ```
@@ -177,7 +177,7 @@ https://www.toptal.com/python/in-depth-python-logging
 `futile.logger`
 
 
-```{r}
+```{r, eval = FALSE}
 library(futile.logger)
 flog.info("My first log statement with futile.logger")
 flog.warn("This statement has higher severity")
@@ -185,24 +185,24 @@ flog.fatal("This one is really scary")
 ```
 https://cartesianfaith.com/2013/03/10/better-logging-in-r-aka-futile-logger-1-3-0-released/
 
-```{r}
+```{r, eval = FALSE}
 flog.info("This is my %s log statement, %s", 'second', 'ever')
 ```
 
-```{r}
+```{r, eval = FALSE}
 flog.threshold(WARN)
 flog.info("Log statement %s is hidden!", 3)
 flog.warn("However warning messages will still appear")
 ```
 
-```{r}
+```{r, eval = FALSE}
 flog.appender(appender.file("data.io.log"), name="data.io")
 ```
 
 There are two types of appenders:
 ```{r, eval = FALSE}
 appender.console() 
-and appender.file()
+appender.file()
 ```
 
 
