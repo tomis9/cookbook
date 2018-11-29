@@ -3,30 +3,31 @@ title: "logging"
 date: 2018-10-20T00:15:21+02:00
 draft: false
 image: "python.png"
-categories: ["python", "R"]
-tags: ["python", "R", "logging"]
+categories: ["python", "R", "data-engineering"]
+tags: ["draft", "python", "R", "logging", "data-engineering"]
 ---
 
 ## 1. What is logging and why would you use it?
 
-* Logging, in general, provides information about the execution of a program outside, e.g. to stdout or to a file. Why would that be useful?
+* Logging, in general, sends information about the execution of a program to the outside of the program, e.g. to stdout or to a file. Why would that be useful?
 
-* You may get the information of how and when the program was executed, e.g. who was using it's functionalities and if all the parts of your program finished correctly.
+* You may get the information of how and when the program was executed, e.g. who was using it's functionalities and if all the pieces of your program finished correctly.
 
-`logging` module, which is available in python's standard library, contains various functions and objects, which make logging easy and standardised.
+https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-practices/
 
 ## Python
+
+`logging` module, which is available in python's standard library, contains various functions and objects, which make logging easy and standardised.
 
 ##3 2. "Hello World" examples
 
 #### Basic configuration
 
-```{python}
+```{python, eval = FALSE, python.reticulate = FALSE}
 import logging
 
-format = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
-logging.basicConfig(filename='logs.log', level=logging.INFO, 
-        logging.format=format)
+FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+logging.basicConfig(filename='logs.log', level=logging.INFO, format=FORMAT)
 
 logging.debug('some debug')
 logging.info('some info')
@@ -36,7 +37,7 @@ logging.error('some error')
 
 or using a `logger`:
 
-```{python}
+```{python, eval = FALSE, python.reticulate = FALSE}
 import logging
 
 format = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
@@ -52,7 +53,7 @@ logging.error('some error')
 
 #### Not so basic configuration
 
-```{python}
+```{python, eval = FALSE, python.reticulate = FALSE}
 import logging
 
 logger = logging.getLogger('app')
@@ -68,7 +69,7 @@ logger.debug('some debug')
 
 #### Keeping configuration in a dictionary
 
-```{python}
+```{python, eval = FALSE, eval = FALSE, python.reticulate = FALSE}
 config = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -173,5 +174,36 @@ https://www.toptal.com/python/in-depth-python-logging
 
 ## R
 
-futile.logger
+`futile.logger`
+
+
+```{r}
+library(futile.logger)
+flog.info("My first log statement with futile.logger")
+flog.warn("This statement has higher severity")
+flog.fatal("This one is really scary")
+```
+https://cartesianfaith.com/2013/03/10/better-logging-in-r-aka-futile-logger-1-3-0-released/
+
+```{r}
+flog.info("This is my %s log statement, %s", 'second', 'ever')
+```
+
+```{r}
+flog.threshold(WARN)
+flog.info("Log statement %s is hidden!", 3)
+flog.warn("However warning messages will still appear")
+```
+
+```{r}
+flog.appender(appender.file("data.io.log"), name="data.io")
+```
+
+There are two types of appenders:
+```{r, eval = FALSE}
+appender.console() 
+and appender.file()
+```
+
+
 
