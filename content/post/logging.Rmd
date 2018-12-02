@@ -1,10 +1,10 @@
 ---
 title: "logging"
 date: 2018-10-20T00:15:21+02:00
-draft: true
-image: "python.png"
+draft: false
+image: "logging.jpg"
 categories: ["python", "R", "data-engineering"]
-tags: ["draft", "python", "R", "logging", "data-engineering"]
+tags: ["python", "R", "logging", "data-engineering"]
 ---
 
 ## 1. What is logging and why would you use it?
@@ -174,8 +174,19 @@ https://www.toptal.com/python/in-depth-python-logging
 
 ## R
 
-`futile.logger`
+There are several packages for logging in R, e.g:
 
+* `futile.logger`,
+
+* `logging`,
+
+* `r-logging`.
+
+I will discuss only `futile.logger`, because this is tne only one I've been using by now. However I the nearest future I am planning to give `logging` a try, as it seems to be analogical to python's standard `logging`.
+
+## A few "Hello World" examples
+
+This is how you print basic log messages:
 
 ```{r, eval = FALSE}
 library(futile.logger)
@@ -183,27 +194,30 @@ flog.info("My first log statement with futile.logger")
 flog.warn("This statement has higher severity")
 flog.fatal("This one is really scary")
 ```
-https://cartesianfaith.com/2013/03/10/better-logging-in-r-aka-futile-logger-1-3-0-released/
 
+You can easily create log messages dynamically:
 ```{r, eval = FALSE}
 flog.info("This is my %s log statement, %s", 'second', 'ever')
 ```
 
+As in python's `logging`, you can set the level (in `futile.logger` it's called *threshold*) of the messages:
 ```{r, eval = FALSE}
 flog.threshold(WARN)
 flog.info("Log statement %s is hidden!", 3)
 flog.warn("However warning messages will still appear")
 ```
 
+Instead of printing log messages to the standard output, you can append them to a file. You can also name the handler for future reference, e.g. "data.io" as in the following exaple:
 ```{r, eval = FALSE}
 flog.appender(appender.file("data.io.log"), name="data.io")
 ```
 
-There are two types of appenders:
+There are two types of appenders: standard output (known as *console*) and a file.
 ```{r, eval = FALSE}
 appender.console() 
 appender.file()
 ```
 
+Simple, isn't it?
 
 
