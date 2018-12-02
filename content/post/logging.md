@@ -23,7 +23,7 @@ https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-pra
 
 #### Basic configuration
 
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 import logging
 
 FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -37,7 +37,7 @@ logging.error('some error')
 
 or using a `logger`:
 
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 import logging
 
 format = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
@@ -53,7 +53,7 @@ logging.error('some error')
 
 #### Not so basic configuration
 
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 import logging
 
 logger = logging.getLogger('app')
@@ -69,7 +69,7 @@ logger.debug('some debug')
 
 #### Keeping configuration in a dictionary
 
-```{python, eval = FALSE, eval = FALSE, python.reticulate = FALSE}
+```{python}
 config = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -111,7 +111,7 @@ logger.debug('some debug')
 
 *app.py*
 
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 import logging.config
 import json
 from import_app import func
@@ -164,7 +164,7 @@ logger.debug('some debug')
 
 * resetting basic config set in another file
 
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 for handler in logging.root.handlers[:]:
     logging.root.removeHandler(handler)
 ```
@@ -188,7 +188,7 @@ I will discuss only `futile.logger`, because this is tne only one I've been usin
 
 This is how you print basic log messages:
 
-```{r, eval = FALSE}
+```{r}
 library(futile.logger)
 flog.info("My first log statement with futile.logger")
 flog.warn("This statement has higher severity")
@@ -196,28 +196,26 @@ flog.fatal("This one is really scary")
 ```
 
 You can easily create log messages dynamically:
-```{r, eval = FALSE}
+```{r}
 flog.info("This is my %s log statement, %s", 'second', 'ever')
 ```
 
 As in python's `logging`, you can set the level (in `futile.logger` it's called *threshold*) of the messages:
-```{r, eval = FALSE}
+```{r}
 flog.threshold(WARN)
 flog.info("Log statement %s is hidden!", 3)
 flog.warn("However warning messages will still appear")
 ```
 
 Instead of printing log messages to the standard output, you can append them to a file. You can also name the handler for future reference, e.g. "data.io" as in the following exaple:
-```{r, eval = FALSE}
+```{r}
 flog.appender(appender.file("data.io.log"), name="data.io")
 ```
 
 There are two types of appenders: standard output (known as *console*) and a file.
-```{r, eval = FALSE}
+```{r}
 appender.console() 
 appender.file()
 ```
 
 Simple, isn't it?
-
-
