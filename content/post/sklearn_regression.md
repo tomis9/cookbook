@@ -2,6 +2,7 @@
 title: "sklearn regression"
 date: 2018-11-09T23:01:35+01:00
 draft: false
+image: "sklearn_regression.jpg"
 categories: ["python", "statistics"]
 tags: ["python", "statistics"]
 ---

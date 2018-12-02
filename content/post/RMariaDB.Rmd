@@ -2,7 +2,7 @@
 title: "RMariaDB (former RMySQL)"
 date: 2018-02-12T12:17:56+01:00
 draft: false
-image: "R.png"
+image: "RMariaDB.jpg"
 categories: ["R"]
 tags: ["R", "SQL"]
 ---

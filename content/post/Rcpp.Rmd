@@ -2,7 +2,7 @@
 title: "Rcpp"
 date: 2018-02-04T12:03:14+01:00
 draft: false
-image: "R.png"
+image: "Rcpp.jpg"
 categories: ["R"]
 tags: ["R", "C++"]
 ---

@@ -2,7 +2,7 @@
 title: "sqldf"
 date: 2017-03-01T13:07:39+01:00
 draft: false
-image: "R.png"
+image: "sqldf.jpg"
 categories: ["R"]
 tags: ["R", "SQL"]
 ---

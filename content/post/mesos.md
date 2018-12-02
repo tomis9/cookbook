@@ -2,7 +2,7 @@
 title: "mesos"
 date: 2018-08-12T15:29:44+02:00
 draft: false
-image: "mesos.png"
+image: "mesos.jpg"
 categories: ["DevOps"]
 tags: ["Mesos", "Marathon", "docker"]
 ---

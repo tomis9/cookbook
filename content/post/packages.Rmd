@@ -3,7 +3,7 @@ title: "packages"
 date: 2018-02-04T12:06:07+01:00
 draft: false
 categories: ["R"]
-image: "R.png"
+image: "packages.jpg"
 tags: ["R", "DevOps"]
 ---
 

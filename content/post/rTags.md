@@ -3,7 +3,7 @@ title: "rTags"
 date: 2018-11-09T23:01:35+01:00
 draft: false
 categories: ["R"]
-image: "vim.png"
+image: "rTags.jpg"
 tags: ["R", "vim"]
 ---
 
