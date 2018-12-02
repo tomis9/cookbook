@@ -1,7 +1,7 @@
 ---
 title: "pyenv"
 date: 2018-08-12T15:32:40+01:00
-draft: false
+draft: true
 categories: ["python", "DevOps"]
 tags: ["draft"]
 ---

@@ -1,10 +1,10 @@
 ---
 title: "gitlab-ci"
 date: 2018-11-09T23:01:35+01:00
-draft: false
+draft: true
 image: "gitlab.png"
-tags: ["git"]
 categories: ["DevOps"]
+tags: ["draft", "git"]
 ---
 
 or gitlab [Continuous Integration & Deployment/Continuous Delivery](https://about.gitlab.com/features/gitlab-ci-cd/)

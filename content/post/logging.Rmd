@@ -1,7 +1,7 @@
 ---
 title: "logging"
 date: 2018-10-20T00:15:21+02:00
-draft: false
+draft: true
 image: "python.png"
 categories: ["python", "R", "data-engineering"]
 tags: ["draft", "python", "R", "logging", "data-engineering"]

@@ -1,0 +1,35 @@
+---
+title: "sklearn - linear regression"
+date: 2018-11-09T23:01:35+01:00
+draft: true
+categories: ["python", "statistics"]
+tags: ["draft", "python", "statistics"]
+---
+
+## A minimal example
+
+```{python, eval = FALSE, python.reticulate = FALSE}
+import sklearn.linear_model
+import pandas as pd
+import io
+import requests
+
+
+url = "https://raw.githubusercontent.com/gagolews/\
+Analiza_danych_w_jezyku_Python/master/zbiory_danych/winequality-all.csv"
+s = requests.get(url).content
+wine = pd.read_csv(io.StringIO(s.decode('utf-8')), comment="#")
+
+white_wine = wine[wine.color == "white"]
+white_wine = white_wine.iloc[:, 0:11]
+y = white_wine.iloc[:, -1]
+X = white_wine.iloc[:, :-1]
+
+
+ls = sklearn.linear_model.LinearRegression()
+ls.fit(X, y)
+print(ls.intercept_)
+print(ls.coef_)
+```
+
+***

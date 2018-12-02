@@ -1,7 +1,7 @@
 ---
 title: "spark"
 date: 2018-11-23T12:58:49+02:00
-draft: false
+draft: true
 categories: ["data-engineering", "python"]
 tags: ["draft", "spark", "data-engineering", "python"]
 ---

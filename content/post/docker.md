@@ -1,7 +1,7 @@
 ---
 title: "docker"
 date: 2018-11-09T23:01:35+01:00
-draft: false
+draft: true
 image: "whale.jpg"
 categories: ["DevOps"]
 tags: ["draft", "docker"]
