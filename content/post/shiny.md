@@ -1,87 +1,159 @@
 ---
 title: "shiny"
 date: 2017-03-24T09:13:23+01:00
-draft: true
+draft: false
+image: "shiny.jpg"
 categories: ["R"]
-tags: ["draft"]
+tags: ["R", "web-dev", "draft"]
 ---
 
-## A minimal application:
+## 1. What is `shiny` and why would you use it?
 
-ui.R
+* shiny is an R package that let's you create dynamic web applications without any knowledge of html, css and javascript, php etc. Pure R. 
 
-```{r, eval = FALSE}
-# przykładowy program w shiny
-# aby uruchomić aplikację: runApp()
+Sounds like a dream?
 
+* Advantages:
+
+    * easy to learn the basics;
+
+    * easy to set up.
+
+* Disadvantages:
+
+    * scalability;
+    
+    * performance;
+
+    * in order to make the application work the way you want to, you have to involve javascript, html and css. This may be cumbersome, as the documentation is not very helpful;
+
+    * shiny is a nieche framework, so it's community is little. Stackoverflow disappoints annoyingly often;
+
+    * lack of a good book/tutorial. RStudio articles are not structured and I've spent hard time finding a learning path.
+
+Concluding, I've got mixed feelings about `shiny`. As a data scientist, maybe you should concentrate on fitting models and wrangling data instead of preparing a bright and shiny front-end.
+
+## 2. A "Hello World" example:
+
+You can store your application in one file (e.g. "app.R"), like this:
+
+```{r}
 library(shiny)
 
-shinyUI(fluidPage(
+inputBins <- 10
+
+ui <- shinyUI(fluidPage(
 
   titlePanel("Hello Shiny!"),
 
   sidebarLayout(
     sidebarPanel(
       sliderInput("bins",
-        "Number of bins:",
+        "Choose your favourite number:",
         min = 1,
         max = 50,
-        value = 30),
-      selectInput("select", label = h3("Select box"), 
-        choices = as.list(1:12), 
-        selected = 1)
+        value = 30)
     ),
 
     mainPanel(
-      plotOutput("distPlot"),
-      uiOutput("many")
+      plotOutput("distPlot")
+    )
+  )
+))
+
+server <- shinyServer(function(input, output) {
+
+    r <- reactiveValues()
+
+    observeEvent(input$bins, {
+        r$bins <- input$bins
+        output$distPlot <- renderPlot(f())
+    })
+
+    f <- function() {
+        x <- faithful[, 2]
+        inputBins <- r$bins
+        bins <- seq(min(x), max(x), length.out = inputBins  + 1)
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    }
+
+})
+
+shinyApp(ui, server)
+```
+
+and run it with
+
+```{r}
+Rscript app.R
+```
+
+or divide it into two separate files:
+
+ui.R
+```{r}
+library(shiny)
+
+ui <- shinyUI(fluidPage(
+
+  titlePanel("Hello Shiny!"),
+
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins",
+        "Choose your favourite number:",
+        min = 1,
+        max = 50,
+        value = 30)
+    ),
+
+    mainPanel(
+      plotOutput("distPlot")
     )
   )
 ))
 ```
 
-***
 server.R
-
-```{r, eval = FALSE}
-# przykładowy program w shiny
-# aby uruchomić aplikację: runApp("./shiny")
-
+```{r}
 library(shiny)
-library(ggplot2)
-library(plotly)
 
 inputBins <- 10
-# Define server logic required to draw a histogram
-shinyServer(function(input, output) {
+
+server <- shinyServer(function(input, output) {
 
     r <- reactiveValues()
 
-    er <- observeEvent(input$bins, {
-        r$inputBins <- input$bins
+    observeEvent(input$bins, {
+        r$bins <- input$bins
         output$distPlot <- renderPlot(f())
     })
 
-    rysujPlot <- renderPlot({
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = inputBins + 1)
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    })
-
     f <- function() {
-        x    <- faithful[, 2]
-        inputBins <- r$inputBins
+        x <- faithful[, 2]
+        inputBins <- r$bins
         bins <- seq(min(x), max(x), length.out = inputBins  + 1)
         hist(x, breaks = bins, col = 'darkgray', border = 'white')
     }
 
-    output$many <- renderUI({
-      lapply(1:10, function(i) {
-        id <- paste0("p", i)
-        numericInput(id, NULL, 0) 
-      })
-    })
-
 })
 ```
 
+and run it with
+```{r}
+Rscript -e "shiny::runApp()"
+```
+
+or from within the R console
+
+```{r}
+shiny::runApp()
+```
+
+## 3. Useful links
+
+* [a one-file app](https://shiny.rstudio.com/gallery/single-file-shiny-app.html)
+
+* [a two-files app](https://shiny.rstudio.com/articles/basics.html)
+
+* [various shiny widgets](https://shiny.rstudio.com/gallery/widget-gallery.html)
