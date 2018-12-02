@@ -4,7 +4,7 @@ date: 2017-03-24T09:13:23+01:00
 draft: false
 image: "shiny.jpg"
 categories: ["R"]
-tags: ["R", "web-dev", "draft"]
+tags: ["R", "web-dev"]
 ---
 
 ## 1. What is `shiny` and why would you use it?
