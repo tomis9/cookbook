@@ -1,21 +1,17 @@
 ---
 title: "docker"
-date: 2018-11-09T23:01:35+01:00
-draft: true
-image: "whale.jpg"
+date: 2018-08-12T15:29:16+02:00
+draft: false
+image: "docker.jpg"
 categories: ["DevOps"]
-tags: ["draft", "docker"]
+tags: ["docker"]
 ---
-
-## Easily forgettable solutions
 
 ## 1. What is docker and why would you use it?
 
-What is it?
+* "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux." Comparing to Python, it's basically a virtualenv, but for the whole OS. Or this is some sort of a virtual machine;
 
-* "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux." Comparing to Python, it's basically a virtualenv, but for the whole OS. Or this is some sort of a virtual machine.
-
-* it's a program, which lets you to encapsulate your software into its own, the most basic "OS" (known as "image" in docker's world) and run it on any machine/server, which has docker installed;
+* it's a program, which lets you to encapsulate your software into its own, the most basic "OS" (known as "container" in docker's world) and run it on any machine/server, which has docker installed;
 
 * docker is almost the same thing as virtual machines, but faster, lighter and (IMHO) more simple.
 
@@ -27,20 +23,11 @@ Why would you use it?
 
 * you can easily build your own image using a Dockerfile and integreate it into your [CI/CD pipeline](https://tomis9.github.io/gitlab-ci);
 
-* you can develop software on your laptop and as far as you test in docker container, you can be 100% sure the code will run on a server in production.
+* you can develop software on your laptop and as long as you test it in a docker container, you can be 100% sure the code will run on a server in production.
 
-## 2. Installation
+## 2. Installation and a short tutorial
 
-You can download it from [here](https://www.docker.com/products/docker-engine#/linux) or simply download and install with `sudo apt install docker.io`.
-
-A pretty long, but credible tutorial is available [here](https://docker-curriculum.com/).
-
-By definition, it'a a 
-
-"In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux."
-
-Comparing to Python, it's basically a virtualenv, but for the whole OS.
-Or this is some sort of a virtual machine.
+You can download docker from [here](https://www.docker.com/products/docker-engine#/linux) or simply download and install with `sudo apt install docker.io`.
 
 Check if docker is properly installed:
 ```
@@ -77,17 +64,10 @@ Stop a specific image:
 sudo docker stop image_id
 ```
 
-
 Well, there is actually many various topics on docker, so maybe you should just go through the tutorial.
-It's rather straightforward.
-
-One third of this tutorial should be enough :)
+A pretty long, but credible tutorial is available [here](https://docker-curriculum.com/). Don't get discouraged by it's length - one third of this tutorial should be enough :)
 
 
-Plus - how to use it on [gitlab](https://gitlab.iiit.pl/help/user/project/container_registry).
+## 3. Useful links
 
-
-### A good [book](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
-
-docker volumes
-
+A good [book](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
