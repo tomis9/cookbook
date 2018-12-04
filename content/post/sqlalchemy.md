@@ -54,7 +54,7 @@ from sqlalchemy import Table, Column, Integer, String, MetaData
 meta = sqlalchemy.MetaData(connection_string)
 test1 = Table(
     'test1', meta,
-    Column('id', Integer, primary_key=True),
+    Column('id', Integer, primary_key=True, autoincrement=False),
     Column('text', String(30))
 )
 
