@@ -1,12 +1,20 @@
 ---
-title: "testthat"
-date: 2018-11-09T23:01:35+01:00
+title: "testing"
+date: 2018-02-04T12:02:23+01:00
 draft: true
-categories: ["R", "TDD"]
-tags: ["draft"]
+image: "testing.jpg"
+categories: ["DevOps", "data-engineering", "R", "Python"]
+tags: ["DevOps", "data-engineering", "R", "Python"]
 ---
 
-## A minimal example
+## 1. What is testing and why would you use it?
+
+* 
+
+
+## 2. "Hello World" examples
+
+### R (testthat)
 
 real_roots.R
 
@@ -82,5 +90,7 @@ test_that("Bogus tests", {
     expect_that( x, is_a("data.frame") )
 })
 ```
+### Python (pytest)
 
-***
+
+## 3. Useful links
