@@ -17,11 +17,11 @@ tags: ["docker"]
 
 Why would you use it?
 
-* you could use it for the same reasons as [virtual machines](https://tomis9.github.io/vagrant);
+* you could use it for the same reasons as [virtual machines](https://tomis9.github.io/post/vagrant);
 
-* but images (which are analogue to virtual machines in [vagrant](https://tomis9.github.io/vagrant)'s world) build and start faster;
+* but images (which are analogue to virtual machines in [vagrant](https://tomis9.github.io/post/vagrant)'s world) build and start faster;
 
-* you can easily build your own image using a Dockerfile and integreate it into your [CI/CD pipeline](https://tomis9.github.io/gitlab-ci);
+* you can easily build your own image using a Dockerfile and integreate it into your [CI/CD pipeline](https://tomis9.github.io/post/gitlab-ci);
 
 * you can develop software on your laptop and as long as you test it in a docker container, you can be 100% sure the code will run on a server in production.
 

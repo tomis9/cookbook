@@ -11,7 +11,7 @@ tags: ["R", "data.table", "dataframes"]
 
 `reshape2` is an R package that let's you change the shape of any dataframe, i.e. to pivot and to "unpivot".
 
-Keep in mind that if your favourite R package for dataframes manipulation is [data.table](https://tomis9.github.io/data.table), functions *dcast* and *melt* are already in this package and work exactly the same as those in `reshape2`.
+Keep in mind that if your favourite R package for dataframes manipulation is [data.table](https://tomis9.github.io/post/data.table), functions *dcast* and *melt* are already in this package and work exactly the same as those in `reshape2`.
 
 ## 2. A "Hello World" example
 

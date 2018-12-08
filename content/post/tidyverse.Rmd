@@ -13,7 +13,7 @@ tags: ["tidyverse", "R", "data.table", "dplyr", "ggplot2", "readr"]
 
 * it consists of tidyr, dplyr, ggplot2, tibble and a few more.
 
-To be honest, I prefer [data.table](https://tomis9.github.io/data.table) to tidyverse, as it resembles basic R data.frames, is faster, more concise and, IMHO, more SQL-ish. But it takes longer to master and may be more difficult to understand, even your own code after some time. So, there is no obvious choice between data.table and dplyr.
+To be honest, I prefer [data.table](https://tomis9.github.io/post/data.table) to tidyverse, as it resembles basic R data.frames, is faster, more concise and, IMHO, more SQL-ish. But it takes longer to master and may be more difficult to understand, even your own code after some time. So, there is no obvious choice between data.table and dplyr.
 
 ## 2. A few "Hello World" examples
 
