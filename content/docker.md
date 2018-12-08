@@ -67,8 +67,49 @@ sudo docker stop image_id
 Well, there is actually many various topics on docker, so maybe you should just go through the tutorial.
 A pretty long, but credible tutorial is available [here](https://docker-curriculum.com/). Don't get discouraged by it's length - one third of this tutorial should be enough :)
 
+## 3. A Dockerfile
 
-## 3. Useful links
+A Dockerfile is a place where you store your image's definition. The file is executed while you build your an image. There are several statements in Dockerfiles that are worth remembering:
+
+### FROM
+
+Almost certainly your image will be based on an existing docker image. You define it in the first statement:
+
+```
+FROM ubuntu:14.04
+```
+
+It his case we'll build our image on the whole OS (without a GUI), but in general you may prefer to use a smaller version specific to language you use, e.g.
+
+```
+FROM python:3.4.0
+```
+
+Here's an exception for R:
+```
+FROM rocker/r-base:3.5.1
+```
+
+More about installing R on docker you will find [here](https://tomis9.github.io/rocker)
+
+### RUN
+
+After writing `RUN` you type the shell commands that will be executed on an os defined after `FROM`, for example:
+
+```
+RUN apt-get update
+RUN apt-get install vim
+```
+
+Tip! Each `RUN` is saved as a separate layer. If you want your new image to be built quickly, it should use the layers that are already built, so instead of modyfing existing layers it's faster to add a new one.
+
+### CMD
+
+### WORKDIR
+
+### COPY
+
+## 4. Useful links
 
 A good [book](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
 
