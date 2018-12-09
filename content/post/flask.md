@@ -143,8 +143,26 @@ As you can see:
 
 * in *simple_page.py* we created a `blueprint` object, which is analogical to an `app()` object, but can be imported to *app.py* with `from simple page import blueprint` and added as a method to `app` with `app.register_blueprint()` method.
 
-## 3. Other subjects to cover
+## 3. Gunicorn
+
+Every flask tutorial I read mentioned that I shouldn't use flask's development server as a production server. One of the alternatives is python's `gunicorn` package, installable with pip. Having gunicorn installed, you can launch your application with
+
+```
+gunicorn -b 0.0.0.0:8000 app:app
+```
+
+instead of `python3 app.py`.
+
+## 4. Docker
+
+An even better prooduction solution than gunicorn is gunicorn and [docker](https://tomis9.github.io/post/docker). It let's you run your application in a specific environment ([pyenv](https://tomis9.github.io/post/pyenv) is a similar concept, but docker is used for production, and pyenv for development). When you have your image ready, run your application with:
+
+```
+docker run -p 8000:8000 -d my_app_image:0.1 gunicorn -b 0.0.0.0:8000 app:app
+```
+
+## 5. Other subjects to cover
 
 * templates
 
-* gunicorn
+* jinja2
