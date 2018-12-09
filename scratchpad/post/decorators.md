@@ -2,7 +2,6 @@
 title: "decorators"
 date: 2018-08-12T15:30:35+02:00
 draft: true
-image: "decorators.jpg"
 categories: ["python"]
 tags: ["python", "decorators"]
 ---
@@ -21,13 +20,51 @@ I am not going to describe here how to write your own decorator as, to be honest
 
 ### @property
 
-[@property](https://www.programiz.com/python-programming/property) - a pythonic way to use getters and setters.
+#### Why would you use property?
 
+You crate a class with a specific attribute, say, `name`. At the beginning you are happy to use it only as:
 ```
-class Celsius:
-    def __init__(self, temperature = 0):
-        self.temperature = temperature
+object.name = 'Tomek'`
+print(object.name)
+```
 
-    def to_fahrenheit(self):
-        return (self.temperature * 1.8) + 32
+but after a while you realise that you need something else happening during setting a name and getting a name, something in the background, e.g. printing *you've just set a name* and *you've just got a name*. This would be easy if you had defined separate `getters` and `setters`, but you didn't and there are folks who already use this class, so they wouldn't be happy if they had to change their code. 
+
+So you're on your own. Here's how you solve this problem:
+
+```{python}
+class SomeFolk:
+
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        """this is just our previous, default behaviour"""
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """this is our brand new setter"""
+        self._name = name
+        print("you've just set a name to {}".format(self._name))  # log message
+
+    @name.getter
+    def name(self):
+        """this is our brand new getter"""
+        print("you've just got a name")  # log message
+        return self._name
 ```
+
+Here's what happens when you get a name:
+```{python}
+me = SomeFolk('Tomek')
+_some_variable = me.name
+```
+
+And when you set a name:
+```{python}
+me.name = 'tomis9'
+```
+
+Magic.
