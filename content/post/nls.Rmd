@@ -27,6 +27,7 @@ plot(population ~ year, data = USPop,
      main = "US population over the last 200 years or so")
 abline(lm(population ~ year, data = USPop), col = "red", lwd = 2)
 ```
+
 *USPop dataset used to be available in car package, curiously it isn't anymore.*
 
 Yeah, I love these statistical, ascetic plots. The black line is a line proposed by linear regression and as we can see, it does not really fit the data. We can observe a rising trend, but it definitely is not linear. Modeling this process as a nonlinear function of year seems to be a reasonable approach.
