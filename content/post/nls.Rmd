@@ -16,11 +16,18 @@ tags: ["R", "statistics"]
 
 Let's assume we want to model US population as a function of year.
 ```{r}
-USPop <- car::USPop
+USPop <- data.frame(
+  year = seq(from = 1790, to = 2000, by = 10),
+  population = c(3.929, 5.308, 7.240, 9.638, 12.861, 17.063, 23.192, 31.443, 
+                 38.558, 50.189, 62.980, 76.212, 92.228, 106.022, 123.203, 
+                 132.165, 151.326, 179.323, 203.302, 226.542, 248.710, 281.422)
+)
+
 plot(population ~ year, data = USPop, 
      main = "US population over the last 200 years or so")
 abline(lm(population ~ year, data = USPop), col = "red", lwd = 2)
 ```
+*USPop dataset used to be available in car package, curiously it isn't anymore.*
 
 Yeah, I love these statistical, ascetic plots. The black line is a line proposed by linear regression and as we can see, it does not really fit the data. We can observe a rising trend, but it definitely is not linear. Modeling this process as a nonlinear function of year seems to be a reasonable approach.
 
