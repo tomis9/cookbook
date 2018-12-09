@@ -1,12 +1,22 @@
 ---
 title: "flask"
-date: 2018-11-09T23:01:35+01:00
-draft: true
-categories: ["python", "webservice"]
-tags: ["draft"]
+date: 2018-08-13T20:19:17+02:00
+draft: false
+categories: ["python", "DevOps"]
+tags: ["flask", "python", "flask-JSONRPC", "blueprint", "gunicorn"]
 ---
 
-### A "Hello World" example
+## 1. What is flask and why would you use it?
+
+* flask is a python framwework for creating web applications and apis;
+
+* it provides a full and simple support for backend, while you still create the frontend with html+css+javascript.
+
+For production use it is not as popular as Django, as id does not scale that well to huge projects. However in data science you will not create such huge webservices and flask, with it's simplicity, reliability, clearness and great community support is more than enough.
+
+This is an absolutely [fantastic book](https://www.oreilly.com/library/view/flask-web-development/9781491991725/) to learn flask and even more.
+
+## 2. A "Hello World" example
 
 Let's start with a very simple flask application (hello.py):
 
@@ -27,30 +37,43 @@ if __name__ == '__main__':
 which prints out "Hello, World!" on the screen. 
 Start the application with
 ```
-python hello.py
+python3 hello.py
 ```
 
 Everything should go smooth as long as you use python3 and have flask installed (if not, `pip3 install flask` should do the job).
 
 So, this is the simplest possible application in flask. How about some explanation?
 
-1. We create an instance of class `Flask` named `app`. Which is a pretty good name for an app.
+* we create an instance of class `Flask` named `app`. Which is a pretty good name for an app;
 
-2. If anybody *request*s our app via '/' route, our *response* will be "Hello, World!". For a local server at 127.0.0.1 host, '/' route is just 127.0.0.1/.
+* if anybody *request*s our app via '/' route, our *response* will be "Hello, World!". For a local server at 127.0.0.1 host, '/' route is just 127.0.0.1/;
 
-3. Finally, if we run this application non-interactively (via ipython-console, for example), so it's `__name__` would be `__main__`, the `app` instance we created in the first step, will `run`.
+* finally, if we run this application non-interactively (via ipython-console, for example), so it's `__name__` would be `__main__`, the `app` instance we created in the first step, will `run`.
 
 Now you can see the app's greeting to the world in your web browser at 127.0.0.1:5000 or you can send a request by curl:
 ```{bash}
 curl 127.0.0.1:5000
 ```
-and receive a response.
+and receive this response.
 
+
+## 3. More advanced subjects
 
 ### A minimal example of flask-JSONRPC
 
+Say you want to create an api and let users send requests to this api providing some additional information of what they want. An easy way to structure this information is using json format, e.g.: 
+
+```
+{
+    "iWantToRunFunction": "Function1", 
+    "withParameters": { "Par1": "Val1", "Par2", "Val2" }
+}
+```
+
+Flask-JSONRPC will enable us to do it. A short example:
+
 app.py:
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 from flask import Flask
 from flask_jsonrpc import JSONRPC
 
@@ -70,11 +93,9 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
 ```
 
-[That](https://github.com/cenobites/flask-jsonrpc) is a very short intro to flas-JSONRPC.
+As you can see, we no longer use `app.route` decorator, but `jsonrpc.method` declared earlier. Compare the app.py script to the curl request below and you will see  which parts of the code provide which information.
 
-Check if it works:
-
-```{bash, eval = FALSE}
+```{bash}
 curl -i -X POST \
    -H "Content-Type: application/json; indent=4" \
    -d '{
@@ -85,10 +106,15 @@ curl -i -X POST \
 }' http://localhost:5000/api
 ```
 
-### A minimal example of flask blueprint:
+[Here](https://github.com/cenobites/flask-jsonrpc) is a nice and short intro to flask-JSONRPC.
+
+### A minimal example of flask blueprint
+
+Blueprints let you divide your application into several files.
+Here's an example:
 
 app.py:
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 from flask import Flask
 from simple_page import blueprint
 
@@ -100,7 +126,7 @@ if __name__ == '__main__':
 ```
 
 simple_page.py:
-```{python, eval = FALSE, python.reticulate = FALSE}
+```{python}
 from flask import Blueprint
 
 blueprint = Blueprint('simple_page', __name__)
@@ -111,4 +137,14 @@ def show():
     return "Hello from blueprint\n"
 ```
 
-***
+As you can see:
+
+* in a separate file called *simple_page.py* we created a fucntion `show()` and we wanted to make it available from *app.py*, where the `app.run()` statement runs the whole app;
+
+* in *simple_page.py* we created a `blueprint` object, which is analogical to an `app()` object, but can be imported to *app.py* with `from simple page import blueprint` and added as a method to `app` with `app.register_blueprint()` method.
+
+## 3. Other subjects to cover
+
+* templates
+
+* gunicorn
