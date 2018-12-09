@@ -1,168 +1,123 @@
 ---
 title: "data.table"
-date: 2018-11-09T23:01:35+01:00
-draft: true
+date: 2017-03-02T15:45:27+01:00
+draft: false
 categories: ["R"]
-tags: ["draft"]
+tags: ["R", "data.table"]
 ---
 
-# data.table - tutorial
+## 1. What is data.table and why would you use it?
 
-*This tutorial is waiting for translating from Polish to English.*
+* data.table is an R packge which let's you work on tabular datasets quickly and easily;
 
-https://www.datacamp.com/courses/data-analysis-the-data-table-way
+* comparing to base R or [dplyr](https://tomis9.github.io/post/tidyverse) it's significantly faster;
 
-```{r}
+* data.table has a concise and SQL-like syntax.
+
+## 2. Basic functionalities
+
+### Creating a data.table
+
+```{r, message = FALSE}
 library(data.table)
 
-df <- data.frame(x=c("b","b","b","a","a"),
-                 v=rnorm(5))
+df <- data.frame(x = c("b","b","b","a","a"),
+                 v = rnorm(5))
 
-dt <- data.table(x=c("b","b","b","a","a"),
-                 v=rnorm(5))
+dt <- data.table(x = c("b","b","b","a","a"),
+                 v = rnorm(5))
 ```
 
-podgląd wszystkich dostępnych data.tables - muszą się mieścić w RAMie
+is exactly the same as creating a data.frame. The method `as.data.table()` works exaclty the same as `as.data.frame()`.
+
+### Filtering
+
+Let's create a sample dataset first, baased on mtcars table: 
 ```{r}
-tables()
-
-dt[x=="b",]  # tak mogę
-# df[x=="b",]  # a tak nie
+sample_dataset <- as.data.table(datasets::mtcars)
 ```
-
-w tabeli warto ustalić klucz
-```{r}
-setkey(dt, x)
-```
-
-żeby można było zrobić na przykład tak
-```{r}
-dt["b"]  # ta jakby dt[x=="b",], bo x jest domyślny
-```
-
-
-JOIN
-inny przykład - duża tabela - uzasadnienie, że binary search jest 
-szybsze od vector scan
-```{r}
-# grpsize <- ceiling(1e8/26^2)
-# system.time(DF <- data.frame(x=rep(LETTERS, each=26*grpsize),
-#                              y=rep(letters, each=grpsize),
-#                              v=runif(grpsize*26^2),
-#                              stringsAsFactors=F))
-# system.time(ans1 <- DF[DF$x=='R' & DF$y=='h',])  # 'vector scan'
-```
+Yes, you already have *datasets* package installed.
 
 ```{r}
-# DT <- as.data.table(DF)
-# system.time(setkey(DT,x,y))
-# system.time(ans2 <- DT[list('R', 'h')])  # binary search
-# # list można zapisać jako .
-# system.time(ans2 <- DT[.('R', 'h')])  # binary search
-# # chociaż to, co wykonaliśmy wyżej, to tak naprawdę join z listą ('R', 'h'),
-# # czyli zawierającą jeden wiersz i dwie kolumny - jest to pierwszy argument
-# # i nazywa się i
-# 
-# identical(ans1$v, ans2$v)
+sample_dataset[cyl == 6]
 ```
+
+What happened? We chose only those cars, which have 6 cylinders. Data.table already knew that we mean a column named `cyl`, not an object from outside of the square brackets.
+
+### Selecting columns
 
 ```{r}
-# GROUP
-# DT[,sum(v)]
-# DT[,sum(v),by=x]
-# 
-# # zwykły group by po dwóch kolumnach: x i y
-# system.time(ss <- DT[,sum(v),by="x,y"])
-# 
-# 
-# # tutorial ze strony https://campus.datacamp.com/courses/data-table-data-manipulation-r-tutorial/chapter-one-datatable-novice?ex=1
-# 
-# library(data.table)
-# DT <- data.table(A=1:6, B=letters[1:3], C=rnorm(6), D=TRUE)
-# 
-# # where
-# DT[3:5,]
-# DT[3:5]  # domyślne są wiersze
-# 
-# # select
-# DT[, .(B, C)]
-# DT[, .(Total=sum(A), Mean=mean(C))]
-# 
-# # group
-# DT[, .(MySum=sum(C), MyMean=mean(C)), by=.(B)]
-# 
-
-# tutorial ze strony
-# https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html
-
-library(data.table)
-# flights <- fread("https://raw.githubusercontent.com/ismayc/pnwflights14/master/data/flights.csv")
-# DT <-  data.table(ID=c("b","b","b","a","a","c"), a =1:6, b = 7:12, c = 13:18)
-# 
-# # Take DT, subset rows using i, then calculate j, grouped by by.
-# # i
-# ans <- flights[origin == "JFK" & month == 6L]
-# ans <- flights[1:2]  # dwa pierwsze wiersze
-# ans <- flights[order(origin, -dest)]
-# # j
-# ans <- flights[, arr_delay]  # zwraca wektor
-# ans <- flights[, list(arr_delay)]  # zwraca data.table
-# ans <- flights[, .(arr_delay, dep_delay)]  # kolumn nie można oddzielić ","
-# ans <- flights[, list(arr_delay, dep_delay)]  # to samo, co wyżej
-# ans <- flights[, .(ad = arr_delay, dd = dep_delay)]  # " = " - spacje
-# ans <- flights[, sum((arr_delay + dep_delay) < 0)]  # < 0 zamienia to, co jest w nawiasie, na wektor binarny
-# ans <- flights[(arr_delay + dep_delay) < 0, length(arr_delay + dep_delay)]  # to samo, co wyżej, tylko inaczej - length działa jak count w SQL
-# 
-# # i, j
-# ans <- flights[origin == "JFK" & month == 6L, 
-#                .(m_arr = mean(arr_delay), m_dep = mean(dep_delay))]  # where i mean w SQL
-# ans <- flights[origin == "JFK" & month == 6L, length(dest)]  # zamiast dest mogłoby być * w SQLu
-# ans <- flights[origin == "JFK" & month == 6L, .N]  # .N = count(*)
-# cols <- c("arr_delay", "dep_delay")
-# ans <- flights[, cols, with=F]  # sposób na listę kolumn z zewnątrz
-# ans <- flights[, !cols, with=F]  # "odznaczenie" kolumn - standardowo
-# ans <- flights[, day:year, with=F]
-# 
-# # by - grupowanie
-# ans <- flights[, .N, by = origin]  # .N jest traktowane jak count(*)
-# ans <- flights[carrier == "AA", .N, by = origin]
-# ans <- flights[carrier == "AA", 
-#                .(arr_d = mean(arr_delay), dep_d = mean(dep_delay)), 
-#                by = .(origin, dest, month)]  # bardziej skomplikowanie
-# 
-# # keyby - grupowanie + sortowanie
-# ans <- flights[carrier == "AA", 
-#                .(arr_d = mean(arr_delay), dep_d = mean(dep_delay)), 
-#                keyby = .(origin, dest, month)]  # jedyna różnica: keyby
-# ans <- flights[carrier == "AA", .N, 
-#                by = .(origin, dest)][order(origin, -dest)]  # sortowanie desc
-# ans <- flights[, .N, .(dep_delay>0, arr_delay>0)]  # case w group by
-# DT <-  data.table(ID=c("b","b","b","a","a","c"), a =1:6, b = 7:12, c = 13:18)
-# DT[, print(.SD), by = ID]  # .SD w połączeniu z by dzieli dt na podzbiory
-# ans <- DT[, lapply(.SD, mean), by = ID]
-# 
-# # update
-# DT[, c := letters[1:.N]]
-# # nowa kolumna, usunięcie kolumny
-# DT[, d := rnorm(.N)]
-# DT[, b := NULL]
-
-# joiny https://rstudio-pubs-static.s3.amazonaws.com/52230_5ae0d25125b544caab32f75f0360e775.html
-Employees <- data.table(Employee = 1:6,
-                        EmployeeName = c('Alice', 'Bob', 'Carla', 'Daniel',
-                                         'Evelyn', 'Ferdinand'),
-                        Department = c(11, 11, 12, 12, 13, 21),
-                        Salary = c(800, 600, 900, 1000, 800, 700))
-Departments <- data.table(Department = c(11, 12, 13, 14),
-                          DepartmentName = c('Production', 'Sales', 
-                                             'Marketing', 'Research'),
-                          Manager = c(1, 4, 5, NA))
-# inner join
-ans <- merge(Employees, Departments, by="Department")  # można tak
-setkey(Employees, Department)  # klucz - w tym wypadku obcy (funkcja nie rozróżnia obcego od głównego, troche dziwne)
-setkey(Departments, Department)  # klucz - w tym wypadku główny
-ans <- Employees[Departments, nomatch=0]  # jeśli ustawimy klucze
-
-# left outer join - wyszukaj pionowo
-ans <- merge(Employees, Departments, all.x=T)
+sample_dataset[, .(mpg, cyl, disp)][1:5]
 ```
+
+What happened here?
+
+* we used a special fucntion from data.table package: `.()`, which works just like vectors, but inside data.tables square brackets it treats columns as separate objects, so to work on column `mpg`, you simply type `mpg` instead of `"mpg"` or `sample_dataset$mpg`
+
+* in square brackets we first provided a comma, as the first argument is always filtering. If we want to skip filtering, we simply write a comma;
+
+* we chose the first five elements from our dataset. We could write even more square brackets after the whole statement and it would work as a pipe, but this would be too dplyr-ish.
+
+### Grouping
+
+```{r}
+sample_dataset[, .(mean_mpg = mean(mpg), count = .N), cyl]
+```
+* group by is the last statement inside the square brackets. In the example above, we group by column cyl;
+
+* in the select clause we do exactly the same thing as in SQL statements;
+
+* `.N` means *number of* or simply *count*.
+
+### Reading and writing data
+
+data.table has the fastest reading and writing functions available in R. These are:
+
+```{r}
+fwrite(x = mtcars, file = 'mtcars.csv')
+ds <- fread(file = 'mtcars.csv')
+```
+
+`fread` is pretty clever. It recognises if a file has headers, columns datatypes and separators. What I like the most in these functions is that I literally *never* have to provide any details about the file. Object and file names are always enough for data.table.
+
+### Ordering data
+
+Very easy.
+
+```{r}
+sample_dataset[order(-gear, cyl)][1:5]
+```
+
+### Updating data
+
+In order to update our dataset we use the `:=` operator:
+
+```{r}
+sample_dataset[mpg > 30, carb := -1]
+```
+
+### Creating a new column
+
+In the same way as updating we can create a new column in place:
+
+```{r}
+sample_dataset[, new_column := 0]
+print(sample_dataset[1:5])
+```
+
+But we don't have to do it in place:
+
+```{r}
+sample_dataset[, .(mpg, cyl, new_column2 = 0)][1:5]
+```
+
+
+## 3. Subjects still to cover:
+
+* `.I`
+
+* `.SD` + lapply
+
+* `merge()`
+
+* `setkey()`
