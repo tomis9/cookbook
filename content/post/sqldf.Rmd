@@ -17,8 +17,11 @@ Despite it's uselessness, it works like a charm.
 ## 2. A few basic examples:
 
 Load the package:
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(sqldf)
+```
+```{r, echo = FALSE}
+suppressPackageStartupMessages(library(sqldf))
 ```
 
 Selecting specific columns:

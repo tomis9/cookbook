@@ -17,8 +17,11 @@ tags: ["lubridate", "R"]
 
 
 Load the package
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(lubridate)
+```
+```{r, echo = FALSE}
+suppressPackageStartupMessages(library(lubridate))
 ```
 
 Convert a string to class `Date`:
