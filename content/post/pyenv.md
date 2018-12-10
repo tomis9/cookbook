@@ -93,7 +93,11 @@ When the work is done, type
 pyenv deactivate
 ```
 
-## 4. Useful links:
+## 4. Easily firgettable commands:
+
+* `pyenv virtualenvs` lists all existing virtualenvs
+
+## 5. Useful links:
 
 * [pyenv + virtualenv - definitely the best tutorial](https://amaral.northwestern.edu/resources/guides/pyenv-tutorial)
 
