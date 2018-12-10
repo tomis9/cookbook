@@ -93,7 +93,7 @@ When the work is done, type
 pyenv deactivate
 ```
 
-## 4. Easily firgettable commands:
+## 4. Easily forgettable commands:
 
 * `pyenv virtualenvs` lists all existing virtualenvs
 
