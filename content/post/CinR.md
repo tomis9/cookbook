@@ -66,4 +66,8 @@ sum_
 
 ```
 
-As you can see, the result is a list of function arguments, but some of their values (in this case *s*) were updated by our c function.
+As you can see, the result is a list of function arguments, but some of their values (in this case *s*) were updated by our C function.
+
+## 3. Usful links
+
+As 'C' and 'R' are not the easient terms to search on the internet, [here's](http://www.biostat.jhsph.edu/~rpeng/docs/interface.pdf) a short tutorial.
