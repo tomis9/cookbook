@@ -45,37 +45,37 @@ hdfs dfs -ls <dir>
 
 mkdir - create a directory
 ```
-hdfs dfs mkdir <path>
+hdfs dfs -mkdir <path>
 ```
 
 put - upload file to hdfs
 ```
-hdfs dfs put <localSrc> <dest>
+hdfs dfs -put <localSrc> <dest>
 ```
 
 copyFromLocal - copy file from hdfs to local, obviously
 ```
-hdfs dfs copyFromLocal <localSrc> <dest>
+hdfs dfs -copyFromLocal <localSrc> <dest>
 ```
 
 get - download file from hdfs
 ```
-hdfs dfs get <src> <localDest>
+hdfs dfs -get <src> <localDest>
 ```
 
 copyToLocal - copy file from hdfs to local, obviously
 ```
-hdfs dfs copyToLocal <src> <localDest>
+hdfs dfs -copyToLocal <src> <localDest>
 ```
 
 mv - move file from one directory to another or rename a file
 ```
-hdfs dfs mv <src> <dest>
+hdfs dfs -mv <src> <dest>
 ```
 
 cp - copy file from one directory to another
 ```
-hdfs dfs cp <src> <dest>
+hdfs dfs -cp <src> <dest>
 ```
 
 More commands are available [here](https://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/).
