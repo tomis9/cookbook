@@ -7,7 +7,21 @@ categories: ["data-engineering"]
 tags: ["hadoop", "data-engineering"]
 ---
 
-## 1. What is hadoop and why would you use it?
+<center>
+
+**Contents:**
+
+[1. What is hadoop and why would you use it?](#what) 
+
+[2. Installation](#installation)
+
+[3. "Hello World" examples](#hello) 
+
+[4. Subjects still to cover](#todo) 
+
+</center>
+
+## 1. What is hadoop and why would you use it? {#what}
 
 * hadoop is the first popular big data tool ever;
 
@@ -18,7 +32,7 @@ tags: ["hadoop", "data-engineering"]
 * in general, hadoop is a cornerstone of big data.
 
 
-## 2. Installation
+## 2. Installation {#installation}
 
 In production environment Hadoop should be installed on several interconnected machines, called a cluster. I'm not going to explain how to do this, as this is usually a task for sysadmins/DevOps guys, and not for data scientists. However it is very usufeul to have your own one-node hadoop installation on your laptop for practising basic big data solutions. This is what we're going to install in this section.
 
@@ -29,7 +43,7 @@ sudo bash hadoop.sh
 but I recommend running it line by line, so you would understand what you are doing and what is needed to have hadoop running.
 
 
-## 3. "Hello World" examples
+## 3. "Hello World" examples {#hello}
 
 You probably expect that knowing Hadoop will let you do Big Data. It would, but in reality nobody uses Hadoop to run data processing anymore. [Spark](https://tomis9.github.io/post/spark) and [Hive](https://tomis9.github.io/post/hive) have much nicer apis, and do the same tasks faster.
 
@@ -80,7 +94,7 @@ hdfs dfs -cp <src> <dest>
 
 More commands are available [here](https://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/).
 
-## 3. Subjects still to cover
+## 4. Subjects still to cover {#todo}
 
 * Hadoop GUI (TODO)
 
