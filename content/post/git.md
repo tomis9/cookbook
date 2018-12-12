@@ -40,8 +40,7 @@ Knowing 6 git commands is a humorous description of a basic knowledge of git. Bu
 
 If you know all of them, you can update your LinkedIn profile with "knowledge of git". If not - I recommend youtube tutorials, like this one:
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/HVsySz-h9r4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<iframe width="853" height="480" src="https://www.youtube.com/embed/HVsySz-h9r4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 4. Slightly more advanced subjects
 
