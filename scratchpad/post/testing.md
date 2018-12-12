@@ -1,96 +1,120 @@
 ---
 title: "testing"
 date: 2018-02-04T12:02:23+01:00
-draft: true
-image: "testing.jpg"
-categories: ["DevOps", "data-engineering", "R", "Python"]
-tags: ["DevOps", "data-engineering", "R", "Python"]
+draft: false
+categories: ["DevOps", "data-engineering", "R"]
+tags: ["DevOps", "data-engineering", "R"]
 ---
 
 ## 1. What is testing and why would you use it?
 
-* 
+* testing or test-driven development (TDD) is a discipline, which relies on writing a test for every functionality *before* creating it;
 
+* at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fullfill this functionality, so the test will pass.
+
+In reality you modify your tests as you create the functionality or even write the tests after you are finished writing it. It's OK as long as you remember to cover all the functions with tests.
 
 ## 2. "Hello World" examples
 
 ### R (testthat)
 
-real_roots.R
+Let's go through testing two simple functions:
 
-```{r, eval = FALSE}
-real.roots <- function(a, b, c) {
-    if (a == 0.)
-        stop("Leading term cannot be zero")
+```
+library(testthat)
 
-    delta <- b * b - 4 * a * c # discriminant
+context("simple example tests")
 
-    if (delta < 0)
-       rr <- c()
-    else if (delta == 0)
-       rr <- c(-b / (2 * a))
-    else
-        rr <- c((-b - sqrt(delta)) / (2 * a),
-                (-b + sqrt(delta)) / (2 * a))
-
-    return(rr)
+divider <- function(a, b) {
+  if (b == 0) {
+    warning("One does not simply divide by zero.")
+    return(NULL)
+  }
+  x <- a / b
+  return(x)
 }
 
+test_that(
+  desc = "check proper division by `divider()`",
+  code = {
+    expect_equal(divider(10, 5), 2)
+
+    expect_warning(divider(2, 0))
+
+    expect_null(suppressWarnings(divider(10, 0)))
+  }
+)
+
+summer <- function(a, b) {
+  x <- a + b
+  if (x == 5) x <- x + 1  ## a strange bug
+  return(x)
+}
+
+test_that(
+  desc = "check proper summing by `summer`",
+  code = {
+    expect_equal(summer(2, 2), 4, info = "two and two is four")
+    expect_equal(summer(2, 3), 5, info = "two and three is five")
+  }
+)
 ```
 
-test_real_roots.R
+What have we done here?
 
-```{r, eval = FALSE}
-source("real_roots.R")
+* we loaded `testthat` package;
 
-test_that("Distinct roots", {
+* we provided a context - this is the first message that appears in tests summary and serves as a title for this particular group of tests;
 
-    roots <- real.roots(1, 7, 12)
+*Couriously, in order to run test properly, you *have to* provide context [link](https://stackoverflow.com/questions/50083521/error-in-xmethod-attempt-to-apply-non-function-in-testthat-test-when)*.
 
-    expect_that(roots, is_a("numeric"))
-    expect_that(length(roots), equals(2))
-    expect_that(roots[1] < roots[2], is_true())
-})
+* we wrote a function `divider`, which divides two numbers and `summer`, which adds twwo numbers (clever!); as you can see, there is a strange bug in `summer`
 
-test_that("Repeated root", {
+* `test_that` functions belong to `testthat` package and they will check if these functions run properly;
 
-    roots <- real.roots(1, 6000, 9000000)
+* there are various types of `expect_...`, a pretty interesting one is `expect_fail(expect_...())`;
 
-    expect_that(length(roots), equals(1))
+* you should provide additional description (`desc`) to each `test_that` function, so you could easily find which test failed; you can also provide info for every single `expect_...`.
 
-    expect_that(roots, equals(-3000))
 
-    # Test whether ABSOLUTE error is within 0.1
-    expect_that(roots, equals(-3000.01, tolerance  = 0.1))
+Now we can run our tests with `testthat::test_file(<name_of_file>)` or `testthat::test_dir('tests')`, depending on where you store your functions with tests. In production, you obviously keep testing functions in separate files, preferably in a `tests` folder and each file is called `test_...`.  In that case you source all the functions you want to test simply with `source()`.
 
-    # Test whether RELATIVE error is within 0.1
-    # To test relative error, set 'scale' equal to expected value.
-    # See base R function all.equal for optional argument documentation.
-    expect_equal(roots, -3001, tolerance  = 0.1, scale = -3001)
-})
 
-test_that("Polynomial must be quadratic", {
 
-    # Test for ANY error
-    expect_that( real.roots(0, 2, 3), throws_error() )
+Testing our above file will result in:
 
-    # Test specifically for an error string containing "zero"
-    expect_that( real.roots(0, 2, 3), throws_error("zero") )
-
-    # Test specifically for an error string containing "zero" or "Zero"
-    # using regular expression
-    expect_that( real.roots(0, 2, 3), throws_error("[zZ]ero") )
-})
-
-test_that("Bogus tests", {
-
-    x <- c(1, 2, 3)
-
-    expect_that( length(x), equals(2.7) )
-    expect_that( x, is_a("data.frame") )
-})
 ```
-### Python (pytest)
+R> test_file('test.R')                                                          
+✔ | OK F W S | Context
+✖ |  4 1     | simple example tests
+────────────────────────────────────────────────────────────────────────────────
+test.R:37: failure: check proper summing by `summer`
+summer(2, 3) not equal to 5.
+1/1 mismatches
+[1] 6 - 5 == 1
+two and three is five
+────────────────────────────────────────────────────────────────────────────────
+
+══ Results ═════════════════════════════════════════════════════════════════════
+OK:       4
+Failed:   1
+Warnings: 0
+Skipped:  0
+R> 
+```
+
+Information, that 4 tests have passed, one has failed. The one that failes was in 37th line of the test file, when we were 'checking proper summing by summer'. According to `summer` two and three is not five.
+
 
 
 ## 3. Useful links
+
+* testthat:
+
+    * [Hadley Wichkam's article on testthat](https://journal.r-project.org/archive/2011/RJ-2011-002/RJ-2011-002.pdf)
+
+    * [usethis](https://github.com/r-lib/usethis) - useful if you want to test a package
+
+## 4. Subjects still to cover
+
+* pytest, unittest, coverage - or python in general
