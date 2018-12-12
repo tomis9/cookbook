@@ -8,7 +8,7 @@ tags: ["DevOps", "data-engineering", "R"]
 
 ## 1. What is testing and why would you use it?
 
-* testing or test-driven development (TDD) is a discipline, which relies on writing a test for every functionality *before* creating it;
+* testing or [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a discipline, which relies on writing a test for every functionality *before* creating it;
 
 * at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fullfill this functionality, so the test will pass.
 
@@ -100,7 +100,6 @@ OK:       4
 Failed:   1
 Warnings: 0
 Skipped:  0
-R> 
 ```
 
 Information, that 4 tests have passed, one has failed. The one that failes was in 37th line of the test file, when we were 'checking proper summing by summer'. According to `summer` two and three is not five.
@@ -109,11 +108,15 @@ Information, that 4 tests have passed, one has failed. The one that failes was i
 
 ## 3. Useful links
 
-* testthat:
+* R:
 
     * [Hadley Wichkam's article on testthat](https://journal.r-project.org/archive/2011/RJ-2011-002/RJ-2011-002.pdf)
 
     * [usethis](https://github.com/r-lib/usethis) - useful if you want to test a package
+
+* Python:
+
+    * [Test driven development with Python](https://learning.oreilly.com/library/view/test-driven-development-with/9781449365141/)
 
 ## 4. Subjects still to cover
 
