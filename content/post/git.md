@@ -38,7 +38,7 @@ Knowing 6 git commands is a humorous description of a basic knowledge of git. Bu
 * git checkout
 
 
-If you know all of them, you can update your LinkedIn profile with "knowledge of git". If not - I recommend youtube tutorials, like this one:
+If you know all of them, you can update your LinkedIn profile with "knowledge of git". If not, I recommend youtube tutorials, like this one:
 
 <iframe width="853" height="480" src="https://www.youtube.com/embed/HVsySz-h9r4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -57,3 +57,14 @@ In it's consequences, `git rebase` is equivalent to merge, but there are certain
 In general, when  you work on a specific project with your colleagues, I recommed using rebase, as chronological order is not that important. Thanks to rebase you can scroll the repo log and see the next functionalities (branches) appearing in order. If you even decide to give them special tags, boy, it really helps to kepp order!
 
 Here are a few links which contain more information about rebasing: [one](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase), [two](https://benmarshall.me/git-rebase/).
+
+#### completely remove a submodule
+
+Just replace the `<name>` with your submodule's name.
+
+<textarea rows = "5" cols = "50" name = "git_submodule" style='font-family: "Courier New"; color: #505050;'>
+submodule=<name>
+git submodule deinit -f -\- $submodule
+rm -rf .git/modules/$submodule
+git rm -f $submodule
+</textarea><br>
