@@ -8,7 +8,7 @@ tags: ["spark", "data-engineering", "python"]
 
 ## 1. What is spark and why would use use it?
 
-* Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/hdfs);
+* Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/post/hadoop);
 
 * it can be accessed from Python, R, scala (spark is actually written in scala) and java;
 
