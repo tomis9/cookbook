@@ -3,8 +3,8 @@ title: "git"
 date: 2018-12-03T15:01:35+01:00
 draft: false
 image: "git.jpg"
-categories: ["data-engineering", "DevOps"]
-tags: ["git", "data-engineering", "DevOps"]
+categories: ["DevOps"]
+tags: ["git", "DevOps"]
 ---
 
 ## 1. What is git and why would you use it?
