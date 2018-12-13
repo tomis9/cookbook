@@ -14,65 +14,160 @@ tags: ["draft", "spark", "data-engineering", "python"]
 
 * it is probably the most popular big data tool nowadays for data scientists.
 
-## A good tutorial:
+## 2. A few "Hello World" examples
 
-But before watching the film you should install pyspark:
+### Prerequisites
+
+#### Installation of pyspark
+In this tutorial we will work on a development python version of spark. You can istall it with:
 
 ```{python}
 sudo pip3 install pyspark
 ```
-<iframe width="1620" height="595" src="https://www.youtube.com/embed/wi_PPloqRe0?list=PLE50-dh6JzC5zo2whIGqJ02CIhP3ysQLX" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-My notes from the film above:
+You will not notice any difference between this spark version and a production version installed on a cluster, except for performance.
 
-Importing pyspark.sql, which let's you work with dataframes and launching SparkSession, which is a connection with spark. If you do not specifically provide details of spark installation on cluster/server/laptop you use, pyspark will use it's own, development spark session.
+#### Example file
 
-```{python}
+During the tutorial we will work on an example file:
+
+example.csv:
+```
+UserCode,GroupCode
+1051,123
+1150,234
+1152,345
+```
+
+### Initialisation
+
+First, let's import SparkSession from pyspark.sql module, which enables us to ceoonect with spark from python. If you do not specifically provide details of spark installation on cluster/server/laptop you use, pyspark will use it's own, development spark session.
+
+```
 from pyspark.sql import SparkSession
+```
 
+In order to work with spark, we have to initialize the spark session and give it a nice name
+```
 spark = SparkSession \
     .builder \
-    .appName("Python Spark SQL basic example") \
-    .config("saprk.come.config.option", "som-value") \
+    .appName("Python Spark basic example") \
     .getOrCreate()
 ```
+or an ugly name. Up to you.
 
-Let's download a dataset called 'creditcard fraud detection' from kaggle and read it into spark.
-```{python}
-df = spark.read.csv('creditcard.csv')
+From now you can watch your tasks execution in a webservice available at http://127.0.0.1:4040.
+
+### Basic information about dataframe
+
+Let's read some data to spark and enjoy it's incredibly fast performance.
+
+```
+df = spark.read.csv('example.csv', header=True)
 ```
 
-Basic dataframe operations:
-```{python}
-# prints columns' names and datatypes
+Printing columns' names and datatypes are not spark jobs yet, co you can not observer their execution in spark's webservice.
+```
 df.printSchema()
-
-df.head()
-
-df.count()
-
-# prints nothing interesting
-df.describe()
-
-# but... this reveals some information:
-df.describe().show()
-
-# do we have any null values?
-df.dropna().count()
-
-# what if we had nas?
-df.fillna(-1).show(5)
+df.columns
 ```
 
-columns
+These are spark jobs, so open up webservice and check out the "jobs" tab.
 
-select
+head of our dataframe
+```
+df.head()
+```
 
-filter
+number of rows
+```
+df.count()
+```
 
-data from mysql
+some statistics of our dataframe, similar to R's `summary`
+```
+df.describe().show()
+```
 
-df.coalesce(1)
+### SQL queries
+
+How about being able to use sql to query our table?
+
+First we have to decalre our data as a table.
+
+```
+df.createOrReplaceTempView("example")
+```
+It's time to check the "SQL" tab in GUI.
+
+And the  we can move on to sql.
+
+General queries
+```
+df2 = spark.sql("select * from example")
+df2.show()
+```
+
+### Query expressions
+
+Selecting
+```
+user_code3 = df.select('UserCode', 'UserCode', 'Usercode')
+user_code3.show()
+```
+
+Filtering
+```
+filtered = df.filter("UserCode = 1051")
+filtered.show()
+```
 
 
-Spark GUI
+### Saving dataframes
+
+In general, you will save your data to parquet files, as they are optimised for reading from writing to spark.
+```
+df.write.parquet('file.parquet')
+```
+
+But you can always save the data to csv.
+```
+df.write.csv('file.csv')
+```
+#### saving tips & tricks
+
+You will often want to write your files in a specific way. Here is a list of the most popular parameters:
+```
+df.coalesce(1). \
+    write. \
+    mode('overwrite'). \
+    option("header", "true"). \
+    csv("result.csv")
+```
+
+and their descriptions:
+
+* use partition or save to one file
+
+* let's move to the writing file part
+
+* overwrite if exists
+
+* write the header
+
+* file extension
+
+## 3. Useful links
+
+* a nice introductory article https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi
+
+
+## 4. Subjects still to cover
+
+* MLlib (TODO)
+
+* importing table directly from database - jdbc (TODO)
+
+* communication with hdfs (TODO)
+
+* sparkR (TODO)
