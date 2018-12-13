@@ -71,3 +71,9 @@ A pretty long, but credible tutorial is available [here](https://docker-curricul
 ## 3. Useful links
 
 A good [book](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
+
+## 4. Subjects still to cover
+
+* Dockerfile (TODO)
+
+* docker create volume (TODO)

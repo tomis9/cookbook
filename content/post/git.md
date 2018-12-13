@@ -68,3 +68,7 @@ git submodule deinit -f -\- $submodule
 rm -rf .git/modules/$submodule
 git rm -f $submodule
 </textarea><br>
+
+## 5. Subjects still to cover:
+
+* git revert (TODO)

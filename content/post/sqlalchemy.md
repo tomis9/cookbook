@@ -167,3 +167,7 @@ There is a whole discussion whether sqlAlchemy is not a overkill for data scienc
 * https://www.safaribooksonline.com/library/view/mastering-geospatial-analysis/9781788293334/44f54df4-f6c9-467d-8057-dee20c3d1f33.xhtml
 
 * https://datascienceplus.com/leveraging-hive-with-spark-using-python/
+
+## 4. Subjects still to cover
+
+* pyHive + sqlAlchemy (TODO)

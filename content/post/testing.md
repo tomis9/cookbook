@@ -120,4 +120,4 @@ Information, that 4 tests have passed, one has failed. The one that failes was i
 
 ## 4. Subjects still to cover
 
-* pytest, unittest, coverage - or python in general
+* pytest, unittest, coverage - or python in general (TODO)

@@ -114,10 +114,10 @@ sample_dataset[, .(mpg, cyl, new_column2 = 0)][1:5]
 
 ## 3. Subjects still to cover:
 
-* `.I`
+* `.I`(TODO)
 
-* `.SD` + lapply
+* `.SD` + lapply (TODO)
 
-* `merge()`
+* `merge()` (TODO)
 
-* `setkey()`
+* `setkey()` (TODO)
