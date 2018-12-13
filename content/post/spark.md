@@ -1,9 +1,9 @@
 ---
 title: "spark"
 date: 2018-11-23T12:58:49+02:00
-draft: true
+draft: false
 categories: ["data-engineering", "python"]
-tags: ["draft", "spark", "data-engineering", "python"]
+tags: ["spark", "data-engineering", "python"]
 ---
 
 ## 1. What is spark and why would use use it?
