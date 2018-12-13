@@ -92,6 +92,11 @@ cp - copy file from one directory to another
 hdfs dfs -cp <src> <dest>
 ```
 
+rm - remove a file from hdfs (`-rm -r` - remove recursively)
+```
+hdfs dfs -rm <dir>
+```
+
 More commands are available [here](https://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/).
 
 ## 4. Subjects still to cover {#todo}

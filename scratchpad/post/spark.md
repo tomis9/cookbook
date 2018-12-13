@@ -72,3 +72,7 @@ filter
 
 data from mysql
 
+df.coalesce(1)
+
+
+Spark GUI
