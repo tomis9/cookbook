@@ -56,7 +56,7 @@ spark = SparkSession \
 ```
 or an ugly name. Up to you.
 
-From now you can watch your tasks execution in a webservice available at http://127.0.0.1:4040.
+From now you can watch your tasks execution in a web interface available at http://127.0.0.1:4040.
 
 ### Basic information about dataframe
 
@@ -66,13 +66,13 @@ Let's read some data to spark and enjoy it's incredibly fast performance.
 df = spark.read.csv('example.csv', header=True)
 ```
 
-Printing columns' names and datatypes are not spark jobs yet, co you can not observer their execution in spark's webservice.
+Printing columns' names and datatypes are not spark jobs yet, co you can not observer their execution in spark's web interface.
 ```
 df.printSchema()
 df.columns
 ```
 
-These are spark jobs, so open up webservice and check out the "jobs" tab.
+These are spark jobs, so open up web interface and check out the "jobs" tab.
 
 head of our dataframe
 ```
