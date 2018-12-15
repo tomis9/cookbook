@@ -221,6 +221,8 @@ As we can see, dividing by zero raises a ZeroDivisionError.
 
     * [Test driven development with Python](https://learning.oreilly.com/library/view/test-driven-development-with/9781449365141/)
 
+    * [Probably the best book with snippets and "Hello World" examples: The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/tests/)
+
 ## 4. Subjects still to cover {#todo}
 
 * unittest, coverage (TODO)
