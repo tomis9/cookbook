@@ -103,11 +103,28 @@ RUN apt-get install vim
 
 Tip! Each `RUN` is saved as a separate layer. If you want your new image to be built quickly, it should use the layers that are already built, so instead of modyfing existing layers it's faster to add a new one.
 
-### CMD
-
 ### WORKDIR
 
+Workdir is pretty much the same as shell's `cd`.
+
 ### COPY
+
+Copies file from your host to the container, e.g.
+
+```
+COPY app /app
+```
+
+copies an `app` directory from current working directory to `/` in container.
+### CMD
+
+CMD (command) tells what command you want to run at the end of your Dockerfile. For example:
+
+```
+gunicorn -b 0.0.0.0:8000 app:app
+```
+
+More commands are available at [Dockerfile reference](https://docs.docker.com/engine/reference/builder/).
 
 ## 4. Useful links
 
