@@ -159,7 +159,9 @@ and their descriptions:
 
 ## 3. Useful links
 
-* a nice introductory article https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi
+* [a nice introductory article](https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi)
+
+* [a goo book on pyspark](https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf)
 
 
 ## 4. Subjects still to cover
