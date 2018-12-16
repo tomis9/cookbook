@@ -168,6 +168,8 @@ There is a whole discussion whether sqlAlchemy is not a overkill for data scienc
 
 * https://datascienceplus.com/leveraging-hive-with-spark-using-python/
 
+* [a nice tutorial for beginners](http://python101.pythonlibrary.org/chapter34_sqlalchemy.html)
+
 ## 4. Subjects still to cover
 
 * pyHive + sqlAlchemy (TODO)
