@@ -171,3 +171,5 @@ and their descriptions:
 * communication with hdfs (TODO)
 
 * sparkR (TODO)
+
+* spark-submit (TODO)
