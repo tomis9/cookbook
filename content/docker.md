@@ -128,10 +128,10 @@ More commands are available at [Dockerfile reference](https://docs.docker.com/en
 
 ## 4. Useful links
 
-A good [book](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
+* [a fantastic book on docker](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
+
+* [Dockerfile best practises](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 ## 4. Subjects still to cover
-
-* Dockerfile (TODO)
 
 * docker create volume (TODO)
