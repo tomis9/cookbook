@@ -127,7 +127,7 @@ When testing Python code, I usually use `pytest`, however `unittest` still seems
 
 Let's create a very simple function and save it to a file:
 
-divider.py
+func.py
 ```
 def divider(a, b):
     return a / b
