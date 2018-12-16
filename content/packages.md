@@ -24,18 +24,18 @@ In general, I don't recommend encapsulating your code into a package, unless you
 ## 2. Creating and installing the package
 
 A `devtools` package makes creating and developing packages easy:
-```{r, eval = FALSE}
+```
 library(devtools)
 ```
 
 Set the directory where you want your package to live:
-```{r, eval = FALSE}
+```
 setwd('~/')
 ```
 
 Now create the package with `devtools::create()`. 
 
-```{r, eval = FALSE}
+```
 devtools::create('helloWorldPackage')
 setwd('./hello_world_package')
 ```
@@ -74,7 +74,7 @@ LazyData: true
 
 `NAMESPACE` contains a list of functions which you want to be exported from the package, i.e. visible to the users. You don't have to update it by hand, as `devtools::document()` function:
 
-```{r, eval = FALSE}
+```
 devtools::document()  # creates manual/documentation using function from roxygen2 package
 ```
 
@@ -82,7 +82,7 @@ does it automatically.
 
 Last but not least, once you've finished writing your code:
 
-```{r, eval = FALSE}
+```
 devtools::install('.')  # install package
 ```
 
@@ -92,7 +92,7 @@ install the package. Since the you will be able to load the functions from this 
 
 As I mentioned in the previous point, you don't have to build documentation by yourself, but you have to provide all the important information, so it could be built automatically. Every function that you want to export should begin with something similar to python's docstring:
 
-```{r, eval = FALSE}
+```
 #' Markov clustering function
 #'
 #' Markov clustering function algorithm based on Data Mining and Analysis: 
@@ -142,3 +142,7 @@ A good practice is to keep only one function in each R file, but if the function
 ## 3. Useful links
 
 A nice basic tutorial on writing R packages is available [here](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/).
+
+## 4. Subjects still to cover
+
+* packrat (TODO)
