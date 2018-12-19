@@ -1,10 +1,15 @@
 ---
 title: "redis"
-date: 2018-11-09T23:01:35+01:00
-draft: true
-crategories: ["data-engineering"]
-tags: ["draft"]
+date: 2018-10-21T20:49:20+02:00
+draft: false
+crategories: ["scratchpad"]
 ---
+
+<center>
+# This is not a proper blog post yet, just my notes.
+
+redis (TODO)
+</center>
 
 ```{python}
 import redis

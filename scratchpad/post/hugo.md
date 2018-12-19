@@ -1,10 +1,15 @@
 ---
 title: "Hugo"
 date: 2018-11-09T23:01:35+01:00
-draft: true
-image: "hugo.png"
-tags: ["draft"]
+draft: false
+categories: ["scratchpad"]
 ---
+
+<center>
+# This is not a proper blog post yet, just my notes.
+
+hugo (TODO)
+</center>
 
 A short tutorial
 

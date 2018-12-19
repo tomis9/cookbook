@@ -1,11 +1,15 @@
 ---
 title: "gitlab-ci"
-date: 2018-11-09T23:01:35+01:00
-draft: true
-image: "gitlab.png"
-categories: ["DevOps"]
-tags: ["draft", "git"]
+date: 2018-08-21T17:56:38+02:00
+draft: false
+categories: ["scratchpad"]
 ---
+
+<center>
+# This is not a proper blog post yet, just my notes.
+
+gitlab-ci (TODO)
+</center>
 
 or gitlab [Continuous Integration & Deployment/Continuous Delivery](https://about.gitlab.com/features/gitlab-ci-cd/)
 

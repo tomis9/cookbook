@@ -6,7 +6,7 @@ categories: ["scratchpad"]
 ---
 
 <center>
-# This is not a proper blog post yet, only my notes.
+# This is not a proper blog post yet, just my notes.
 
 airflow (TODO)
 </center>

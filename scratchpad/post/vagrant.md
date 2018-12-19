@@ -1,11 +1,15 @@
 ---
 title: "vagrant"
-date: 2018-08-18T14:25:43+02:00
-draft: true
-image: "vagrant.png"
-categories: ["DevOps"]
-tags: ["draft", "DevOps", "VM"]
+date: 2018-08-14T14:25:43+02:00
+draft: false
+categories: ["scratchpad"]
 ---
+
+<center>
+# This is not a proper blog post yet, just my notes.
+
+redis (TODO)
+</center>
 
 ## 1. What is vagrant and why would you use it?
 
