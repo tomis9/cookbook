@@ -48,10 +48,14 @@ In order to run an image, type:
 ```
 sudo docker run sandbox
 ```
-You may also want to work in an image in an interactive mode:
-```
-sudo docker run -it sandbox sh
-```
+
+`run` is probably the most often used docker command. It has several useful flags:
+
+* `--help` - list all possible flags for docker run;
+
+* `-it` - run in interactive mode, for example `docker run -it sandbox bash` starts a docker container and connect you to it in a similar way to ssh - you start with a bash console;
+
+* `--name <string>` - give container it's own unique name.
 
 
 View of all the images:
@@ -135,3 +139,5 @@ More commands are available at [Dockerfile reference](https://docs.docker.com/en
 ## 4. Subjects still to cover
 
 * docker create volume (TODO)
+
+* fast layering python dependencies [link](https://jpetazzo.github.io/2013/12/01/docker-python-pip-requirements/)

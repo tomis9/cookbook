@@ -218,4 +218,6 @@ appender.console()
 appender.file()
 ```
 
+ftry
+
 Simple, isn't it?
