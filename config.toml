@@ -51,6 +51,11 @@ pygmentsuseclasses         = true
     identifier             = "DevOps"
     url                    = "categories/devops/"  
 
+  [[menu.main]]
+    name                   = "scratchpad"
+    weight                 = 50
+    identifier             = "scratchpad"
+    url                    = "categories/scratchpad/"  
 
 [params]
   # faviconfile              = "favicon.ico"
