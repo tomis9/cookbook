@@ -1,10 +1,15 @@
 ---
 title: "airflow"
-date: 2018-11-09T23:01:35+01:00
-draft: true
-categories: ["python", "data-engineering"]
-tags: ["draft"]
+date: 2018-08-14T11:51:12+02:00
+draft: false
+categories: ["scratchpad"]
 ---
+
+<center>
+# This is not a proper blog post yet, only my notes.
+
+airflow (TODO)
+</center>
 
 ## 1. What is airflow and why would you use it?
 
