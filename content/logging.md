@@ -15,11 +15,11 @@ tags: ["python", "R", "logging", "data-engineering"]
 
 https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-practices/
 
+## 2. "Hello World" examples
+
 ## Python
 
 `logging` module, which is available in python's standard library, contains various functions and objects, which make logging easy and standardised.
-
-##3 2. "Hello World" examples
 
 #### Basic configuration
 
@@ -218,6 +218,9 @@ appender.console()
 appender.file()
 ```
 
-ftry
+
+## 3. Subjects still to cover
+
+* ftry (TODO) how does ftry cope with exceptions?
 
 Simple, isn't it?
