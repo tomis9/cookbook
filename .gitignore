@@ -27,3 +27,4 @@ static/header-slides
 static/nls_files
 static/rmarkdown-libs
 static/tidyverse_files
+content/*.html
