@@ -72,3 +72,5 @@ git rm -f $submodule
 ## 5. Subjects still to cover:
 
 * git revert (TODO)
+
+* [GitFlow (branching strategies)](https://gitversion.readthedocs.io/en/latest/git-branching-strategies/gitflow/)
