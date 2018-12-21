@@ -32,10 +32,6 @@ but after a while you realise that you need something else happening during sett
 
 So you're on your own. Here's how you solve this problem:
 
-```{r setup, include = FALSE}
-knitr::knit_engines$set(python = reticulate::eng_python)
-```
-
 ```{python}
 class SomeFolk:
 
@@ -68,6 +64,8 @@ me = SomeFolk('Tomek')
 Here's what happens when you get a name:
 ```{python}
 _some_variable = me.name
+
+## you've just got a name
 ```
 
 And when you set a name:
