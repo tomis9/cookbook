@@ -2,7 +2,7 @@
 title: "redis"
 date: 2018-10-21T20:49:20+02:00
 draft: false
-crategories: ["scratchpad"]
+categories: ["scratchpad"]
 ---
 
 <center>

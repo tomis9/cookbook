@@ -28,3 +28,4 @@ static/nls_files
 static/rmarkdown-libs
 static/tidyverse_files
 content/*.html
+static/file_files/*

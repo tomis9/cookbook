@@ -8,7 +8,7 @@ categories: ["scratchpad"]
 <center>
 # This is not a proper blog post yet, just my notes.
 
-redis (TODO)
+vagrant (TODO)
 </center>
 
 ## 1. What is vagrant and why would you use it?
