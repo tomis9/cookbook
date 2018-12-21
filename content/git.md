@@ -73,4 +73,4 @@ git rm -f $submodule
 
 * git revert (TODO)
 
-* [GitFlow (branching strategies)](https://gitversion.readthedocs.io/en/latest/git-branching-strategies/gitflow/)
+* [GitFlow (branching strategies)](https://gitversion.readthedocs.io/en/latest/git-branching-strategies/gitflow/) (TODO)
