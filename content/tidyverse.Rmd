@@ -127,3 +127,7 @@ data.table::as.data.table(mtcars) %>%
     select(mpg, cyl) %>% 
     head()
 ```
+
+## 4. Subjects still to cover:
+
+* dplyr: joins, slice (TODO)
