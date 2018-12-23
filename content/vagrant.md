@@ -88,9 +88,7 @@ You may want to install you favourite programs right after the VM is created. In
 config.vm.provision "shell", path: "startup.sh"
 ```
 
-****
-
-## Easily forgettable commands:
+## 5. Easily forgettable commands:
 
 List all available machines:
 ```
@@ -114,7 +112,7 @@ Remove a machine:
 vagrant destroy <name>
 ```
 
-Remove from a list machines that don't already exist:
+Remove from a list machines that no longer exist:
 ```
 vagrant global-status --prune
 ```
