@@ -2,14 +2,8 @@
 title: "airflow"
 date: 2018-08-14T11:51:12+02:00
 draft: false
-categories: ["scratchpad"]
+categories: ["data-engineering"]
 ---
-
-<center>
-# This is not a proper blog post yet, just my notes.
-
-airflow (TODO)
-</center>
 
 ## 1. What is airflow and why would you use it?
 
@@ -37,7 +31,7 @@ Yes, you can, but with airflow:
 
 Convinced? ;)
 
-## Installation
+## 2. Installation
 
 ```{python}
 pip install airflow
@@ -45,36 +39,29 @@ pip install airflow
 
 Not very complicated.
 
-Installation will create a directory named ~/airflow with a structure:
+## 3. Best practises
+
+### Softlinks
+
+You may feel tempted to create a git repository in your DAG folder, however this is not the best solution. It's much easier and more logical to keep your DAG file in a repo where your project lives and softlink it with
 
 ```
-├── airflow.cfg
-├── airflow.db
-├── connections.py
-├── dags
-│   ├── check_ssh.py
-│   ├── __pycache__
-│   │   ├── check_ssh.cpython-35.pyc
-│   │   └── sql_test.cpython-35.pyc
-│   └── sql_test.py
-├── logs
-│   ├── check_mysql
-│   │   └── test_sql
-│   │       ├── 2018-10-28T12:00:00
-│   │       ├── 2018-10-29T21:43:14.051520
-│   │       └── 2018-10-29T21:46:45.016707
-│   ├── check_ssh
-│   │   │   ├── 2018-10-28T12:00:00
-│   │   │   └── 2018-10-29T21:44:04.345091
-│   │   ├── task1
-│   │   └── task_check_ssh
-│   └── scheduler
-└── unittests.cfg
+ln -s /path-to-your-project-repo/my_project_dag.py /home/me/airflow/dags/
 ```
+
+### DAG names and DAG file names
+
+* keep only one DAG in a file;
+
+* DAG should have the same name as the file it's in;
+
+* DAG's and file's name should begin with project's name.
 
 
 ## 3. Useful links
 
-[tutorial 1](http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/)
+[a good tutorial](http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/)
 
-[tutorial 2](https://airflow.apache.org/tutorial.html)
+[another good tutorial](https://airflow.apache.org/tutorial.html)
+
+Airflow's purpose is rather straightforward, so the best way to learn it is learning-by-doing.
