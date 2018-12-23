@@ -67,7 +67,7 @@ put - upload file to hdfs
 hdfs dfs -put <localSrc> <dest>
 ```
 
-copyFromLocal - copy file from hdfs to local, obviously
+copyFromLocal - copy file local to hdfs, obviously
 ```
 hdfs dfs -copyFromLocal <localSrc> <dest>
 ```
