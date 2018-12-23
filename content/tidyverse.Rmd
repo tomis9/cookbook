@@ -130,4 +130,4 @@ data.table::as.data.table(mtcars) %>%
 
 ## 4. Subjects still to cover:
 
-* dplyr: joins, slice (TODO)
+* dplyr: joins, slice, count (TODO)
