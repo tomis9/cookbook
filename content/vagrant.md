@@ -2,14 +2,8 @@
 title: "vagrant"
 date: 2018-08-14T14:25:43+02:00
 draft: false
-categories: ["scratchpad"]
+categories: ["DevOps"]
 ---
-
-<center>
-# This is not a proper blog post yet, just my notes.
-
-vagrant (TODO)
-</center>
 
 ## 1. What is vagrant and why would you use it?
 
