@@ -48,6 +48,33 @@ The data we read is an object of class "tibble", which has a nice printing metho
 class(data_t)
 print(data_t)
 ```
+Tibbles do not differ much from data.frames, except (according to the documentation, i.e. `?tibble::tibble`):
+
+>     ‘tibble()’ is a trimmed down version of ‘data.frame()’ that:
+>
+>        • Never coerces inputs (i.e. strings stay as strings!).
+>
+>        • Never adds ‘row.names’.
+>
+>        • Never munges column names.
+>
+>        • Only recycles length 1 inputs.
+>
+>        • Evaluates its arguments lazily and in order.
+>
+>        • Adds ‘tbl_df’ class to output.
+>
+>        • Automatically adds column names.
+>
+>     ‘data_frame()’ is an alias to ‘tibble()’.
+
+Btw, to create a tibble by hand, you use:
+
+```{r}
+tibble::data_frame(a = 1:5, b = letters[1:5])
+```
+So it's exactly the same as creating a usual `data.frame`.
+
 
 ### dplyr
 
@@ -130,4 +157,4 @@ data.table::as.data.table(mtcars) %>%
 
 ## 4. Subjects still to cover:
 
-* dplyr: joins, slice, count (TODO)
+* dplyr: joins, slice, count, spread, separate/unite (TODO) (count is exactly the same as group_by + summarise, spread is dcast)
