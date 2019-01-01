@@ -33,10 +33,18 @@ Or this is actually beginnig of a playlist.
 
 [link to the article](https://towardsdatascience.com/gentle-start-to-natural-language-processing-using-python-6e46c07addf3)
 
-
-
 ## Text Mining
 
-[Text Mining with R - book](http://shop.oreilly.com/product/0636920067153.do)
+[Text mining in R](https://www.tidytextmining.com/) - basic concepts in text mining, introduction to tidytext package and LDA
 
-[link to the online version of the book](https://www.tidytextmining.com/)
+## LDA
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/3mHy4OSyRf0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[long tutorial from medium](https://towardsdatascience.com/topic-modeling-and-latent-dirichlet-allocation-in-python-9bf156893c24)
+
+[a comprehensive book - The Little Book of LDA](https://ldabook.com/background.html)
+
+use cases:
+
+* finding "read also" - similar articles
