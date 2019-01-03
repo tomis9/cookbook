@@ -155,7 +155,7 @@ instead of `python3 app.py`.
 
 ## 4. Docker
 
-An even better prooduction solution than gunicorn is gunicorn and [docker](https://tomis9.github.io/post/docker). It let's you run your application in a specific environment ([pyenv](https://tomis9.github.io/post/pyenv) is a similar concept, but docker is used for production, and pyenv for development). When you have your image ready, run your application with:
+An even better prooduction solution than gunicorn is gunicorn and [docker](https://tomis9.github.io/docker). It let's you run your application in a specific environment ([pyenv](https://tomis9.github.io/pyenv) is a similar concept, but docker is used for production, and pyenv for development). When you have your image ready, run your application with:
 
 ```
 docker run -p 8000:8000 -d my_app_image:0.1 gunicorn -b 0.0.0.0:8000 app:app

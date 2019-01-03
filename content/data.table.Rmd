@@ -10,7 +10,7 @@ tags: ["R", "data.table"]
 
 * data.table is an R packge which let's you work on tabular datasets quickly and easily;
 
-* comparing to base R or [dplyr](https://tomis9.github.io/post/tidyverse) it's significantly faster;
+* comparing to base R or [dplyr](https://tomis9.github.io/tidyverse/#/dplyr) it's significantly faster;
 
 * data.table has a concise and SQL-like syntax.
 

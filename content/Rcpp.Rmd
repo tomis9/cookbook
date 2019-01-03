@@ -13,7 +13,7 @@ tags: ["R", "C++"]
 
 * Useful when you have a bottleneck in your code which makes the execution last forever. In that case you can rewrite in into super-fast C++.
 
-Or you can switch to Python. Or data.table. Or write it in [C](https://tomis9.github.io/post/c).
+Or you can switch to Python. Or data.table. Or write it in [C](https://tomis9.github.io/cinr).
 
 ## 2. A "Hello World" example
 

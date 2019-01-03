@@ -45,7 +45,7 @@ but I recommend running it line by line, so you would understand what you are do
 
 ## 3. "Hello World" examples {#hello}
 
-You probably expect that knowing Hadoop will let you do Big Data. It would, but in reality nobody uses Hadoop to run data processing anymore. [Spark](https://tomis9.github.io/post/spark) and [Hive](https://tomis9.github.io/post/hive) have much nicer apis, and do the same tasks faster.
+You probably expect that knowing Hadoop will let you do Big Data. It would, but in reality nobody uses Hadoop to run data processing anymore. [Spark](https://tomis9.github.io/spark) and [Hive](https://tomis9.github.io/hive) have much nicer apis, and do the same tasks faster.
 
 But there is still one functionality that was not replaced: a file system, called *hadoop distributed file system* or *hdfs*, where limited disk capacity is no longer a problem.
 
@@ -104,3 +104,5 @@ More commands are available [here](https://data-flair.training/blogs/top-hadoop-
 * Hadoop GUI (TODO)
 
 * example of MapReduce: wordcount (TODO)
+
+* [RHadoop](https://github.com/RevolutionAnalytics/RHadoop/wiki) (TODO)

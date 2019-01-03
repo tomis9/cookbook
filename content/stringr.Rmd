@@ -12,7 +12,7 @@ tags: ["R", "regex", "tidyvers"]
 
 * but still traditional regex is available in every programming language;
 
-* stringr is considered a member of [tidyverse]{https://tomis9.github.io/post/tidyverse} family.
+* stringr is considered a member of [tidyverse]{https://tomis9.github.io/tidyverse} family.
 
 To be honest, I don't use stringr, because it's basic R regex functions are more than enough for my everyday work.
 

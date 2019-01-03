@@ -10,7 +10,7 @@ tags: ["R", "statistics"]
 
 * nls, or *nonlinear least squares* is a statistical method used to describe a process as a nonlinear function of deterministic variables and a random variable;
 
-* you may think of it as an older and stronger brother of [linear regression](https://tomis9.gtihub.io/post/sklearn_regression) - more robust, powerful, smarter and difficult to understand ;)
+* you may think of it as an older and stronger brother of [linear regression](https://tomis9.gtihub.io/sklearn_regression) - more robust, powerful, smarter and difficult to understand ;)
 
 ## 2. A "Hello World" example
 
