@@ -2,23 +2,23 @@
 title: "spark"
 date: 2018-11-23T12:58:49+02:00
 draft: false
-categories: ["data-engineering", "python"]
-tags: ["spark", "data-engineering", "python"]
+categories: ["data-engineering", "python", "R"]
+tags: ["spark", "data-engineering", "python", "R"]
 ---
 
 ## 1. What is spark and why would use use it?
 
-* Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/post/hadoop);
+* Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/hadoop);
 
 * it can be accessed from Python, R, scala (spark is actually written in scala) and java;
 
 * it is probably the most popular big data tool nowadays for data scientists.
 
 ## 2. A few "Hello World" examples
+### a) pyspark 
+#### Prerequisites
 
-### Prerequisites
-
-#### Installation of pyspark
+##### Installation of pyspark
 In this tutorial we will work on a development python version of spark. You can istall it with:
 
 ```{python}
@@ -27,7 +27,7 @@ sudo pip3 install pyspark
 
 You will not notice any difference between this spark version and a production version installed on a cluster, except for performance.
 
-#### Example file
+##### Example file
 
 During the tutorial we will work on an example file:
 
@@ -39,7 +39,7 @@ UserCode,GroupCode
 1152,345
 ```
 
-### Initialisation
+#### Initialisation
 
 First, let's import SparkSession from pyspark.sql module, which enables us to ceoonect with spark from python. If you do not specifically provide details of spark installation on cluster/server/laptop you use, pyspark will use it's own, development spark session.
 
@@ -58,7 +58,7 @@ or an ugly name. Up to you.
 
 From now you can watch your tasks execution in a web interface available at http://127.0.0.1:4040.
 
-### Basic information about dataframe
+#### Basic information about dataframe
 
 Let's read some data to spark and enjoy it's incredibly fast performance.
 
@@ -89,7 +89,7 @@ some statistics of our dataframe, similar to R's `summary`
 df.describe().show()
 ```
 
-### SQL queries
+#### SQL queries
 
 How about being able to use sql to query our table?
 
@@ -108,7 +108,7 @@ df2 = spark.sql("select * from example")
 df2.show()
 ```
 
-### Query expressions
+#### Query expressions
 
 Selecting
 ```
@@ -123,9 +123,9 @@ filtered.show()
 ```
 
 
-### Saving dataframes
+#### Saving dataframes
 
-In general, you will save your data to parquet files, as they are optimised for reading from writing to spark.
+In general, you will save your data to parquet files, as they are optimised for reading from and for writing to spark.
 ```
 df.write.parquet('file.parquet')
 ```
@@ -134,7 +134,8 @@ But you can always save the data to csv.
 ```
 df.write.csv('file.csv')
 ```
-#### saving tips & tricks
+
+##### saving tips & tricks
 
 You will often want to write your files in a specific way. Here is a list of the most popular parameters:
 ```
@@ -157,12 +158,76 @@ and their descriptions:
 
 * file extension
 
+### b) sparklyr (spark + dplyr)
+
+There are two popular R libraries, which enable you to connect to spark from R: SparkR and sparklyr. I found sparklyr much nicer, as it is compatible with all the fancy functions from [dplyr](https://tomis9.github.io/tidyverse), which makes manipulating dataframes familiar and easy (+ 1 big point for dplyr in it's fight against [data.table](https://tomis9.github.io/data.table)).
+
+Here's a quick example of reading a parquet file from [hdfs](https://tomis9.github.io/hadoop) into spark.
+
+First, check if you use a proper version of spark:
+```
+Sys.getnev("SPARK_HOME")
+```
+
+If the function above returns an empty string, you may set the path of the spark installation manually with:
+
+```
+Sys.setenv(SPARK_HOME="<spark_home_path>")
+```
+
+so that R will use production version of spark installed on the cluster. If you do not set it, sparklyr will use the default, testing version of spark (as long as you installed it with `spark_install()`) or will throw an error if it does not find any available version of spark.
+
+Let's get to the point:
+```{r}
+Sys.setenv(SPARK_HOME="<spark_home_path>")
+
+library(dplyr)
+library(sparklyr)
+
+sc <- spark_connect(master = "local[*]")
+
+parquet_path <- "hdfs:///user/..."
+d <- spark_read_parquet(sc, name = "my_df_name", path = parquet_path)
+```
+
+> Tip: you can check the details of spark conenction by typing `sc`.
+
+After reading the dataframe to the variable `d`, you can run any `dplyr` function on this dataframe, e.g.:
+
+```
+d %>% count()
+```
+
+You will find more useful information on [datacamp sparklyr course](https://www.datacamp.com/courses/introduction-to-spark-in-r-using-sparklyr).
+
+### c) SparkR
+
+A short example of setting up SparkR:
+
+```{r}
+SPARK_HOME <- ""
+lib.loc <- file.path(SPARK_HOME, "R", "lib")
+Sys.setenv(SPARK_HOME = SPARK_HOME) 
+library(SparkR, lib.loc = lib.loc)
+sparkR.session(master = "local[*]", sparkConfig = list(spark.driver.memory = "2g"))
+```
+
+and reading a parquet file from hdfs:
+
+```{r}
+parquet_path <- "hdfs:///user/..."
+df <- read.parquet(parquet_path)
+```
+
+[Here](https://spark.apache.org/docs/latest/sparkr.html) you can find a SparkR programming guide.
+
 ## 3. Useful links
 
 * [a nice introductory article](https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi)
 
 * [a goo book on pyspark](https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf)
 
+* [SparkR vs sparklyr](https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/)
 
 ## 4. Subjects still to cover
 
@@ -170,8 +235,6 @@ and their descriptions:
 
 * importing table directly from database - jdbc (TODO)
 
-* communication with hdfs (TODO)
-
-* sparkR (TODO)
+* pyspark communication with hdfs (TODO)
 
 * spark-submit (TODO)
