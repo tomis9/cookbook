@@ -1,30 +1,60 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <title>
-        todo tutorial https://blog.sleeplessbeastie.eu/2013/04/14/console-based-task-manager/
-    </title>
-    <note priority="medium" time="1546362278">
-        clean code python
+    <note priority="medium" time="1546704855">
+        programming
+        <note priority="medium" time="1546704926">
+            clean code python
+        </note>
+        <note priority="medium" time="1546704941">
+            class inheritance python
+        </note>
+        <note priority="medium" time="1546704950">
+            parallel R https://www.r-bloggers.com/how-to-go-parallel-in-r-basics-tips/
+        </note>
+        <note priority="medium" time="1546704955">
+            singletons in Python https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python
+        </note>
     </note>
-    <note priority="medium" time="1546362299">
-        class inheritance python
+    <note priority="medium" time="1546704869">
+        data engineering
+        <note priority="medium" time="1546704988">
+            kafka
+        </note>
+        <note priority="medium" time="1546705000">
+            GCP, AWS, Azure
+        </note>
+        <note priority="medium" time="1546705008">
+            Hive
+        </note>
+        <note priority="medium" time="1546705022">
+            Sqoop
+        </note>
+        <note priority="medium" time="1546705028">
+            graph databases
+        </note>
     </note>
-    <note priority="medium" time="1546362314">
-        parallel R https://www.r-bloggers.com/how-to-go-parallel-in-r-basics-tips/
-    </note>
-    <note priority="medium" time="1546362321">
-        singletons in Python https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python
-    </note>
-    <note priority="medium" time="1546362909">
-        deep learning
-    </note>
-    <note priority="medium" time="1546362921">
-        keras
-    </note>
-    <note priority="medium" time="1546362928">
-        tensorflow
-    </note>
-    <note priority="medium" time="1546362940">
-        kafka
+    <note priority="medium" time="1546705047">
+        machine learning
+        <note priority="medium" time="1546705053">
+            deep learning
+        </note>
+        <note priority="medium" time="1546705056">
+            keras
+        </note>
+        <note priority="medium" time="1546705060">
+            tensorflow
+        </note>
+        <note priority="medium" time="1546705069">
+            Doing Bayesian Data Analysis
+        </note>
+        <note priority="medium" time="1546705073">
+            Pytorch
+        </note>
+        <note priority="medium" time="1546705077">
+            Theano
+        </note>
+        <note priority="medium" time="1546705080">
+            computer vision
+        </note>
     </note>
 </todo>
