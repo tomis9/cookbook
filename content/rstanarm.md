@@ -2,15 +2,9 @@
 title: "rstanarm"
 date: 2018-12-23T20:19:18+01:00
 draft: false
-categories: ["scratchpad"]
-tags: []
+categories: ["R", "statistics"]
+tags: ["R", "statistics"]
 ---
-
-<center>
-# This is not a proper blog post yet.
-
-rstanarm (TODO)
-</center>
 
 ## 1. What is rstanarm and why would you use it?
 
@@ -24,14 +18,21 @@ rstanarm (TODO)
 
     * additional arguments are available to specify priors.
 
-* in a nutshell, rstanarm let's you estimate various bayesian models and examine them with [shinystan](https://mc-stan.org/users/interfaces/shinystan).
+* in a nutshell, rstanarm let's you estimate various Bayesian models and examine them with [shinystan](https://mc-stan.org/users/interfaces/shinystan).
 
 ## 2. A "Hello World" example
 
-### rstan example
-```
-# http://thestatsgeek.com/2015/06/08/my-first-foray-with-stan/
+Let's begin our adventure with rstanarm with a package on which rstanarm is built, i.e. rstan. Why was rstanarm even created? It provides a nice R interface for many rstan fucntions, in particular, you do not have to keep your model definition in a separate ".stan" file nor in a string, but you write it just as you did in R, with a function + formula syntax. 
 
+In the following examples we will calculate coefficients of the simplest statistical model, which is linear regression.
+
+### rstan example
+
+Let's see how we can estimate coefficients of linear regression in rstan.
+
+*based on http://thestatsgeek.com/2015/06/08/my-first-foray-with-stan/*
+
+```
 model_code <- "
 data {
   int N;
@@ -59,9 +60,13 @@ fit <- stan(model_code = model_code, data = mydata,
 fit
 
 summary(lm(y~x))
+```
 
-# http://mc-stan.org/shinystan/articles/shinystan-package.html
+Having the coefs estimated, let's see the results in a graphical, interactive form:
 
+*base on http://mc-stan.org/shinystan/articles/shinystan-package.html*
+
+```
 library(shinystan)
 my_sso <- launch_shinystan(fit)
 ```
@@ -78,12 +83,15 @@ What happened here?
 
 * we launched the `shinystan` GUI to look into the model.
 
+Concluding, modelling in rstan does not really resemble R programming language that we use every day.
+
 ### rstanarm example
 
-Let's use the dataset from the previous section (rstan example).
-```
-# http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm
+Let's use the dataset from the previous section (rstan example) for estimating coefficients of linear regression.
 
+*based on http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm*
+
+```
 library(rstanarm)
 
 mydata_df <- data.frame(y = y, x = x)
@@ -104,12 +112,19 @@ What happened here?
 
 * and launched `shinystan` to view it in GUI.
 
+Rstanarm provides a much more familiar syntax, comparing to rstan.
 
 ## 3. Useful links
 
-* [a very good introductory article](http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm)
+#### rstan
 
 * [example of least squares in rstan](http://thestatsgeek.com/2015/06/08/my-first-foray-with-stan/)
+
+* [RStan](https://mc-stan.org/users/interfaces/rstan.html)
+
+#### rstanarm
+
+* [a very good introductory article](http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm)
 
 * [tutorial/documentation/vignette](https://cran.r-project.org/web/packages/rstanarm/vignettes/rstanarm.html)
 
@@ -121,8 +136,6 @@ What happened here?
 
 * [User-friendly Bayesian regression modeling: A tutorial with rstanarm and shinystan](http://www.tqmp.org/RegularArticles/vol14-2/p099/p099.pdf)
 
-* [RStan](https://mc-stan.org/users/interfaces/rstan.html)
+#### Bayes
 
-* [Doing Bayesian Data Analysis](http://www.users.csbsju.edu/~mgass/robert.pdf)
-
-* https://www.kaggle.com/avehtari/bayesian-logistic-regression-with-rstanarm
+* [Doing Bayesian Data Analysis](https://www.goodreads.com/book/show/9003187-doing-bayesian-data-analysis) - *probably* the best book to learn the Bayesian philosophy
