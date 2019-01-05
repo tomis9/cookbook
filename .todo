@@ -15,4 +15,16 @@
     <note priority="medium" time="1546362321">
         singletons in Python https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python
     </note>
+    <note priority="medium" time="1546362909">
+        deep learning
+    </note>
+    <note priority="medium" time="1546362921">
+        keras
+    </note>
+    <note priority="medium" time="1546362928">
+        tensorflow
+    </note>
+    <note priority="medium" time="1546362940">
+        kafka
+    </note>
 </todo>
