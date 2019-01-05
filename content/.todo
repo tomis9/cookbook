@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="medium" time="1546505555" done="1546508034">
+        table of contents in tidyverse
+    </note>
+    <note priority="medium" time="1546505575" done="1546508115">
+        proper link to tidyverse in data.table
+    </note>
+    <note priority="medium" time="1546505596" done="1546508476">
+        check if links in all posts are proper, i.e. if they do not contain the word post
+    </note>
+    <note priority="medium" time="1546506085" done="1546508482">
+        spark - links directly to dplyr
+    </note>
+</todo>
