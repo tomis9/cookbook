@@ -69,6 +69,14 @@ rm -rf .git/modules/$submodule
 git rm -f $submodule
 </textarea><br>
 
+#### remove a remote branch
+
+Once you do rebase and merge, before push your changes you may want to delete the merged branch first. You can do it with:
+
+<textarea rows = "2" cols = "50" name = "git_submodule" style='font-family: "Courier New"; color: #505050;'>
+git push origin --delete <branch_name>
+</textarea><br>
+
 ## 5. Subjects still to cover:
 
 * git revert (TODO)
