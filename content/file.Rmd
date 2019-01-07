@@ -1,10 +1,16 @@
 ---
 title: "Rmarkdown total basics"
 date: 2018-11-09T23:01:35+01:00
-draft: true
-categories: ["R"]
-tags: ["draft"]
+draft: false
+categories: ["scratchpad"]
 ---
+
+<center>
+# This is not a proper blog post yet, just my notes.
+
+Rmarkdown (TODO)
+</center>
+
 
 Before you begin, check out a very nice cheatsheet available at 
 https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf
