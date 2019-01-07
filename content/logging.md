@@ -26,8 +26,8 @@ https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-pra
 ```{python}
 import logging
 
-FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-logging.basicConfig(filename='logs.log', level=logging.INFO, format=FORMAT)
+format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+logging.basicConfig(filename='logs.log', level=logging.INFO, format=format)
 
 logging.debug('some debug')
 logging.info('some info')
@@ -40,7 +40,7 @@ or using a `logger`:
 ```{python}
 import logging
 
-format = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(filename='logs.log', level=logging.INFO, 
         logging.format=format)
 logger = logging.getLogger(__name__)
@@ -56,13 +56,17 @@ logging.error('some error')
 ```{python}
 import logging
 
-logger = logging.getLogger('app')
+logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-hdl = logging.FileHandler('./logs.log')
-format_str = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-hdl.setFormatter(logging.Formatter(format_str))
-logger.addHandler(hdl)
+format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+hdl_file = logging.FileHandler('./logs.log')
+hdl_file.setFormatter(logging.Formatter(format))
+hdl_stdout = logging.StreamHandler(sys.stdout)
+hdl_stdout.setFormatter(logging.Formatter(format))
+
+logger.addHandler(hdl_file)
+logger.addHandler(hdl_stdout)
 
 logger.debug('some debug')
 ```
