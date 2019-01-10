@@ -48,3 +48,5 @@ Or this is actually beginnig of a playlist.
 use cases:
 
 * finding "read also" - similar articles
+
+[LDA from scratch in R](http://brooksandrew.github.io/simpleblog/articles/latent-dirichlet-allocation-under-the-hood/)
