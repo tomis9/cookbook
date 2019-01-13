@@ -19,13 +19,5 @@ logging_tutorial/logs.log
 *.csv
 public/*
 content/post/*html
-static/rmarkdown-libs/*
-static/post/*
-static/ggplot2_files
-static/hadoop
-static/header-slides
-static/nls_files
-static/rmarkdown-libs
-static/tidyverse_files
+static/*/*
 content/*.html
-static/file_files/*
