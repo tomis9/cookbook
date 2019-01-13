@@ -46,10 +46,10 @@ pygmentsuseclasses         = true
     url                    = "categories/data-engineering/"  
  
   [[menu.main]]
-    name                   = "Statistics"
+    name                   = "Data mining"
     weight                 = 35
-    identifier             = "statistics"
-    url                    = "categories/statistics/"  
+    identifier             = "data-mining"
+    url                    = "categories/data-mining/"  
 
   [[menu.main]]
     name                   = "DevOps"
