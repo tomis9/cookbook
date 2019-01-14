@@ -31,13 +31,20 @@ Yes, you can, but with airflow:
 
 Convinced? ;)
 
-## 2. Installation
+## 2. Installation and startup
 
 ```{python}
 pip install airflow
 ```
 
 Not very complicated.
+
+Then run airflow scheduler and webservice with:
+
+```{bash}
+airflow scheduler
+airflow webservice
+```
 
 ## 3. Best practises
 
