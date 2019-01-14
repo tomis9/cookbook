@@ -137,6 +137,8 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
 
 ## 3. Curiosities
 
+### plotly
+
 If you want to publish a plot on your website, consider using `plotly`:
 
 ```{r}
@@ -148,7 +150,16 @@ plotly::ggplotly(p)
 
 as it will give your plot interesting interactive features. Shiny users will appreciate them.
 
+### ssh
+
+When you work on a remote machine and connect to it via ssh, the plots you create will not appear in pop-up windows by default. In order to do this, add the `-X` flag when connecting to server:
+
+```{bash, eval = FALSE}
+ssh -X user@login
+```
 
 ## 4. Useful links
 
 * [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) - a very good book for plotting in ggplot2. A few examples in this tutorial were inspirded by it.
+
+* [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) - looking for a quick answer? This is the right place for you.
