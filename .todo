@@ -14,6 +14,15 @@
         <note priority="medium" time="1546704955">
             singletons in Python https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python
         </note>
+        <note priority="medium" time="1547671684">
+            python design patterns
+        </note>
+        <note priority="medium" time="1547671696">
+            ways of passing arguments to R and Python scripts
+        </note>
+        <note priority="medium" time="1547671755">
+            REST api in flask https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
+        </note>
     </note>
     <note priority="medium" time="1546704869">
         data engineering
@@ -58,6 +67,12 @@
         </note>
         <note priority="medium" time="1546800955">
             caffee
+        </note>
+        <note priority="medium" time="1547671764">
+            MCMC
+        </note>
+        <note priority="medium" time="1547671772">
+            metropolis algorithm
         </note>
     </note>
 </todo>
