@@ -50,3 +50,13 @@ use cases:
 * finding "read also" - similar articles
 
 [LDA from scratch in R](http://brooksandrew.github.io/simpleblog/articles/latent-dirichlet-allocation-under-the-hood/)
+
+## other subjects
+
+word2vec, FastText, Flair, BERT
+
+LSTM, CNN, HAN
+
+NER, PoS (LSTM-CRF, Bi-LSTM)
+
+R-CNN
