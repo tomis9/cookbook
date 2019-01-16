@@ -73,11 +73,12 @@ def get_data(reddit, subreddit_name, n_posts):
 
     top_subreddit = subreddit.top(limit=n_posts)
 
-    topics_dict = {"title": [], "comms_num": [], "body": []}
+    topics_dict = {"title": [], "score": [], "comms_num": [], "body": []}
 
     for submission in top_subreddit:
         topics_dict["title"].append(submission.title)
         topics_dict["comms_num"].append(submission.num_comments)
+        topics_dict["score"].append(submission.score)
         topics_dict["body"].append(submission.selftext)
 
     topics_data = pd.DataFrame(topics_dict)
