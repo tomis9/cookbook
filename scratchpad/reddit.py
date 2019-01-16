@@ -42,8 +42,8 @@ http://www.storybench.org/how-to-scrape-reddit-with-python/
 # the very good one:
 https://praw.readthedocs.io/en/latest/getting_started/quick_start.html
 
-nlp - analiza, czy się podoba +
-lda - sprawdzenie, co się najbardziej, a co najmniej podoba
+nlp - analysis if people like the editor
+lda - check what are the best and worst features of these editors
 '''
 
 # sudo pip3 install praw
@@ -69,27 +69,24 @@ subreddit_name = "vim"
 
 def get_data(reddit, subreddit_name, n_posts):
     subreddit = reddit.subreddit(subreddit_name)
-    subreddit = reddit.subreddit(subreddit_name)
 
     top_subreddit = subreddit.top(limit=n_posts)
 
-    topics_dict = {"title": [], "score": [], "id": [], "url": [],
-                   "comms_num": [], "created": [], "body": []}
+    topics_dict = {"title": [], "comms_num": [], "body": []}
 
     for submission in top_subreddit:
         topics_dict["title"].append(submission.title)
-        topics_dict["score"].append(submission.score)
-        topics_dict["id"].append(submission.id)
-        topics_dict["url"].append(submission.url)
         topics_dict["comms_num"].append(submission.num_comments)
-        topics_dict["created"].append(submission.created)
         topics_dict["body"].append(submission.selftext)
 
     topics_data = pd.DataFrame(topics_dict)
 
-    topics_data['when'] = pd.to_datetime(topics_data['created'], unit='s')
-
     return topics_data
 
 
-d = get_data(reddit, 'vim', n_posts=10000)
+vim = get_data(reddit, 'vim', n_posts=10000)
+emacs = get_data(reddit, 'emacs', n_posts=10000)
+
+save_path = os.path.join(home, 'cookbook/scratchpad')
+vim.to_csv(os.path.join(save_path, 'vim.csv'))
+emacs.to_csv(os.path.join(save_path, 'emacs.csv'))
