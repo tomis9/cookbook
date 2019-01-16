@@ -53,7 +53,8 @@ import os
 import json
 
 home = os.environ['HOME']
-reddit_creds_path = os.path.join(home, 'cookbook/scratchpad/reddit_creds.json')
+relative_path = 'cookbook/scratchpad/vim_vs_emacs/reddit_creds.json'
+reddit_creds_path = os.path.join(home, relative_path)
 with open(reddit_creds_path, 'r') as f:
     reddit_creds = json.load(f)
 
@@ -87,6 +88,6 @@ def get_data(reddit, subreddit_name, n_posts):
 vim = get_data(reddit, 'vim', n_posts=10000)
 emacs = get_data(reddit, 'emacs', n_posts=10000)
 
-save_path = os.path.join(home, 'cookbook/scratchpad')
+save_path = os.path.join(home, 'cookbook/scratchpad/vim_vs_emacs')
 vim.to_csv(os.path.join(save_path, 'vim.csv'))
 emacs.to_csv(os.path.join(save_path, 'emacs.csv'))
