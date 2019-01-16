@@ -55,6 +55,7 @@ x <- rnorm(n)
 y <- x + rnorm(n)
 mydata <- list(N = n, y = y, x=x)
 
+library(rstan)
 fit <- stan(model_code = model_code, data = mydata, 
             iter = 1000, chains = 4)
 fit
