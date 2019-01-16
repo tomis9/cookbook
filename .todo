@@ -75,4 +75,10 @@
             metropolis algorithm
         </note>
     </note>
+    <note priority="medium" time="1547672531">
+        other
+        <note priority="medium" time="1547672552">
+            readme + travis sign
+        </note>
+    </note>
 </todo>
