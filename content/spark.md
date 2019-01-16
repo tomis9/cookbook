@@ -233,8 +233,12 @@ df <- read.parquet(parquet_path)
 
 * MLlib (TODO)
 
-* importing table directly from database - jdbc (TODO)
+* importing table directly from database - jdbc (TODO), both for pyspark and sparklyr (https://rdrr.io/cran/sparklyr/man/spark_read_jdbc.html)
+
+[https://stackoverflow.com/questions/45420958/how-to-use-a-predicate-while-reading-from-jdbc-connection]
 
 * pyspark communication with hdfs (TODO)
 
 * spark-submit (TODO)
+
+* sparklyr + sql (TODO) [https://spark.rstudio.com/]
