@@ -65,8 +65,6 @@ reddit = praw.Reddit(client_id=reddit_creds['client_id'],
                      username=reddit_creds['username'],
                      password=reddit_creds['password'])
 
-subreddit_name = "vim"
-
 
 def get_data(reddit, subreddit_name, n_posts):
     subreddit = reddit.subreddit(subreddit_name)
@@ -86,9 +84,16 @@ def get_data(reddit, subreddit_name, n_posts):
     return topics_data
 
 
-vim = get_data(reddit, 'vim', n_posts=10000)
-emacs = get_data(reddit, 'emacs', n_posts=10000)
+editors = ["Atom", "SublimeText", "vscode", "brackets", "notepadplusplus",
+           "vim", "emacs"]
 
+editors_posts = []
+for editor in editors:
+    editor_posts = get_data(reddit, subreddit_name=editor, n_posts=1000)
+    editor_posts['editor'] = editor
+    editors_posts.append(editor_posts)
+
+
+result = pd.concat(editors_posts)
 save_path = os.path.join(home, 'cookbook/scratchpad/vim_vs_emacs')
-vim.to_csv(os.path.join(save_path, 'vim.csv'), index=False)
-emacs.to_csv(os.path.join(save_path, 'emacs.csv'), index=False)
+result.to_csv(os.path.join(save_path, 'editors_posts.csv'), index=False)

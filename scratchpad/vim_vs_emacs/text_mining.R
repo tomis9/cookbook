@@ -1,26 +1,25 @@
 library(dplyr)
 library(readr)
 
-vim <- read_csv("vim.csv")
-emacs <- read_csv("emacs.csv")
-
-da <- vim %>% 
-  mutate(editor = "vim") %>%
-  bind_rows(emacs %>%
-            mutate(editor = "emacs"))
+editors_posts <- read_csv("editors_posts.csv")
 
 library(ggplot2)
 library(plotly)
 
+editors_posts <- editors_posts %>%
+  group_by(editor) %>%
+  mutate(n = n()) %>%
+  filter(n > 500) %>%
+  ungroup()
 
-p_score <- da %>%
+p_score <- editors_posts %>%
   group_by(editor) %>%
   filter(!(abs(score - median(score)) > 2 * sd(score))) %>%
   ungroup() %>%
   ggplot(mapping = aes(x = score, color = editor)) +
   geom_density()
 
-p_comms_num <- da %>%
+p_comms_num <- editors_posts %>%
   group_by(editor) %>%
   filter(!(abs(comms_num - median(comms_num)) > 2 * sd(comms_num))) %>%
   ungroup() %>%
@@ -31,6 +30,8 @@ ggplotly(p_score)
 ggplotly(p_comms_num)
 
 # so far we can see that in average there are usually comments under vim topics, comparing to emacs, and vim topics usually gain higher score; in other words, they are upvoted more often. This may suggest that there are more vim users than emacs users.
+# or people ask on stackoverflow instead of reddit.
+# https://github.com/lucjon/Py-StackExchange
 
 # Or vim is a hotter subject.
 
@@ -38,7 +39,7 @@ ggplotly(p_comms_num)
 
 # preparing for tokenisation
 
-bodies <- da %>%
+bodies <- editors_posts %>%
   dplyr::filter(!is.na(body)) %>%
   group_by(editor) %>%
   mutate(post_num = 1:n()) %>%
@@ -55,16 +56,11 @@ bodies %>%
 
 #######################################
 # a quick exploratory analysis
-tidy_frame <- function(frame, column) {
-  tokens <- tidytext::unnest_tokens_(frame, "word", column)
 
-  tokens <- tokens %>%
-    anti_join(tidytext::stop_words, by = "word")
+tokens <- tidytext::unnest_tokens(bodies, "word", body)
 
-  return(tokens)
-}
-
-tokens <- tidy_frame(bodies, "body")
+tokens <- tokens %>%
+  anti_join(tidytext::stop_words, by = "word")
 
 tokens <- tokens %>%
   filter(!word %in% c("vim", "emacs"))
@@ -80,6 +76,7 @@ tokens %>%
   facet_wrap(~editor, nrow = 2) +
   coord_flip()
  
+library(tidyr)
 library(ggplot2)
 # library(tidyr)
 p_t <- tokens %>%
