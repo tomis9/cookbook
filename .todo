@@ -41,6 +41,9 @@
         <note priority="medium" time="1546705028">
             graph databases
         </note>
+        <note priority="medium" time="1548097216">
+            h2o + rsparkling
+        </note>
     </note>
     <note priority="medium" time="1546705047">
         machine learning
@@ -73,6 +76,18 @@
         </note>
         <note priority="medium" time="1547671772">
             metropolis algorithm
+        </note>
+        <note priority="medium" time="1548320923">
+            xgboost https://medium.com/@chrisfotache/text-classification-in-python-pipelines-nlp-nltk-tf-idf-xgboost-and-more-b83451a327e0
+        </note>
+        <note priority="medium" time="1548322027">
+            naive bayes
+        </note>
+        <note priority="medium" time="1548322692">
+            falling rule lists
+        </note>
+        <note priority="medium" time="1548323704">
+            https://github.com/facebookresearch/LASER
         </note>
     </note>
     <note priority="medium" time="1547672531">
