@@ -145,6 +145,7 @@ You can still use plain old sql queries, if you don't feel comfortable with work
 engine = sqlalchemy.create_engine(connection_string)
 connection = engine.connect()
 result = connection.execute("select * from test1;")
+colnames = result._metadata.keys
 print(result.fetchall())
 
 connection.close()
