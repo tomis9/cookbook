@@ -92,6 +92,7 @@ for editor in editors:
     editor_posts = get_data(reddit, subreddit_name=editor, n_posts=1000)
     editor_posts['editor'] = editor
     editors_posts.append(editor_posts)
+    print("downloading {} finished".format(editor))
 
 
 result = pd.concat(editors_posts)
