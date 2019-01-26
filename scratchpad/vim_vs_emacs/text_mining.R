@@ -1,25 +1,23 @@
-library(dplyr)
-library(readr)
-
-editors_posts <- read_csv("editors_posts.csv")
-
-library(ggplot2)
+library(tidyverse)
 library(plotly)
 
-editors_posts <- editors_posts %>%
+posts_reddit <- read_csv("posts_reddit.csv")
+
+posts_reddit <- posts_reddit %>%
   group_by(editor) %>%
   mutate(n = n()) %>%
   filter(n > 500) %>%
   ungroup()
 
-p_score <- editors_posts %>%
+p_score <- posts_reddit %>%
   group_by(editor) %>%
-  filter(!(abs(score - median(score)) > 2 * sd(score))) %>%
+  filter(!(abs(score - median(score)) > sd(score))) %>%
   ungroup() %>%
   ggplot(mapping = aes(x = score, color = editor)) +
-  geom_density()
+  geom_density() +
+  theme_light()
 
-p_comms_num <- editors_posts %>%
+p_comms_num <- posts_reddit %>%
   group_by(editor) %>%
   filter(!(abs(comms_num - median(comms_num)) > 2 * sd(comms_num))) %>%
   ungroup() %>%
@@ -39,7 +37,7 @@ ggplotly(p_comms_num)
 
 # preparing for tokenisation
 
-bodies <- editors_posts %>%
+bodies <- posts_reddit %>%
   dplyr::filter(!is.na(body)) %>%
   group_by(editor) %>%
   mutate(post_num = 1:n()) %>%
@@ -168,17 +166,18 @@ library(tidyverse)
 library(readr)
 library(ggplot2)
 
-editors_posts <- read_csv("posts_stack.csv")
+posts_stack <- read_csv("posts_stack.csv")
 
-editors_posts %>%
+posts_stack %>%
   filter(score < quantile(score, 0.9)) %>%
   ggplot(mapping = aes(x = score, color = editor)) +
-  geom_density(bw = 0.5)
+  geom_density(bw = 0.5) %>%
+  ggplotly()
 
 # tags analysis
 # users of some languages may be more frustrated than the others'... I felt pretty frustrated when I had to code in VBA. As some editors may have particuralry well-written plugins for specific languages, we cannot say the our posts sample is IID. Let's analise the dependencies.
   
-tags <- editors_posts %>%
+tags <- posts_stack %>%
   select(editor, tags) %>%
   unnest(tag = strsplit(tags, ",")) %>%
   mutate(tag = gsub("[]\\[\\' ]", "", tag)) %>%
@@ -197,7 +196,7 @@ tags %>%
   with(wordcloud(tag, n, max.words = 50))
 
 # sentiment analysis
-bodies <- editors_posts %>%
+bodies <- posts_stack %>%
   dplyr::filter(!is.na(body)) %>%
   group_by(editor) %>%
   mutate(post_num = 1:n()) %>%

@@ -58,8 +58,14 @@ pygmentsuseclasses         = true
     url                    = "categories/devops/"  
 
   [[menu.main]]
-    name                   = "scratchpad"
+    name                   = "Projects"
     weight                 = 50
+    identifier             = "projects"
+    url                    = "categories/projects/"  
+
+  [[menu.main]]
+    name                   = "scratchpad"
+    weight                 = 60
     identifier             = "scratchpad"
     url                    = "categories/scratchpad/"  
 

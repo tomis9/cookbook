@@ -1,4 +1,3 @@
-# It took me quite a while to find how to download bodies of the questions
 import stackexchange
 import pandas as pd
 
@@ -31,13 +30,3 @@ for tag in editors:
 
 result = pd.concat(posts)
 result.to_csv('posts_stack.csv', index=False)
-
-# nagetive questions like 'cannot' or 'broken'; positive ones like 'upgrade'
-# what I am doing is rather a research
-# questions that share the tags, i.e. ['emacs', 'vim']
-
-# or analysis of emacs tags (LDA?), i.e. treat a list of tags as a vector of
-# words (vector is ordered, as order matters - the most important tags are
-# listed earlier
-
-# what languages are used in which editor
