@@ -10,7 +10,7 @@ This repo contains all the posts written in markdown and Rmarkdown, that are pub
 
 If you think about writing your own blog, I highly recommend this workflow, as it is:
 
-* simple - in order to publish a new post or make a change to an existing one, all you have to do is 'git push' to the github repository;
+* simple - in order to publish a new post or make a change to an existing one, all you have to do is `git push` to the github repository;
 
 * it is 100% free of charge;
 
