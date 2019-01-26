@@ -237,8 +237,13 @@ df <- read.parquet(parquet_path)
 
 [https://stackoverflow.com/questions/45420958/how-to-use-a-predicate-while-reading-from-jdbc-connection]
 
+[https://stackoverflow.com/questions/41966814/transfer-data-from-database-to-spark-using-sparklyr]
+
 * pyspark communication with hdfs (TODO)
 
 * spark-submit (TODO)
 
 * sparklyr + sql (TODO) [https://spark.rstudio.com/]
+
+* sparkR and sparklyr comparison [https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/]
+
