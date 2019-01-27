@@ -55,12 +55,21 @@
         </note>
         <note priority="medium" time="1546705060">
             tensorflow
+            <note priority="medium" time="1548626859">
+                song popularity https://towardsdatascience.com/how-i-created-a-classifier-to-determine-the-potential-popularity-of-a-song-6d63093ba221
+            </note>
         </note>
         <note priority="medium" time="1546705069">
             Doing Bayesian Data Analysis
         </note>
         <note priority="medium" time="1546705073">
             Pytorch
+            <note priority="medium" time="1548611390">
+                pytext https://code.fb.com/ai-research/pytext-open-source-nlp-framework/
+            </note>
+            <note priority="medium" time="1548611466">
+                pytext https://towardsdatascience.com/introducing-pytext-d8f404f1745
+            </note>
         </note>
         <note priority="medium" time="1546705077">
             Theano
@@ -82,12 +91,18 @@
         </note>
         <note priority="medium" time="1548322027">
             naive bayes
+            <note priority="medium" time="1548626961">
+                sentiment analysis + naive bayes explanation https://www.datacamp.com/community/tutorials/simplifying-sentiment-analysis-python
+            </note>
         </note>
         <note priority="medium" time="1548322692">
             falling rule lists
         </note>
         <note priority="medium" time="1548323704">
             https://github.com/facebookresearch/LASER
+        </note>
+        <note priority="medium" time="1548621888">
+            Eperience in trend analyses, multivariate statistics (parametric / non-parametric), sampling, bias reduction, indirect estimation, data aggregation techniques, automation, generalization
         </note>
     </note>
     <note priority="medium" time="1547672531">
