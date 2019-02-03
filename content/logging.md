@@ -55,6 +55,7 @@ logging.error('some error')
 
 ```{python}
 import logging
+import sys
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
