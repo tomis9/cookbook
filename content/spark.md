@@ -39,6 +39,8 @@ UserCode,GroupCode
 1152,345
 ```
 
+Clearly not a big data case.
+
 #### Initialisation
 
 First, let's import SparkSession from pyspark.sql module, which enables us to ceoonect with spark from python. If you do not specifically provide details of spark installation on cluster/server/laptop you use, pyspark will use it's own, development spark session.
@@ -91,18 +93,13 @@ df.describe().show()
 
 #### SQL queries
 
-How about being able to use sql to query our table?
-
-First we have to decalre our data as a table.
+How about being able to use sql to query our table? First we have to declare our data as a table in spark.
 
 ```
 df.createOrReplaceTempView("example")
 ```
-It's time to check the "SQL" tab in GUI.
+It's time to check the "SQL" tab in GUI and then we can move on to sql. An example query:
 
-And the  we can move on to sql.
-
-General queries
 ```
 df2 = spark.sql("select * from example")
 df2.show()

@@ -1,10 +1,10 @@
 # https://www.datacamp.com/community/tutorials/keras-r-deep-learning
 
-devtools::install_github('rstudio/keras')
+# devtools::install_github('rstudio/keras')
 
 library(keras)
 
-install_keras()
+# install_keras()
 
 iris <- read.csv(url("http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"), header = FALSE)
 
@@ -64,7 +64,20 @@ history <- model %>% fit(
 
 plot(history)
 
+max_plot <- max(history$metrics$loss, history$metrics$val_loss)
+min_plot <- min(history$metrics$loss, history$metrics$val_loss)
 
-plot(history$metrics$loss, main="Model Loss", xlab = "epoch", ylab="loss", col="blue", type="l")
+plot(history$metrics$loss, ylim = c(min_plot, max_plot), main="Model Loss", 
+     xlab = "epoch", ylab="loss", col="blue", type="l")
 lines(history$metrics$val_loss, col="green")
 legend("topright", c("train","test"), col=c("blue", "green"), lty=c(1,1))
+
+max_plot <- max(history$metrics$acc, history$metrics$val_acc)
+min_plot <- min(history$metrics$acc, history$metrics$val_acc)
+
+plot(history$metrics$acc, ylim = c(min_plot, max_plot), main="Model Accuracy", 
+     xlab = "epoch", ylab="accuracy", col="blue", type="l")
+lines(history$metrics$val_acc, col="green")
+
+# Add Legend
+legend("bottomright", c("train","test"), col=c("blue", "green"), lty=c(1,1))

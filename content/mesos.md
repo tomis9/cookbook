@@ -19,6 +19,10 @@ tags: ["Mesos", "Marathon", "docker"]
 
 * And another useful [Continuous Delivery with Docker on Mesos in less than a minute](https://container-solutions.com/continuous-delivery-with-docker-on-mesos-in-less-than-a-minute-part-2/)
 
+* [*Docker vs. Kubernetes vs. Apache Mesos: Why What You Think You Know is Probably Wrong* - clarifies the differences between Kubernetes and Mesos](https://mesosphere.com/blog/docker-vs-kubernetes-vs-apache-mesos/)
+
+* [*A tale of two clusters: Mesos and YARN* - if you ever wondered why we need two different cluster management tools](https://www.oreilly.com/ideas/a-tale-of-two-clusters-mesos-and-yarn)
+
 ## 4. Installation
 
 Just follow one of these instructions:

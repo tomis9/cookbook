@@ -6,3 +6,6 @@ categories: []
 tags: []
 ---
 
+[keras: deep learning in R](https://www.datacamp.com/community/tutorials/keras-r-deep-learning)
+
+>Keras is a high-level neural networks API, written in Python and capable of running on top of either TensorFlow, Microsoft Cognitive Toolkit (CNTK) or Theano
