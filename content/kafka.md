@@ -14,3 +14,7 @@ kafka (TODO)
 ## kafka
 
 [tutorial](https://kafka.apache.org/quickstart)
+
+[A gentle Introduction to Stream Processing](https://medium.com/stream-processing/what-is-stream-processing-1eadfca11b97)
+
+[Kafka on docker](https://jaceklaskowski.gitbooks.io/apache-kafka/kafka-docker.html)
