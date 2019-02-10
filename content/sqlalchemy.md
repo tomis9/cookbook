@@ -171,6 +171,8 @@ There is a whole discussion whether sqlAlchemy is not a overkill for data scienc
 
 * [a nice tutorial for beginners](http://python101.pythonlibrary.org/chapter34_sqlalchemy.html)
 
+* [sqlalchemy performance issues](https://stackoverflow.com/questions/23185319/why-is-loading-sqlalchemy-objects-via-the-orm-5-8x-slower-than-rows-via-a-raw-my)
+
 ## 4. Subjects still to cover
 
 * pyHive + sqlAlchemy (TODO)
