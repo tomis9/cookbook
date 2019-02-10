@@ -22,3 +22,5 @@ content/post/*html
 static/*/*
 content/*.html
 scratchpad/vim_vs_emacs/creds.json
+__pycache__/
+*.pyc
