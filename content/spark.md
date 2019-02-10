@@ -242,5 +242,7 @@ df <- read.parquet(parquet_path)
 
 * sparklyr + sql (TODO) [https://spark.rstudio.com/]
 
-* sparkR and sparklyr comparison [https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/]
+* (TODO) sparkR and sparklyr comparison [https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/]
+
+* collect() (TODO)
 
