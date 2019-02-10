@@ -17,9 +17,6 @@
         <note priority="medium" time="1547671684">
             python design patterns
         </note>
-        <note priority="medium" time="1547671696">
-            ways of passing arguments to R and Python scripts
-        </note>
         <note priority="medium" time="1547671755">
             REST api in flask https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
         </note>
@@ -43,6 +40,9 @@
         </note>
         <note priority="medium" time="1548097216">
             h2o + rsparkling
+        </note>
+        <note priority="medium" time="1549291351">
+            feather https://github.com/wesm/feather
         </note>
     </note>
     <note priority="medium" time="1546705047">
@@ -103,12 +103,6 @@
         </note>
         <note priority="medium" time="1548621888">
             Eperience in trend analyses, multivariate statistics (parametric / non-parametric), sampling, bias reduction, indirect estimation, data aggregation techniques, automation, generalization
-        </note>
-    </note>
-    <note priority="medium" time="1547672531">
-        other
-        <note priority="medium" time="1547672552">
-            readme + travis sign
         </note>
     </note>
 </todo>
