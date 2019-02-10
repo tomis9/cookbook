@@ -2,7 +2,7 @@
 title: "airflow"
 date: 2018-08-14T11:51:12+02:00
 draft: false
-categories: ["data-engineering"]
+categories: ["python", "data-engineering"]
 ---
 
 ## 1. What is airflow and why would you use it?
@@ -72,3 +72,38 @@ ln -s /path-to-your-project-repo/my_project_dag.py /home/me/airflow/dags/
 [another good tutorial](https://airflow.apache.org/tutorial.html)
 
 Airflow's purpose is rather straightforward, so the best way to learn it is learning-by-doing.
+
+## 4. Subjects still to cover:
+
+* passing arguments with jinja templating (TODO)
+
+```{python}
+from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+from datetime import datetime
+
+
+default_args = {
+  'depends_on_past': False,
+  'start_date': datetime(2018, 1, 15, 16, 45, 0),
+  'email': ['test_mail@gamil.com'],
+  'email_on_failure': False,
+  'retries': 0
+}
+
+dag = DAG(
+  'dag_name',
+  schedule_interval='0 12 * * *',
+  default_args=default_args,
+  catchup=False
+)
+
+first_task = BashOperator(
+  task_id='first_task',
+  bash_command='echo {{ params.number }} {{ params.subparam.one }}',
+  params={'number': '10', 'subparam' : {'one': '1'}},
+  dag=dag
+)
+
+# you can store params in a separate json file
+```
