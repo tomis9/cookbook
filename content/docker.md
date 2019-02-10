@@ -2,7 +2,6 @@
 title: "docker"
 date: 2018-08-12T15:29:16+02:00
 draft: false
-image: "docker.jpg"
 categories: ["DevOps"]
 tags: ["docker"]
 ---
@@ -66,6 +65,11 @@ sudo docker images
 Stop a specific image:
 ```
 sudo docker stop image_id
+```
+
+Run a command in a running container:
+```
+sudo docker exec <container_name> <command>
 ```
 
 Well, there is actually many various topics on docker, so maybe you should just go through the tutorial.
