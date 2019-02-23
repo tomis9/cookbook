@@ -1,10 +1,4 @@
-flask-tutorial/blueprint/__pycache__/*
-airflow_tutorial/venv/*
-elk/.vagrant/*
-logging_tutorial/.idea/*
-logging_tutorial/logs.log
-.Rhistory
-.RData
+# extensions
 *.pdf
 *.aux
 *.bbl
@@ -17,10 +11,19 @@ logging_tutorial/logs.log
 *.tex
 *.sty
 *.csv
-public/*
-content/post/*html
-static/*/*
-content/*.html
-scratchpad/vim_vs_emacs/creds.json
-__pycache__/
+*.html
 *.pyc
+
+# folders
+public
+static/*/*
+venv
+__pycache__
+
+# other
+creds.json
+tags
+.vagrant
+.idea
+.Rhistory
+.RData
