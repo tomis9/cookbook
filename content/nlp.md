@@ -60,3 +60,9 @@ LSTM, CNN, HAN
 NER, PoS (LSTM-CRF, Bi-LSTM)
 
 R-CNN
+
+## word2vec
+
+[Stanford's lectures](https://www.youtube.com/watch?v=ASn7ExxLZws&index=3&list=PL3FW7Lu3i5Jsnh1rnUwq_TcylNr7EkRe6)
+
+
