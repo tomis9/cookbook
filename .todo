@@ -104,5 +104,11 @@
         <note priority="medium" time="1548621888">
             Eperience in trend analyses, multivariate statistics (parametric / non-parametric), sampling, bias reduction, indirect estimation, data aggregation techniques, automation, generalization
         </note>
+        <note priority="medium" time="1549898940">
+            softmax https://medium.com/data-science-bootcamp/understand-the-softmax-function-in-minutes-f3a59641e86d
+        </note>
+        <note priority="medium" time="1550827924">
+            RNN and CNN
+        </note>
     </note>
 </todo>
