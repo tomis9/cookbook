@@ -145,3 +145,5 @@ More commands are available at [Dockerfile reference](https://docs.docker.com/en
 * docker create volume (TODO)
 
 * fast layering python dependencies [link](https://jpetazzo.github.io/2013/12/01/docker-python-pip-requirements/)
+
+* passing passwords to docker (TODO) - with environment variables and volume
