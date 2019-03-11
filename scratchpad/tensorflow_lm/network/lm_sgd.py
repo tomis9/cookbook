@@ -20,7 +20,7 @@ logger = logging.getLogger('base')
 
 # 2
 logger.info("setting metaparameters")
-n_epochs = 50
+n_epochs = 10
 learning_rate = 0.01
 batch_size = 100
 logger.info("n_epochs: {}, learning_rate: {}, batch_size: {}"
@@ -67,26 +67,30 @@ with tf.Session() as sess:
 
     for epoch in range(n_epochs):
         for batch_index in range(n_batches):
+            # 9
             X_batch, y_batch = X_split[batch_index], y_split[batch_index]
 
             if batch_index % 10 == 0:
                 summary_str = mse_summary.eval(feed_dict={X: X_batch,
                                                           y: y_batch})
                 step = epoch * n_batches + batch_index
+                # 10
                 file_writer.add_summary(summary_str, step)
 
+            # 11
             sess.run(training_op, feed_dict={X: X_batch, y: y_batch})
         logger.info("Epoch {}, MSE = {}"
                     .format(epoch, mse.eval(feed_dict={X: X_batch,
                                                        y: y_batch})))
 
+    # 12
     best_theta = theta.eval()
+
+    # 13
     save_path = saver.save(sess, "/tmp/my_model_final.ckpt")
     file_writer.close()
 
 logger.info("execution ended")
 
-tf_scores = best_theta.ravel()
-
-pd_comp = functions.compare_scores(X_np, y_np, tf_scores)
+pd_comp = functions.compare_scores(X_np, y_np, best_theta.ravel())
 logger.info(pd_comp)
