@@ -44,7 +44,7 @@ def backprop(y, t, h, x, W1):
     return dW, dW1
 
 
-def train(X, T, N, eta, epochs):
+def train(X, T, N, eta, epochs, act_H, act_O):
     K = len(X[0])
     M = len(T[0])
     n = len(X)
@@ -55,7 +55,7 @@ def train(X, T, N, eta, epochs):
         dW_sum, dW1_sum = 0, 0
         ys = []
         for i in range(n):
-            y, h = feed_forward(x=X[i], t=T[i], W=W, W1=W1)
+            y, h = feed_forward(x=X[i], t=T[i], W=W, W1=W1, act_H=act_H, act_O=act_O)
             ys.append(y.ravel())
             dW, dW1 = backprop(y=y, t=T[i], h=h, x=X[i], W1=W1)
             dW_sum += dW
@@ -69,12 +69,12 @@ def train(X, T, N, eta, epochs):
     return W, W1
 
 
-def correlation(X, T, W, W1):
+def correlation(X, T, W, W1, act_H, act_O):
     if len(T[0]) > 1:
         raise ValueError("correlation coefficient is valid only for M=1")
     pred = []
     for i in range(len(X)):
-        y, h = feed_forward(X[i], T[i], W, W1)
+        y, h = feed_forward(X[i], T[i], W, W1, act_H, act_O)
         pred.append(y.ravel())
 
     t = T.ravel()
@@ -91,9 +91,9 @@ eta = 0.01
 epochs = 400
 N = 10  # number of neurons in hidden layer
 
-X, T, W_t, W1_t = generate_sample_dataset(K=2, N=N, M=1, n=1000)
-W, W1 = train(X=X, T=T, N=N, eta=eta, epochs=epochs)
+X, T, W_t, W1_t = generate_sample_dataset(K=2, N=N, M=1, n=1000, act_H=sigmoid, act_O=sigmoid)
+W, W1 = train(X=X, T=T, N=N, eta=eta, epochs=epochs, act_H=sigmoid, act_O=sigmoid)
 
-correlation(X, T, W, W1)
+correlation(X, T, W, W1, sigmoid, sigmoid)
 
 # https://medium.com/@curiousily/tensorflow-for-hackers-part-ii-building-simple-neural-network-2d6779d2f91b

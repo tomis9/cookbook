@@ -20,6 +20,9 @@
         <note priority="medium" time="1547671755">
             REST api in flask https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
         </note>
+        <note priority="medium" time="1551720127">
+            http://www.davekleinschmidt.com/r-packages/
+        </note>
     </note>
     <note priority="medium" time="1546704869">
         data engineering
@@ -110,5 +113,8 @@
         <note priority="medium" time="1550827924">
             RNN and CNN
         </note>
+    </note>
+    <note priority="medium" time="1551720104">
+        g -1
     </note>
 </todo>

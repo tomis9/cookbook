@@ -27,3 +27,4 @@ tags
 .idea
 .Rhistory
 .RData
+tf_logs
