@@ -167,7 +167,7 @@ As we have the dataset ready, let's have a closer look at it.
 library(tidyverse)
 library(plotly)
 
-posts_reddit <- read_csv("../data/posts_reddit.csv")
+posts_reddit <- read_csv("../data_raw/posts_reddit.csv")
 
 # 1
 posts_reddit <- posts_reddit %>%
@@ -199,7 +199,7 @@ library(tidyverse)
 library(readr)
 library(ggplot2)
 
-posts_stack <- read_csv("../data/posts_stack.csv")
+posts_stack <- read_csv("../data_raw/posts_stack.csv")
 
 gg_stack <- posts_stack %>%
   filter(score < quantile(score, 0.9)) %>%
