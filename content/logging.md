@@ -150,12 +150,16 @@ logger.debug('some debug')
       "formatter": "standard",
       "class": "logging.FileHandler",
       "filename": "./logs_imp.log"
+    },
+    "console": {
+      "formatter": "standard",
+      "class": "logging.StreamHandler"
     }
   },
   "loggers": {
     "app": {
       "level": "DEBUG",
-      "handlers": ["app"]
+      "handlers": ["app", "console"]
     },
     "imp": {
       "level": "INFO",
