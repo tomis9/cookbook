@@ -157,3 +157,5 @@ shiny::runApp()
 * [a two-files app](https://shiny.rstudio.com/articles/basics.html)
 
 * [various shiny widgets](https://shiny.rstudio.com/gallery/widget-gallery.html)
+
+* [shinytest](https://stackoverflow.com/questions/36338779/unit-testing-shiny-apps)
