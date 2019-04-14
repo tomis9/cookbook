@@ -1,60 +1,18 @@
 ## elk
 
-ElasticSearch + Logstash + Kibana
+What is ELK and why would you use it?
 
-Let's start with a virtual machine
+1. It is a group of programs, which working together, make searching and monitoring logs simple and error-free.
 
-```
-cd
-mkdir elk; cd elk
-vagrant init ubuntu/trusty64
-vagrant up
-vagrant ssh
-```
-and then let's install java
+2. ELK stack consists of three parts: Logstash, Elasticsearch and Kibana. Each of them has a different, yet important role in logging processing:
 
-```
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:openjdk-r/ppa
-sudo apt-get update && sudo apt-get install openjdk-8-jdk
-sudo update-alternatives --config java
-```
+- Logstash - observes log files for new logs, filters them and sends to elasticearsh in a form of a request;
 
-Choose the one you've just installed.
+- Elasticsearch - a webservice, which collects logs and indexes them, which enables them to be quickly, you know, searched.
 
-Install elasticsearch
-```
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo apt-get install apt-transport-https
-echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
-sudo apt-get update
-sudo apt-get install elasticsearch
-```
+- Kibana - a GUI for elasticsearch. You can filter logs using Lucene, create charts and even dashboards presenting your logging data.
 
-This may help if perl's error appear:
-```
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-locale-gen en_US.UTF-8
-dpkg-reconfigure locales
-```
-
-
-Some configuration
-```
-sudo vim /etc/elasticsearch/elasticsearch.yml
-network.host: "localhost"
-http.port:9200
-```
-
-And let's begin!
-```
-sudo service elasticsearch start
-```
-
-
-
+You can extend this log-flow with Kafka.
 
 ## on debian
 

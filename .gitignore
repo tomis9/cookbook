@@ -19,6 +19,7 @@ public
 static/*/*
 venv
 __pycache__
+files_from_vagrant1
 
 # other
 creds.json
