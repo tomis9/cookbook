@@ -45,7 +45,7 @@ s = requests.get(url).content
 wine = pd.read_csv(io.StringIO(s.decode('utf-8')), comment="#")
 ```
 
-*The dataset that we're going to work on was published by Marek Gągolewski as a example dataset for execrises for his book 'Przetwarzanie i analiza danych w języku Python`. I am afraid the book wasn't transalted to English, so I can highly recommend it only to Polish readers.*
+*The dataset that we're going to work on was published by Marek Gągolewski as an example dataset for execrises for his book 'Przetwarzanie i analiza danych w języku Python`. I am afraid the book wasn't transalted to English, so I can highly recommend it only to Polish readers.*
 
 Let's choose only white wine and the first eleven variables of the dataset.
 ```{python}
