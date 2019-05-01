@@ -44,4 +44,28 @@ mean(pred == iris["Species"])
 # 0.9733  # pretty good  as well
 ```
 
+## decision trees
+
+```{python}
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import datasets
+from sklearn.metrics import accuracy_score
+
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+
+dtc = DecisionTreeClassifier()
+dtc.fit(X, y)
+
+accuracy_score(y, dtc.predict(X))  # clearly overfitted
+```
+
+[link to my blog post](https://tomis9.github.io/decision_trees/)
+```{r}
+dtc <- rpart::rpart(Species ~ ., iris)
+print(dtc)
+# rpart.plot::rpart.plot(dtc)
+```
+
+
 *to be continued...*
