@@ -10,6 +10,10 @@ branches:
 before_install:
   - sudo apt-get update -y
   - sudo apt-get install libstdc++6 -y
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -y
+  - sudo apt-get upgrade -y
+  - sudo apt-get dist-upgrade -y
 
 install:
   - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools"))'
