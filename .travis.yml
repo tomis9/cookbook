@@ -1,15 +1,15 @@
 language: r
 cache: packages
 dist: trusty
-sudo: true
+sudo: false
 
 branches:
   only:
     - master
 
-before_install:
-    - sudo apt-get update -y
-    - sudo apt-get install libstdc++6 -y
+# before_install:
+#     - sudo apt-get update -y
+#     - sudo apt-get install libstdc++6 -y
 
 install:
     - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools"))'
