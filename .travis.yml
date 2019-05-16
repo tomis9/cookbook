@@ -7,23 +7,16 @@ branches:
   only:
     - master
 
-before_install:
-  - sudo apt-get update -y
-  - sudo apt-get install libstdc++6 -y
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -y
-  - sudo apt-get dist-upgrade -y --allow-unauthenticated
-
 install:
   - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools"))'
   - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
 
 
 before_script:
-  - "Rscript -e 'blogdown::install_hugo()'"
+  - Rscript -e "blogdown::install_hugo(version = '0.52')"
 
 script:
-  - "Rscript -e 'blogdown::build_site()'"
+  - Rscript -e 'blogdown::build_site()'
 
 deploy:
   local_dir: public
