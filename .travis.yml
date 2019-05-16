@@ -1,22 +1,15 @@
 language: r
 cache: packages
-dist: trusty
+dist: xenial
 sudo: false
 
 branches:
   only:
     - master
 
-before_install:
-  - wget -q -O libstdc++6 http://security.ubuntu.com/ubuntu/pool/main/g/gcc-5/libstdc++6_5.4.0-6ubuntu1~16.04.10_amd64.deb
-  - sudo dpkg --force-all -i libstdc++6
-
 install:
-  - wget -q -O hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.46/hugo_extended_0.46_Linux_64bit.deb
-  - sudo dpkg -i hugo.deb
   - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools"))'
   - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
-
 
 before_script:
   - Rscript -e "blogdown::install_hugo(version = '0.52')"
