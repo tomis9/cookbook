@@ -29,7 +29,7 @@ con <- RMariaDB::dbConnect(
 ```
 After you are done with working on your database data, you should close the connection with:
 
-```{r}
+```{r, eval = FALSE}
 RMariaDB::dbDisconnect(con)
 ```
 
