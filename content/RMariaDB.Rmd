@@ -16,74 +16,48 @@ Why did I switch from RMySQL to RMariaDB? Because of invalid long integer format
 
 ## 2. Usage
 
+First you have to create a connection to the database. Remember that you should not provide any credentials in your scripts! Keep them in a separate file or in envorionment variables.
+
+```{r, eval = FALSE}
+con <- RMariaDB::dbConnect(
+  drv      = RMariaDB::MariaDB(), 
+  user     = "",
+  password = "",
+  host     = "", 
+  dbname   = ""
+)
+```
+After you are done with working on your database data, you should close the connection with:
+
+```{r}
+RMariaDB::dbDisconnect(con)
+```
+
+
+### a) using plain R
 
 * ### just querying
 ```{r, eval = FALSE}
-host_name  <- "localhost"
-db_name <- "test"
-creds <- readLines("~/.my.cnf")
-user <- gsub(".*=", "", creds[grepl("user", creds)])
-password <- gsub(".*=", "", creds[grepl("password", creds)])
-
 query <- "delete from my_table;"
 
-con <- RMariaDB::dbConnect(
-  drv      = RMariaDB::MariaDB(), 
-  user     = user,
-  password = password,
-  host     = host_name, 
-  dbname   = db_name
-)
-
 RMariaDB::dbSendQuery(con, query)
-RMariaDB::dbDisconnect(con)
 ```
 
 * ### retrieving data from db
 ```{r, eval = FALSE}
-host_name  <- "localhost"
-db_name <- "test"
-creds <- readLines("~/.my.cnf")
-user <- gsub(".*=", "", creds[grepl("user", creds)])
-password <- gsub(".*=", "", creds[grepl("password", creds)])
-
 query <- "select * from my_table;"
 
-con <- RMariaDB::dbConnect(
-  drv      = RMariaDB::MariaDB(), 
-  user     = user,
-  password = password,
-  host     = host_name, 
-  dbname   = db_name
-)
-
 rs <- RMariaDB::dbSendQuery(con, query)
-d <- data.table::as.data.table(RMariaDB::dbFetch(rs, n = -1))
+tab <- RMariaDB::dbFetch(rs, n = -1)
 RMariaDB::dbClearResult(rs)
 
 # equivalent to select * from my_table;
 d <- dbReadTable(con, "my_table")
-
-RMariaDB::dbDisconnect(con)
 ```
 
 * ### sending data to db
 ```{r, eval = FALSE}
-host_name  <- "localhost"
-db_name <- "test"
-creds <- readLines("~/.my.cnf")
-user <- gsub(".*=", "", creds[grepl("user", creds)])
-password <- gsub(".*=", "", creds[grepl("password", creds)])
-
-con <- RMariaDB::dbConnect(
-  drv      = RMariaDB::MariaDB(), 
-  user     = user,
-  password = password,
-  host     = host_name, 
-  dbname   = db_name
-)
-
-# data.frame's colnames should be the same as in database
+# data.frame's colnames should be the same as in the database
 dt <- data.frame(id = 1:10, text = letters[1:10])
 
 RMariaDB::dbWriteTable(
@@ -94,8 +68,15 @@ RMariaDB::dbWriteTable(
   append = TRUE,
   row.names = F
 )
+```
 
-RMariaDB::dbDisconnect(con)
+### b) using [dplyr](https://tomis9.github.io/tidyverse/#/dplyr)
+
+* #### just querying
+
+```{r, eval = FALSE}
+tab_name <- dplyr::tbl(con, "tab_name")
+tab <- dplyr::collect(tab_name)  # you can `library(dplyr)` and then `tab_name %>% collect()`
 ```
 
 ## 3. Useful links
