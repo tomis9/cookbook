@@ -166,3 +166,5 @@ docker run -p 8000:8000 -d my_app_image:0.1 gunicorn -b 0.0.0.0:8000 app:app
 * templates
 
 * jinja2
+
+* logging with gunicorn
