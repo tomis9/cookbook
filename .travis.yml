@@ -11,7 +11,7 @@ install:
   - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071"))'
   - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
   - sudo apt-get install python3-pip -y
-  - sudo pip install sklearn
+  - sudo pip3 install sklearn
 
 before_script:
   - Rscript -e "blogdown::install_hugo(version = '0.52')"
