@@ -21,7 +21,7 @@ You may say: well, I can benefit from all of these advantages by simply keeping 
 
 In general, I don't recommend encapsulating your code into a package, unless you want to publish it on cran. Your workflow will require one more step whenever you change your code, i.e. you will have to reinstall the package.
 
-## 2. Creating and installing the package
+## 2. Creating and installing a package
 
 A `devtools` package makes creating and developing packages easy:
 ```
