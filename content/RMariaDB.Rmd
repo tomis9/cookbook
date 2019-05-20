@@ -72,12 +72,19 @@ RMariaDB::dbWriteTable(
 
 ### b) using [dplyr](https://tomis9.github.io/tidyverse/#/dplyr)
 
-* #### just querying
+* #### just querying / retrieving data from db
 
 ```{r, eval = FALSE}
 tab_name <- dplyr::tbl(con, "tab_name")
 tab <- dplyr::collect(tab_name)  # you can `library(dplyr)` and then `tab_name %>% collect()`
 ```
+
+* ### sending data to db
+
+```{r, eval = FALSE}
+dplyr::db_insert_into(con, "my_table", tab)
+```
+
 
 ## 3. Useful links
 
