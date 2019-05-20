@@ -1,10 +1,13 @@
 # basic programs
 
+sudo apt-get update
+
 sudo apt-get install vim -y
 sudo apt-get install tmux -y
 sudo apt-get install curl -y
 sudo apt-get install apt-transport-https -y
- 
+sudo apt-get install git -y
+
 echo export LC_CTYPE=en_US.UTF-8 >> .bashrc
 echo export LC_ALL=en_US.UTF-8 >> .bashrc
 source .bashrc
