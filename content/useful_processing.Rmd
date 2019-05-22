@@ -27,7 +27,7 @@ iris %>%
   head()
 ```
 
-```{python}
+```{python, engine.path = '/usr/bin/python3'}
 # https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
@@ -49,4 +49,28 @@ print(onehot_encoded[:5])
 
 * scaling
 
+```{r}
+scale(1:5)
+mean(1:5)
+sd(1:5)
+```
+
+Works well on data.frames as well.
+
 * dividing your dataset test, train and validation subsets
+
+- dlaczego wydzielam zbiór walidacyjny?
+
+[link](https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function)
+```{r}
+train_test_split <- function(test_proportion = 0.75, dataset) {
+    smp_size <- floor(test_proportion * nrow(dataset))
+    train_ind <- sample(seq_len(nrow(dataset)), size = smp_size)
+
+    train <- dataset[train_ind, ]
+    test <- dataset[-train_ind, ]
+    return(list(train = train, test = test))
+}
+library(gsubfn)
+list[train, test] <- train_test_split(0.8, iris)
+```
