@@ -8,8 +8,9 @@ branches:
     - master
 
 install:
-  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071"))'
+  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071", "mltools"))'
   - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
+  - Rscript -e 'devtools::install_github("vqv/ggbiplot")'
   - sudo apt-get install python3-pip -y
   - sudo pip3 install --upgrade pip
   - sudo pip3 install setuptools

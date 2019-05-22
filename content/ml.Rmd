@@ -15,53 +15,136 @@ tags: []
 
 We'll be working on `iris` dataset, which is easily available in Python (`from sklearn import datasets; datasets.load_iris()`) and R (`iris`).
 
+Let's prepare data for our algorithms.
+
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn import datasets
+from sklearn.metrics import accuracy_score
+
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+```
+
+```{r}
+train_test_split <- function(test_size = 0.33, dataset) {
+    smp_size <- floor(test_size * nrow(dataset))
+    test_ind <- sample(seq_len(nrow(dataset)), size = smp_size)
+
+    test <- dataset[test_ind, ]
+    train <- dataset[-test_ind, ]
+    return(list(train = train, test = test))
+}
+
+library(gsubfn)
+list[train, test] <- train_test_split(0.5, iris)
+```
+
+
 ## SVM
 
 *Data mining and analysis - Zaki, Meira*
 
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.svm import SVC  # support vector classification
-from sklearn import datasets
-from sklearn.metrics import accuracy_score
-
-iris = datasets.load_iris()
-X, y = iris.data, iris.target
 
 svc = SVC()
-svc.fit(X, y)
+svc.fit(X_train, y_train)
 
-print(accuracy_score(svc.predict(X), y)) # pretty good
+print(accuracy_score(svc.predict(X_test), y_test))
 ```
 
 ```{r}
-svc <- e1071::svm(Species ~ ., iris)
+svc <- e1071::svm(Species ~ ., train)
 
-pred <- as.character(predict(svc, iris[, 1:4]))
-mean(pred == iris["Species"])
+pred <- as.character(predict(svc, test[, 1:4]))
+mean(pred == test["Species"])
 ```
 
 ## decision trees
 
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.tree import DecisionTreeClassifier
-from sklearn import datasets
-from sklearn.metrics import accuracy_score
-
-iris = datasets.load_iris()
-X, y = iris.data, iris.target
 
 dtc = DecisionTreeClassifier()
-dtc.fit(X, y)
+dtc.fit(X_train, y_train)
 
-print(accuracy_score(y, dtc.predict(X)))  # clearly overfitted
+print(accuracy_score(y_test, dtc.predict(X_test)))
 ```
 
 [link to my blog post](https://tomis9.github.io/decision_trees/)
 ```{r}
-dtc <- rpart::rpart(Species ~ ., iris)
+dtc <- rpart::rpart(Species ~ ., train)
 print(dtc)
 rpart.plot::rpart.plot(dtc)
+pred <- predict(dtc, test[,1:4], type = "class")
+mean(pred == test[["Species"]])
 ```
 
+## random forests
 
-*to be continued...*
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.ensemble import RandomForestClassifier
+
+rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
+
+accuracy_score(rfc.predict(X_test), y_test)
+```
+
+```{r}
+rf <- randomForest::randomForest(Species ~ ., data = train)
+mean(predict(rf, test[, 1:4]) == test[["Species"]])
+```
+
+## knn 
+
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.neighbors import KNeighborsClassifier
+
+knn = KNeighborsClassifier()
+knn.fit(X, y)
+accuracy_score(y, knn.predict(X))
+```
+
+```{r}
+class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3) == test[,5]
+```
+
+## xgboost
+
+## kmeans
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+
+```{r}
+# devtools::install_github("vqv/ggbiplot")
+
+pca <- prcomp(iris[,1:4], center = TRUE, scale. = TRUE)
+ggbiplot::ggbiplot(pca, obs.scale = 1, var.scale = 1, groups = iris$Species, 
+                   ellipse = TRUE, circle = TRUE)
+
+iris_pca <- scale(iris[,1:4]) %*% pca$rotation 
+iris_pca <- as.data.frame(iris_pca)
+iris_pca <- cbind(iris_pca, Species = iris$Species)
+
+ggplot2::ggplot(iris_pca, aes(x = PC1, y = PC2, color = Species)) +
+  geom_point()
+
+plot_kmeans <- function(km, iris_pca) {
+  plot(iris_pca[,1:2], col = km$cluster, pch = as.integer(iris_pca$Species))
+  points(km$centers, col = 1:2, pch = 8, cex = 2)
+}
+par(mfrow=c(1, 3))
+# we use 3 centers, because we already know that there are 3 species
+sapply(list(kmeans(iris_pca[,1], centers = 3),
+            kmeans(iris_pca[,1:2], centers = 3),
+            kmeans(iris_pca[,1:4], centers = 3)),
+       plot_kmeans, iris_pca = iris_pca)
+```
+
+## linear regression
+
+## logistic regression
