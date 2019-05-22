@@ -64,18 +64,9 @@ ln -s /path-to-your-project-repo/my_project_dag.py /home/me/airflow/dags/
 
 * DAG's and file's name should begin with project's name.
 
+### Jinja templating
 
-## 3. Useful links
-
-[a good tutorial](http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/)
-
-[another good tutorial](https://airflow.apache.org/tutorial.html)
-
-Airflow's purpose is rather straightforward, so the best way to learn it is learning-by-doing.
-
-## 4. Subjects still to cover:
-
-* passing arguments with jinja templating (TODO)
+You can pass arguments to the command with jinja templating, instead of creating a command string by yourself. You can then keep all you parameters in a separate json file.
 
 ```{python}
 from airflow import DAG
@@ -101,9 +92,16 @@ dag = DAG(
 first_task = BashOperator(
   task_id='first_task',
   bash_command='echo {{ params.number }} {{ params.subparam.one }}',
-  params={'number': '10', 'subparam' : {'one': '1'}},
+  # you can keep params in a json file
+  params={'number': '10', 'subparam' : {'one': '1'}},  
   dag=dag
 )
-
-# you can store params in a separate json file
 ```
+
+## 3. Useful links
+
+[a good tutorial](http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/)
+
+[another good tutorial](https://airflow.apache.org/tutorial.html)
+
+Airflow's purpose is rather straightforward, so the best way to learn it is learning-by-doing.

@@ -32,7 +32,7 @@ but after a while you realise that you need something else happening during sett
 
 So you're on your own. Here's how you solve this problem:
 
-```{python}
+```{python, engine.path = '/usr/bin/python3'}
 class SomeFolk:
 
     def __init__(self, name):
@@ -57,22 +57,18 @@ class SomeFolk:
 ```
 
 Let's create an instance of this class:
-```{python}
+```{python, engine.path = '/usr/bin/python3'}
 me = SomeFolk('Tomek')
 ```
 
 Here's what happens when you get a name:
-```{python}
+```{python, engine.path = '/usr/bin/python3'}
 _some_variable = me.name
-
-## you've just got a name
 ```
 
 And when you set a name:
-```{python}
+```{python, engine.path = '/usr/bin/python3'}
 me.name = "tomis9"
-
-## you've just set a name to tomis9
 ```
 
 Magic.

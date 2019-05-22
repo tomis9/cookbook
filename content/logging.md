@@ -7,7 +7,25 @@ categories: ["python", "R", "data-engineering"]
 tags: ["python", "R", "logging", "data-engineering"]
 ---
 
-## 1. What is logging and why would you use it?
+<center>
+
+**Contents:**
+
+[1. What is logging and why would you use it?](#what) 
+
+[2. "Hello World" examples](#hello) 
+
+[Python](#python)
+
+[R](#r)
+
+[3. Subjects still to cover](#subjects)
+
+</center>
+
+
+
+## 1. What is logging and why would you use it? {#what}
 
 * Logging, in general, sends information about the execution of a program to the outside of the program, e.g. to stdout or to a file. Why would that be useful?
 
@@ -15,9 +33,9 @@ tags: ["python", "R", "logging", "data-engineering"]
 
 https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-practices/
 
-## 2. "Hello World" examples
+## 2. "Hello World" examples {#hello}
 
-## Python
+## Python {#python}
 
 `logging` module, which is available in python's standard library, contains various functions and objects, which make logging easy and standardised.
 
@@ -177,7 +195,7 @@ for handler in logging.root.handlers[:]:
 #### Useful links
 https://www.toptal.com/python/in-depth-python-logging
 
-## R
+## R {#r}
 
 There are several packages for logging in R, e.g:
 
@@ -189,7 +207,7 @@ There are several packages for logging in R, e.g:
 
 I will discuss only `futile.logger`, because this is tne only one I've been using by now. However I the nearest future I am planning to give `logging` a try, as it seems to be analogical to python's standard `logging`.
 
-## A few "Hello World" examples
+#### A few "Hello World" examples
 
 This is how you print basic log messages:
 
@@ -224,7 +242,7 @@ appender.file()
 ```
 
 
-## 3. Subjects still to cover
+## 3. Subjects still to cover {#subjects}
 
 * ftry (TODO) how does ftry cope with exceptions?
 
