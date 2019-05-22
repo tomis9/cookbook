@@ -20,6 +20,7 @@ Let's prepare data for our algorithms.
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn import datasets
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 iris = datasets.load_iris()
 X, y = iris.data, iris.target
