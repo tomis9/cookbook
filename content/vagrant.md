@@ -5,7 +5,17 @@ draft: false
 categories: ["DevOps"]
 ---
 
-## 1. What is vagrant and why would you use it?
+<center>
+
+[1. What is vagrant and why would you use it?](#what)
+[2. Installation](#installation)
+[3. A "Hello World" example](#hello)
+[4. Configuration](#configuration)
+[5. Easily forgettable commands:](#easily)
+
+</center>
+
+## 1. What is vagrant and why would you use it? {#what}
 
 * Vagrant let's you setup and use virtual machines easily and quickly. 
 
@@ -13,7 +23,7 @@ categories: ["DevOps"]
 
 * Vagrant may be useful for testing new tools and software. It's more convenient than a traditional VM with a full GUI. 
 
-## 2. Installation
+## 2. Installation {#installation}
 
 First of all, check if you have virtualbox installed: type `virtualbox` and if no box pops up, install virtualbox: 
 
@@ -28,7 +38,7 @@ sudo apt-get install vagrant
 
 and you're good to go.
 
-## 3. A "Hello World" example
+## 3. A "Hello World" example {#hello}
 
 ```
 mkdir my_vagrant
@@ -43,7 +53,7 @@ In the short example above we've just created our first virtual machine with vag
 
 In the example above we installed ubuntu. Other OS distributions are available [here](https://app.vagrantup.com/boxes/search).
 
-## 4. Configuration
+## 4. Configuration {#configuration}
 
 **a) connecting to VM knowing machine's IP:**
 
@@ -88,7 +98,7 @@ You may want to install you favourite programs right after the VM is created. In
 config.vm.provision "shell", path: "startup.sh"
 ```
 
-## 5. Easily forgettable commands:
+## 5. Easily forgettable commands: {#easily}
 
 List all available machines:
 ```

@@ -2,21 +2,24 @@
 title: "ml"
 date: 2019-04-22T18:05:21+02:00
 draft: false
-categories: ["data-mining"]
+categories: ["machine-learning"]
 tags: []
 ---
 
 
-# 1. What is machine learning and why would you use it?
+## 1. What is machine learning and why would you use it?
 
 * it's a rather complicated, yet beautiful tool for boldly going where no man has gone before.
 
-# 2. Examples of the most popular machine learning algorithms in Python and R.
+* in other words, it enables you to extract valuable information from data.
 
-We'll be working on `iris` dataset, which is easily available in Python (`from sklearn import datasets; datasets.load_iris()`) and R (`iris`).
+## 2. Examples of the most popular machine learning algorithms in Python and R.
+
+We'll be working on `iris` dataset, which is easily available in Python (`from sklearn import datasets; datasets.load_iris()`) and R (`data(iris)`).
 
 Let's prepare data for our algorithms.
 
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn import datasets
 from sklearn.metrics import accuracy_score
@@ -29,7 +32,8 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.33, random_state=42)
 ```
 
-```{r}
+*R*
+```{r, echo = FALSE}
 train_test_split <- function(test_size = 0.33, dataset) {
     smp_size <- floor(test_size * nrow(dataset))
     test_ind <- sample(seq_len(nrow(dataset)), size = smp_size)
@@ -44,10 +48,11 @@ list[train, test] <- train_test_split(0.5, iris)
 ```
 
 
-## SVM
+### SVM
 
-*Data mining and analysis - Zaki, Meira*
+The best description of SVM I found in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book.
 
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.svm import SVC  # support vector classification
 
@@ -57,6 +62,7 @@ svc.fit(X_train, y_train)
 print(accuracy_score(svc.predict(X_test), y_test))
 ```
 
+*R*
 ```{r}
 svc <- e1071::svm(Species ~ ., train)
 
@@ -64,8 +70,9 @@ pred <- as.character(predict(svc, test[, 1:4]))
 mean(pred == test["Species"])
 ```
 
-## decision trees
+### decision trees
 
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.tree import DecisionTreeClassifier
 
@@ -75,7 +82,7 @@ dtc.fit(X_train, y_train)
 print(accuracy_score(y_test, dtc.predict(X_test)))
 ```
 
-[link to my blog post](https://tomis9.github.io/decision_trees/)
+*R*
 ```{r}
 dtc <- rpart::rpart(Species ~ ., train)
 print(dtc)
@@ -84,24 +91,29 @@ pred <- predict(dtc, test[,1:4], type = "class")
 mean(pred == test[["Species"]])
 ```
 
-## random forests
+I have described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
 
+### random forests
+
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.ensemble import RandomForestClassifier
 
 rfc = RandomForestClassifier()
 rfc.fit(X_train, y_train)
 
-accuracy_score(rfc.predict(X_test), y_test)
+print(accuracy_score(rfc.predict(X_test), y_test))
 ```
 
+*R*
 ```{r}
 rf <- randomForest::randomForest(Species ~ ., data = train)
 mean(predict(rf, test[, 1:4]) == test[["Species"]])
 ```
 
-## knn 
+### knn 
 
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -110,20 +122,23 @@ knn.fit(X, y)
 accuracy_score(y, knn.predict(X))
 ```
 
+*R*
 ```{r}
-class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3) == test[,5]
+kn <- class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3) 
+mean(kn == test[,5])
 ```
 
-## xgboost
+### xgboost
 
-## kmeans
+### kmeans
 
-https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 
+K-means can be nicely plotted in two dimensions with help of [PCA](https://tomis9.github.io/dimensionality/#pca).
+
+*R*
 ```{r}
-# devtools::install_github("vqv/ggbiplot")
-
 pca <- prcomp(iris[,1:4], center = TRUE, scale. = TRUE)
+# devtools::install_github("vqv/ggbiplot")
 ggbiplot::ggbiplot(pca, obs.scale = 1, var.scale = 1, groups = iris$Species, 
                    ellipse = TRUE, circle = TRUE)
 
@@ -135,6 +150,7 @@ ggplot2::ggplot(iris_pca, aes(x = PC1, y = PC2, color = Species)) +
   geom_point()
 
 plot_kmeans <- function(km, iris_pca) {
+  # we choose only first two components, so they could be plotted
   plot(iris_pca[,1:2], col = km$cluster, pch = as.integer(iris_pca$Species))
   points(km$centers, col = 1:2, pch = 8, cex = 2)
 }
@@ -146,6 +162,41 @@ sapply(list(kmeans(iris_pca[,1], centers = 3),
        plot_kmeans, iris_pca = iris_pca)
 ```
 
-## linear regression
+### linear regression
 
-## logistic regression
+*R*
+
+rather useles on iris dataset, because the response variable is mutlinomial. Let's use this on a different famous dataset - HousePrices.
+```{r, echo = FALSE}
+library(AER)
+```
+
+```{r}
+data("HousePrices")
+model <- lm(price ~ ., HousePrices)
+summary(model)
+```
+
+`lm()` function automatically converts factor variables to one-hot encoded features.
+
+*Python*
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.linear_model import LinearRegression
+from sklearn import datasets
+
+data = datasets.load_boston()
+X, y = data.data, data.target
+
+lr = LinearRegression()
+lr.fit(X, y)
+print(lr.intercept_)
+print(lr.coef_)
+```
+
+TODO: is it really the same dataset? + lr. p-values and t-values
+
+### logistic regression
+
+```{r}
+# glm()
+```

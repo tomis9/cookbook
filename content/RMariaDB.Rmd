@@ -7,14 +7,25 @@ categories: ["R"]
 tags: ["R", "SQL"]
 ---
 
-## 1. What is RMariaDB and why would you use it?
+Contents
+
+[1. What is RMariaDB and why would you use it?](#what)
+
+[2. Usage](#usage)
+
+[a) using plain R](#plainr)
+
+[b) using dplyr](#dplyr)
+
+[3. Useful links](#useful)
+
+## 1. What is RMariaDB and why would you use it? {#what}
 
 * `RMariaDB` is an R package available at CRAN that let's you connect to various SQL databases easily.
 
 Why did I switch from RMySQL to RMariaDB? Because of invalid long integer format when downloading data from a database. A pretty nasty bug in RMySQL, which was resolved in RMariaDB.
 
-
-## 2. Usage
+## 2. Usage {#usage}
 
 First you have to create a connection to the database. Remember that you should not provide any credentials in your scripts! Keep them in a separate file or in envorionment variables.
 
@@ -33,8 +44,7 @@ After you are done with working on your database data, you should close the conn
 RMariaDB::dbDisconnect(con)
 ```
 
-
-### a) using plain R
+### a) using plain R {#plainr}
 
 * ### just querying
 ```{r, eval = FALSE}
@@ -70,7 +80,7 @@ RMariaDB::dbWriteTable(
 )
 ```
 
-### b) using [dplyr](https://tomis9.github.io/tidyverse/#/dplyr)
+### b) using [dplyr](https://tomis9.github.io/tidyverse/#/dplyr) {#dplyr}
 
 * #### just querying / retrieving data from db
 
@@ -85,8 +95,7 @@ tab <- dplyr::collect(tab_name)  # you can `library(dplyr)` and then `tab_name %
 dplyr::db_insert_into(con, "my_table", tab)
 ```
 
-
-## 3. Useful links
+## 3. Useful links {#useful}
 
 * [github page with an informative README](https://github.com/r-dbi/RMariaDB)
 * [cran README](https://cran.r-project.org/web/packages/RMariaDB/README.html)

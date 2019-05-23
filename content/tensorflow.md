@@ -2,7 +2,7 @@
 title: "tensorflow"
 date: 2019-01-01T18:17:38+01:00
 draft: false
-categories: ["data-mining", "python"]
+categories: ["machine-learning", "python"]
 tags: ["tensorflow"]
 ---
 

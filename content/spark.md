@@ -6,7 +6,27 @@ categories: ["data-engineering", "python", "R"]
 tags: ["spark", "data-engineering", "python", "R"]
 ---
 
-## 1. What is spark and why would use use it?
+<center>
+
+**Contents:**
+
+[1. What is spark and why would you use it?](#what) 
+
+[2. A few "Hello World" examples](#hello) 
+
+[pyspark](#pyspark)
+
+[sparklyr](#sparklyr)
+
+[SparkR](#sparkr)
+
+[3. Useful links](#useful)
+
+[4. Subjects still to cover](#subjects)
+
+</center>
+
+## 1. What is spark and why would use use it? {#spark}
 
 * Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/hadoop);
 
@@ -14,8 +34,8 @@ tags: ["spark", "data-engineering", "python", "R"]
 
 * it is probably the most popular big data tool nowadays for data scientists.
 
-## 2. A few "Hello World" examples
-### a) pyspark 
+## 2. A few "Hello World" examples {#hello}
+### a) pyspark {#pyspark}
 #### Prerequisites
 
 ##### Installation of pyspark
@@ -155,7 +175,7 @@ and their descriptions:
 
 * file extension
 
-### b) sparklyr (spark + dplyr)
+### b) sparklyr (spark + dplyr) {#sparklyr}
 
 There are two popular R libraries, which enable you to connect to spark from R: SparkR and sparklyr. I found sparklyr much nicer, as it is compatible with all the fancy functions from [dplyr](https://tomis9.github.io/tidyverse), which makes manipulating dataframes familiar and easy (+ 1 big point for dplyr in it's fight against [data.table](https://tomis9.github.io/data.table)).
 
@@ -197,7 +217,7 @@ d %>% count()
 
 You will find more useful information on [datacamp sparklyr course](https://www.datacamp.com/courses/introduction-to-spark-in-r-using-sparklyr).
 
-### c) SparkR
+### c) SparkR {#sparkr}
 
 A short example of setting up SparkR:
 
@@ -218,7 +238,7 @@ df <- read.parquet(parquet_path)
 
 [Here](https://spark.apache.org/docs/latest/sparkr.html) you can find a SparkR programming guide.
 
-## 3. Useful links
+## 3. Useful links {#useful}
 
 * [a nice introductory article](https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi)
 
@@ -226,7 +246,7 @@ df <- read.parquet(parquet_path)
 
 * [SparkR vs sparklyr](https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/)
 
-## 4. Subjects still to cover
+## 4. Subjects still to cover {#subjects}
 
 * MLlib (TODO)
 
@@ -245,4 +265,3 @@ df <- read.parquet(parquet_path)
 * (TODO) sparkR and sparklyr comparison [https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/]
 
 * collect() (TODO)
-

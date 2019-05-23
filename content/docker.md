@@ -6,7 +6,21 @@ categories: ["DevOps"]
 tags: ["docker"]
 ---
 
-## 1. What is docker and why would you use it?
+<center>
+
+[1. What is docker and why would you use it?](#what)
+
+[2. Installation and a short tutorial](#installation)
+
+[3. A Dockerfile](#dockerfile)
+
+[4. Useful links](#useful)
+
+[5. Subjects still to cover](#todo)
+
+</center>
+
+## 1. What is docker and why would you use it? {#what}
 
 * "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux." Comparing to Python, it's basically a virtualenv, but for the whole OS. Or this is some sort of a virtual machine;
 
@@ -24,7 +38,7 @@ Why would you use it?
 
 * you can develop software on your laptop and as long as you test it in a docker container, you can be 100% sure the code will run on a server in production.
 
-## 2. Installation and a short tutorial
+## 2. Installation and a short tutorial {#installation}
 
 You can download docker from [here](https://www.docker.com/products/docker-engine#/linux) or simply download and install with `sudo apt install docker.io`.
 
@@ -75,7 +89,7 @@ sudo docker exec <container_name> <command>
 Well, there is actually many various topics on docker, so maybe you should just go through the tutorial.
 A pretty long, but credible tutorial is available [here](https://docker-curriculum.com/). Don't get discouraged by it's length - one third of this tutorial should be enough :)
 
-## 3. A Dockerfile
+## 3. A Dockerfile {#dockerfile}
 
 A Dockerfile is a place where you store your image's definition. The file is executed while you build your an image. There are several statements in Dockerfiles that are worth remembering:
 
@@ -134,13 +148,13 @@ gunicorn -b 0.0.0.0:8000 app:app
 
 More commands are available at [Dockerfile reference](https://docs.docker.com/engine/reference/builder/).
 
-## 4. Useful links
+## 4. Useful links {#useful}
 
 * [a fantastic book on docker](http://pepa.holla.cz/wp-content/uploads/2016/10/Using-Docker.pdf)
 
 * [Dockerfile best practises](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
-## 4. Subjects still to cover
+## 5. Subjects still to cover {#todo}
 
 * docker create volume (TODO)
 

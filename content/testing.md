@@ -2,8 +2,8 @@
 title: "testing"
 date: 2018-02-04T12:02:23+01:00
 draft: false
-categories: ["DevOps", "data-engineering", "R"]
-tags: ["DevOps", "data-engineering", "R"]
+categories: ["DevOps", "data-engineering", "R", "python"]
+tags: ["DevOps", "data-engineering", "R", "python"]
 ---
 <center>
 

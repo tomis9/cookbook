@@ -2,7 +2,7 @@
 title: "nls"
 date: 2018-01-28T22:52:21+01:00
 draft: false
-categories: ["R"]
+categories: ["R", "machine-learning"]
 tags: ["R", "statistics"]
 ---
 
