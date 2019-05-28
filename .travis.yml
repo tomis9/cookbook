@@ -8,13 +8,15 @@ branches:
     - master
 
 install:
-  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071", "mltools", "randomForest", "AER"))'
+  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071", "mltools", "randomForest", "AER", "xgboost"))'
   - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
   - Rscript -e 'devtools::install_github("vqv/ggbiplot")'
   - sudo apt-get install python3-pip -y
   - sudo pip3 install --upgrade pip
   - sudo pip3 install setuptools
   - sudo pip3 install sklearn
+  - sudo pip3 install xgboost
+  - sudo pip3 install tensorflow
 
 before_script:
   - Rscript -e "blogdown::install_hugo(version = '0.52')"

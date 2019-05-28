@@ -1,5 +1,5 @@
 ---
-title: "ml"
+title: "basic machine learning algorithms"
 date: 2019-04-22T18:05:21+02:00
 draft: false
 categories: ["machine-learning"]
@@ -17,6 +17,20 @@ tags: []
 
 We'll be working on `iris` dataset, which is easily available in Python (`from sklearn import datasets; datasets.load_iris()`) and R (`data(iris)`).
 
+We will use a few of the most popular machine learning tools: 
+
+* R base, 
+  
+* R caret, 
+  
+    * [a short introduction to caret](https://cran.r-project.org/web/packages/caret/vignettes/caret.html)
+
+    * [The *caret* package](http://topepo.github.io/caret/index.html)
+
+* Python scikit-learn,
+  
+* Python API to tensorflow.
+
 Let's prepare data for our algorithms.
 
 *Python*
@@ -30,10 +44,14 @@ X, y = iris.data, iris.target
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.33, random_state=42)
+
+boston = datasets.load_boston()
+# I will divide boston dataset to train and test later on
 ```
 
-*R*
+*base R*
 ```{r, echo = FALSE}
+# unfortunately base R does not provide a function for train/test split
 train_test_split <- function(test_size = 0.33, dataset) {
     smp_size <- floor(test_size * nrow(dataset))
     test_ind <- sample(seq_len(nrow(dataset)), size = smp_size)
@@ -47,11 +65,22 @@ library(gsubfn)
 list[train, test] <- train_test_split(0.5, iris)
 ```
 
+*caret R*
+```{r}
+library(caret)
+# ..., the random sampling is done within the
+# levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
+# distributions within the splits.
+# I provide package's name before function's name for clarity
+trainIndex <- caret::createDataPartition(iris$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train <- iris[trainIndex,]
+test <- iris[-trainIndex,]
+```
 
 ### SVM
 
-The best description of SVM I found in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book.
-
+The best description of SVM I found is in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book. ([plotting svm in scikit](https://scikit-learn.org/0.18/auto_examples/svm/plot_iris.html))
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.svm import SVC  # support vector classification
@@ -62,13 +91,20 @@ svc.fit(X_train, y_train)
 print(accuracy_score(svc.predict(X_test), y_test))
 ```
 
-*R*
+*"base" R*
 ```{r}
 svc <- e1071::svm(Species ~ ., train)
 
 pred <- as.character(predict(svc, test[, 1:4]))
 mean(pred == test["Species"])
 ```
+
+*"caret R"*
+```{r}
+svm_linear <- train(Species ~ ., data = train, method = "svmLinear")
+mean(predict(svm_linear, test) == test$Species)
+```
+
 
 ### decision trees
 
@@ -82,7 +118,7 @@ dtc.fit(X_train, y_train)
 print(accuracy_score(y_test, dtc.predict(X_test)))
 ```
 
-*R*
+*"base" R*
 ```{r}
 dtc <- rpart::rpart(Species ~ ., train)
 print(dtc)
@@ -91,7 +127,9 @@ pred <- predict(dtc, test[,1:4], type = "class")
 mean(pred == test[["Species"]])
 ```
 
-I have described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
+*"caret" R*
+
+I described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
 
 ### random forests
 
@@ -128,10 +166,7 @@ kn <- class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3)
 mean(kn == test[,5])
 ```
 
-### xgboost
-
 ### kmeans
-
 
 K-means can be nicely plotted in two dimensions with help of [PCA](https://tomis9.github.io/dimensionality/#pca).
 
@@ -184,8 +219,7 @@ summary(model)
 from sklearn.linear_model import LinearRegression
 from sklearn import datasets
 
-data = datasets.load_boston()
-X, y = data.data, data.target
+X, y = boston.data, boston.target
 
 lr = LinearRegression()
 lr.fit(X, y)
@@ -197,6 +231,82 @@ TODO: is it really the same dataset? + lr. p-values and t-values
 
 ### logistic regression
 
+In these examples I will present classification of a dummy variable.
+
 ```{r}
-# glm()
+species <- c("setosa", "versicolor")
+d <- iris[iris$Species %in% species,]
+d$Species <- factor(d$Species, levels = species)
+library(gsubfn)
+list[train, test] <- train_test_split(0.5, d)
+
+m <- glm(Species ~ Sepal.Length, train, family = binomial)
+# predictions - if prediction is bigger than 0.5, we assume it's a one, 
+# or success
+y_hat_test <- predict(m, test[,1:4], type = "response") > 0.5
+
+# glm's doc:
+# For ‘binomial’ and ‘quasibinomial’ families the response can also
+# be specified as a ‘factor’ (when the first level denotes failure
+# and all others success) or as a two-column matrix with the columns
+# giving the numbers of successes and failures.
+# in our case - species[1] ("setosa") is a failure (0) and species[2] 
+# ("versicolor") is 1 (success)
+# successes:
+y_test <- test$Species == species[2]
+
+mean(y_test == y_hat_test)
+```
+
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.linear_model import LogisticRegression
+
+cond = iris.target != 2
+X = iris.data[cond]
+y = iris.target[cond]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+
+lr = LogisticRegression()
+
+lr.fit(X_train, y_train)
+accuracy_score(lr.predict(X_test), y_test)
+
+# + plot logistic regression 
+```
+
+### xgboost
+
+```{python, engine.path = '/usr/bin/python3'}
+from xgboost import XGBClassifier
+
+cond = iris.target != 2
+X = iris.data[cond]
+y = iris.target[cond]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+
+xgb = XGBClassifier()
+xgb.fit(X_train, y_train)
+accuracy_score(xgb.predict(X_test), y_test)
+```
+
+```{r}
+species <- c("setosa", "versicolor")
+d <- iris[iris$Species %in% species,]
+d$Species <- factor(d$Species, levels = species)
+library(gsubfn)
+list[train, test] <- train_test_split(0.5, d)
+
+library(xgboost)
+m <- xgboost(
+  data = as.matrix(train[,1:4]), 
+  label = as.integer(train$Species) - 1,
+  objective = "binary:logistic",
+  nrounds = 2)
+
+(predict(m, as.matrix(test[,1:4])) > 0.5) == (as.integer(test$Species) - 1)
+
 ```

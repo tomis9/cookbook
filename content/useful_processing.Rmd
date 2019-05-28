@@ -1,22 +1,28 @@
 ---
-title: "Useful_processing"
+title: "useful_processing"
 date: 2019-05-17T15:44:38+02:00
-draft: true
-categories: []
+draft: false
+categories: ["machine-learning", "data-engineering"]
 tags: []
 ---
 
-# What is useful processing?
+## 1. What is useful processing?
 
 * many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, this sort of processing is useful.
 
-# Examples
+## 2. Examples
 
 * one-hot encoding
 
-```{r}
+```{r, message = FALSE}
+# data.table
 dt_iris <- data.table::as.data.table(iris)
 mltools::one_hot(dt_iris)
+
+# caret
+library(caret)
+dummy <- caret::dummyVars(" ~ .", data = iris)
+head(predict(dummy, iris))
 
 # dplyr is not that clever
 library(dplyr)
@@ -26,6 +32,8 @@ iris %>%
   mutate("Species_versicolor" = ifelse(Species == "versicolor", 1, 0)) %>%
   head()
 ```
+
+As you can see, `caret` recognised dummy variables (`Species`) and processed them to binary variables.
 
 ```{python, engine.path = '/usr/bin/python3'}
 # https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
@@ -53,13 +61,38 @@ print(onehot_encoded[:5])
 scale(1:5)
 mean(1:5)
 sd(1:5)
+
+sc <- scale(iris[,1:4])
+head(sc)
+attributes(sc)
 ```
 
 Works well on data.frames as well.
 
-* dividing your dataset test, train and validation subsets
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.preprocessing import scale, StandardScaler
+from sklearn import datasets
+import pandas as pd
+import numpy as np
 
-- dlaczego wydzielam zbiór walidacyjny?
+# simple approach
+sc = scale(np.arange(1, 6))
+print(np.std(sc))
+print(np.mean(sc))
+
+# and a way compatible with pandas
+data = datasets.load_iris()
+X, y = data.data, data.target
+
+scaler = StandardScaler()
+scaled_df = scaler.fit_transform(X)
+scaled_df = pd.DataFrame(scaled_df, columns=["x" + str(i) for i in range(4)])
+
+scaled_df.mean(axis=0)
+scaled_df.std(axis=0)
+```
+
+* dividing your dataset into train and test subsets
 
 [link](https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function)
 ```{r}
@@ -73,4 +106,27 @@ train_test_split <- function(test_proportion = 0.75, dataset) {
 }
 library(gsubfn)
 list[train, test] <- train_test_split(0.8, iris)
+```
+
+```{r}
+library(caret)
+# ..., the random sampling is done within the
+# levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
+# distributions within the splits.
+# I provide package's name before function's name for clarity
+trainIndex <- caret::createDataPartition(iris$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train <- iris[trainIndex,]
+test <- iris[-trainIndex,]
+```
+
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+data = datasets.load_iris()
+
+X, y = data.data, data.target
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
 ```
