@@ -30,3 +30,5 @@ tags
 .Rhistory
 .RData
 tf_logs
+py_tests.py
+r_tests.R
