@@ -225,6 +225,7 @@ A short example of setting up SparkR:
 SPARK_HOME <- ""
 lib.loc <- file.path(SPARK_HOME, "R", "lib")
 Sys.setenv(SPARK_HOME = SPARK_HOME) 
+# library(rJava)  # may be necessary
 library(SparkR, lib.loc = lib.loc)
 sparkR.session(master = "local[*]", sparkConfig = list(spark.driver.memory = "2g"))
 ```
@@ -234,6 +235,9 @@ and reading a parquet file from hdfs:
 ```{r}
 parquet_path <- "hdfs:///user/..."
 df <- read.parquet(parquet_path)
+# collect() downloads SparkDataFrame to local memory; beware of function 
+# names' conflict: tidyverse::collect() and SparkR::collect()
+SparkR::collect(df)  
 ```
 
 [Here](https://spark.apache.org/docs/latest/sparkr.html) you can find a SparkR programming guide.
