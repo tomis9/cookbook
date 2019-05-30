@@ -1,0 +1,92 @@
+---
+title: "validation"
+date: 2019-05-23T12:46:03+02:00
+draft: false
+categories: ["machine-learning"]
+tags: []
+---
+
+## 1. What is model validation and why would you do it?
+
+- confusion matrix
+
+https://www.rdocumentation.org/packages/caret/versions/3.45/topics/confusionMatrix
+
+Confusion matrix is not that confusing as the name suggests. Let's consideer a simple classificator, e.g. logistic regression, described in more detial [here](https://tomis9.github.io/ml):
+
+* base R
+
+- dataset preparation (described in more detail [here](https://tomis9.github.io/useful_processing))
+```{r}
+# prepare the dataset
+library(caret)
+species <- c("setosa", "versicolor")
+d <- iris[iris$Species %in% species,]
+d$Species <- factor(d$Species, levels = species)
+trainIndex <- caret::createDataPartition(d$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train <- d[trainIndex,]
+test <- d[-trainIndex,]
+y_test <- test$Species == species[2]
+```
+
+and the logistic regression itself:
+```{r}
+m <- glm(Species ~ Sepal.Length, train, family = "binomial")
+y_hat_test <- predict(m, test[,1:4], type = "response") > 0.5
+```
+
+We've prepared our predictions, as well as testing target, as vectors of binary values:
+```{r}
+y_test[1:10]
+y_hat_test[1:10]
+```
+
+so now we may use a simple `table()` function to create a confusion matrix:
+```{r}
+table(y_hat_test, y_test)
+```
+
+* R caret
+
+`caret` provides a much broader summary of confusion matrix:
+```{r}
+library(caret)
+m2 <- train(Species ~ Sepal.Length, train, method = "glm", family = binomial)
+confusionMatrix(predict(m2, test), test$Species)
+```
+
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+iris = load_iris()
+
+cond = iris.target != 0
+X = iris.data[cond]
+y = iris.target[cond]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+
+lr = LogisticRegression()
+
+lr.fit(X_train, y_train)
+accuracy_score(lr.predict(X_test), y_test)
+print(confusion_matrix(lr.predict(X_test), y_test))
+```
+
+- Gini, AUC etc.
+
+[A wonderful article about AUC and ROC curves](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5). There is no nedd to duplicate it.
+
+https://towardsdatascience.com/supervised-machine-learning-model-validation-a-step-by-step-approach-771109ae0253
+
+
+cross-validation
+
+parameter search
+
+https://scikit-learn.org/stable/modules/grid_search.html#tuning-the-hyper-parameters-of-an-estimator
