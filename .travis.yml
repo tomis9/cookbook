@@ -17,6 +17,7 @@ install:
   - sudo pip3 install sklearn
   - sudo pip3 install xgboost
   - sudo pip3 install tensorflow
+  - sudo pip3 install pandas
 
 before_script:
   - Rscript -e "blogdown::install_hugo(version = '0.52')"
