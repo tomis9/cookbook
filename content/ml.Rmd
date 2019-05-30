@@ -129,6 +129,8 @@ mean(pred == test[["Species"]])
 
 *"caret" R*
 
+TODO
+
 I described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
 
 ### random forests
@@ -149,6 +151,10 @@ rf <- randomForest::randomForest(Species ~ ., data = train)
 mean(predict(rf, test[, 1:4]) == test[["Species"]])
 ```
 
+caret R
+
+TODO
+
 ### knn 
 
 *Python*
@@ -165,6 +171,10 @@ accuracy_score(y, knn.predict(X))
 kn <- class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3) 
 mean(kn == test[,5])
 ```
+
+caret r
+
+todo
 
 ### kmeans
 
@@ -197,22 +207,34 @@ sapply(list(kmeans(iris_pca[,1], centers = 3),
        plot_kmeans, iris_pca = iris_pca)
 ```
 
+interesting article - [kmeans with dplyr and broom](https://cran.r-project.org/web/packages/broom/vignettes/kmeans.html)
+
+caret r
+
+TODO
+
+python
+
+TODO
+
 ### linear regression
 
-*R*
-
-rather useles on iris dataset, because the response variable is mutlinomial. Let's use this on a different famous dataset - HousePrices.
-```{r, echo = FALSE}
-library(AER)
-```
+*base R*
 
 ```{r}
-data("HousePrices")
-model <- lm(price ~ ., HousePrices)
+model <- lm(Sepal.Length ~ ., train)
 summary(model)
 ```
 
 `lm()` function automatically converts factor variables to one-hot encoded features.
+
+*R caret*
+```{r}
+library(caret)
+
+m <- train(Sepal.Length ~ ., data = train, method = "lm")
+summary(m)  # exactly the same as ls()
+```
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -225,14 +247,14 @@ lr = LinearRegression()
 lr.fit(X, y)
 print(lr.intercept_)
 print(lr.coef_)
+# TODO calculate this with iris dataset
 ```
-
-TODO: is it really the same dataset? + lr. p-values and t-values
 
 ### logistic regression
 
 In these examples I will present classification of a dummy variable.
 
+- base R
 ```{r}
 species <- c("setosa", "versicolor")
 d <- iris[iris$Species %in% species,]
@@ -258,6 +280,14 @@ y_test <- test$Species == species[2]
 mean(y_test == y_hat_test)
 ```
 
+- R caret
+```{r}
+library(caret)
+m2 <- train(Species ~ Sepal.Length, data = train, method = "glm", family = binomial)
+mean(predict(m2, test) == test$Species)
+```
+
+- Python
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.linear_model import LogisticRegression
 
@@ -278,6 +308,7 @@ accuracy_score(lr.predict(X_test), y_test)
 
 ### xgboost
 
+- Python
 ```{python, engine.path = '/usr/bin/python3'}
 from xgboost import XGBClassifier
 
@@ -293,6 +324,7 @@ xgb.fit(X_train, y_train)
 accuracy_score(xgb.predict(X_test), y_test)
 ```
 
+- R base
 ```{r}
 species <- c("setosa", "versicolor")
 d <- iris[iris$Species %in% species,]
@@ -308,5 +340,8 @@ m <- xgboost(
   nrounds = 2)
 
 (predict(m, as.matrix(test[,1:4])) > 0.5) == (as.integer(test$Species) - 1)
-
 ```
+
+- caret R
+
+[interesting link](https://www.kaggle.com/pelkoja/visual-xgboost-tuning-with-caret)
