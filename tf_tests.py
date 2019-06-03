@@ -101,13 +101,15 @@ np.concatenate((np.array([lr.intercept_]), lr.coef_))
 # the code above looks quite like a mess, let's clear it up
 
 
-def get_data():
+def get_data(tensorflow=True):
     iris = load_iris()
     data = iris.data
-    y = tf.constant(data[:, 0].reshape(150, 1), name='y')
+    y = data[:, 0].reshape(150, 1)
     x0 = np.ones(150).reshape(150, 1)
-    x0_X = np.concatenate((x0, data[:, 1:]), axis=1)
-    X = tf.constant(x0_X, name='X')  # constant is a tensor
+    X = np.concatenate((x0, data[:, 1:]), axis=1)
+    if tensorflow:
+        y = tf.constant(y, name='y')
+        X = tf.constant(X, name='X')  # constant is a tensor
     return X, y
 
 
@@ -256,3 +258,36 @@ with tf.Session() as sess:
 # lesson #17: operations (like optimizer) are run, not evaluated
 
 
+# you should always use get_variable() insetad of Variable (interesting)
+# https://stackoverflow.com/questions/37098546/difference-between-variable-and-get-variable-in-tensorflow
+
+learning_rate = 0.01
+n_iter = 1000
+
+X_train, y_train = get_data(tensorflow=False)
+
+X = tf.placeholder("float64", shape=(None, 4))  # placeholder -
+y = tf.placeholder("float64", shape=(None, 1))
+
+start_values = tf.random_uniform([4, 1], -1, 1, dtype="float64")
+beta = tf.Variable(start_values, name='beta')
+mse = tf.reduce_mean(tf.square(y - tf.matmul(X, beta)))
+
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+_training = optimizer.minimize(mse)
+
+batch_indexes = np.arange(150).reshape(5,30)
+
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    init.run()
+    for i in range(n_iter):
+        for batch_index in batch_indexes:
+            _training.run(feed_dict={X: X_train[batch_index],
+                                     y: y_train[batch_index]})
+        if not i % 100:
+            print(mse.eval(feed_dict={X: X_train, y: y_train}))
+    print(mse.eval(feed_dict={X: X_train, y: y_train}), "- final score")
+    print(beta.eval())
+
+# lesson #18: in mini-batch processing it is comfortable to use placeholders
