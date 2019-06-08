@@ -78,12 +78,25 @@ accuracy_score(lr.predict(X_test), y_test)
 print(confusion_matrix(lr.predict(X_test), y_test))
 ```
 
+- Precision / Recall tradeoff
+
+[a wonderful, intuitive article](https://towardsdatascience.com/precision-vs-recall-386cf9f89488)
+
+[another good article](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c)
+
 - Gini, AUC etc.
 
 [A wonderful article about AUC and ROC curves](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5). There is no nedd to duplicate it.
 
 https://towardsdatascience.com/supervised-machine-learning-model-validation-a-step-by-step-approach-771109ae0253
 
+ROC - TPR vs FPR, where
+
+$$ \textrm{TPR} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FP}} $$
+
+TPR - True Positive Rate
+TP - True Positive
+FP - False Positive
 
 cross-validation
 
