@@ -11,6 +11,10 @@ categories: ["scratchpad"]
 redis (TODO)
 </center>
 
+```{bash}
+docker pull redis
+```
+
 ```{python}
 import redis
 import pandas as pd
