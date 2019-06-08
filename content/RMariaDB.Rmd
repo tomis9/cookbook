@@ -62,7 +62,7 @@ tab <- RMariaDB::dbFetch(rs, n = -1)
 RMariaDB::dbClearResult(rs)
 
 # equivalent to select * from my_table;
-d <- dbReadTable(con, "my_table")
+d <- RMariaDB::dbReadTable(con, "my_table")
 ```
 
 * ### sending data to db
