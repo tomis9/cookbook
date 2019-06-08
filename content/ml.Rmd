@@ -49,6 +49,10 @@ boston = datasets.load_boston()
 # I will divide boston dataset to train and test later on
 ```
 
+*tensorflow*
+
+You can use functions from [tensorflow_datasets](https://medium.com/tensorflow/introducing-tensorflow-datasets-c7f01f7e19f3) module, but... does anybody use them?
+
 *base R*
 ```{r, echo = FALSE}
 # unfortunately base R does not provide a function for train/test split
@@ -68,7 +72,7 @@ list[train, test] <- train_test_split(0.5, iris)
 *caret R*
 ```{r}
 library(caret)
-# ..., the random sampling is done within the
+# docs: ..., the random sampling is done within the
 # levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
 # distributions within the splits.
 # I provide package's name before function's name for clarity
@@ -80,7 +84,8 @@ test <- iris[-trainIndex,]
 
 ### SVM
 
-The best description of SVM I found is in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book. ([plotting svm in scikit](https://scikit-learn.org/0.18/auto_examples/svm/plot_iris.html))
+The best description of SVM I found is in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book. 
+
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.svm import SVC  # support vector classification
@@ -250,6 +255,82 @@ print(lr.coef_)
 # TODO calculate this with iris dataset
 ```
 
+*tensorflow*
+
+data preparation
+
+```{python, engine.path = '/usr/bin/python3'}
+import tensorflow as tf
+from sklearn.datasets import load_iris
+import numpy as np
+
+def get_data(tensorflow=True):
+    iris = load_iris()
+    data = iris.data
+    y = data[:, 0].reshape(150, 1)
+    x0 = np.ones(150).reshape(150, 1)
+    X = np.concatenate((x0, data[:, 1:]), axis=1)
+    if tensorflow:
+        y = tf.constant(y, name='y')
+        X = tf.constant(X, name='X')  # constant is a tensor
+    return X, y
+```
+
+using normal equations
+
+```{python, engine.path = '/usr/bin/python3'}
+def construct_beta_graph(X, y):
+    cov = tf.matmul(tf.transpose(X), X, name='cov')
+    inv_cov = tf.matrix_inverse(cov, name='inv_cov')
+    xy = tf.matmul(tf.transpose(X), y, name='xy')
+    beta = tf.matmul(inv_cov, xy, name='beta')
+    return beta
+
+
+X, y = get_data()
+beta = construct_beta_graph(X, y)
+mse = tf.reduce_mean(tf.square(y - tf.matmul(X, beta)))
+
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    init.run()
+    print(beta.eval())
+    print(mse.eval())
+```
+
+using gradient descent and mini-batches
+```{python, engine.path = '/usr/bin/python3'}
+learning_rate = 0.01
+n_iter = 1000
+
+X_train, y_train = get_data(tensorflow=False)
+
+X = tf.placeholder("float64", shape=(None, 4))  # placeholder -
+y = tf.placeholder("float64", shape=(None, 1))
+
+start_values = tf.random_uniform([4, 1], -1, 1, dtype="float64")
+beta = tf.Variable(start_values, name='beta')
+mse = tf.reduce_mean(tf.square(y - tf.matmul(X, beta)))
+
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+_training = optimizer.minimize(mse)
+
+batch_indexes = np.arange(150).reshape(5,30)
+
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    init.run()
+    for i in range(n_iter):
+        for batch_index in batch_indexes:
+            _training.run(feed_dict={X: X_train[batch_index],
+                                     y: y_train[batch_index]})
+        if not i % 100:
+            print(mse.eval(feed_dict={X: X_train, y: y_train}))
+    print(mse.eval(feed_dict={X: X_train, y: y_train}), "- final score")
+    print(beta.eval())
+```
+
+
 ### logistic regression
 
 In these examples I will present classification of a dummy variable.
@@ -345,3 +426,8 @@ m <- xgboost(
 - caret R
 
 [interesting link](https://www.kaggle.com/pelkoja/visual-xgboost-tuning-with-caret)
+
+
+TODO: ([plotting svm in scikit](https://scikit-learn.org/0.18/auto_examples/svm/plot_iris.html))
+
+
