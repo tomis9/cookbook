@@ -6,14 +6,41 @@ categories: ["machine-learning"]
 tags: []
 ---
 
+<center>
 
-## 1. What is machine learning and why would you use it?
+**Contents:**
+
+[1. What is machine learning and why would you use it?](#what) 
+
+[2. Examples of the most popular machine learning examples in Python and R](#examples) 
+
+[- data preparation](#data-preparation)
+
+[- SVM](#svm)
+
+[- decision trees](#decision-trees)
+
+[- random forests](#random-forests)
+
+[- knn](#knn)
+
+[- kmeans](#kmeans)
+
+[- linear regression](#linear regression)
+
+[- logistic regression](#logistic-regression)
+
+[- xgboost](#xgboost)
+
+</center>
+
+## 1. What is machine learning and why would you use it? {#what}
 
 * it's a rather complicated, yet beautiful tool for boldly going where no man has gone before.
 
 * in other words, it enables you to extract valuable information from data.
 
-## 2. Examples of the most popular machine learning algorithms in Python and R.
+## 2. Examples of the most popular machine learning algorithms in Python and R {#examples}
 
 We'll be working on `iris` dataset, which is easily available in Python (`from sklearn import datasets; datasets.load_iris()`) and R (`data(iris)`).
 
@@ -29,9 +56,11 @@ We will use a few of the most popular machine learning tools:
 
 * Python scikit-learn,
   
-* Python API to tensorflow.
+* Python API to [tensorflow](https://tomis9.github.io/tensorflow). `tensorflow` was used in very few cases, because it is designed mainly for neural networks, and we would have to implement the algorithms from scratch.
 
-Let's prepare data for our algorithms.
+Let's prepare data for our algorithms. You can read more about data preparation in [this blog post](https://tomis9.github.io/useful_processing).
+
+### data preparation {#data-preparation}
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -54,7 +83,7 @@ boston = datasets.load_boston()
 You can use functions from [tensorflow_datasets](https://medium.com/tensorflow/introducing-tensorflow-datasets-c7f01f7e19f3) module, but... does anybody use them?
 
 *base R*
-```{r, echo = FALSE}
+```{r, message = FALSE}
 # unfortunately base R does not provide a function for train/test split
 train_test_split <- function(test_size = 0.33, dataset) {
     smp_size <- floor(test_size * nrow(dataset))
@@ -71,23 +100,24 @@ list[train, test] <- train_test_split(0.5, iris)
 
 *caret R*
 ```{r}
-library(caret)
 # docs: ..., the random sampling is done within the
 # levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
 # distributions within the splits.
 # I provide package's name before function's name for clarity
+```
+```{r, message = FALSE}
 trainIndex <- caret::createDataPartition(iris$Species, p=0.7, list = FALSE, 
                                          times = 1)
 train <- iris[trainIndex,]
 test <- iris[-trainIndex,]
 ```
 
-### SVM
+### SVM {#svm}
 
 The best description of SVM I found is in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book. 
 
 *Python*
-```{python, engine.path = '/usr/bin/python3'}
+```{python, engine.path = '/usr/bin/python3', message = FALSE, warning = FALSE}
 from sklearn.svm import SVC  # support vector classification
 
 svc = SVC()
@@ -95,6 +125,8 @@ svc.fit(X_train, y_train)
 
 print(accuracy_score(svc.predict(X_test), y_test))
 ```
+
+TODO: [plotting svm in scikit](https://scikit-learn.org/0.18/auto_examples/svm/plot_iris.html)
 
 *"base" R*
 ```{r}
@@ -104,14 +136,13 @@ pred <- as.character(predict(svc, test[, 1:4]))
 mean(pred == test["Species"])
 ```
 
-*"caret R"*
-```{r}
-svm_linear <- train(Species ~ ., data = train, method = "svmLinear")
+*caret R*
+```{r, message = FALSE}
+svm_linear <- caret::train(Species ~ ., data = train, method = "svmLinear")
 mean(predict(svm_linear, test) == test$Species)
 ```
 
-
-### decision trees
+### decision trees {#decision-trees}
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -123,6 +154,8 @@ dtc.fit(X_train, y_train)
 print(accuracy_score(y_test, dtc.predict(X_test)))
 ```
 
+TODO: [an article on drawing decision trees in Python](https://medium.com/@rnbrown/creating-and-visualizing-decision-trees-with-python-f8e8fa394176)
+
 *"base" R*
 ```{r}
 dtc <- rpart::rpart(Species ~ ., train)
@@ -132,16 +165,20 @@ pred <- predict(dtc, test[,1:4], type = "class")
 mean(pred == test[["Species"]])
 ```
 
-*"caret" R*
-
-TODO
+*caret R*
+```{r}
+c_dtc <- caret::train(Species ~ ., train, method = "rpart")
+print(c_dtc)
+rpart.plot::rpart.plot(c_dtc$finalModel)
+```
 
 I described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
 
-### random forests
+
+### random forests {#random-forests}
 
 *Python*
-```{python, engine.path = '/usr/bin/python3'}
+```{python, engine.path = '/usr/bin/python3', message = FALSE, warning = FALSE}
 from sklearn.ensemble import RandomForestClassifier
 
 rfc = RandomForestClassifier()
@@ -150,17 +187,21 @@ rfc.fit(X_train, y_train)
 print(accuracy_score(rfc.predict(X_test), y_test))
 ```
 
-*R*
+*"base" R*
 ```{r}
 rf <- randomForest::randomForest(Species ~ ., data = train)
 mean(predict(rf, test[, 1:4]) == test[["Species"]])
 ```
 
-caret R
+*caret R*
+```{r}
+c_rf <- caret::train(Species ~ ., train, method = "rf")
+print(c_rf)
+print(c_dtc$finalModel)
+```
 
-TODO
 
-### knn 
+### knn {#knn}
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -168,7 +209,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 knn = KNeighborsClassifier()
 knn.fit(X, y)
-accuracy_score(y, knn.predict(X))
+print(accuracy_score(y, knn.predict(X)))
 ```
 
 *R*
@@ -177,11 +218,10 @@ kn <- class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3)
 mean(kn == test[,5])
 ```
 
-caret r
+TODO: caret r knn
 
-todo
 
-### kmeans
+### kmeans {#kmeans}
 
 K-means can be nicely plotted in two dimensions with help of [PCA](https://tomis9.github.io/dimensionality/#pca).
 
@@ -214,32 +254,12 @@ sapply(list(kmeans(iris_pca[,1], centers = 3),
 
 interesting article - [kmeans with dplyr and broom](https://cran.r-project.org/web/packages/broom/vignettes/kmeans.html)
 
-caret r
+TODO: caret r - kmeans
 
-TODO
+TODO: python - kmeans
 
-python
 
-TODO
-
-### linear regression
-
-*base R*
-
-```{r}
-model <- lm(Sepal.Length ~ ., train)
-summary(model)
-```
-
-`lm()` function automatically converts factor variables to one-hot encoded features.
-
-*R caret*
-```{r}
-library(caret)
-
-m <- train(Sepal.Length ~ ., data = train, method = "lm")
-summary(m)  # exactly the same as ls()
-```
+### linear regression {#linear-regression}
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -257,7 +277,7 @@ print(lr.coef_)
 
 *tensorflow*
 
-data preparation
+- data preparation
 
 ```{python, engine.path = '/usr/bin/python3'}
 import tensorflow as tf
@@ -276,7 +296,7 @@ def get_data(tensorflow=True):
     return X, y
 ```
 
-using normal equations
+- using normal equations
 
 ```{python, engine.path = '/usr/bin/python3'}
 def construct_beta_graph(X, y):
@@ -298,7 +318,7 @@ with tf.Session() as sess:
     print(mse.eval())
 ```
 
-using gradient descent and mini-batches
+- using gradient descent and mini-batches
 ```{python, engine.path = '/usr/bin/python3'}
 learning_rate = 0.01
 n_iter = 1000
@@ -330,12 +350,46 @@ with tf.Session() as sess:
     print(beta.eval())
 ```
 
+*base R*
 
-### logistic regression
+```{r}
+model <- lm(Sepal.Length ~ ., train)
+summary(model)
+```
+
+`lm()` function automatically converts factor variables to one-hot encoded features.
+
+*R caret*
+```{r}
+library(caret)
+
+m <- train(Sepal.Length ~ ., data = train, method = "lm")
+summary(m)  # exactly the same as lm()
+```
+
+
+### logistic regression {#logistic-regression}
 
 In these examples I will present classification of a dummy variable.
 
-- base R
+*Python*
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.linear_model import LogisticRegression
+
+cond = iris.target != 2
+X = iris.data[cond]
+y = iris.target[cond]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+
+lr = LogisticRegression()
+
+lr.fit(X_train, y_train)
+accuracy_score(lr.predict(X_test), y_test)
+```
+
+*base R*
 ```{r}
 species <- c("setosa", "versicolor")
 d <- iris[iris$Species %in% species,]
@@ -361,35 +415,17 @@ y_test <- test$Species == species[2]
 mean(y_test == y_hat_test)
 ```
 
-- R caret
+*R caret*
 ```{r}
 library(caret)
 m2 <- train(Species ~ Sepal.Length, data = train, method = "glm", family = binomial)
 mean(predict(m2, test) == test$Species)
 ```
 
-- Python
-```{python, engine.path = '/usr/bin/python3'}
-from sklearn.linear_model import LogisticRegression
 
-cond = iris.target != 2
-X = iris.data[cond]
-y = iris.target[cond]
+### xgboost {#xgboost}
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.33, random_state=42)
-
-lr = LogisticRegression()
-
-lr.fit(X_train, y_train)
-accuracy_score(lr.predict(X_test), y_test)
-
-# + plot logistic regression 
-```
-
-### xgboost
-
-- Python
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from xgboost import XGBClassifier
 
@@ -405,7 +441,7 @@ xgb.fit(X_train, y_train)
 accuracy_score(xgb.predict(X_test), y_test)
 ```
 
-- R base
+*"base" R*
 ```{r}
 species <- c("setosa", "versicolor")
 d <- iris[iris$Species %in% species,]
@@ -420,14 +456,11 @@ m <- xgboost(
   objective = "binary:logistic",
   nrounds = 2)
 
-(predict(m, as.matrix(test[,1:4])) > 0.5) == (as.integer(test$Species) - 1)
+mean(predict(m, as.matrix(test[,1:4])) > 0.5) == (as.integer(test$Species) - 1)
 ```
 
-- caret R
+TODO: R: xgb.save(), xgb.importance()
 
-[interesting link](https://www.kaggle.com/pelkoja/visual-xgboost-tuning-with-caret)
+*caret R*
 
-
-TODO: ([plotting svm in scikit](https://scikit-learn.org/0.18/auto_examples/svm/plot_iris.html))
-
-
+TODO: [tuning xgboost with caret](https://www.kaggle.com/pelkoja/visual-xgboost-tuning-with-caret)
