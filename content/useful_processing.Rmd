@@ -1,19 +1,36 @@
 ---
-title: "useful_processing"
+title: "useful processing"
 date: 2019-05-17T15:44:38+02:00
 draft: false
 categories: ["machine-learning", "data-engineering"]
 tags: []
 ---
 
-## 1. What is useful processing?
+<center>
 
-* many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, this sort of processing is useful.
+[1. What is useful processing?](#what)
 
-## 2. Examples
+[2. Examples](#examples)
 
-* one-hot encoding
+[- one-hot encoding](#one-hot)
 
+[- scaling](#scaling)
+
+[- splitting your dataset into train and test subsets](#splitting)
+
+[- sklearn pipeline](#pipeline)
+
+</center>
+
+## 1. What is useful processing? {#what}
+
+* many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, theses kinds of processing are useful.
+
+## 2. Examples {#examples}
+
+### one-hot encoding {#one-hot}
+
+*R*
 ```{r, message = FALSE}
 # data.table
 dt_iris <- data.table::as.data.table(iris)
@@ -35,6 +52,9 @@ iris %>%
 
 As you can see, `caret` recognised dummy variables (`Species`) and processed them to binary variables.
 
+TODO: `library(dummies); library(onehot)`
+
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 # https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
 from sklearn.preprocessing import LabelEncoder
@@ -55,8 +75,10 @@ onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
 print(onehot_encoded[:5])
 ```
 
-* scaling
+### scaling {#scaling}
 
+In R it's extremely simple.
+*base R*
 ```{r}
 scale(1:5)
 mean(1:5)
@@ -67,12 +89,10 @@ head(sc)
 attributes(sc)
 ```
 
-Works well on data.frames as well.
-
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn.preprocessing import scale, StandardScaler
 from sklearn import datasets
-import pandas as pd
 import numpy as np
 
 # simple approach
@@ -86,16 +106,17 @@ X, y = data.data, data.target
 
 scaler = StandardScaler()
 scaled_df = scaler.fit_transform(X)
-scaled_df = pd.DataFrame(scaled_df, columns=["x" + str(i) for i in range(4)])
 
-scaled_df.mean(axis=0)
-scaled_df.std(axis=0)
+print(scaled_df.mean(axis=0))
+print(scaled_df.std(axis=0))
 ```
 
-* dividing your dataset into train and test subsets
+### splitting your dataset into train and test subsets {#splitting}
 
-[link](https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function)
-```{r}
+The idea for the following solution comes from [this post at stackoverflow](https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function).
+
+*base R*
+```{r, message = FALSE}
 train_test_split <- function(test_proportion = 0.75, dataset) {
     smp_size <- floor(test_proportion * nrow(dataset))
     train_ind <- sample(seq_len(nrow(dataset)), size = smp_size)
@@ -108,6 +129,7 @@ library(gsubfn)
 list[train, test] <- train_test_split(0.8, iris)
 ```
 
+*caret R*
 ```{r}
 library(caret)
 # ..., the random sampling is done within the
@@ -120,6 +142,7 @@ train <- iris[trainIndex,]
 test <- iris[-trainIndex,]
 ```
 
+*Python*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -131,11 +154,31 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.33, random_state=42)
 ```
 
-TODO:
+### sklearn pipeline {#pipeline}
 
-- sklearn pipeline
+- [a short article about sklearn pipelines](https://towardsdatascience.com/a-simple-example-of-pipeline-in-machine-learning-with-scikit-learn-e726ffbb6976)
 
-- sklearn FeatureUnion
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets
 
-- `pd.get_dummies()`
+data = datasets.load_iris()
+X, y = data.data, data.target
 
+# one way
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+svc = SVC()
+svc.fit(X_scaled, y)
+
+# or another - with pipeline
+from sklearn.pipeline import Pipeline
+
+svc = Pipeline([('scaler', StandardScaler()), ('SVM', SVC())])
+svc.fit(X, y)
+```
+
+
+TODO: `pd.get_dummies()`
