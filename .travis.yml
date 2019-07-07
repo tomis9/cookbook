@@ -8,7 +8,7 @@ branches:
     - master
 
 install:
-  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071", "mltools", "randomForest", "xgboost", "caret", "kernlab"))'
+  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071", "mltools", "randomForest", "xgboost", "caret", "kernlab", "ROCR"))'
   - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
   - Rscript -e 'devtools::install_github("vqv/ggbiplot")'
   - sudo apt-get install python3-pip -y
@@ -26,8 +26,12 @@ script:
   - Rscript -e 'blogdown::build_site()'
 
 deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: tomis9.com
+  region: EU (Frankfurt)
   local_dir: public
-  provider: pages
   repo: tomis9/tomis9.github.io 
   target_branch: master 
   skip_cleanup: true
