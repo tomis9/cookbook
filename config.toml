@@ -88,7 +88,7 @@ pygmentsuseclasses         = true
 
   # slides
   slidesDirPath            = "static/header-slides/"
-  slidesDirPathURL         = "header-slides/"
+  slidesDirPathURL         = "header-slides"
 
   # highlighting 
   highlightjs              = true
