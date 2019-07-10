@@ -1,4 +1,4 @@
-language: r
+language: minimal
 cache: packages
 dist: xenial
 sudo: false
