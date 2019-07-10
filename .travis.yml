@@ -8,7 +8,7 @@ branches:
     - master
 
 before_install:
-    - docker pull tomis9/cookbook
+    - docker pull tomis9/cookbook:0.1
     # - docker pull tomis9/cookbook
     # set volume to script, so the public folder would be built into this folder
     #- docker run -v 
