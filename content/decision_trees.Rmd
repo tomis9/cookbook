@@ -69,7 +69,7 @@ rpart.plot(tree)
 
 If you want to go really fancy, you can use my `decisionTree` package, which grows a decision tree for a binary response and has a legible plot method. The package is available at github, so you can download it easily with:
 
-```{r}
+```{r, eval = FALSE}
 devtools::install_github('tomis9/decisionTree')
 ```
 
