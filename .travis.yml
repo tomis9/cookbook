@@ -8,11 +8,11 @@ branches:
     - master
 
 before_install:
-    # - docker pull tomis9/cookbook:0.1
+    - docker pull tomis9/cookbook:0.1
     - ls
     - pwd
     # set volume to script, so the public folder would be built into this folder
-    #- docker run -v 
+    - docker run -v /home/travis/build/tomis9/cookbook:/cookbook tomis9/cookbook:0.1
 
 
   # install:
