@@ -6,22 +6,6 @@ categories: ["machine-learning", "data-engineering"]
 tags: []
 ---
 
-<center>
-
-[1. What is useful processing?](#what)
-
-[2. Examples](#examples)
-
-[- one-hot encoding](#one-hot)
-
-[- scaling](#scaling)
-
-[- splitting your dataset into train and test subsets](#splitting)
-
-[- sklearn pipeline](#pipeline)
-
-</center>
-
 ## 1. What is useful processing? {#what}
 
 * many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, theses kinds of processing are useful.

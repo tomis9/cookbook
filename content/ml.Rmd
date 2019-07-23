@@ -6,34 +6,6 @@ categories: ["machine-learning"]
 tags: []
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is machine learning and why would you use it?](#what) 
-
-[2. Examples of the most popular machine learning examples in Python and R](#examples) 
-
-[- data preparation](#data-preparation)
-
-[- SVM](#svm)
-
-[- decision trees](#decision-trees)
-
-[- random forests](#random-forests)
-
-[- knn](#knn)
-
-[- kmeans](#kmeans)
-
-[- linear regression](#linear regression)
-
-[- logistic regression](#logistic-regression)
-
-[- xgboost](#xgboost)
-
-</center>
-
 ## 1. What is machine learning and why would you use it? {#what}
 
 * it's a rather complicated, yet beautiful tool for boldly going where no man has gone before.

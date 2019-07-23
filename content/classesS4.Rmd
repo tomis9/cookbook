@@ -7,24 +7,6 @@ categories: ["R"]
 tags: ["R", "OOP"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. Why would you use OOP in R?](#why) 
-
-[2. Creating a new class in S4](#creating)
-
-[3. Attributes](#attributes)
-
-[4. Methods](#methods)
-
-[5. Inheritance](#inheritance)
-
-</center>
-
-
-
 ## 1. Why would you use OOP in R? {#why}
 
 Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming). 

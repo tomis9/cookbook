@@ -7,26 +7,6 @@ categories: ["R"]
 tags: ["tidyverse", "R", "data.table", "dplyr", "ggplot2", "readr"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is tidyverse and why would you use it?](#what) 
-
-[2. A few "Hello World" examples](#hello) 
-
-[readr](#readr)
-
-[dplyr](#dplyr)
-
-[ggplot2](#ggplot2)
-
-[3. Curiosities](#curiosities)
-
-[4. Subjects still to cover](#todo)
-
-</center>
-
 ## 1. What is tidyverse and why would you use it? {#what}
 
 * [tidyverse](https://www.tidyverse.org/) is a collection of R packages that make working on data a much nicer experience than using base R;

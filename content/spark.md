@@ -6,26 +6,6 @@ categories: ["data-engineering", "python", "R"]
 tags: ["spark", "data-engineering", "python", "R"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is spark and why would you use it?](#what) 
-
-[2. A few "Hello World" examples](#hello) 
-
-[pyspark](#pyspark)
-
-[sparklyr](#sparklyr)
-
-[SparkR](#sparkr)
-
-[3. Useful links](#useful)
-
-[4. Subjects still to cover](#subjects)
-
-</center>
-
 ## 1. What is spark and why would use use it? {#spark}
 
 * Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/hadoop);

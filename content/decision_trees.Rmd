@@ -5,21 +5,6 @@ draft: false
 categories: ["machine-learning", "R"]
 ---
 
-<center>
-Contents
-
-[1. What are decision trees and why would you use them?](#what)
-
-[2. A few "hello world" examples](#hello)
-
-[rpart](#rpart)
-
-[decisionTree](#decisionTree)
-
-[3. Interesting links](#interesting)
-
-</center>
-
 ## 1. What are decision trees and why would you use them? {#what}
 
 * decision trees are among the most popular classification algorithms;

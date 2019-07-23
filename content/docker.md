@@ -6,20 +6,6 @@ categories: ["DevOps"]
 tags: ["docker"]
 ---
 
-<center>
-
-[1. What is docker and why would you use it?](#what)
-
-[2. Installation and a short tutorial](#installation)
-
-[3. A Dockerfile](#dockerfile)
-
-[4. Useful links](#useful)
-
-[5. Subjects still to cover](#todo)
-
-</center>
-
 ## 1. What is docker and why would you use it? {#what}
 
 * "In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux." Comparing to Python, it's basically a virtualenv, but for the whole OS. Or this is some sort of a virtual machine;

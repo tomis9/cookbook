@@ -6,32 +6,6 @@ categories: ["R"]
 tags: ["R", "data.table"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is data.table and why would you use it?](#what) 
-
-[2. Basic functionalities](#basic) 
-
-[Creating a data.table]{#creating}
-
-[Filtering]{#filtering}
-
-[Selecting columns]{#selecting}
-
-[Grouping]{#grouping}
-
-[Reading and writing data]{#reading}
-
-[Ordering data]{#ordering}
-
-[Updating data]{#updating}
-
-[Creating a new column]{#newcolumn}
-
-[3. Subjects still to cover](#todo)
-
 ## 1. What is data.table and why would you use it? {#what}
 
 * data.table is an R packge which let's you work on tabular datasets quickly and easily;

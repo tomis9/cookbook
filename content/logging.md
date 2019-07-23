@@ -7,24 +7,6 @@ categories: ["python", "R", "data-engineering"]
 tags: ["python", "R", "logging", "data-engineering"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is logging and why would you use it?](#what) 
-
-[2. "Hello World" examples](#hello) 
-
-[Python](#python)
-
-[R](#r)
-
-[3. Subjects still to cover](#subjects)
-
-</center>
-
-
-
 ## 1. What is logging and why would you use it? {#what}
 
 * Logging, in general, sends information about the execution of a program to the outside of the program, e.g. to stdout or to a file. Why would that be useful?
