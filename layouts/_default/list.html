@@ -1,0 +1,7 @@
+{{ partial "header.html" }}
+
+{{ $paginator := .Paginate .Data.Pages.ByPublishDate.Reverse }}
+
+{{ range .Pages }}
+    <p><a class="nav-link" style="color: black;" href="{{.Permalink}}">{{.Title}}</a></p>
+{{end}}
