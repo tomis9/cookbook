@@ -1,24 +1,12 @@
-baseURL                    = "https://tomis9.github.io/"
+baseURL                    = "tomis9.com"
 builddrafts                = false
-languageCode               = "zn-Hans"
 canonifyurls               = true
 contentdir                 = "content"
 layoutdir                  = "layouts"
 publishdir                 = "public"
-enableEmoji                = true
-hasCJKLanguage             = true
-summaryLength              = 200
-Paginate                   = 12
 
-theme                      = "AllinOne"
-title                      = "tomis9"
-
-pygmentsuseclasses         = true
-
-
-[permalinks]
-  blog                     = "blog/:year-:month/:slug/"
-
+theme                      = "random_forest"
+title                      = "tomis9's cookbook"
 
 [taxonomies]
   tag                      = "tags"
@@ -31,7 +19,7 @@ pygmentsuseclasses         = true
   [[menu.main]]
     name                   = "Python"
     weight                 = 10
-    identifier             = "Python"
+    identifier             = "python"
     url                    = "categories/python/" 
   [[menu.main]]
     name                   = "R"
@@ -70,44 +58,6 @@ pygmentsuseclasses         = true
     url                    = "categories/scratchpad/"  
 
 [params]
+  title = "tomis9's cookbook"
+  description              = "data science tutorials and snippets prepared by tomis9"
   # faviconfile              = "favicon.ico"
-  avatar                   = "avatar.png"
-  author                   = "tomis9"
-  description              = ["programming tutorials and snippets", "prepared by tomis9"]           
-
-  # authorDescription =
-
-  welcome_head             = "Who am I?"
-  welcome_word             =  "A regular everyday data scientist who's trying to manifest his hipsterity by coding in vim."
-
-  latestpostscount         = 5                             # how many posts to display on the home page
-  bloggroupby              = 'month'
-  dateform                 = "Jan 2, 2006"
-  dateformfull             = "2006-01-02  Monday  15:04:05"
-  noshowreadtime           = false                         # if true, don't show "<x> minutes read" in posts
-
-  # slides
-  slidesDirPath            = "static/header-slides/"
-  slidesDirPathURL         = "header-slides/"
-
-  # highlighting 
-  highlightjs              = true
-
-  # latex
-  katex                    = true
-
-  # links
-  email                    = "tomis9@buziaczek.pl"
-  github                   = "//github.com/tomis9"
-  # linkedin                 = "//linkedin.com/in/you"
-  # facebook                 = "//facebook.com/you"
-  # googleplus               = "//google.com/you"
-  # twitter                  = "//twitter.com/you" 
-  # px500                    = "//px500"
-  # instagram                = "//instagram.com/you"
-  # include_rss              = true                          # include RSS <link> tag in <head> and show RSS icon
-  
-  # analytics
-  # googleAnalytics          = "your-google-analytic-id"
-    
-    
