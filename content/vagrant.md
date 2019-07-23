@@ -5,16 +5,6 @@ draft: false
 categories: ["DevOps"]
 ---
 
-<center>
-
-[1. What is vagrant and why would you use it?](#what)
-[2. Installation](#installation)
-[3. A "Hello World" example](#hello)
-[4. Configuration](#configuration)
-[5. Easily forgettable commands:](#easily)
-
-</center>
-
 ## 1. What is vagrant and why would you use it? {#what}
 
 * Vagrant let's you setup and use virtual machines easily and quickly. 

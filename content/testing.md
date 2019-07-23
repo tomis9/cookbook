@@ -5,23 +5,6 @@ draft: false
 categories: ["DevOps", "data-engineering", "R", "python"]
 tags: ["DevOps", "data-engineering", "R", "python"]
 ---
-<center>
-
-**Contents:**
-
-[1. What is testing and why would you use it?](#what) 
-
-[2. "Hello World" examples](#hello)
-
-[R (testthat)](#r) 
-
-[Python (pytest)](#python) 
-
-[3. Useful links](#links) 
-
-[4. Subjects still to cover](#todo) 
-
-</center>
 
 ## 1. What is testing and why would you use it? {#what}
 

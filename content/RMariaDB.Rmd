@@ -7,18 +7,6 @@ categories: ["R"]
 tags: ["R", "SQL"]
 ---
 
-Contents
-
-[1. What is RMariaDB and why would you use it?](#what)
-
-[2. Usage](#usage)
-
-[a) using plain R](#plainr)
-
-[b) using dplyr](#dplyr)
-
-[3. Useful links](#useful)
-
 ## 1. What is RMariaDB and why would you use it? {#what}
 
 * `RMariaDB` is an R package available at CRAN that let's you connect to various SQL databases easily.

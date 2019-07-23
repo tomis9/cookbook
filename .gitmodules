@@ -1,3 +1,3 @@
-[submodule "themes/AllinOne"]
-	path = themes/AllinOne
-	url = https://github.com/orianna-zzo/AllinOne
+[submodule "themes/random_forest"]
+	path = themes/random_forest
+	url = https://github.com/tomis9/random_forest

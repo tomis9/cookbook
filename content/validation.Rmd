@@ -6,20 +6,6 @@ categories: ["machine-learning"]
 tags: []
 ---
 
-<center>
-
-[1. What is model validation and why would you use it?](#what)
-
-[2. Examples](#examples)
-
-[- cross-validation](#cross-validation)
-
-[- confusion matrix](#confusion-matrix)
-
-[- ROC and AUC](#roc-auc)
-
-</center>
-
 ## 1. What is model validation and why would you do it?
 
 You learned your model and naturally you are wondering how good it is. There are several ways to find out, like measuring the accuracy of predictions, but you may also want to check where exactly particular predictions come from, as this is far from obvious for "black box" models.

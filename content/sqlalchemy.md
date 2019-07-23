@@ -7,32 +7,6 @@ categories: ["python", "SQL"]
 tags: ["python", "SQL"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is sqlAlchemy and why would you use it?](#what) 
-
-[2. Minimal examples](#minimal) 
-
-[connection string](#connection)
-
-[creating a table](#creating)
-
-['talking about' the table in code](#talking)
-
-[inserting data to the table](#inserting)
-
-[selecting data](#selecting)
-
-[using plain old SQL](#using)
-
-[3. Useful or interesting links](#interesting)
-
-[4. Subjects still to cover](#subjects)
-
-</center>
-
 ## 1. What is sqlAlchemy and why would you use it? {#what}
 
 * sqlAlchemy is a python module that enables you to connect to and use sql databases without writing code in sql;

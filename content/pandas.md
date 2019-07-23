@@ -1,7 +1,7 @@
 ---
-title: "Pandas"
+title: "pandas"
 date: 2019-01-25T13:46:12+01:00
-draft: true
+draft: false
 categories: []
 tags: []
 ---
@@ -16,3 +16,5 @@ DataFrame({'count' : df1.groupby( [ "Name", "City"] ).size()}).reset_index()
 ```
 
 TODO pandas
+
+df.replace

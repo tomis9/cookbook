@@ -7,20 +7,6 @@ categories: ["data-engineering"]
 tags: ["hadoop", "data-engineering"]
 ---
 
-<center>
-
-**Contents:**
-
-[1. What is hadoop and why would you use it?](#what) 
-
-[2. Installation](#installation)
-
-[3. "Hello World" examples](#hello) 
-
-[4. Subjects still to cover](#todo) 
-
-</center>
-
 ## 1. What is hadoop and why would you use it? {#what}
 
 * hadoop is the first popular big data tool ever;
