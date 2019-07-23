@@ -1,4 +1,4 @@
-language: r
+language: minimal
 cache: packages
 dist: xenial
 sudo: false
@@ -7,27 +7,17 @@ branches:
   only:
     - master
 
-install:
-  - Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "data.table", "tidyverse", "ggplot2", "plotly", "sqldf", "blogdown", "maps", "reticulate", "futile.logger", "rpart.plot", "devtools", "class", "e1071", "mltools", "randomForest", "xgboost", "caret", "kernlab"))'
-  - Rscript -e 'devtools::install_github("tomis9/decisionTree")'
-  - Rscript -e 'devtools::install_github("vqv/ggbiplot")'
-  - sudo apt-get install python3-pip -y
-  - sudo pip3 install --upgrade pip
-  - sudo pip3 install setuptools
-  - sudo pip3 install sklearn
-  - sudo pip3 install xgboost
-  - sudo pip3 install tensorflow
-  - sudo pip3 install pandas
-
-before_script:
-  - Rscript -e "blogdown::install_hugo(version = '0.52')"
-
-script:
-  - Rscript -e 'blogdown::build_site()'
+before_install:
+  - docker pull tomis9/cookbook:0.1
+  - docker run -v /home/travis/build/tomis9/cookbook:/cookbook tomis9/cookbook:0.1
 
 deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: tomis9.com
+  region: eu-central-1
   local_dir: public
-  provider: pages
   repo: tomis9/tomis9.github.io 
   target_branch: master 
   skip_cleanup: true

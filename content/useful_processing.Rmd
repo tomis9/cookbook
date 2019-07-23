@@ -126,7 +126,7 @@ train <- iris[trainIndex,]
 test <- iris[-trainIndex,]
 ```
 
-*Python*
+*Python - sklearn*
 ```{python, engine.path = '/usr/bin/python3'}
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -136,6 +136,15 @@ data = datasets.load_iris()
 X, y = data.data, data.target
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.33, random_state=42)
+```
+
+*Python - pandas*
+```{python, engine.path = '/usr/bin/python3'}
+import pandas as pd
+
+# data = pd.DataFrame(data)
+# train = data.sample(frac=0.8)
+# test = data.drop(train.index)
 ```
 
 ### sklearn pipeline {#pipeline}
@@ -163,6 +172,5 @@ from sklearn.pipeline import Pipeline
 svc = Pipeline([('scaler', StandardScaler()), ('SVM', SVC())])
 svc.fit(X, y)
 ```
-
 
 TODO: `pd.get_dummies()`
