@@ -214,10 +214,10 @@ The differences between the scores seem to be much less significant, comparing t
 
 *To be continued...*
 
-(inspiration 1)[https://blog.insightdatascience.com/how-to-solve-90-of-nlp-problems-a-step-by-step-guide-fda605278e4e]
+[inspiration 1](https://blog.insightdatascience.com/how-to-solve-90-of-nlp-problems-a-step-by-step-guide-fda605278e4e)
 
-(inspiration 2)[https://docs.aws.amazon.com/AWSECommerceService/latest/DG/EX_RetrievingCustomerReviews.html]
+[inspiration 2](https://docs.aws.amazon.com/AWSECommerceService/latest/DG/EX_RetrievingCustomerReviews.html)
 
-(inspiration 3)[https://nlpforhackers.io/keras-intro/]
+[inspiration 3](https://nlpforhackers.io/keras-intro/)
 
-(inspiration 4)[https://realpython.com/python-keras-text-classification/]
+[inspiration 4](https://realpython.com/python-keras-text-classification/)
