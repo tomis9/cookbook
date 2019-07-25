@@ -2,7 +2,7 @@
 title: "airflow"
 date: 2018-08-14T11:51:12+02:00
 draft: false
-categories: ["python", "data-engineering"]
+categories: ["Python", "Data engineering"]
 ---
 
 ## 1. What is airflow and why would you use it?

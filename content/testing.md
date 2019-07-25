@@ -2,11 +2,11 @@
 title: "testing"
 date: 2018-02-04T12:02:23+01:00
 draft: false
-categories: ["DevOps", "data-engineering", "R", "python"]
-tags: ["DevOps", "data-engineering", "R", "python"]
+categories: ["DevOps", "Data engineering", "R", "Python"]
+tags: ["DevOps", "Data engineering", "R", "Python"]
 ---
 
-## 1. What is testing and why would you use it? {#what}
+## 1. What is testing and why would you use it? 
 
 * testing or [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a discipline, which relies on writing a test for every functionality *before* creating it;
 
@@ -14,9 +14,9 @@ tags: ["DevOps", "data-engineering", "R", "python"]
 
 In reality you modify your tests as you create the functionality or even write the tests after you are finished writing it. It's OK as long as you remember to cover all the functions with tests.
 
-## 2. "Hello World" examples {#hello}
+## 2. "Hello World" examples 
 
-### R (testthat) {#r}
+### R (testthat) 
 
 Let's go through testing two simple functions:
 
@@ -104,7 +104,7 @@ Skipped:  0
 
 Information, that 4 tests have passed, one has failed. The one that failes was in 37th line of the test file, when we were 'checking proper summing by summer'. According to `summer` two and three is not five.
 
-### Python (pytest) {#python}
+### Python (pytest) 
 
 When testing Python code, I usually use `pytest`, however `unittest` still seems seems to be standard among the community, quite surprisingly. The main advantage of `pytest` comparing to `unittest` is it's simplicity: it may take even less than a minute to start being productiove with testing. 
 
@@ -192,7 +192,7 @@ func.py:2: ZeroDivisionError
 As we can see, dividing by zero raises a ZeroDivisionError.
 
 
-## 3. Useful links {#links}
+## 3. Useful links 
 
 * R:
 
@@ -206,6 +206,6 @@ As we can see, dividing by zero raises a ZeroDivisionError.
 
     * [Probably the best book with snippets and "Hello World" examples: The Hitchhiker's Guide to Python](https://docs.python-guide.org/writing/tests/)
 
-## 4. Subjects still to cover {#todo}
+## 4. Subjects still to cover 
 
 * unittest, coverage (TODO)

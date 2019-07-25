@@ -2,17 +2,17 @@
 title: "basic machine learning algorithms"
 date: 2019-04-22T18:05:21+02:00
 draft: false
-categories: ["machine-learning"]
+categories: ["Machine learning"]
 tags: []
 ---
 
-## 1. What is machine learning and why would you use it? {#what}
+## 1. What is machine learning and why would you use it? 
 
 * it's a rather complicated, yet beautiful tool for boldly going where no man has gone before.
 
 * in other words, it enables you to extract valuable information from data.
 
-## 2. Examples of the most popular machine learning algorithms in Python and R {#examples}
+## 2. Examples of the most popular machine learning algorithms in Python and R 
 
 We'll be working on `iris` dataset, which is easily available in Python (`from sklearn import datasets; datasets.load_iris()`) and R (`data(iris)`).
 
@@ -32,7 +32,7 @@ We will use a few of the most popular machine learning tools:
 
 Let's prepare data for our algorithms. You can read more about data preparation in [this blog post](https://tomis9.github.io/useful_processing).
 
-### data preparation {#data-preparation}
+### data preparation 
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -84,7 +84,7 @@ train <- iris[trainIndex,]
 test <- iris[-trainIndex,]
 ```
 
-### SVM {#svm}
+### SVM 
 
 The best description of SVM I found is in *Data mining and analysis - Zaki, Meira*. In general, I highly recommend this book. 
 
@@ -114,7 +114,7 @@ svm_linear <- caret::train(Species ~ ., data = train, method = "svmLinear")
 mean(predict(svm_linear, test) == test$Species)
 ```
 
-### decision trees {#decision-trees}
+### decision trees 
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -147,7 +147,7 @@ rpart.plot::rpart.plot(c_dtc$finalModel)
 I described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
 
 
-### random forests {#random-forests}
+### random forests 
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3', message = FALSE, warning = FALSE}
@@ -173,7 +173,7 @@ print(c_dtc$finalModel)
 ```
 
 
-### knn {#knn}
+### knn 
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -193,7 +193,7 @@ mean(kn == test[,5])
 TODO: caret r knn
 
 
-### kmeans {#kmeans}
+### kmeans 
 
 K-means can be nicely plotted in two dimensions with help of [PCA](https://tomis9.github.io/dimensionality/#pca).
 
@@ -231,7 +231,7 @@ TODO: caret r - kmeans
 TODO: python - kmeans
 
 
-### linear regression {#linear-regression}
+### linear regression 
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}
@@ -340,7 +340,7 @@ summary(m)  # exactly the same as lm()
 ```
 
 
-### logistic regression {#logistic-regression}
+### logistic regression 
 
 In these examples I will present classification of a dummy variable.
 
@@ -395,7 +395,7 @@ mean(predict(m2, test) == test$Species)
 ```
 
 
-### xgboost {#xgboost}
+### xgboost 
 
 *Python*
 ```{python, engine.path = '/usr/bin/python3'}

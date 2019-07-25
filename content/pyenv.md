@@ -3,8 +3,8 @@ title: "pyenv, virtualenv, freeze"
 date: 2018-08-12T15:32:40+01:00
 draft: false
 image: "pyenv.jpg"
-categories: ["python", "DevOps"]
-tags: ["python", "pyenv", "virtualenv", "DevOps"]
+categories: ["Python", "DevOps"]
+tags: ["Python", "pyenv", "virtualenv", "DevOps"]
 ---
 
 ## 1. What are pyenv, virtualenv and freeze and why would you use them?

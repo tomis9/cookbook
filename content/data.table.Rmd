@@ -6,7 +6,7 @@ categories: ["R"]
 tags: ["R", "data.table"]
 ---
 
-## 1. What is data.table and why would you use it? {#what}
+## 1. What is data.table and why would you use it? 
 
 * data.table is an R packge which let's you work on tabular datasets quickly and easily;
 
@@ -14,9 +14,9 @@ tags: ["R", "data.table"]
 
 * data.table has a concise and SQL-like syntax.
 
-## 2. Basic functionalities {#basic}
+## 2. Basic functionalities 
 
-### Creating a data.table {#creating}
+### Creating a data.table 
 
 ```{r, message = FALSE}
 library(data.table)
@@ -30,7 +30,7 @@ dt <- data.table(x = c("b","b","b","a","a"),
 
 is exactly the same as creating a data.frame. The method `as.data.table()` works exaclty the same as `as.data.frame()`.
 
-### Filtering {#filtering}
+### Filtering 
 
 Let's create a sample dataset first, baased on mtcars table: 
 ```{r}
@@ -44,7 +44,7 @@ sample_dataset[cyl == 6]
 
 What happened? We chose only those cars, which have 6 cylinders. Data.table already knew that we mean a column named `cyl`, not an object from outside of the square brackets.
 
-### Selecting columns {#selecting}
+### Selecting columns 
 
 ```{r}
 sample_dataset[, .(mpg, cyl, disp)][1:5]
@@ -58,7 +58,7 @@ What happened here?
 
 * we chose the first five elements from our dataset. We could write even more square brackets after the whole statement and it would work as a pipe, but this would be too dplyr-ish.
 
-### Grouping {#grouping}
+### Grouping 
 
 ```{r}
 sample_dataset[, .(mean_mpg = mean(mpg), count = .N), cyl]
@@ -69,7 +69,7 @@ sample_dataset[, .(mean_mpg = mean(mpg), count = .N), cyl]
 
 * `.N` means *number of* or simply *count*.
 
-### Reading and writing data {#reading}
+### Reading and writing data 
 
 data.table has the fastest reading and writing functions available in R. These are:
 
@@ -80,7 +80,7 @@ ds <- fread(file = 'mtcars.csv')
 
 `fread` is pretty clever. It recognises if a file has headers, columns datatypes and separators. What I like the most in these functions is that I literally *never* have to provide any details about the file. Object and file names are always enough for data.table.
 
-### Ordering data {#ordering}
+### Ordering data 
 
 Very easy.
 
@@ -88,7 +88,7 @@ Very easy.
 sample_dataset[order(-gear, cyl)][1:5]
 ```
 
-### Updating data {#updating}
+### Updating data 
 
 In order to update our dataset we use the `:=` operator:
 
@@ -96,7 +96,7 @@ In order to update our dataset we use the `:=` operator:
 sample_dataset[mpg > 30, carb := -1]
 ```
 
-### Creating a new column {#newcolumn}
+### Creating a new column 
 
 In the same way as updating we can create a new column in place:
 
@@ -112,7 +112,7 @@ sample_dataset[, .(mpg, cyl, new_column2 = 0)][1:5]
 ```
 
 
-## 3. Subjects still to cover: {#todo}
+## 3. Subjects still to cover: 
 
 * `.I`(TODO)
 

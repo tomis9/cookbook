@@ -3,11 +3,11 @@ title: "logging"
 date: 2018-10-20T00:15:21+02:00
 draft: false
 image: "logging.jpg"
-categories: ["python", "R", "data-engineering"]
-tags: ["python", "R", "logging", "data-engineering"]
+categories: ["Python", "R", "Data engineering"]
+tags: ["Python", "R", "logging", "Data engineering"]
 ---
 
-## 1. What is logging and why would you use it? {#what}
+## 1. What is logging and why would you use it? 
 
 * Logging, in general, sends information about the execution of a program to the outside of the program, e.g. to stdout or to a file. Why would that be useful?
 
@@ -15,9 +15,9 @@ tags: ["python", "R", "logging", "data-engineering"]
 
 https://logmatic.io/blog/beyond-application-monitoring-discover-logging-best-practices/
 
-## 2. "Hello World" examples {#hello}
+## 2. "Hello World" examples 
 
-## Python {#python}
+## Python 
 
 `logging` module, which is available in python's standard library, contains various functions and objects, which make logging easy and standardised.
 
@@ -177,7 +177,7 @@ for handler in logging.root.handlers[:]:
 #### Useful links
 https://www.toptal.com/python/in-depth-python-logging
 
-## R {#r}
+## R 
 
 There are several packages for logging in R, e.g:
 
@@ -224,7 +224,7 @@ appender.file()
 ```
 
 
-## 3. Subjects still to cover {#subjects}
+## 3. Subjects still to cover 
 
 * ftry (TODO) how does ftry cope with exceptions?
 

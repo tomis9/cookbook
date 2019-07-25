@@ -2,11 +2,11 @@
 title: "spark"
 date: 2018-11-23T12:58:49+02:00
 draft: false
-categories: ["data-engineering", "python", "R"]
-tags: ["spark", "data-engineering", "python", "R"]
+categories: ["Data engineering", "Python", "R"]
+tags: ["spark", "Data engineering", "Python", "R"]
 ---
 
-## 1. What is spark and why would use use it? {#spark}
+## 1. What is spark and why would use use it? 
 
 * Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/hadoop);
 
@@ -14,8 +14,8 @@ tags: ["spark", "data-engineering", "python", "R"]
 
 * it is probably the most popular big data tool nowadays for data scientists.
 
-## 2. A few "Hello World" examples {#hello}
-### a) pyspark {#pyspark}
+## 2. A few "Hello World" examples 
+### a) pyspark 
 #### Prerequisites
 
 ##### Installation of pyspark
@@ -155,7 +155,7 @@ and their descriptions:
 
 * file extension
 
-### b) sparklyr (spark + dplyr) {#sparklyr}
+### b) sparklyr (spark + dplyr) 
 
 There are two popular R libraries, which enable you to connect to spark from R: SparkR and sparklyr. I found sparklyr much nicer, as it is compatible with all the fancy functions from [dplyr](https://tomis9.github.io/tidyverse), which makes manipulating dataframes familiar and easy (+ 1 big point for dplyr in it's fight against [data.table](https://tomis9.github.io/data.table)).
 
@@ -197,7 +197,7 @@ d %>% count()
 
 You will find more useful information on [datacamp sparklyr course](https://www.datacamp.com/courses/introduction-to-spark-in-r-using-sparklyr).
 
-### c) SparkR {#sparkr}
+### c) SparkR 
 
 A short example of setting up SparkR:
 
@@ -222,7 +222,7 @@ SparkR::collect(df)
 
 [Here](https://spark.apache.org/docs/latest/sparkr.html) you can find a SparkR programming guide.
 
-## 3. Useful links {#useful}
+## 3. Useful links 
 
 * [a nice introductory article](https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi)
 
@@ -230,7 +230,7 @@ SparkR::collect(df)
 
 * [SparkR vs sparklyr](https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/)
 
-## 4. Subjects still to cover {#subjects}
+## 4. Subjects still to cover 
 
 * MLlib (TODO)
 

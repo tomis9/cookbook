@@ -2,7 +2,7 @@
 title: "model validation"
 date: 2019-05-23T12:46:03+02:00
 draft: false
-categories: ["machine-learning"]
+categories: ["Machine learning"]
 tags: []
 ---
 
@@ -12,9 +12,9 @@ You learned your model and naturally you are wondering how good it is. There are
 
 ## 2. Examples
 
-### cross-validation {#cross-validation}
+### cross-validation 
 
-### confusion matrix {#confusion-matrix}
+### confusion matrix 
 
 https://www.rdocumentation.org/packages/caret/versions/3.45/topics/confusionMatrix
 
@@ -85,7 +85,7 @@ print(confusion_matrix(lr.predict(X_test), y_test))
 ```
 
 
-### ROC, AUC {#roc-auc}
+### ROC, AUC 
 
 Let's say you created a simple classifier, e.g. using logistic regression. The classifier does not return classes though, but the probability that this particular observation belongs to class 1. As what we need are classes, not probabilities, we have to somehow *map* these probabilities into classes. The easiest way to achieve this is by using a function like:
 

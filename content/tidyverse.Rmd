@@ -7,7 +7,7 @@ categories: ["R"]
 tags: ["tidyverse", "R", "data.table", "dplyr", "ggplot2", "readr"]
 ---
 
-## 1. What is tidyverse and why would you use it? {#what}
+## 1. What is tidyverse and why would you use it? 
 
 * [tidyverse](https://www.tidyverse.org/) is a collection of R packages that make working on data a much nicer experience than using base R;
 
@@ -15,9 +15,9 @@ tags: ["tidyverse", "R", "data.table", "dplyr", "ggplot2", "readr"]
 
 To be honest, I prefer [data.table](https://tomis9.github.io/data.table) to tidyverse, as it resembles basic R data.frames, is faster, more concise and, IMHO, more SQL-ish. But it takes longer to master and may be more difficult to understand, even your own code after some time. So, there is no obvious choice between data.table and dplyr.
 
-## 2. A few "Hello World" examples {#hello}
+## 2. A few "Hello World" examples 
 
-### readr {#readr}
+### readr 
 
 Or how do we read and write data in `tidyverse`.
 
@@ -76,7 +76,7 @@ tibble::data_frame(a = 1:5, b = letters[1:5])
 So it's exactly the same as creating a usual `data.frame`.
 
 
-### dplyr {#dplyr}
+### dplyr 
 
 Or smart SQL (DDL + DML) in R.
 
@@ -132,11 +132,11 @@ mtcars %>%
     count(cyl)
 ```
 
-### ggplot2 {#ggplot2}
+### ggplot2 
 
 I prepared a separate tutorial for [ggplot2](https://tomis9.github.io/ggplot2).
 
-## 3. Curiosities {#curiosities}
+## 3. Curiosities 
 
 * you can pipe your data directly to ggplot2
 
@@ -161,7 +161,7 @@ data.table::as.data.table(mtcars) %>%
     head()
 ```
 
-## 4. Subjects still to cover: {#todo}
+## 4. Subjects still to cover: 
 
 * dplyr: joins, slice, spread, separate/unite (TODO) (spread is dcast)
 

@@ -2,17 +2,17 @@
 title: "useful processing"
 date: 2019-05-17T15:44:38+02:00
 draft: false
-categories: ["machine-learning", "data-engineering"]
+categories: ["Machine learning", "Data engineering"]
 tags: []
 ---
 
-## 1. What is useful processing? {#what}
+## 1. What is useful processing? 
 
 * many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, theses kinds of processing are useful.
 
-## 2. Examples {#examples}
+## 2. Examples 
 
-### one-hot encoding {#one-hot}
+### one-hot encoding 
 
 *R*
 ```{r, message = FALSE}
@@ -59,7 +59,7 @@ onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
 print(onehot_encoded[:5])
 ```
 
-### scaling {#scaling}
+### scaling 
 
 In R it's extremely simple.
 *base R*
@@ -95,7 +95,7 @@ print(scaled_df.mean(axis=0))
 print(scaled_df.std(axis=0))
 ```
 
-### splitting your dataset into train and test subsets {#splitting}
+### splitting your dataset into train and test subsets 
 
 The idea for the following solution comes from [this post at stackoverflow](https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function).
 
@@ -147,7 +147,7 @@ import pandas as pd
 # test = data.drop(train.index)
 ```
 
-### sklearn pipeline {#pipeline}
+### sklearn pipeline 
 
 - [a short article about sklearn pipelines](https://towardsdatascience.com/a-simple-example-of-pipeline-in-machine-learning-with-scikit-learn-e726ffbb6976)
 

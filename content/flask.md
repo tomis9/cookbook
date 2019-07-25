@@ -2,8 +2,8 @@
 title: "flask"
 date: 2018-08-13T20:19:17+02:00
 draft: false
-categories: ["python", "DevOps"]
-tags: ["flask", "python", "flask-JSONRPC", "blueprint", "gunicorn"]
+categories: ["Python", "DevOps"]
+tags: ["flask", "Python", "flask-JSONRPC", "blueprint", "gunicorn"]
 ---
 
 ## 1. What is flask and why would you use it?

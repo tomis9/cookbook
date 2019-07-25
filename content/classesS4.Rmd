@@ -7,7 +7,7 @@ categories: ["R"]
 tags: ["R", "OOP"]
 ---
 
-## 1. Why would you use OOP in R? {#why}
+## 1. Why would you use OOP in R? 
 
 Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming). 
 
@@ -17,7 +17,7 @@ However, there are certain cases when OOP may come up helpful:
 
 * learning OOP in R is a good investment, because it let's you understand better how functions like print, plot etc. work.
 
-## 2. Creating a new class in S4 {#creating}
+## 2. Creating a new class in S4 
 
 Let's define a new class:
 ```{r}
@@ -34,7 +34,7 @@ A new instance of class `Polygon`:
 w1 <- new('Polygon', x = 1:3, y = c(1, 1, 2))
 ```
 
-## 3. Attributes {#attributes}
+## 3. Attributes 
 
 If you've ever wondered what `@` in R means, here's the answer:
 
@@ -50,7 +50,7 @@ It provides access to inctance attributes. You can also overwrite current attrib
 w1@x <- c(3, 2, 1)
 ```
 
-## 4. Methods {#methods}
+## 4. Methods 
 
 Let's create a simple method `show` which prints a description of our object.
 
@@ -70,7 +70,7 @@ print(w1)
 
 Yes, so far OOP in R looks extremely complicated and non-intuitive comparing to Python.
 
-## 5. Inheritance {#inheritance}
+## 5. Inheritance 
 
 A simple example of inheritance:
 ```{r}

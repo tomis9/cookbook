@@ -2,8 +2,8 @@
 title: "decorators"
 date: 2018-08-12T15:30:35+02:00
 draft: false
-categories: ["python"]
-tags: ["python", "decorators"]
+categories: ["Python"]
+tags: ["Python", "decorators"]
 ---
 
 ## 1. What are decorators and why would you use them?

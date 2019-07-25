@@ -3,11 +3,11 @@ title: "sqlAlchemy"
 date: 2018-08-25T16:22:07+01:00
 draft: false
 image: "sqlalchemy.jpg"
-categories: ["python", "SQL"]
-tags: ["python", "SQL"]
+categories: ["Python", "SQL"]
+tags: ["Python", "SQL"]
 ---
 
-## 1. What is sqlAlchemy and why would you use it? {#what}
+## 1. What is sqlAlchemy and why would you use it? 
 
 * sqlAlchemy is a python module that enables you to connect to and use sql databases without writing code in sql;
 
@@ -21,9 +21,9 @@ tags: ["python", "SQL"]
 
 * Basics of sqlAlchemy are very simple and you can just use it instead of pymysql or any other module you use. So, the last reason is: *why wouldn't you use it?*
 
-## 2. Minimal examples {#minimal}
+## 2. Minimal examples 
 
-#### connection string {#connection}
+#### connection string 
 
 First of all, you need to connect to the database, so you have to:
 
@@ -45,7 +45,7 @@ and then create a connection string.
 connection_string = 'mysql://' + user + ':' + password + '@localhost/test'
 ```
 
-#### creating a table {#creating}
+#### creating a table 
 
 ```{python}
 import sqlalchemy
@@ -72,7 +72,7 @@ Great, you've just created you first table with sqlAlchemy! As you can see:
 
 * defining tables in sqlAlchemy does not differ much from creating them with plain SQL. 
 
-#### 'talking about' the table in code {#talking}
+#### 'talking about' the table in code 
 
 In sqlAlchemy we `map` an sql table (e.g. `test1`) to a python variable (e.g. `test1`) and then we refer to that variable when we want to select/insert/update/delete/do anything on that table. 
 
@@ -84,7 +84,7 @@ In the example in section 'creating a table' we have already defined that variab
 
 After that, we simply execute the statement. Have a look:
 
-#### inserting data to the table {#inserting}
+#### inserting data to the table 
 
 There are several ways to do that.
 
@@ -119,7 +119,7 @@ df.to_sql('test1', engine, if_exists='append', index=False)
 
 And the data is in the database.
 
-#### selecting data {#selecting}
+#### selecting data 
 
 ```{python}
 stmt = test1.select()
@@ -137,7 +137,7 @@ or even
 ```{python}
 pd.read_sql(test1.select(), engine)
 ```
-#### using plain old SQL {#using}
+#### using plain old SQL 
 
 You can still use plain old sql queries, if you don't feel comfortable with working on databases in Python:
 
@@ -151,7 +151,7 @@ print(result.fetchall())
 connection.close()
 ```
 
-## 3. Useful or interesting links {#interesting}
+## 3. Useful or interesting links 
 
 There is a whole discussion whether sqlAlchemy is not a overkill for data science. 
 
@@ -173,6 +173,6 @@ There is a whole discussion whether sqlAlchemy is not a overkill for data scienc
 
 * [sqlalchemy performance issues](https://stackoverflow.com/questions/23185319/why-is-loading-sqlalchemy-objects-via-the-orm-5-8x-slower-than-rows-via-a-raw-my)
 
-## 4. Subjects still to cover {#subjects}
+## 4. Subjects still to cover 
 
 * pyHive + sqlAlchemy (TODO)

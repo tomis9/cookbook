@@ -4,7 +4,7 @@ canonifyurls               = true
 contentdir                 = "content"
 layoutdir                  = "layouts"
 publishdir                 = "public"
-
+preserveTaxonomyNames = true
 theme                      = "random_forest"
 title                      = "tomis9's cookbook"
 
@@ -19,7 +19,7 @@ title                      = "tomis9's cookbook"
   [[menu.main]]
     name                   = "Python"
     weight                 = 10
-    identifier             = "python"
+    identifier             = "Python"
     url                    = "categories/python/" 
   [[menu.main]]
     name                   = "R"
@@ -30,13 +30,13 @@ title                      = "tomis9's cookbook"
   [[menu.main]]
     name                   = "Data engineering"
     weight                 = 30
-    identifier             = "data-engineering"
+    identifier             = "Data engineering"
     url                    = "categories/data-engineering/"  
  
   [[menu.main]]
     name                   = "Machine learning"
     weight                 = 35
-    identifier             = "machine-learning"
+    identifier             = "Machine learning"
     url                    = "categories/machine-learning/"  
 
   [[menu.main]]
