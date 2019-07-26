@@ -1,5 +1,5 @@
 ---
-title: "Passing arguments to scripts"
+title: "passing arguments to scripts"
 date: 2019-02-05T09:34:23+01:00
 draft: false
 categories: ["scratchpad"]
