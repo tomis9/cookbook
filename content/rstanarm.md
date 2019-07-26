@@ -2,7 +2,7 @@
 title: "rstanarm"
 date: 2018-12-23T20:19:18+01:00
 draft: false
-categories: ["R", "statistics"]
+categories: ["R"]
 tags: ["R", "statistics"]
 ---
 

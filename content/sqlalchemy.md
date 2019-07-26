@@ -3,7 +3,7 @@ title: "sqlAlchemy"
 date: 2018-08-25T16:22:07+01:00
 draft: false
 image: "sqlalchemy.jpg"
-categories: ["Python", "SQL"]
+categories: ["Python"]
 tags: ["Python", "SQL"]
 ---
 

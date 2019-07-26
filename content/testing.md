@@ -10,7 +10,7 @@ tags: ["DevOps", "Data engineering", "R", "Python"]
 
 * testing or [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) (TDD) is a discipline, which relies on writing a test for every functionality *before* creating it;
 
-* at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fullfill this functionality, so the test will pass.
+* at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fulfill this functionality, so the test will pass.
 
 In reality you modify your tests as you create the functionality or even write the tests after you are finished writing it. It's OK as long as you remember to cover all the functions with tests.
 
