@@ -48,7 +48,7 @@ title                      = "tomis9's cookbook"
   [[menu.main]]
     name                   = "Projects"
     weight                 = 50
-    identifier             = "projects"
+    identifier             = "Projects"
     url                    = "categories/projects/"  
 
   [[menu.main]]
