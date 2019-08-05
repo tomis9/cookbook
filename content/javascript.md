@@ -1,11 +1,16 @@
 ---
-title: "Javascript"
+title: "javascript"
 date: 2019-04-15T17:20:34+02:00
 draft: true
-categories: []
+categories: ["scratchpad"]
 tags: []
 ---
 
+<center>
+# This is not a proper blog post yet.
+
+javascript (TODO)
+</center>
 
 # 1. What is javascript and why would you use it?
 

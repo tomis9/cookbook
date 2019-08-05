@@ -2,9 +2,16 @@
 title: "pandas"
 date: 2019-01-25T13:46:12+01:00
 draft: false
-categories: []
+categories: ["scratchpad"]
 tags: []
 ---
+
+<center>
+# This is not a proper blog post yet.
+
+pandas (TODO)
+
+</center>
 
 Even though I use pandas almost every day, there are certain solutions that I constantly forget about.
 

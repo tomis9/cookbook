@@ -2,7 +2,7 @@
 title: "featuretools"
 date: 2019-02-07T11:27:29+01:00
 draft: false
-categories: []
+categories: ["scratchpad"]
 tags: []
 ---
 

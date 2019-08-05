@@ -2,6 +2,7 @@
 title: "machine learning problems"
 date: 2019-08-05T13:07:40+02:00
 draft: true
+categories: ["scratchpad"]
 ---
 
 Introduction to Deep Learning
