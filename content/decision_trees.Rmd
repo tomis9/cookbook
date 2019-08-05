@@ -15,7 +15,7 @@ categories: ["Machine learning", "R"]
 
 * however they are not very efficient, but they can scale, i.e. they can be processed in parallel;
 
-* understanding decision trees is important if you want to learn [random forests](https://tomis9.github.io/random-forests).
+* understanding decision trees is important if you want to learn [random forests](http://tomis9.com/random-forests).
 
 ## 2. A few "hello world" examples 
 

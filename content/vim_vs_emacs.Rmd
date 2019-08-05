@@ -159,7 +159,7 @@ The code above is really analogical to the code I used for downloading the reddi
 
 # 4. Exploratory analysis
 
-> From now I will use R for the analysis, because I wanted to practice `dplyr` and there is a nice R package for text mining called `tidytext`, and `ggplot2`, and `plotly` ... It seems there are a lot of reasons. Besides, using dplyr, I will be able to easily move the analysis to the Big Data level using [sparklyr](https://tomis10.github.io/spark), which is compatible with [dplyr](https://tomis9.github.io/tidyverse/#dplyr).
+> From now I will use R for the analysis, because I wanted to practice `dplyr` and there is a nice R package for text mining called `tidytext`, and `ggplot2`, and `plotly` ... It seems there are a lot of reasons. Besides, using dplyr, I will be able to easily move the analysis to the Big Data level using [sparklyr](https://tomis10.github.io/spark), which is compatible with [dplyr](http://tomis9.com/tidyverse/#dplyr).
 
 As we have the dataset ready, let's have a closer look at it.
 

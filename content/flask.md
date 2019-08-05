@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
 which prints out "Hello, World!" on the screen. 
 Start the application with
-```
+```{bash}
 python3 hello.py
 ```
 
@@ -46,7 +46,7 @@ So, this is the simplest possible application in flask. How about some explanati
 
 * we create an instance of class `Flask` named `app`. Which is a pretty good name for an app;
 
-* if anybody *request*s our app via '/' route, our *response* will be "Hello, World!". For a local server at 127.0.0.1 host, '/' route is just 127.0.0.1/;
+* if anybody *requests* our app via '/' route, our *response* will be "Hello, World!". For a local server at 127.0.0.1 host, '/' route is just 127.0.0.1/;
 
 * finally, if we run this application non-interactively (via ipython-console, for example), so it's `__name__` would be `__main__`, the `app` instance we created in the first step, will `run`.
 
@@ -147,7 +147,7 @@ As you can see:
 
 Every flask tutorial I read mentioned that I shouldn't use flask's development server as a production server. One of the alternatives is python's `gunicorn` package, installable with pip. Having gunicorn installed, you can launch your application with
 
-```
+```{bash}
 gunicorn -b 0.0.0.0:8000 app:app
 ```
 
@@ -155,9 +155,9 @@ instead of `python3 app.py`.
 
 ## 4. Docker
 
-An even better prooduction solution than gunicorn is gunicorn and [docker](https://tomis9.github.io/docker). It let's you run your application in a specific environment ([pyenv](https://tomis9.github.io/pyenv) is a similar concept, but docker is used for production, and pyenv for development). When you have your image ready, run your application with:
+An even better prooduction solution than gunicorn is gunicorn and [docker](http://tomis9.com/docker). It let's you run your application in a specific environment ([pyenv](http://tomis9.com/pyenv) is a similar concept, but docker is used for production, and pyenv for development). When you have your image ready, run your application with:
 
-```
+```{bash}
 docker run -p 8000:8000 -d my_app_image:0.1 gunicorn -b 0.0.0.0:8000 app:app
 ```
 

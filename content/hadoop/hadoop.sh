@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # installing hadoop on Debian (Linux Mint in my case)
 
 # java installation

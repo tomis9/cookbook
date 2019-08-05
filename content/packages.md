@@ -11,9 +11,9 @@ tags: ["R", "DevOps"]
 
 * R packaging is a convenient way to store and share your R code. 
 
-* It lets you incorporate testing with [testthat](https://tomis9.github.io/testthat) specially prepared tools (you can use testthat without creating a package, but it's slightly more complicated).
+* It lets you incorporate testing with [testthat](http://tomis9.com/testthat) specially prepared tools (you can use testthat without creating a package, but it's slightly more complicated).
 
-* It lets you easily list dependencies with [packrat](https://tomis9.github.io/packrat). You can also achieve this without using a package.
+* It lets you easily list dependencies with [packrat](http://tomis9.com/packrat). You can also achieve this without using a package.
 
 * You can easily version your code. Yes, you can use github tags.
 

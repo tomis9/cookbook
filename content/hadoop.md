@@ -31,7 +31,7 @@ but I recommend running it line by line, so you would understand what you are do
 
 ## 3. "Hello World" examples 
 
-You probably expect that knowing Hadoop will let you do Big Data. It would, but in reality nobody uses Hadoop to run data processing anymore. [Spark](https://tomis9.github.io/spark) and [Hive](https://tomis9.github.io/hive) have much nicer apis, and do the same tasks faster.
+You probably expect that knowing Hadoop will let you do Big Data. It would, but in reality nobody uses Hadoop to run data processing anymore. [Spark](http://tomis9.com/spark) and [Hive](http://tomis9.com/hive) have much nicer apis, and do the same tasks faster.
 
 But there is still one functionality that was not replaced: a file system, called *hadoop distributed file system* or *hdfs*, where limited disk capacity is no longer a problem.
 

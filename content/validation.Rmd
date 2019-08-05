@@ -22,7 +22,7 @@ Confusion matrix is confusing at all as the name may suggest.
 
 * base R
 
-- dataset preparation (described in more detail [here](https://tomis9.github.io/useful_processing))
+- dataset preparation (described in more detail [here](http://tomis9.com/useful_processing))
 ```{r}
 # prepare the dataset
 library(caret)

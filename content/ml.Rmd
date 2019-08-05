@@ -28,9 +28,9 @@ We will use a few of the most popular machine learning tools:
 
 * Python scikit-learn,
   
-* Python API to [tensorflow](https://tomis9.github.io/tensorflow). `tensorflow` was used in very few cases, because it is designed mainly for neural networks, and we would have to implement the algorithms from scratch.
+* Python API to [tensorflow](http://tomis9.com/tensorflow). `tensorflow` was used in very few cases, because it is designed mainly for neural networks, and we would have to implement the algorithms from scratch.
 
-Let's prepare data for our algorithms. You can read more about data preparation in [this blog post](https://tomis9.github.io/useful_processing).
+Let's prepare data for our algorithms. You can read more about data preparation in [this blog post](http://tomis9.com/useful_processing).
 
 ### data preparation 
 
@@ -144,7 +144,7 @@ print(c_dtc)
 rpart.plot::rpart.plot(c_dtc$finalModel)
 ```
 
-I described working with decision trees in R in more detail in [another blog post](https://tomis9.github.io/decision_trees/).
+I described working with decision trees in R in more detail in [another blog post](http://tomis9.com/decision_trees/).
 
 
 ### random forests 
@@ -195,7 +195,7 @@ TODO: caret r knn
 
 ### kmeans 
 
-K-means can be nicely plotted in two dimensions with help of [PCA](https://tomis9.github.io/dimensionality/#pca).
+K-means can be nicely plotted in two dimensions with help of [PCA](http://tomis9.com/dimensionality/#pca).
 
 *R*
 ```{r}

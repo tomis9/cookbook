@@ -8,7 +8,7 @@ tags: ["spark", "Data engineering", "Python", "R"]
 
 ## 1. What is spark and why would use use it? 
 
-* Spark is a smooth framework for working with big data, i.e. [hdfs](https://tomis9.github.io/hadoop);
+* Spark is a smooth framework for working with big data, i.e. [hdfs](http://tomis9.com/hadoop);
 
 * it can be accessed from Python, R, scala (spark is actually written in scala) and java;
 
@@ -157,9 +157,9 @@ and their descriptions:
 
 ### b) sparklyr (spark + dplyr) 
 
-There are two popular R libraries, which enable you to connect to spark from R: SparkR and sparklyr. I found sparklyr much nicer, as it is compatible with all the fancy functions from [dplyr](https://tomis9.github.io/tidyverse), which makes manipulating dataframes familiar and easy (+ 1 big point for dplyr in it's fight against [data.table](https://tomis9.github.io/data.table)).
+There are two popular R libraries, which enable you to connect to spark from R: SparkR and sparklyr. I found sparklyr much nicer, as it is compatible with all the fancy functions from [dplyr](http://tomis9.com/tidyverse), which makes manipulating dataframes familiar and easy (+ 1 big point for dplyr in it's fight against [data.table](http://tomis9.com/data.table)).
 
-Here's a quick example of reading a parquet file from [hdfs](https://tomis9.github.io/hadoop) into spark.
+Here's a quick example of reading a parquet file from [hdfs](http://tomis9.com/hadoop) into spark.
 
 First, check if you use a proper version of spark:
 ```

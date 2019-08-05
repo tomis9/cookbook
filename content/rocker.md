@@ -8,7 +8,7 @@ tags: ["R", "docker"]
 
 ## 1. What is rocker and why would you use it?
 
-* `rocker` is [docker](https://tomis9.github.io/docker) container specially prepared for working with R programming language;
+* `rocker` is [docker](http://tomis9.com/docker) container specially prepared for working with R programming language;
 
 * it is useful if your R model is a part of a microservice system based on docker containers;
 
@@ -26,7 +26,7 @@ tags: ["R", "docker"]
 
 ## 3. Example of Dockerfile
 
-A nice tutorial on writing a Dockerfile you will [here](https://tomis9.github.io/docker). As `rocker`'s Dockerfile has it's specific quirks, I present it in a separate blog post.
+A nice tutorial on writing a Dockerfile you will [here](http://tomis9.com/docker). As `rocker`'s Dockerfile has it's specific quirks, I present it in a separate blog post.
 
 ```
 FROM rocker/r-ver:3.5.1

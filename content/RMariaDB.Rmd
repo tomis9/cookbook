@@ -68,7 +68,7 @@ RMariaDB::dbWriteTable(
 )
 ```
 
-### b) using [dplyr](https://tomis9.github.io/tidyverse/#/dplyr) 
+### b) using [dplyr](http://tomis9.com/tidyverse/#/dplyr) 
 
 * #### just querying / retrieving data from db
 

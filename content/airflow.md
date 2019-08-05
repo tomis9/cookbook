@@ -27,7 +27,7 @@ Yes, you can, but with airflow:
 
 * you keep the logs in one place. Unless you use ELK stack, then you don't use this functionality;
 
-* integration with [mesos](https://tomis9.github.io/mesos), which I never used, but you can.
+* integration with [mesos](http://tomis9.com/mesos), which I never used, but you can.
 
 Convinced? ;)
 
