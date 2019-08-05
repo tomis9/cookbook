@@ -5,18 +5,25 @@ draft: false
 categories: ["Python", "Machine learning"]
 ---
 
-The best way to gain intuiton to a any new thing you learn is to start from a very beginning and play with it (*let's see what happens if I do this*). The power of reinforcement learning ;)
+The best way to gain intuiton to any new thing you learn is to start from a very beginning and play with it (*let's see what happens if I do this*). That's the power of reinforcement learning ;)
 
-A trivial tensorflow example and what we are doing
+These packages will be useful in the nearest future:
 
 ```{python, engine.path = '/usr/bin/python3'}
-import tensorflow as tf
 import numpy as np
 from sklearn.datasets import load_iris
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.metrics import accuracy_score
 
+import tensorflow as tf
+tf.logging.set_verbosity(tf.logging.ERROR)  # ignore warnings
+```
+
+A trivial example of tensorflow:
+
+```{python, engine.path = '/usr/bin/python3'}
+import tensorflow as tf
 
 a = tf.Variable(10, name='a')  # a variable
 b = tf.Variable(12, name='b')  # another variable
@@ -26,8 +33,10 @@ s = a + b  # a tensor
 sess = tf.Session()
 sess.run(a.initializer)
 sess.run(b.initializer)
-sess.run(s)
+print(sess.run(s))
 ```
+
+As you can see, one does not simply add two numbers in tensorflow.
 
 * lesson #1: you cannot initialize a tensor
 
@@ -37,7 +46,7 @@ sess.run(a.initializer)
 sess.run(b.initializer)
 # print(s.eval())  # does not work - you eval() is not connected to the session
 # anyhow
-sess.run(s)
+print(sess.run(s))
 ```
 
 * lesson #2: eval does not recognize session by itself
@@ -46,17 +55,10 @@ sess.run(s)
 with tf.Session() as sess:
     sess.run(a.initializer)
     sess.run(b.initializer)
-    print(s.eval())  # does work - eval recognizes a default session sess
+    print(s.eval())  # does work - eval recognizes a default session
 ```
 
-* lesson #2: eval works in `with`
-
-```{python, engine.path = '/usr/bin/python3'}
-with tf.Session() as sess:
-    a.initializer.run()
-    b.initializer.run()
-    print(s.eval())  # does work - eval recognizes a default session sess
-```
+* lesson #2: eval works in `with` clause
 
 * lesson #3: so far there are 2 ways to initialize a variable in a session
 
@@ -68,7 +70,7 @@ with tf.Session() as sess:
     print(s.eval())
 ```
 
-* lesson #4: the third and most compact way to initialize variables
+* lesson #4: the third and most compact way to initialize variables - all the variables in one statement
 
 ```{python, engine.path = '/usr/bin/python3'}
 s1 = tf.add(a, b)  # a tensor, not variable
@@ -115,7 +117,7 @@ with tf.Session() as sess:
 
 lr = LinearRegression()
 lr.fit(data[:, 1:], data[:, 0])
-np.concatenate((np.array([lr.intercept_]), lr.coef_))
+print(np.concatenate((np.array([lr.intercept_]), lr.coef_)))
 ```
 
 * lesson #8: when creating a tensorflow vector, ou have to provide information if it's horizontal or mathematical, just like in mathematics lesson #9: tensorflow gives the same results as sklearn (linear regression)
@@ -376,15 +378,17 @@ calculate_accuracy(preds)  # maybe overfitting?
 * lesson #20: tf.nn.softmax works on rows, not columns. Oh, that's nice. You can provide "axis" parameter in this function
 * lesson #21: in tensorflow you will find broadcasting, just like in numpy
 
-name_scope
+* name_scope
 
 ```{python, engine.path = '/usr/bin/python3'}
 with tf.name_scope("constants"):
     a = tf.constant(10, name='a')
     b = tf.constant(12, name='b')
+```
 
-# and variable scope
+* and variable scope
 
+```{python, engine.path = '/usr/bin/python3'}
 with tf.variable_scope("variables"):
     c = tf.constant(20, name='c')
     d = tf.constant(22, name='d')
@@ -428,7 +432,7 @@ with tf.Session() as sess:
             print(error.eval(feed_dict={x: X_np, y: y_all}))
     preds = y_hat.eval(feed_dict={x: X_np})
 
-calculate_accuracy(preds)  # maybe overfitting?
+print(calculate_accuracy(preds))  # maybe overfitting?
 ```
 
 * lesson #21: deeper neaural networks converge much more slowly
@@ -473,7 +477,7 @@ with tf.Session() as sess:
             print(error.eval(feed_dict={x: X_np, y: y_all}))
     preds = y_hat.eval(feed_dict={x: X_np})
 
-calculate_accuracy(preds)  # maybe overfitting?
+print(calculate_accuracy(preds))  # maybe overfitting?
 ```
 
 ```{python, engine.path = '/usr/bin/python3'}
@@ -518,5 +522,5 @@ with tf.Session() as sess:
             print(error.eval(feed_dict={x: X_np, y: y_all}))
     preds = y_hat.eval(feed_dict={x: X_np})
 
-calculate_accuracy(preds)  # maybe overfitting?
+print(calculate_accuracy(preds))  # maybe overfitting?
 ```
