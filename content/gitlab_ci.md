@@ -19,3 +19,6 @@ or gitlab [Continuous Integration & Deployment/Continuous Delivery](https://abou
 
 
 [how aboout installing gitlab locally?](https://about.gitlab.com/pricing/)
+
+https://medium.com/90seconds/continuous-integration-and-deployment-for-data-pipelines-at-90-seconds-53bf10521ea7
+
