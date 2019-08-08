@@ -3,9 +3,7 @@ title: "airflow"
 date: 2018-08-14T11:51:12+02:00
 draft: false
 categories: ["Python", "Data engineering"]
-output: 
-  html_fragment:
-    self_contained: false
+output: html_document
 ---
 
 ## 1. What is airflow and why would you use it?
@@ -36,7 +34,8 @@ Convinced? ;)
 
 ## 2. Installation and startup
 
-```{bash, eval = FALSE}
+
+```bash
 pip install airflow
 ```
 
@@ -44,7 +43,8 @@ Not very complicated.
 
 Then run airflow scheduler and webservice with:
 
-```{bash, eval = FALSE}
+
+```bash
 airflow scheduler
 airflow webservice
 ```
@@ -55,7 +55,8 @@ airflow webservice
 
 You may feel tempted to create a git repository in your DAG folder, however this is not the best solution. It's much easier and more logical to keep your DAG file in a repo where your project lives and softlink it with
 
-```{bash, eval = FALSE}
+
+```bash
 ln -s /path-to-your-project-repo/my_project_dag.py /home/me/airflow/dags/
 ```
 
@@ -71,12 +72,11 @@ ln -s /path-to-your-project-repo/my_project_dag.py /home/me/airflow/dags/
 
 You can pass arguments to the command with jinja templating, instead of creating a command string by yourself. You can then keep all you parameters in a separate json file.
 
-```{python, eval = FALSE}
+
+```python
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
-
-
 default_args = {
   'depends_on_past': False,
   'start_date': datetime(2018, 1, 15, 16, 45, 0),
@@ -84,14 +84,12 @@ default_args = {
   'email_on_failure': False,
   'retries': 0
 }
-
 dag = DAG(
   'dag_name',
   schedule_interval='0 12 * * *',
   default_args=default_args,
   catchup=False
 )
-
 first_task = BashOperator(
   task_id='first_task',
   bash_command='echo {{ params.number }} {{ params.subparam.one }}',
