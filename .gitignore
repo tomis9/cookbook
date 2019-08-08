@@ -10,8 +10,6 @@
 *.gz
 *.tex
 *.sty
-*.csv
-*.html
 *.pyc
 
 # folders
@@ -21,6 +19,10 @@ venv
 __pycache__
 files_from_vagrant1
 datasets
+content/*.html
+content/*.csv
+scratchpad/*.csv
+scratchpad/*/*.csv
 
 # other
 creds.json

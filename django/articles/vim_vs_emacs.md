@@ -177,7 +177,7 @@ posts_reddit <- read_csv("../data_raw/posts_reddit.csv")
 ```
 
 ```
-## Error: '../data_raw/posts_reddit.csv' does not exist in current working directory ('/home/dyrkat/projects/files/articles').
+## Error: '../data_raw/posts_reddit.csv' does not exist in current working directory ('/home/tomek/cookbook/django/articles').
 ```
 
 ```r
@@ -232,7 +232,7 @@ posts_stack <- read_csv("../data_raw/posts_stack.csv")
 ```
 
 ```
-## Error: '../data_raw/posts_stack.csv' does not exist in current working directory ('/home/dyrkat/projects/files/articles').
+## Error: '../data_raw/posts_stack.csv' does not exist in current working directory ('/home/tomek/cookbook/django/articles').
 ```
 
 ```r

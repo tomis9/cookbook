@@ -133,16 +133,6 @@ print(integer_encoded[:5])
 onehot_encoder = OneHotEncoder(sparse=False)
 integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
 onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
-```
-
-```
-## /usr/local/lib/python3.5/dist-packages/sklearn/preprocessing/_encoders.py:415: FutureWarning: The handling of integer data will change in version 0.22. Currently, the categories are determined based on the range [0, max(values)], while in the future they will be determined based on the unique values.
-## If you want the future behaviour and silence this warning, you can specify "categories='auto'".
-## In case you used a LabelEncoder before this OneHotEncoder to convert the categories to integers, then you can now use the OneHotEncoder directly.
-##   warnings.warn(msg, FutureWarning)
-```
-
-```python
 print(onehot_encoded[:5])
 ```
 
@@ -240,6 +230,14 @@ from sklearn import datasets
 import numpy as np
 # simple approach
 sc = scale(np.arange(1, 6))
+```
+
+```
+## /usr/local/lib/python3.5/dist-packages/sklearn/utils/validation.py:444: DataConversionWarning: Data with input dtype int64 was converted to float64 by the scale function.
+##   warnings.warn(msg, DataConversionWarning)
+```
+
+```python
 print(np.std(sc))
 ```
 
@@ -265,7 +263,7 @@ print(scaled_df.mean(axis=0))
 ```
 
 ```
-## [-1.69031455e-15 -1.84297022e-15 -1.69864123e-15 -1.40924309e-15]
+## [-1.69031455e-15 -1.63702385e-15 -1.48251781e-15 -1.62314606e-15]
 ```
 
 ```python

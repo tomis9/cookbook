@@ -75,8 +75,8 @@ y_hat_test[1:10]
 ```
 
 ```
-##     1     9    18    20    27    32    37    38    41    42 
-## FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+##     4     5     9    15    18    20    23    28    29    30 
+## FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 so now we may use a simple `table()` function to create a confusion matrix:
@@ -88,8 +88,8 @@ table(y_hat_test, y_test)
 ```
 ##           y_test
 ## y_hat_test FALSE TRUE
-##      FALSE    14    2
-##      TRUE      1   13
+##      FALSE    13    2
+##      TRUE      2   13
 ```
 
 * R caret
@@ -107,26 +107,26 @@ confusionMatrix(predict(m2, test), test$Species)
 ## 
 ##             Reference
 ## Prediction   setosa versicolor
-##   setosa         14          2
-##   versicolor      1         13
+##   setosa         13          2
+##   versicolor      2         13
 ##                                         
-##                Accuracy : 0.9           
-##                  95% CI : (0.735, 0.979)
+##                Accuracy : 0.867         
+##                  95% CI : (0.693, 0.962)
 ##     No Information Rate : 0.5           
-##     P-Value [Acc > NIR] : 0.00000422    
+##     P-Value [Acc > NIR] : 0.0000297     
 ##                                         
-##                   Kappa : 0.8           
+##                   Kappa : 0.733         
 ##                                         
 ##  Mcnemar's Test P-Value : 1             
 ##                                         
-##             Sensitivity : 0.933         
+##             Sensitivity : 0.867         
 ##             Specificity : 0.867         
-##          Pos Pred Value : 0.875         
-##          Neg Pred Value : 0.929         
+##          Pos Pred Value : 0.867         
+##          Neg Pred Value : 0.867         
 ##              Prevalence : 0.500         
-##          Detection Rate : 0.467         
-##    Detection Prevalence : 0.533         
-##       Balanced Accuracy : 0.900         
+##          Detection Rate : 0.433         
+##    Detection Prevalence : 0.500         
+##       Balanced Accuracy : 0.867         
 ##                                         
 ##        'Positive' Class : setosa        
 ## 
@@ -146,14 +146,6 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.33, random_state=42)
 lr = LogisticRegression()
 lr.fit(X_train, y_train)
-```
-
-```
-## /usr/local/lib/python3.5/dist-packages/sklearn/linear_model/logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-##   FutureWarning)
-```
-
-```python
 accuracy_score(lr.predict(X_test), y_test)
 print(confusion_matrix(lr.predict(X_test), y_test))
 ```
@@ -213,7 +205,7 @@ plot_roc_get_auc(
 ![plot of chunk unnamed-chunk-7](./articles/figures/validation/unnamed-chunk-7-1.png)
 
 ```
-## [1] 0.9667
+## [1] 0.9711
 ```
 
 ```r

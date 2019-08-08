@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Use JavaScript to Change Text</h2>
+<p>This example writes "Hello JavaScript!" into an HTML element with id="demo":</p>
+
+
+<input id="btn" type="button" value="some text" onclick="changeText();"></br>
+<input type="radio" name="some_name" id="some_name" value="elo" onlick="changeText();">jeden</br>
+<input type="radio" name="some_name" value="sup" onlick="changeText(new_text='hello dwa');">dwa</br>
+
+
+<script>
+    document.getElementById("some_name").click()
+
+    function changeText(new_text="hello javascript") {
+        document.getElementById("demo").innerHTML = new_text;
+    }
+</script> 
+
+<p id="demo"></p>
+
+</body>
+</html>
+

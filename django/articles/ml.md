@@ -100,14 +100,6 @@ The best description of SVM I found is in *Data mining and analysis - Zaki, Meir
 from sklearn.svm import SVC  # support vector classification
 svc = SVC()
 svc.fit(X_train, y_train)
-```
-
-```
-## /usr/local/lib/python3.5/dist-packages/sklearn/svm/base.py:193: FutureWarning: The default value of gamma will change from 'auto' to 'scale' in version 0.22 to account better for unscaled features. Set gamma explicitly to 'auto' or 'scale' to avoid this warning.
-##   "avoid this warning.", FutureWarning)
-```
-
-```python
 print(accuracy_score(svc.predict(X_test), y_test))
 ```
 
@@ -127,7 +119,7 @@ mean(pred == test["Species"])
 ```
 
 ```
-## [1] 1
+## [1] 0.9111
 ```
 
 *caret R*
@@ -138,7 +130,7 @@ mean(predict(svm_linear, test) == test$Species)
 ```
 
 ```
-## [1] 1
+## [1] 0.9111
 ```
 
 ### decision trees 
@@ -153,7 +145,7 @@ print(accuracy_score(y_test, dtc.predict(X_test)))
 ```
 
 ```
-## 0.98
+## 0.96
 ```
 
 TODO: [an article on drawing decision trees in Python](https://medium.com/@rnbrown/creating-and-visualizing-decision-trees-with-python-f8e8fa394176)
@@ -174,8 +166,8 @@ print(dtc)
 ## 1) root 105 70 setosa (0.33333 0.33333 0.33333)  
 ##   2) Petal.Length< 2.45 35  0 setosa (1.00000 0.00000 0.00000) *
 ##   3) Petal.Length>=2.45 70 35 versicolor (0.00000 0.50000 0.50000)  
-##     6) Petal.Width< 1.75 39  5 versicolor (0.00000 0.87179 0.12821) *
-##     7) Petal.Width>=1.75 31  1 virginica (0.00000 0.03226 0.96774) *
+##     6) Petal.Length< 4.75 34  0 versicolor (0.00000 1.00000 0.00000) *
+##     7) Petal.Length>=4.75 36  1 virginica (0.00000 0.02778 0.97222) *
 ```
 
 ```r
@@ -190,7 +182,7 @@ mean(pred == test[["Species"]])
 ```
 
 ```
-## [1] 1
+## [1] 0.8667
 ```
 
 *caret R*
@@ -213,9 +205,9 @@ print(c_dtc)
 ## Resampling results across tuning parameters:
 ## 
 ##   cp      Accuracy  Kappa 
-##   0.0000  0.9092    0.8616
-##   0.4143  0.7318    0.6215
-##   0.5000  0.4682    0.2515
+##   0.0000  0.9669    0.9497
+##   0.4857  0.6465    0.4868
+##   0.5000  0.5795    0.3872
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was cp = 0.
@@ -236,16 +228,16 @@ I described working with decision trees in R in more detail in [another blog pos
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
-rfc = RandomForestClassifier()
-rfc.fit(X_train, y_train)
 ```
 
 ```
-## /usr/local/lib/python3.5/dist-packages/sklearn/ensemble/forest.py:245: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
-##   "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+## /usr/local/lib/python3.5/dist-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+##   from numpy.core.umath_tests import inner1d
 ```
 
 ```python
+rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
 print(accuracy_score(rfc.predict(X_test), y_test))
 ```
 
@@ -261,7 +253,7 @@ mean(predict(rf, test[, 1:4]) == test[["Species"]])
 ```
 
 ```
-## [1] 1
+## [1] 0.8889
 ```
 
 *caret R*
@@ -284,9 +276,9 @@ print(c_rf)
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  Accuracy  Kappa 
-##   2     0.9229    0.8822
-##   3     0.9224    0.8815
-##   4     0.9203    0.8784
+##   2     0.9734    0.9592
+##   3     0.9692    0.9527
+##   4     0.9702    0.9543
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was mtry = 2.
@@ -305,8 +297,8 @@ print(c_dtc$finalModel)
 ## 1) root 105 70 setosa (0.33333 0.33333 0.33333)  
 ##   2) Petal.Length< 2.45 35  0 setosa (1.00000 0.00000 0.00000) *
 ##   3) Petal.Length>=2.45 70 35 versicolor (0.00000 0.50000 0.50000)  
-##     6) Petal.Width< 1.75 39  5 versicolor (0.00000 0.87179 0.12821) *
-##     7) Petal.Width>=1.75 31  1 virginica (0.00000 0.03226 0.96774) *
+##     6) Petal.Length< 4.75 34  0 versicolor (0.00000 1.00000 0.00000) *
+##     7) Petal.Length>=4.75 36  1 virginica (0.00000 0.02778 0.97222) *
 ```
 
 
@@ -333,7 +325,7 @@ mean(kn == test[,5])
 ```
 
 ```
-## [1] 1
+## [1] 0.9111
 ```
 
 TODO: caret r knn
@@ -413,7 +405,7 @@ print(lr.intercept_)
 ```
 
 ```
-## 36.45948838509017
+## 36.491103280361614
 ```
 
 ```python
@@ -422,10 +414,10 @@ print(lr.coef_)
 ```
 
 ```
-## [-1.08011358e-01  4.64204584e-02  2.05586264e-02  2.68673382e+00
-##  -1.77666112e+01  3.80986521e+00  6.92224640e-04 -1.47556685e+00
-##   3.06049479e-01 -1.23345939e-02 -9.52747232e-01  9.31168327e-03
-##  -5.24758378e-01]
+## [-1.07170557e-01  4.63952195e-02  2.08602395e-02  2.68856140e+00
+##  -1.77957587e+01  3.80475246e+00  7.51061703e-04 -1.47575880e+00
+##   3.05655038e-01 -1.23293463e-02 -9.53463555e-01  9.39251272e-03
+##  -5.25466633e-01]
 ```
 
 *tensorflow*
@@ -470,11 +462,11 @@ with tf.Session() as sess:
 ```
 
 ```
-## [[ 1.85599749]
-##  [ 0.65083716]
-##  [ 0.70913196]
-##  [-0.55648266]]
-## 0.09630269942460723
+## [[ 1.8450608 ]
+##  [ 0.65486424]
+##  [ 0.71106291]
+##  [-0.56256786]]
+## 0.09589065804790765
 ```
 
 - using gradient descent and mini-batches
@@ -548,21 +540,21 @@ with tf.Session() as sess:
 ```
 
 ```
-## 0.20996323569403932
-## 0.13080024229227408
-## 0.12419480345543107
-## 0.11914881531775269
-## 0.11515888444090067
-## 0.11193960404720589
-## 0.10931182590358006
-## 0.1071524423953464
-## 0.10537086422104061
-## 0.10389730814029338
-## 0.10268758165256191 - final score
-## [[ 1.07633931]
-##  [ 0.84744059]
-##  [ 0.79871093]
-##  [-0.69760022]]
+## 0.19304391503129797
+## 0.126326637156741
+## 0.11752227099502129
+## 0.11230318970968341
+## 0.10887030016702141
+## 0.10641294550143233
+## 0.10454703349668118
+## 0.10307674452442868
+## 0.10189243485474174
+## 0.10092615984937403
+## 0.10013898424007511 - final score
+## [[ 1.20929824]
+##  [ 0.81628896]
+##  [ 0.77980519]
+##  [-0.66543126]]
 ```
 
 *base R*
@@ -580,20 +572,20 @@ summary(model)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.7029 -0.2265  0.0273  0.1883  0.7501 
+## -0.7056 -0.2186  0.0148  0.2045  0.7229 
 ## 
 ## Coefficients:
-##                   Estimate Std. Error t value             Pr(>|t|)
-## (Intercept)          1.984      0.329    6.04          0.000000027
-## Sepal.Width          0.568      0.101    5.61          0.000000182
-## Petal.Length         0.807      0.081    9.96 < 0.0000000000000002
-## Petal.Width         -0.380      0.178   -2.13                0.035
-## Speciesversicolor   -0.519      0.295   -1.76                0.081
-## Speciesvirginica    -0.786      0.405   -1.94                0.055
+##                   Estimate Std. Error t value            Pr(>|t|)
+## (Intercept)         1.9988     0.3388    5.90 0.00000005108177642
+## Sepal.Width         0.5484     0.1045    5.25 0.00000087329434726
+## Petal.Length        0.8093     0.0838    9.66 0.00000000000000061
+## Petal.Width        -0.2754     0.1784   -1.54               0.126
+## Speciesversicolor  -0.5992     0.2962   -2.02               0.046
+## Speciesvirginica   -0.9701     0.4203   -2.31               0.023
 ## 
-## Residual standard error: 0.313 on 99 degrees of freedom
-## Multiple R-squared:  0.867,	Adjusted R-squared:  0.86 
-## F-statistic:  129 on 5 and 99 DF,  p-value: <0.0000000000000002
+## Residual standard error: 0.298 on 99 degrees of freedom
+## Multiple R-squared:  0.885,	Adjusted R-squared:  0.879 
+## F-statistic:  152 on 5 and 99 DF,  p-value: <0.0000000000000002
 ```
 
 `lm()` function automatically converts factor variables to one-hot encoded features.
@@ -614,20 +606,20 @@ summary(m)  # exactly the same as lm()
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.7029 -0.2265  0.0273  0.1883  0.7501 
+## -0.7056 -0.2186  0.0148  0.2045  0.7229 
 ## 
 ## Coefficients:
-##                   Estimate Std. Error t value             Pr(>|t|)
-## (Intercept)          1.984      0.329    6.04          0.000000027
-## Sepal.Width          0.568      0.101    5.61          0.000000182
-## Petal.Length         0.807      0.081    9.96 < 0.0000000000000002
-## Petal.Width         -0.380      0.178   -2.13                0.035
-## Speciesversicolor   -0.519      0.295   -1.76                0.081
-## Speciesvirginica    -0.786      0.405   -1.94                0.055
+##                   Estimate Std. Error t value            Pr(>|t|)
+## (Intercept)         1.9988     0.3388    5.90 0.00000005108177642
+## Sepal.Width         0.5484     0.1045    5.25 0.00000087329434726
+## Petal.Length        0.8093     0.0838    9.66 0.00000000000000061
+## Petal.Width        -0.2754     0.1784   -1.54               0.126
+## Speciesversicolor  -0.5992     0.2962   -2.02               0.046
+## Speciesvirginica   -0.9701     0.4203   -2.31               0.023
 ## 
-## Residual standard error: 0.313 on 99 degrees of freedom
-## Multiple R-squared:  0.867,	Adjusted R-squared:  0.86 
-## F-statistic:  129 on 5 and 99 DF,  p-value: <0.0000000000000002
+## Residual standard error: 0.298 on 99 degrees of freedom
+## Multiple R-squared:  0.885,	Adjusted R-squared:  0.879 
+## F-statistic:  152 on 5 and 99 DF,  p-value: <0.0000000000000002
 ```
 
 
@@ -646,14 +638,6 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.33, random_state=42)
 lr = LogisticRegression()
 lr.fit(X_train, y_train)
-```
-
-```
-## /usr/local/lib/python3.5/dist-packages/sklearn/linear_model/logistic.py:432: FutureWarning: Default solver will be changed to 'lbfgs' in 0.22. Specify a solver to silence this warning.
-##   FutureWarning)
-```
-
-```python
 accuracy_score(lr.predict(X_test), y_test)
 ```
 
@@ -685,7 +669,7 @@ mean(y_test == y_hat_test)
 ```
 
 ```
-## [1] 0.94
+## [1] 0.9
 ```
 
 *R caret*
@@ -697,7 +681,7 @@ mean(predict(m2, test) == test$Species)
 ```
 
 ```
-## [1] 0.94
+## [1] 0.9
 ```
 
 
@@ -715,6 +699,11 @@ X_train, X_test, y_train, y_test = train_test_split(
 xgb = XGBClassifier()
 xgb.fit(X_train, y_train)
 accuracy_score(xgb.predict(X_test), y_test)
+```
+
+```
+## /usr/local/lib/python3.5/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+##   if diff:
 ```
 
 *"base" R*

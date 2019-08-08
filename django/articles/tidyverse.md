@@ -56,7 +56,7 @@ data_t <- readr::read_csv(file = 'sample_data.csv')
 ## Parsed with column specification:
 ## cols(
 ##   col_a = col_character(),
-##   col_b = col_integer()
+##   col_b = col_double()
 ## )
 ```
 
@@ -69,7 +69,7 @@ class(data_t)
 ```
 
 ```
-## [1] "tbl_df"     "tbl"        "data.frame"
+## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 ```
 
 ```r
@@ -79,12 +79,12 @@ print(data_t)
 ```
 ## # A tibble: 5 x 2
 ##   col_a col_b
-##   <chr> <int>
-## 1 a        50
-## 2 b        22
-## 3 c        59
-## 4 d        70
-## 5 e        35
+##   <chr> <dbl>
+## 1 a        43
+## 2 b        65
+## 3 c        44
+## 4 d        73
+## 5 e        16
 ```
 Tibbles do not differ much from data.frames, except (according to the documentation, i.e. `?tibble::tibble`):
 

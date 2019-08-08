@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+    <object style="vertical-align:middle" type="image/svg+xml" data="{% static "/folder.svg" %}" height="15px" width="15px"></object>
+    <a href="#" role="button">link</a>
+    &emsp;
+    </br>
+</div>
+<div class="article-title">
+  <!-- TODO https://codepen.io/zitrusfrisch/pen/fjbal -->
+  {{ post.title }}
+
+</div>
+<div class="article-info">
+    {{ post.format_date}} &emsp;  &emsp; x minutes read
+</div>
+
+{{ post.body|safe }}
+
+</div>
+
+{% endblock %}

@@ -37,16 +37,16 @@ print(sample_data)
 
 ```
 ##    a  b color
-## 1  a  6 green
-## 2  b  8  blue
-## 3  c  5 green
-## 4  d 10  blue
-## 5  e  9   red
-## 6  f  2  blue
-## 7  g  1  blue
-## 8  h  3   red
-## 9  i  4 green
-## 10 j  7 green
+## 1  a 10  blue
+## 2  b  5 green
+## 3  c  2 green
+## 4  d  3 green
+## 5  e  7   red
+## 6  f  9 green
+## 7  g  6   red
+## 8  h  4  blue
+## 9  i  8 green
+## 10 j  1  blue
 ```
 
 The most basic plot:
@@ -243,23 +243,7 @@ p <- ggplot(sample_data, aes(x=a, y=b)) +
 plotly::ggplotly(p)
 ```
 
-```
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-```
-
-```
-## Warning in normalizePath(f2): path[1]="./webshot2dc95654a2a8.png": No such
-## file or directory
-```
-
-```
-## Warning in file(con, "rb"): cannot open file './webshot2dc95654a2a8.png':
-## No such file or directory
-```
-
-```
-## Error in file(con, "rb"): cannot open the connection
-```
+![plot of chunk unnamed-chunk-12](./articles/figures/ggplot2/unnamed-chunk-12-1.png)
 
 as it will give your plot interesting interactive features. Shiny users will appreciate them.
 

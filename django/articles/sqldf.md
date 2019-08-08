@@ -97,12 +97,12 @@ sqldf("select * from customers c join orders o on c.id_customers = o.id_customer
 ```
 
 ```
-##   id_customers    name id_orders id_customers..4     products
-## 1            1  Zidane         1               1      fotball
-## 2            1  Zidane         2               1        shoes
-## 3            1  Zidane         5               1 energy drink
-## 4            2    Figo         3               2      t-shirt
-## 5            3 Beckham         4               3        shoes
+##   id_customers    name id_orders id_customers     products
+## 1            1  Zidane         1            1      fotball
+## 2            1  Zidane         2            1        shoes
+## 3            1  Zidane         5            1 energy drink
+## 4            2    Figo         3            2      t-shirt
+## 5            3 Beckham         4            3        shoes
 ```
 
 Subqueries:
@@ -112,14 +112,14 @@ sqldf('select a.mpg from (select mpg, cyl, disp from mtcars where cyl = 6) as a'
 ```
 
 ```
-##    mpg
-## 1 21.0
-## 2 21.0
-## 3 21.4
-## 4 18.1
-## 5 19.2
-## 6 17.8
-## 7 19.7
+##   a.mpg
+## 1  21.0
+## 2  21.0
+## 3  21.4
+## 4  18.1
+## 5  19.2
+## 6  17.8
+## 7  19.7
 ```
 
 As you can see, all the sql operations are available in `sqldf`.
