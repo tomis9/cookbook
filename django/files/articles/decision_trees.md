@@ -1,0 +1,135 @@
+---
+title: "decision trees"
+date: 2019-01-11T21:18:57+01:00
+draft: false
+categories: ["Machine learning", "R"]
+---
+
+
+
+
+
+
+## 1. What are decision trees and why would you use them? 
+
+* decision trees are among the most popular classification algorithms;
+
+* they divide the dataset hierarchically starting from the full dataset, until the stop criterium is met, e.g. the minimum size of a leaf and the purity of leaf;
+
+* in general they are easy to understand, interpret and visualise
+
+* however they are not very efficient, but they can scale, i.e. they can be processed in parallel;
+
+* understanding decision trees is important if you want to learn [random forests](http://tomis9.com/random-forests).
+
+## 2. A few "hello world" examples 
+
+### rpart 
+
+Calculating decision trees in R is rather straightforward. Probably the best known package which supports decision trees is `rpart`. Let's have a look at a short example:
+
+
+```r
+library(rpart)
+tree <- rpart(Species ~ ., iris)
+
+print(tree)
+```
+
+```
+## n= 150 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+## 1) root 150 100 setosa (0.33333 0.33333 0.33333)  
+##   2) Petal.Length< 2.45 50   0 setosa (1.00000 0.00000 0.00000) *
+##   3) Petal.Length>=2.45 100  50 versicolor (0.00000 0.50000 0.50000)  
+##     6) Petal.Width< 1.75 54   5 versicolor (0.00000 0.90741 0.09259) *
+##     7) Petal.Width>=1.75 46   1 virginica (0.00000 0.02174 0.97826) *
+```
+
+The summary above informs us, that the root (the whole dataset) was divided into two subsets, based on the value of the attribute *Petal.Length*. According to the docs (`?print.rpart`)
+
+>Information for each node includes the node number, split, size, deviance, and fitted value.
+
+In our case, the root is classified as *setosa*, where among 150 observations 100 is classified incorrectly and there is 33% of setosa, versicolor and virginica each in this dataset.
+
+Probably you will also be interested in the plot method:
+
+
+```r
+plot(tree, margin = 0.1)
+text(tree, use.n = TRUE, cex = 0.75)
+```
+
+![plot of chunk unnamed-chunk-2](./articles/figures/decision_trees/unnamed-chunk-2-1.png)
+
+which produces a rather modest view of our tree. Luckily the are various packages, which can make the plot look more neat:
+
+
+```r
+library(rpart.plot)
+rpart.plot(tree)
+```
+
+![plot of chunk unnamed-chunk-3](./articles/figures/decision_trees/unnamed-chunk-3-1.png)
+
+### decisionTree 
+
+If you want to go really fancy, you can use my `decisionTree` package, which grows a decision tree for a binary response and has a legible plot method. The package is available at github, so you can download it easily with:
+
+
+```r
+devtools::install_github('tomis9/decisionTree')
+```
+
+First, let's create a sample dataset based on iris dataset, which contains a binary response.
+
+
+```r
+d <- iris[, c("Species", "Sepal.Length", "Sepal.Width")]
+d$Species <- as.character(d$Species)
+d$Species[d$Species != "setosa"] <- "non-setosa"
+x <- d$Sepal.Length
+x[d$Sepal.Length <= 5.2] <- "Very Short"
+x[d$Sepal.Length >  5.2 & d$Sepal.Length <= 6.1] <- "Short"
+x[d$Sepal.Length >  6.1 & d$Sepal.Length <= 7.0] <- "Long"
+x[d$Sepal.Length >  7.0] <- "Very Long"
+d$Sepal.Length <- x
+
+summary(d)
+```
+
+```
+##    Species          Sepal.Length        Sepal.Width  
+##  Length:150         Length:150         Min.   :2.00  
+##  Class :character   Class :character   1st Qu.:2.80  
+##  Mode  :character   Mode  :character   Median :3.00  
+##                                        Mean   :3.06  
+##                                        3rd Qu.:3.30  
+##                                        Max.   :4.40
+```
+As you can see, the response variable is `Species`, which is binary. The other two values are independent; one of them is categorical, the other - continuous.
+
+
+```r
+library(decisionTree)
+tree <- decisionTree(d, eta = 5, purity=0.95, minsplit=0)
+```
+
+```
+## Error in new("DecisionTreeObject", resultDF = resultDF, nodeChoices = nodeChoices): could not find function "new"
+```
+
+```r
+plot(tree)
+```
+
+![plot of chunk unnamed-chunk-6](./articles/figures/decision_trees/unnamed-chunk-6-1.png)
+
+## 3. Interesting links 
+
+* [Decision Trees in R with Example - pretty much the same thing as the tutorial above (rpart)](https://www.guru99.com/r-decision-trees.html)
+
+* [datacamp's article on classification and regression trees, bagging, random forests, boosting, ...](https://www.datacamp.com/community/tutorials/decision-trees-R)
