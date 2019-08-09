@@ -14,7 +14,7 @@ class Post(models.Model):
     # tags = models.CharField(max_length=100, default='scratchpad')
 
     def get_absolute_url(self):
-        return "post/" + self.post_slug
+        return "/post/" + self.post_slug
 
     def format_date(self):
         return self.date.strftime("%b %-d, %Y")
@@ -29,6 +29,9 @@ class Post(models.Model):
 class Category(models.Model):
     category_slug = models.CharField(max_length=250, primary_key=True)
     category_name = models.CharField(max_length=250)
+
+    def get_absolute_url(self):
+        return "/list/" + self.category_slug
 
     def __str__(self):
         return self.category_slug

@@ -22,10 +22,11 @@
           Categories
         </h3>
         <ul class="nav nav-pills flex-column">
+            {% for category in categories %}
             <li>
+                <a href="{{ category.get_absolute_url }}">{{ category.category_name }}</a>
             </li>
-          {{ end }}
-        {{ end }}
+            {% endfor %}
         </ul>
       </div>
 

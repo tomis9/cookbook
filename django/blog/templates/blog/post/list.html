@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="list-div">
+  <div class="article-title">
+    <object type="image/svg+xml" data="{% static "/folder.svg" %}" height="30px"
+            width="30px">.</object>
+    {{ category.category_name }}
+  </div>
+
+  <!-- todo do this with css -->
+  <br>
+  <br>
+
+  <h3 style="text-shadow: -1px 0 #3090c7, 0 1px #3090c7, 1px 0 #3090c7, 0 -1px #3090c7; color: white; font-family: 'fascinate', cursive;">{{ .key }}</h3>
+
+      <table>
+          {% for post in posts %}
+            <tr>
+              <td style="white-space: nowrap; width: 100px; color: gray; font-size: smaller;">
+                {{ post.post_slug.date }}
+              </td>
+              <td id="list-titles">
+                <a href="{{ post.post_slug.get_absolute_url }}">
+                  {{ post.post_slug.title }}
+                </a>
+              </td>
+              <td class="d-none d-lg-block d-xl-block" style="color: gray; font-size: small;">
+                  reading time
+              </td>
+            </tr>
+          {% endfor %}
+      </table>
+    <!-- todo do this with css -->
+    <br>
+    <br>
+</div>
+
+{% endblock %}
