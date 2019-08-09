@@ -6,8 +6,10 @@ from django.http import HttpResponse
 def view_index(request):
     posts = Post.objects.all()
     categories = Category.objects.all()
-    return render(request, 'blog/post/index.html',
-                  {'posts': posts, 'categories': categories})
+    category_posts = CategoryPost.objects.all()
+    context = {'posts': posts, 'categories': categories,
+               'category_posts': category_posts}
+    return render(request, 'blog/post/index.html', context)
 
 
 def view_list(request, category_slug):
