@@ -1,4 +1,3 @@
-import json
 from django.db import models
 from django.utils import timezone
 # from django.contrib.auth.models import User
@@ -10,8 +9,7 @@ class Post(models.Model):
     body = models.TextField(default='')
     date = models.DateTimeField(default=timezone.now)
     draft = models.BooleanField(default=True)
-    # categories = models.CharField(max_length=100, default='scratchpad')
-    # tags = models.CharField(max_length=100, default='scratchpad')
+    read_time = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return "/post/" + self.post_slug

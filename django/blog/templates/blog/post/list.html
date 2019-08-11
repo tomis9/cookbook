@@ -30,7 +30,7 @@
                 </a>
               </td>
               <td class="d-none d-lg-block d-xl-block" style="color: gray; font-size: small;">
-                  reading time
+                  {{ post.post_slug.read_time }} {% if post.post_slug.read_time == 1 %} minute {% else %} minutes {% endif %} read
               </td>
             </tr>
           {% endfor %}

@@ -7,6 +7,7 @@ import pypandoc
 from datetime import datetime
 import shutil
 import textwrap
+import readtime
 
 from blog.models import Post, Category, CategoryPost
 
@@ -15,7 +16,7 @@ class Article:
 
     meta_fields = {'title', 'date', 'draft', 'categories', 'tags'}
 
-    post_fields = {'title', 'date', 'body', 'draft', 'post_slug'}
+    post_fields = {'title', 'date', 'body', 'draft', 'post_slug', 'read_time'}
     category_post_fields = {'post_slug', 'category_slug'}
 
     draft_dict = {'false': False, 'true': True}
@@ -61,6 +62,8 @@ class Article:
             raw_file = f.read()
 
         article['body'] = self._prepare_body(raw_file)
+        read_time = readtime.of_html(article['body'])
+        article['read_time'] = read_time.minutes
 
         lines = raw_file.splitlines()
         for field in self.meta_fields:
@@ -142,7 +145,8 @@ class Article:
         for category in category_post['category_slug']:
             vs = dict()
             vs['post_slug'] = Post.objects.get(post_slug=post_slug)
-            vs['category_slug'] = Category.objects.get(category_slug=slugify.slugify(category))
+            slug_cat = slugify.slugify(category)
+            vs['category_slug'] = Category.objects.get(category_slug=slug_cat)
             category_post_model = CategoryPost(**vs)
             category_post_model.save()
 

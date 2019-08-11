@@ -119,7 +119,7 @@ mean(pred == test["Species"])
 ```
 
 ```
-## [1] 0.9111
+## [1] 0.9556
 ```
 
 *caret R*
@@ -130,7 +130,7 @@ mean(predict(svm_linear, test) == test$Species)
 ```
 
 ```
-## [1] 0.9111
+## [1] 0.9556
 ```
 
 ### decision trees 
@@ -145,7 +145,7 @@ print(accuracy_score(y_test, dtc.predict(X_test)))
 ```
 
 ```
-## 0.96
+## 0.98
 ```
 
 TODO: [an article on drawing decision trees in Python](https://medium.com/@rnbrown/creating-and-visualizing-decision-trees-with-python-f8e8fa394176)
@@ -164,10 +164,10 @@ print(dtc)
 ##       * denotes terminal node
 ## 
 ## 1) root 105 70 setosa (0.33333 0.33333 0.33333)  
-##   2) Petal.Length< 2.45 35  0 setosa (1.00000 0.00000 0.00000) *
-##   3) Petal.Length>=2.45 70 35 versicolor (0.00000 0.50000 0.50000)  
-##     6) Petal.Length< 4.75 34  0 versicolor (0.00000 1.00000 0.00000) *
-##     7) Petal.Length>=4.75 36  1 virginica (0.00000 0.02778 0.97222) *
+##   2) Petal.Length< 2.6 35  0 setosa (1.00000 0.00000 0.00000) *
+##   3) Petal.Length>=2.6 70 35 versicolor (0.00000 0.50000 0.50000)  
+##     6) Petal.Width< 1.75 36  2 versicolor (0.00000 0.94444 0.05556) *
+##     7) Petal.Width>=1.75 34  1 virginica (0.00000 0.02941 0.97059) *
 ```
 
 ```r
@@ -182,7 +182,7 @@ mean(pred == test[["Species"]])
 ```
 
 ```
-## [1] 0.8667
+## [1] 0.9333
 ```
 
 *caret R*
@@ -205,9 +205,9 @@ print(c_dtc)
 ## Resampling results across tuning parameters:
 ## 
 ##   cp      Accuracy  Kappa 
-##   0.0000  0.9669    0.9497
-##   0.4857  0.6465    0.4868
-##   0.5000  0.5795    0.3872
+##   0.0000  0.9453    0.9166
+##   0.4571  0.7195    0.5979
+##   0.5000  0.5076    0.3024
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was cp = 0.
@@ -253,7 +253,7 @@ mean(predict(rf, test[, 1:4]) == test[["Species"]])
 ```
 
 ```
-## [1] 0.8889
+## [1] 0.9556
 ```
 
 *caret R*
@@ -276,9 +276,9 @@ print(c_rf)
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  Accuracy  Kappa 
-##   2     0.9734    0.9592
-##   3     0.9692    0.9527
-##   4     0.9702    0.9543
+##   2     0.9584    0.9363
+##   3     0.9556    0.9318
+##   4     0.9526    0.9273
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was mtry = 2.
@@ -295,10 +295,10 @@ print(c_dtc$finalModel)
 ##       * denotes terminal node
 ## 
 ## 1) root 105 70 setosa (0.33333 0.33333 0.33333)  
-##   2) Petal.Length< 2.45 35  0 setosa (1.00000 0.00000 0.00000) *
-##   3) Petal.Length>=2.45 70 35 versicolor (0.00000 0.50000 0.50000)  
-##     6) Petal.Length< 4.75 34  0 versicolor (0.00000 1.00000 0.00000) *
-##     7) Petal.Length>=4.75 36  1 virginica (0.00000 0.02778 0.97222) *
+##   2) Petal.Length< 2.6 35  0 setosa (1.00000 0.00000 0.00000) *
+##   3) Petal.Length>=2.6 70 35 versicolor (0.00000 0.50000 0.50000)  
+##     6) Petal.Width< 1.75 36  2 versicolor (0.00000 0.94444 0.05556) *
+##     7) Petal.Width>=1.75 34  1 virginica (0.00000 0.02941 0.97059) *
 ```
 
 
@@ -325,7 +325,7 @@ mean(kn == test[,5])
 ```
 
 ```
-## [1] 0.9111
+## [1] 0.9556
 ```
 
 TODO: caret r knn
@@ -540,21 +540,21 @@ with tf.Session() as sess:
 ```
 
 ```
-## 0.19304391503129797
-## 0.126326637156741
-## 0.11752227099502129
-## 0.11230318970968341
-## 0.10887030016702141
-## 0.10641294550143233
-## 0.10454703349668118
-## 0.10307674452442868
-## 0.10189243485474174
-## 0.10092615984937403
-## 0.10013898424007511 - final score
-## [[ 1.20929824]
-##  [ 0.81628896]
-##  [ 0.77980519]
-##  [-0.66543126]]
+## 0.2271612976413967
+## 0.1422616954538346
+## 0.1255358030520235
+## 0.11673398752113454
+## 0.1115929688583266
+## 0.10825672804634026
+## 0.10589300253992376
+## 0.10411048147648719
+## 0.10271183581567939
+## 0.10158804751377443
+## 0.10068076494481572 - final score
+## [[ 1.16999192]
+##  [ 0.82665898]
+##  [ 0.78335089]
+##  [-0.67108265]]
 ```
 
 *base R*
@@ -571,21 +571,21 @@ summary(model)
 ## lm(formula = Sepal.Length ~ ., data = train)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -0.7056 -0.2186  0.0148  0.2045  0.7229 
+##    Min     1Q Median     3Q    Max 
+## -0.714 -0.199  0.008  0.163  0.671 
 ## 
 ## Coefficients:
-##                   Estimate Std. Error t value            Pr(>|t|)
-## (Intercept)         1.9988     0.3388    5.90 0.00000005108177642
-## Sepal.Width         0.5484     0.1045    5.25 0.00000087329434726
-## Petal.Length        0.8093     0.0838    9.66 0.00000000000000061
-## Petal.Width        -0.2754     0.1784   -1.54               0.126
-## Speciesversicolor  -0.5992     0.2962   -2.02               0.046
-## Speciesvirginica   -0.9701     0.4203   -2.31               0.023
+##                   Estimate Std. Error t value             Pr(>|t|)
+## (Intercept)         2.0388     0.2867    7.11        0.00000000018
+## Sepal.Width         0.5680     0.0879    6.46        0.00000000392
+## Petal.Length        0.7818     0.0725   10.79 < 0.0000000000000002
+## Petal.Width        -0.4541     0.1709   -2.66               0.0092
+## Speciesversicolor  -0.4663     0.2581   -1.81               0.0739
+## Speciesvirginica   -0.5133     0.3642   -1.41               0.1618
 ## 
-## Residual standard error: 0.298 on 99 degrees of freedom
-## Multiple R-squared:  0.885,	Adjusted R-squared:  0.879 
-## F-statistic:  152 on 5 and 99 DF,  p-value: <0.0000000000000002
+## Residual standard error: 0.279 on 99 degrees of freedom
+## Multiple R-squared:  0.898,	Adjusted R-squared:  0.893 
+## F-statistic:  175 on 5 and 99 DF,  p-value: <0.0000000000000002
 ```
 
 `lm()` function automatically converts factor variables to one-hot encoded features.
@@ -605,21 +605,21 @@ summary(m)  # exactly the same as lm()
 ## lm(formula = .outcome ~ ., data = dat)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -0.7056 -0.2186  0.0148  0.2045  0.7229 
+##    Min     1Q Median     3Q    Max 
+## -0.714 -0.199  0.008  0.163  0.671 
 ## 
 ## Coefficients:
-##                   Estimate Std. Error t value            Pr(>|t|)
-## (Intercept)         1.9988     0.3388    5.90 0.00000005108177642
-## Sepal.Width         0.5484     0.1045    5.25 0.00000087329434726
-## Petal.Length        0.8093     0.0838    9.66 0.00000000000000061
-## Petal.Width        -0.2754     0.1784   -1.54               0.126
-## Speciesversicolor  -0.5992     0.2962   -2.02               0.046
-## Speciesvirginica   -0.9701     0.4203   -2.31               0.023
+##                   Estimate Std. Error t value             Pr(>|t|)
+## (Intercept)         2.0388     0.2867    7.11        0.00000000018
+## Sepal.Width         0.5680     0.0879    6.46        0.00000000392
+## Petal.Length        0.7818     0.0725   10.79 < 0.0000000000000002
+## Petal.Width        -0.4541     0.1709   -2.66               0.0092
+## Speciesversicolor  -0.4663     0.2581   -1.81               0.0739
+## Speciesvirginica   -0.5133     0.3642   -1.41               0.1618
 ## 
-## Residual standard error: 0.298 on 99 degrees of freedom
-## Multiple R-squared:  0.885,	Adjusted R-squared:  0.879 
-## F-statistic:  152 on 5 and 99 DF,  p-value: <0.0000000000000002
+## Residual standard error: 0.279 on 99 degrees of freedom
+## Multiple R-squared:  0.898,	Adjusted R-squared:  0.893 
+## F-statistic:  175 on 5 and 99 DF,  p-value: <0.0000000000000002
 ```
 
 
@@ -669,7 +669,7 @@ mean(y_test == y_hat_test)
 ```
 
 ```
-## [1] 0.9
+## [1] 0.86
 ```
 
 *R caret*
@@ -677,11 +677,34 @@ mean(y_test == y_hat_test)
 ```r
 library(caret)
 m2 <- train(Species ~ Sepal.Length, data = train, method = "glm", family = binomial)
+```
+
+```
+## Warning: glm.fit: algorithm did not converge
+```
+
+```
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+```
+
+```
+## Warning: glm.fit: algorithm did not converge
+```
+
+```
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+```
+
+```r
 mean(predict(m2, test) == test$Species)
 ```
 
 ```
-## [1] 0.9
+## [1] 0.86
 ```
 
 

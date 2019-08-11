@@ -8,10 +8,12 @@
 <div class="article">
 
 <div class="article-categories">
+    {% for category in categories_specific %}
     <object style="vertical-align:middle" type="image/svg+xml" data="{% static "/folder.svg" %}" height="15px" width="15px"></object>
-    <a href="#" role="button">link</a>
-    &emsp;
-    </br>
+    <a href="{{ category.category_slug.get_absolute_url }}" role="button">{{ category.category_slug.category_name }}</a>
+        &nbsp; &nbsp;
+    {% endfor %}
+    <br>
 </div>
 <div class="article-title">
   <!-- TODO https://codepen.io/zitrusfrisch/pen/fjbal -->
@@ -19,7 +21,8 @@
 
 </div>
 <div class="article-info">
-    {{ post.format_date}} &emsp;  &emsp; x minutes read
+    {{ post.format_date }} &emsp;  &emsp;
+    {{ post.read_time }} {% if post.read_time == 1 %} minute {% else %} minutes {% endif %} read
 </div>
 
 {{ post.body|safe }}
