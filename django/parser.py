@@ -41,7 +41,8 @@ class Article:
         # TODO trycatch on dest_dir if exists
         self.dest_dir = dest_dir
         self.dest_path = os.path.join(dest_dir, self.file)
-        # TODO check md5 sum, maybe no need to update this file
+        # TODO check md5 sum, maybe no need to update this file; keep md5 of
+        # Rmd or md file in Post model - create a new field file_md5
         # TODO check if object is in database
         shutil.copy(self.src_path, dest_dir)
         # TODO logging
