@@ -24,7 +24,7 @@ class Article:
     rmd_meta = textwrap.dedent('''
         ```{r setup, include = FALSE}
         knitr::opts_chunk$set(
-        fig.path = "./articles/figures/%s/"
+        fig.path = "./media/%s/"
         )
         ```
         ''')
@@ -91,6 +91,7 @@ class Article:
 
     def _knit_rmd(self):
         self._add_rmd_meta()
+        # TODO does plotly work?
         cmd = """
         Rscript -e "knitr::knit('articles/{}', output = 'articles/{}')"
         """.format(self.file, self.file_md)

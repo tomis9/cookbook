@@ -16,25 +16,23 @@
   <br>
   <br>
 
-  <h3 style="text-shadow: -1px 0 #3090c7, 0 1px #3090c7, 1px 0 #3090c7, 0 -1px #3090c7; color: white; font-family: 'fascinate', cursive;">{{ .key }}</h3>
-
-      <table style="margin: 0 auto;">
-          {% for post in posts %}
-            <tr>
-              <td style="white-space: nowrap; width: 100px; color: gray; font-size: smaller;">
-                {{ post.post_slug.format_date }}
-              </td>
-              <td id="list-titles">
-                <a href="{{ post.post_slug.get_absolute_url }}">
-                  {{ post.post_slug.title }}
-                </a>
-              </td>
-              <td class="d-none d-lg-block d-xl-block" style="color: gray; font-size: small;">
-                  {{ post.post_slug.read_time }} {% if post.post_slug.read_time == 1 %} minute {% else %} minutes {% endif %} read
-              </td>
-            </tr>
-          {% endfor %}
-      </table>
+  <table style="margin: 0 auto;">
+      {% for post in posts %}
+        <tr>
+          <td style="white-space: nowrap; width: 100px; color: gray; font-size: smaller;">
+            {{ post.post_slug.format_date }}
+          </td>
+          <td id="list-titles">
+            <a href="{{ post.post_slug.get_absolute_url }}">
+              {{ post.post_slug.title }}
+            </a>
+          </td>
+          <td class="d-none d-lg-block d-xl-block" style="color: gray; font-size: small;">
+              {{ post.post_slug.read_time }} {% if post.post_slug.read_time == 1 %} minute {% else %} minutes {% endif %} read
+          </td>
+        </tr>
+      {% endfor %}
+  </table>
     <!-- todo do this with css -->
     <br>
     <br>

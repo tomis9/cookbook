@@ -8,7 +8,7 @@ categories: ["Machine learning", "R"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/decision_trees/"
+fig.path = "./media/decision_trees/"
 )
 ```
 

@@ -9,7 +9,7 @@ tags: ["R", "data.table"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/data.table/"
+fig.path = "./media/data.table/"
 )
 ```
 

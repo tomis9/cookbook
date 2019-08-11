@@ -63,7 +63,7 @@ plot(tree, margin = 0.1)
 text(tree, use.n = TRUE, cex = 0.75)
 ```
 
-![plot of chunk unnamed-chunk-2](./articles/figures/decision_trees/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](./media/decision_trees/unnamed-chunk-2-1.png)
 
 which produces a rather modest view of our tree. Luckily the are various packages, which can make the plot look more neat:
 
@@ -73,7 +73,7 @@ library(rpart.plot)
 rpart.plot(tree)
 ```
 
-![plot of chunk unnamed-chunk-3](./articles/figures/decision_trees/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](./media/decision_trees/unnamed-chunk-3-1.png)
 
 ### decisionTree 
 
@@ -126,7 +126,7 @@ tree <- decisionTree(d, eta = 5, purity=0.95, minsplit=0)
 plot(tree)
 ```
 
-![plot of chunk unnamed-chunk-6](./articles/figures/decision_trees/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](./media/decision_trees/unnamed-chunk-6-1.png)
 
 ## 3. Interesting links 
 

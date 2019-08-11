@@ -9,7 +9,7 @@ tags: ["Python", "decorators"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/decorators/"
+fig.path = "./media/decorators/"
 )
 ```
 

@@ -37,16 +37,16 @@ print(sample_data)
 
 ```
 ##    a  b color
-## 1  a  5   red
-## 2  b  9 green
-## 3  c  1  blue
-## 4  d  8  blue
-## 5  e 10 green
-## 6  f  6   red
-## 7  g  3  blue
-## 8  h  7 green
-## 9  i  2 green
-## 10 j  4 green
+## 1  a  1 green
+## 2  b  7  blue
+## 3  c  9 green
+## 4  d  5 green
+## 5  e 10   red
+## 6  f  3 green
+## 7  g  2 green
+## 8  h  8 green
+## 9  i  6 green
+## 10 j  4  blue
 ```
 
 The most basic plot:
@@ -57,7 +57,7 @@ ggplot(data = sample_data, mapping = aes(x = a, y = b)) +
     geom_point()
 ```
 
-![plot of chunk unnamed-chunk-2](./articles/figures/ggplot2/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](./media/ggplot2/unnamed-chunk-2-1.png)
 
 A little bit less basic plot, as points can be categorised by their colors:
 
@@ -66,7 +66,7 @@ ggplot(data = sample_data, mapping = aes(x = a, y = b, color = color)) +
     geom_point()
 ```
 
-![plot of chunk unnamed-chunk-3](./articles/figures/ggplot2/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](./media/ggplot2/unnamed-chunk-3-1.png)
 
 As you can see, colors do not match their descriptions, but you can customise it.
 
@@ -78,7 +78,7 @@ ggplot(data = sample_data, mapping = aes(x = a, y = b)) +
     facet_wrap(~ color, nrow=1)
 ```
 
-![plot of chunk unnamed-chunk-4](./articles/figures/ggplot2/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](./media/ggplot2/unnamed-chunk-4-1.png)
 
 ### Combining multiple types of plots
 
@@ -94,7 +94,7 @@ ggplot(data = mpg) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![plot of chunk unnamed-chunk-5](./articles/figures/ggplot2/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](./media/ggplot2/unnamed-chunk-5-1.png)
 
 Smoothing may be useful if you want to show trend.
 
@@ -110,7 +110,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![plot of chunk unnamed-chunk-6](./articles/figures/ggplot2/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](./media/ggplot2/unnamed-chunk-6-1.png)
 
 Different datasets are also possible, but rather unusual.
 
@@ -123,7 +123,7 @@ ggplot(data = sample_data) +
     geom_bar(mapping = aes(x = a, y = b), stat = "identity")
 ```
 
-![plot of chunk unnamed-chunk-7](./articles/figures/ggplot2/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](./media/ggplot2/unnamed-chunk-7-1.png)
 
 We had po provide the argument `stat = "identity"`, becasue the default behaviour is to plot the size/count of every category (x).
 
@@ -134,7 +134,7 @@ ggplot(data = sample_data, mapping = aes(x = color, y = b, color = a)) +
     geom_bar(stat = "identity", fill = NA)
 ```
 
-![plot of chunk unnamed-chunk-8](./articles/figures/ggplot2/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8](./media/ggplot2/unnamed-chunk-8-1.png)
 
 ### Boxplot
 
@@ -146,7 +146,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
     coord_flip()
 ```
 
-![plot of chunk unnamed-chunk-9](./articles/figures/ggplot2/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](./media/ggplot2/unnamed-chunk-9-1.png)
 
 We also used `coord_flip()`, which rotates the plot by 90 degrees, or, another words, flips the coordinates.
 
@@ -162,7 +162,7 @@ ggplot(usa, aes(long, lat, group = group)) +
     coord_quickmap()
 ```
 
-![plot of chunk unnamed-chunk-10](./articles/figures/ggplot2/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-10](./media/ggplot2/unnamed-chunk-10-1.png)
 
 We used two interesting functions:
 
@@ -189,7 +189,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
     theme_bw() 
 ```
 
-![plot of chunk unnamed-chunk-11](./articles/figures/ggplot2/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-11](./media/ggplot2/unnamed-chunk-11-1.png)
 
 ```r
     theme(plot.title = element_text(hjust = 0.5, size=12),
@@ -243,7 +243,7 @@ p <- ggplot(sample_data, aes(x=a, y=b)) +
 plotly::ggplotly(p)
 ```
 
-![plot of chunk unnamed-chunk-12](./articles/figures/ggplot2/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-12](./media/ggplot2/unnamed-chunk-12-1.png)
 
 as it will give your plot interesting interactive features. Shiny users will appreciate them.
 

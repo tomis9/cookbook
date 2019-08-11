@@ -9,7 +9,7 @@ tags: []
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/useful_processing/"
+fig.path = "./media/useful_processing/"
 )
 ```
 

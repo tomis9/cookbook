@@ -10,7 +10,7 @@ tags: ["R", "debugging"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/debugging/"
+fig.path = "./media/debugging/"
 )
 ```
 

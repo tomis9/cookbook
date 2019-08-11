@@ -10,7 +10,7 @@ tags: ["R", "data.table", "dataframes"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/reshape2/"
+fig.path = "./media/reshape2/"
 )
 ```
 

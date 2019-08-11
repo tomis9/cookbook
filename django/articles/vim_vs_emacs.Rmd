@@ -9,7 +9,7 @@ tags: ["text-mining", "R"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/vim_vs_emacs/"
+fig.path = "./media/vim_vs_emacs/"
 )
 ```
 

@@ -57,7 +57,7 @@ add
 
 ```
 ## function (x, y, z) 
-## .Call(<pointer: 0x7f8086080e30>, x, y, z)
+## .Call(<pointer: 0x7f5233c47e30>, x, y, z)
 ```
 
 ## 3. Using R's numeric vector as input and output

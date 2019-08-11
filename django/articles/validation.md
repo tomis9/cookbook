@@ -75,8 +75,8 @@ y_hat_test[1:10]
 ```
 
 ```
-##     3     4     7    13    14    19    20    22    24    28 
-## FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+##     1     2     6    11    14    24    26    29    30    31 
+## FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 so now we may use a simple `table()` function to create a confusion matrix:
@@ -88,8 +88,8 @@ table(y_hat_test, y_test)
 ```
 ##           y_test
 ## y_hat_test FALSE TRUE
-##      FALSE    13    3
-##      TRUE      2   12
+##      FALSE    15    2
+##      TRUE      0   13
 ```
 
 * R caret
@@ -107,26 +107,26 @@ confusionMatrix(predict(m2, test), test$Species)
 ## 
 ##             Reference
 ## Prediction   setosa versicolor
-##   setosa         13          3
-##   versicolor      2         12
+##   setosa         15          2
+##   versicolor      0         13
 ##                                         
-##                Accuracy : 0.833         
-##                  95% CI : (0.653, 0.944)
+##                Accuracy : 0.933         
+##                  95% CI : (0.779, 0.992)
 ##     No Information Rate : 0.5           
-##     P-Value [Acc > NIR] : 0.000162      
+##     P-Value [Acc > NIR] : 0.000000434   
 ##                                         
-##                   Kappa : 0.667         
+##                   Kappa : 0.867         
 ##                                         
-##  Mcnemar's Test P-Value : 1.000000      
+##  Mcnemar's Test P-Value : 0.48          
 ##                                         
-##             Sensitivity : 0.867         
-##             Specificity : 0.800         
-##          Pos Pred Value : 0.812         
-##          Neg Pred Value : 0.857         
+##             Sensitivity : 1.000         
+##             Specificity : 0.867         
+##          Pos Pred Value : 0.882         
+##          Neg Pred Value : 1.000         
 ##              Prevalence : 0.500         
-##          Detection Rate : 0.433         
-##    Detection Prevalence : 0.533         
-##       Balanced Accuracy : 0.833         
+##          Detection Rate : 0.500         
+##    Detection Prevalence : 0.567         
+##       Balanced Accuracy : 0.933         
 ##                                         
 ##        'Positive' Class : setosa        
 ## 
@@ -202,10 +202,10 @@ plot_roc_get_auc(
   test_labels = as.integer(test[["Species"]]) - 1)
 ```
 
-![plot of chunk unnamed-chunk-7](./articles/figures/validation/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](./media/validation/unnamed-chunk-7-1.png)
 
 ```
-## [1] 0.9778
+## [1] 0.9733
 ```
 
 ```r
@@ -215,7 +215,7 @@ plot_roc_get_auc(
   test_labels = as.integer(test[["Species"]]) - 1)
 ```
 
-![plot of chunk unnamed-chunk-7](./articles/figures/validation/unnamed-chunk-7-2.png)
+![plot of chunk unnamed-chunk-7](./media/validation/unnamed-chunk-7-2.png)
 
 ```
 ## [1] 1

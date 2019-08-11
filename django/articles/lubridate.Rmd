@@ -10,7 +10,7 @@ tags: ["lubridate", "R"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/lubridate/"
+fig.path = "./media/lubridate/"
 )
 ```
 

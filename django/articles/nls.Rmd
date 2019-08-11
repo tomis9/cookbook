@@ -9,7 +9,7 @@ tags: ["R", "statistics"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/nls/"
+fig.path = "./media/nls/"
 )
 ```
 

@@ -9,7 +9,7 @@ tags: ["R", "regex", "tidyvers"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/stringr/"
+fig.path = "./media/stringr/"
 )
 ```
 

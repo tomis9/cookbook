@@ -9,7 +9,7 @@ tags: ["R", "ggplot2", "tidyverse"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/ggplot2/"
+fig.path = "./media/ggplot2/"
 )
 ```
 

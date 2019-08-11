@@ -10,7 +10,7 @@ tags: ["R", "OOP"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/classesS4/"
+fig.path = "./media/classesS4/"
 )
 ```
 

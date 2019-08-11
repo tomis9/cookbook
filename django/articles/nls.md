@@ -34,7 +34,7 @@ plot(population ~ year, data = USPop,
 abline(lm(population ~ year, data = USPop), col = "red", lwd = 2)
 ```
 
-![plot of chunk unnamed-chunk-1](./articles/figures/nls/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-1](./media/nls/unnamed-chunk-1-1.png)
 
 *USPop dataset used to be available in car package, curiously it isn't anymore.*
 
@@ -93,7 +93,7 @@ USPop$fitted_values <- fitted(model)
 lines(fitted_values ~ year, data = USPop, col = "blue", lwd = 2)
 ```
 
-![plot of chunk unnamed-chunk-4](./articles/figures/nls/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](./media/nls/unnamed-chunk-4-1.png)
 
 ## 3. Afterthoughts
 

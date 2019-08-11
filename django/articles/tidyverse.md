@@ -80,11 +80,11 @@ print(data_t)
 ## # A tibble: 5 x 2
 ##   col_a col_b
 ##   <chr> <dbl>
-## 1 a        93
-## 2 b        75
-## 3 c        14
-## 4 d         9
-## 5 e        24
+## 1 a        71
+## 2 b        90
+## 3 c        20
+## 4 d        88
+## 5 e        47
 ```
 Tibbles do not differ much from data.frames, except (according to the documentation, i.e. `?tibble::tibble`):
 
@@ -255,7 +255,7 @@ mtcars %>%
     geom_point()
 ```
 
-![plot of chunk unnamed-chunk-9](./articles/figures/tidyverse/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](./media/tidyverse/unnamed-chunk-9-1.png)
 
 But remember that in ggplot2 we use `+` for piping, not `%>%`. There is an easy way to never forget about it: use data.table instead of dplyr ;).
 

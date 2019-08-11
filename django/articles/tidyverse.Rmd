@@ -10,7 +10,7 @@ tags: ["tidyverse", "R", "data.table", "dplyr", "ggplot2", "readr"]
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-fig.path = "./articles/figures/tidyverse/"
+fig.path = "./media/tidyverse/"
 )
 ```
 
