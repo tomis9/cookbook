@@ -1,0 +1,131 @@
+---
+title: "Rmarkdown total basics"
+date: 2018-11-09T23:01:35+01:00
+draft: false
+categories: ["scratchpad"]
+---
+
+
+
+<center>
+<div id="this-is-not-a-proper-blog-post-yet-just-my-notes." class="section level1">
+<h1>This is not a proper blog post yet, just my notes.</h1>
+Rmarkdown (TODO)
+</center>
+<p>Before you begin, check out a very nice cheatsheet available at <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf</a></p>
+<p>Vim key mappings are rather intuitive, pretty similar to basic r filetype mappings: <F2> open up a console window, <F5> rmarkdown::render()s this file and shows the result in your favourite browser.</p>
+<p>In general, Rmarkdown is just markdown with a possibility to add R chunks of code and execute them. Which is pretty nice, actually. Some more informationon <a href="http://rmarkdown.rstudio.com/authoring_basics.html" class="uri">http://rmarkdown.rstudio.com/authoring_basics.html</a></p>
+<hr />
+<p>By the way, it would be great if you could have separate keys for rendering and showing the results, like <F5> and <F6>, for example.</p>
+<p>And if there was a snippet <a href="https://github.com/honza/vim-snippets" class="uri">https://github.com/honza/vim-snippets</a> for rmarkdown so you didn’t have to make up your own description block every single time you create a new file. Yeah, you’d love it.</p>
+<p>I am sorry but I am too lazy to add these features right now :) Good luck, anyways.</p>
+<pre class="r"><code>x &lt;- 10
+print(x)</code></pre>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="some-title" class="section level1">
+<h1>Some title</h1>
+<p>just the same function to create a title as in basic markdown</p>
+<p>and some plot</p>
+<p><img src="/file_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>You can also execute bash and probably some other languages as well. That’s pretty impressive.</p>
+<pre class="bash"><code>ls
+echo &quot;some random text&quot;</code></pre>
+<pre><code>## airflow.md
+## airflow.txt
+## aws.md
+## caffee.md
+## cassandra.md
+## CinR.md
+## classesS4.html
+## classesS4.Rmd
+## cookbook.md
+## data.table.html
+## data.table.Rmd
+## debugging.html
+## debugging.Rmd
+## decision_trees_files
+## decision_trees.html
+## decision_trees.Rmd
+## decorators.html
+## decorators.Rmd
+## dimensionality.html
+## dimensionality.Rmd
+## django.md
+## docker.md
+## featuretools.md
+## figure
+## file_files
+## file.html
+## file.Rmd
+## flask.md
+## ggplot2
+## ggplot2_files
+## ggplot2.html
+## ggplot2.Rmd
+## gitlab_ci.md
+## git.md
+## hadoop
+## hadoop.md
+## hugo.md
+## javascript.md
+## kafka.md
+## keras.md
+## learning_tensorflow.Rmd
+## logging.md
+## lubridate.html
+## lubridate.Rmd
+## machine_learning_problems.md
+## marathon.md
+## mesos.md
+## ml_files
+## ml.html
+## ml.Rmd
+## mtcars.csv
+## nlp.md
+## nls_files
+## nls.html
+## nls.Rmd
+## packages.md
+## pandas.md
+## passing_arguments.md
+## pyenv.md
+## pytorch.md
+## Rcpp.html
+## Rcpp.Rmd
+## redis.md
+## regex.md
+## reshape2.html
+## reshape2.Rmd
+## RMariaDB.html
+## RMariaDB.Rmd
+## rocker.md
+## rstanarm.md
+## rTags.md
+## sample_data.csv
+## shiny.md
+## spark.md
+## sqlalchemy.md
+## sqldf.html
+## sqldf.Rmd
+## stringr.html
+## stringr.Rmd
+## tensorflow
+## tensorflow.md
+## tensorflow_serving.md
+## testing.md
+## theano.md
+## tidyverse_files
+## tidyverse.html
+## tidyverse.Rmd
+## useful_processing.html
+## useful_processing.Rmd
+## vagrant.md
+## validation_files
+## validation.html
+## validation.Rmd
+## vim_vs_emacs_files
+## vim_vs_emacs.html
+## vim_vs_emacs.Rmd
+## some random text</code></pre>
+</div>

@@ -1,0 +1,75 @@
+---
+title: "stringr and regex"
+date: 2017-03-02T23:01:35+01:00
+draft: true
+categories: ["R"]
+tags: ["R", "regex", "tidyvers"]
+---
+
+
+
+<div id="what-is-stringr-and-why-would-you-use-it" class="section level2">
+<h2>1. What is stringr and why would you use it?</h2>
+<ul>
+<li><p>stringr is a simple and fast replacement for deafult R regex functions (grepl, gsub, substr etc.);</p></li>
+<li><p>but still traditional regex is available in every programming language;</p></li>
+<li><p>stringr is considered a member of [tidyverse]{<a href="http://tomis9.com/tidyverse" class="uri">http://tomis9.com/tidyverse</a>} family.</p></li>
+</ul>
+<p>To be honest, I don’t use stringr, because it’s basic R regex functions are more than enough for my everyday work.</p>
+</div>
+<div id="a-few-basic-operations" class="section level2">
+<h2>2. A few basic operations</h2>
+<p>Let’s load <code>stringr</code> library:</p>
+<pre class="r"><code>library(stringr)</code></pre>
+<p>It’s available on CRAN, so you can dowload it with <code>install.packages()</code>.</p>
+<ul>
+<li>string concatenation</li>
+</ul>
+<pre class="r"><code>str_c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</code></pre>
+<pre><code>## [1] &quot;abc&quot;</code></pre>
+<pre class="r"><code>paste0(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), collapse = &quot;&quot;)</code></pre>
+<pre><code>## [1] &quot;abc&quot;</code></pre>
+<ul>
+<li>numerb of characters</li>
+</ul>
+<pre class="r"><code>str_length(&quot;abcdefg&quot;)</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code>nchar(&quot;abcdefg&quot;)</code></pre>
+<pre><code>## [1] 7</code></pre>
+</div>
+<div id="a-few-regex-like-functions" class="section level2">
+<h2>3. A few regex-like functions</h2>
+<ul>
+<li>“is in”</li>
+</ul>
+<pre class="r"><code>str_detect(&quot;The quick brown fox&quot;, &quot;qui&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>grepl(&quot;qui&quot;, &quot;The quick brown fox&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<ul>
+<li>substring</li>
+</ul>
+<pre class="r"><code>str_sub(&quot;tomis9&quot;, 2, 4)</code></pre>
+<pre><code>## [1] &quot;omi&quot;</code></pre>
+<pre class="r"><code>substr(&quot;tomis9&quot;, 2, 4)</code></pre>
+<pre><code>## [1] &quot;omi&quot;</code></pre>
+<ul>
+<li>replacing</li>
+</ul>
+<pre class="r"><code>str_replace(&quot;John Doe&quot;, &quot;Doe&quot;, &quot;Kowalski&quot;)</code></pre>
+<pre><code>## [1] &quot;John Kowalski&quot;</code></pre>
+<pre class="r"><code>gsub(&quot;Doe&quot;, &quot;Kowalski&quot;, &quot;John Doe&quot;)</code></pre>
+<pre><code>## [1] &quot;John Kowalski&quot;</code></pre>
+<ul>
+<li>trimming (removing excess spaces)</li>
+</ul>
+<pre class="r"><code>str_trim(&quot;   abc  &quot;)</code></pre>
+<pre><code>## [1] &quot;abc&quot;</code></pre>
+</div>
+<div id="useful-links" class="section level2">
+<h2>4. Useful links</h2>
+<ul>
+<li><p>a very nice tutorial on stringr is available <a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html">here</a>;</p></li>
+<li><p>if you work a lot on text data, consider reading <a href="http://shop.oreilly.com/product/9780596528126.do">Mastering Regular Expressions</a>.</p></li>
+</ul>
+</div>

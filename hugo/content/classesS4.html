@@ -1,0 +1,81 @@
+---
+title: "classes - S4"
+date: 2018-02-04T12:00:04+01:00
+draft: false
+image: "classes.jpg"
+categories: ["R"]
+tags: ["R", "OOP"]
+---
+
+
+
+<div id="why-would-you-use-oop-in-r" class="section level2">
+<h2>1. Why would you use OOP in R?</h2>
+<p>Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming).</p>
+<p>However, there are certain cases when OOP may come up helpful:</p>
+<ul>
+<li><p>when you write your own package and you want users to work on an object that your function returns (print, summary, plot);</p></li>
+<li><p>learning OOP in R is a good investment, because it let’s you understand better how functions like print, plot etc. work.</p></li>
+</ul>
+</div>
+<div id="creating-a-new-class-in-s4" class="section level2">
+<h2>2. Creating a new class in S4</h2>
+<p>Let’s define a new class:</p>
+<pre class="r"><code>setClass(
+  Class = &#39;Polygon&#39;, 
+  slots = c(x = &#39;numeric&#39;, y = &#39;numeric&#39;),
+)</code></pre>
+<p>where <code>Polygon</code> is it’s name and <code>slots</code> are it’s attributes.</p>
+<p>A new instance of class <code>Polygon</code>:</p>
+<pre class="r"><code>w1 &lt;- new(&#39;Polygon&#39;, x = 1:3, y = c(1, 1, 2))</code></pre>
+</div>
+<div id="attributes" class="section level2">
+<h2>3. Attributes</h2>
+<p>If you’ve ever wondered what <code>@</code> in R means, here’s the answer:</p>
+<pre class="r"><code>slotNames(w1)</code></pre>
+<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
+<pre class="r"><code>w1@x  </code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>w1@y</code></pre>
+<pre><code>## [1] 1 1 2</code></pre>
+<p>It provides access to inctance attributes. You can also overwrite current attributes simply with:</p>
+<pre class="r"><code>w1@x &lt;- c(3, 2, 1)</code></pre>
+</div>
+<div id="methods" class="section level2">
+<h2>4. Methods</h2>
+<p>Let’s create a simple method <code>show</code> which prints a description of our object.</p>
+<pre class="r"><code>setMethod(
+  f = &#39;show&#39;,
+  signature = c(object = &#39;Polygon&#39;),
+  function(object) {
+    cat(sprintf(&#39;This is a polygon with %d sides.\n&#39;, length(object@x)))
+    cat(sprintf(&#39;(%g, %g)&#39;, object@x, object@y))
+    cat(&#39;\n&#39;)
+  }
+)</code></pre>
+<pre><code>## [1] &quot;show&quot;</code></pre>
+<pre class="r"><code>print(w1)</code></pre>
+<pre><code>## This is a polygon with 3 sides.
+## (3, 1) (2, 1) (1, 2)</code></pre>
+<p>Yes, so far OOP in R looks extremely complicated and non-intuitive comparing to Python.</p>
+</div>
+<div id="inheritance" class="section level2">
+<h2>5. Inheritance</h2>
+<p>A simple example of inheritance:</p>
+<pre class="r"><code>setClass(
+  &#39;Triangle&#39;,
+  contains = &#39;Polygon&#39;,
+  validity = function(object)
+    if (length(object@x) != 3) &quot;a triangle has three sides&quot; else TRUE
+)
+
+t1 &lt;- new(&#39;Triangle&#39;, x=c(1, 2, 3), y=c(1, 1, 3))
+class(t1)</code></pre>
+<pre><code>## [1] &quot;Triangle&quot;
+## attr(,&quot;package&quot;)
+## [1] &quot;.GlobalEnv&quot;</code></pre>
+<pre class="r"><code>show(t1)</code></pre>
+<pre><code>## This is a polygon with 3 sides.
+## (1, 1) (2, 1) (3, 3)</code></pre>
+<p>You can see that a new class <code>Trinagle</code> ingerits <code>x</code> and <code>y</code> attributes and <code>show</code> method from class <code>Polygon</code>. It also adds a validity check, which produces an error if the number of vertices is different than 3.</p>
+</div>

@@ -1,0 +1,65 @@
+---
+title: "Rcpp"
+date: 2018-02-04T12:03:14+01:00
+draft: false
+image: "Rcpp.jpg"
+categories: ["R"]
+tags: ["R", "C++"]
+---
+
+## 1. What is Rcpp and why would you use it?
+
+* `Rcpp` is a R library which let's you embed C++ code inside your R program.
+
+* Useful when you have a bottleneck in your code which makes the execution last forever. In that case you can rewrite in into super-fast C++.
+
+Or you can switch to Python. Or data.table. Or write it in [C](http://tomis9.com/cinr).
+
+## 2. A "Hello World" example
+
+Example taken from Avanced R by Hadley Wickam [(link)](http://adv-r.had.co.nz/Rcpp.html).
+
+```{r}
+library(Rcpp)
+```
+
+So far so good. This is how we create a C++ function `add`:
+
+```{r}
+cppFunction('int add(int x, int y, int z) {
+  int sum = x + y + z;
+  return sum;
+}')
+```
+
+and invoke it:
+```{r}
+add(1, 2, 3)
+```
+
+You can check that this actually is a C++ function simply by:
+```{r}
+add
+```
+
+## 3. Using R's numeric vector as input and output
+
+A slighlty more complicated function, which calculates a distance between a value and a vector of values:
+
+```{r}
+cppFunction('NumericVector pdistC(double x, NumericVector ys) {
+  int n = ys.size();
+  NumericVector out(n);
+
+  for(int i = 0; i < n; ++i) {
+    out[i] = sqrt(pow(ys[i] - x, 2.0));
+  }
+  return out;
+}')
+```
+
+And let's run this function:
+
+```{r}
+pdistC(10, c(11, -12, 30))
+```

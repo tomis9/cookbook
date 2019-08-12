@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "disable_existing_loggers": "False",
+  "formatters": {
+    "standard": {
+      "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    }
+  },
+  "handlers": {
+    "app": {
+      "formatter": "standard",
+      "class": "logging.FileHandler",
+      "filename": "./logs.log"
+    },
+    "custom": {
+      "formatter": "standard",
+      "class": "custom_handler.CustomHandler",
+       "value": 10
+    },
+    "sub": {
+      "formatter": "standard",
+      "class": "logging.FileHandler",
+      "filename": "./logs_imp.log"
+    }
+  },
+  "loggers": {
+    "app": {
+      "level": "DEBUG",
+      "handlers": ["app", "custom"]
+    },
+    "to_import.to_import": {
+      "level": "INFO",
+      "handlers": ["sub"]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "disable_existing_loggers": "False" ,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        }
+    },
+    "handlers": {
+        "base": {
+            "formatter": "standard",
+            "class": "logging.StreamHandler"
+        }
+    },
+    "loggers": {
+        "base": {
+            "level": "INFO",
+            "handlers": ["base"]
+        },
+        "functions": {
+            "level": "INFO",
+            "handlers": ["base"]
+        }
+    }
+}

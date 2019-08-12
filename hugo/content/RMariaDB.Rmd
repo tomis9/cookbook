@@ -1,0 +1,89 @@
+---
+title: "RMariaDB (former RMySQL)"
+date: 2018-02-12T12:17:56+01:00
+draft: false
+image: "RMariaDB.jpg"
+categories: ["R"]
+tags: ["R", "SQL"]
+---
+
+## 1. What is RMariaDB and why would you use it? 
+
+* `RMariaDB` is an R package available at CRAN that let's you connect to various SQL databases easily.
+
+Why did I switch from RMySQL to RMariaDB? Because of invalid long integer format when downloading data from a database. A pretty nasty bug in RMySQL, which was resolved in RMariaDB.
+
+## 2. Usage 
+
+First you have to create a connection to the database. Remember that you should not provide any credentials in your scripts! Keep them in a separate file or in envorionment variables.
+
+```{r, eval = FALSE}
+con <- RMariaDB::dbConnect(
+  drv      = RMariaDB::MariaDB(), 
+  user     = "",
+  password = "",
+  host     = "", 
+  dbname   = ""
+)
+```
+After you are done with working on your database data, you should close the connection with:
+
+```{r, eval = FALSE}
+RMariaDB::dbDisconnect(con)
+```
+
+### a) using plain R 
+
+* ### just querying
+```{r, eval = FALSE}
+query <- "delete from my_table;"
+
+RMariaDB::dbSendQuery(con, query)
+```
+
+* ### retrieving data from db
+```{r, eval = FALSE}
+query <- "select * from my_table;"
+
+rs <- RMariaDB::dbSendQuery(con, query)
+tab <- RMariaDB::dbFetch(rs, n = -1)
+RMariaDB::dbClearResult(rs)
+
+# equivalent to select * from my_table;
+d <- RMariaDB::dbReadTable(con, "my_table")
+```
+
+* ### sending data to db
+```{r, eval = FALSE}
+# data.frame's colnames should be the same as in the database
+dt <- data.frame(id = 1:10, text = letters[1:10])
+
+RMariaDB::dbWriteTable(
+  conn = con, 
+  name = "my_table", 
+  value = dt, 
+  overwrite = FALSE,
+  append = TRUE,
+  row.names = F
+)
+```
+
+### b) using [dplyr](http://tomis9.com/tidyverse/#/dplyr) 
+
+* #### just querying / retrieving data from db
+
+```{r, eval = FALSE}
+tab_name <- dplyr::tbl(con, "tab_name")
+tab <- dplyr::collect(tab_name)  # you can `library(dplyr)` and then `tab_name %>% collect()`
+```
+
+* ### sending data to db
+
+```{r, eval = FALSE}
+dplyr::db_insert_into(con, "my_table", tab)
+```
+
+## 3. Useful links 
+
+* [github page with an informative README](https://github.com/r-dbi/RMariaDB)
+* [cran README](https://cran.r-project.org/web/packages/RMariaDB/README.html)

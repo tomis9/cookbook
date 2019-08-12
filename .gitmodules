@@ -1,3 +1,3 @@
-[submodule "themes/random_forest"]
-	path = themes/random_forest
-	url = https://github.com/tomis9/random_forest
+[submodule "hugo/themes/random_forest"]
+	path = hugo/themes/random_forest
+	url = https://www.github.com/tomis9/random_forest

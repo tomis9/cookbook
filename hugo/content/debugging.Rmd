@@ -1,0 +1,139 @@
+---
+title: "debugging"
+date: 2018-02-15T15:17:57+01:00
+draft: false
+image: "debugging.jpg"
+categories: ["R"]
+tags: ["R", "debugging"]
+---
+
+## 1. What is debugging and why would use use it?
+
+* According to [Wikipedia](https://en.wikipedia.org/wiki/Debugging), "Debugging is the process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system".
+
+* R provides a couple of useful functions, which may be used not only for debugging purposes, but also for testing and even developing code.
+
+* All the functions present below are already available within basic packages (no installation required).
+
+## 2. Functions frequently used for debugging purposes
+
+* ### `browser()` 
+
+Rarely used directly, but important to understand how `debug()` works.
+
+A short example:
+
+Let's say that function `my_function` returns an error. (In this case we cause an error intentionally.)
+
+```{r, error = TRUE}
+my_function <- function(x) {
+  print(x)
+  stop("This is an error.")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+
+In order to find out where exactly the error occured, i.e. which statement caused it, we may enter the function's body and run the statements line by line.
+```{r, error = TRUE, eval = FALSE}
+my_function <- function(x) {
+  browser()  # just add this line of code into your function's definition 
+  print(x)
+  stop("This is an error.")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+Right now you are in `my_function()`'s environment, which you can check by typing `environment()` or `ls()`. You can also see that the prompt has changed. Type <kbd>n</kbd> until you get to the line of code which produces an error.
+
+*Tip*: To skip a loop, type <kbd>c</kbd>.
+
+To quit `browser()` earlier, type <kbd>q</kbd> and hit <kbd>Enter</kbd>.
+
+* ### `debug()`, `undebug()` and `debugonce()`
+
+Or the most useful debugging functions.
+
+Let's assume that you invoke a function inside of a function:
+
+```{r, error = TRUE}
+my_inside_function <- function(x_inside) {
+  print(paste("x_inside: ", x_inside + 10))
+  print("after error")
+}
+my_function <- function(x) {
+  print(x)
+  my_inside_function("some text")
+  print(x + 10)
+}
+my_function(x = 2)
+```
+
+which produces an error. You don't know yet where exactly the error ocurred, so now you should write:
+
+```{r, eval = FALSE}
+debug(my_function)
+my_function(x = 2)
+```
+
+to start searching for the bug right from the top function. A new, weird-looking prompt appears: it is the same prompt as invoked by the `browser()` function, inside `my_function`. Type `ls()` and you will see that you actually *are* inside of `my_function`'s environment. Hit <kbd>n</kbd> a couple of times until you reach the error. You can see that it was `my_inside_function` that caused an error. Debugging `my_inside_function` will lead you straight to the statement which caused an error, but before entering `my_inside_function`, stop observing `my_function`:
+
+```{r, eval = FALSE}
+undebug(my_function)
+```
+
+And then debug `my_inside_function`:
+
+```{r, eval = FALSE}
+debug(my_inside_function)
+my_function(x = 2)
+```
+
+After you find an error, don't forget to stop observing the function:
+
+```{r, eval = FALSE}
+undebug(my_inside_function)
+```
+
+You can also use `debugonce()`, the name of which is rather self-explanatory.
+
+* ### `traceback()` 
+
+A quick view of where the bug may come from.
+
+
+(from R docs)
+
+
+Our example code:
+```{r, error = TRUE}
+foo <- function(x) { print(1); bar(2) }
+bar <- function(x) { x + a.variable.which.does.not.exist }
+foo(2)
+```
+
+produces a strange error.
+
+```{r, error = TRUE, eval = FALSE}
+traceback()
+## End(Not run)
+## 2: bar(2)
+## 1: foo(2)
+```
+
+As you can see, `traceback()` immediately points at the line where the error occured.
+
+
+* ### Other debugging functions
+
+There are two other functions that may be used for debugging, but as they are rarely used, I will not describe them in detail.
+
+* `trace()` 
+
+* `recover()`
+
+
+## 3. Useful links:
+
+* A good tutorial is available [here](https://www.youtube.com/watch?v=-yy_3htRHdU).
+* A good article about debugging in R is available [here](http://seananderson.ca/2013/08/23/debugging-r.html).

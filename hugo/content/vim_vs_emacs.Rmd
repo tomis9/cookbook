@@ -1,0 +1,223 @@
+---
+title: "vim vs emacs - text mining to settle the editor war"
+date: 2019-01-26T14:12:24+01:00
+draft: false
+categories: ["Projects"]
+tags: ["text-mining", "R"]
+---
+
+>This project is not finished and will be developed over time.
+
+# 0. Why I'm making this project
+
+* I want to try out new programming and statistical tools that I read or heard about ([tidytext](https://www.tidytextmining.com/tidytext.html), [nlp](https://en.wikipedia.org/wiki/Natural_language_processing), [laser](https://github.com/facebookresearch/LASER)) on a subject that I find interesting (text editors).
+
+* If somebody asks me if vim is a good choice for a text editor, I want to have *objective* arguments to prove my statement.
+
+# 1. Introduction
+
+[The editor war](https://en.wikipedia.org/wiki/Editor_war) is a never-ending battle between vim and Emacs users, where both of the sides try to prove the superiority of one editor over the other. Interestingly, there are very few people who know both editors well enough to rate their abilities and comfort in everyday use credibly. In result most battles of the *war* arises to hateful flamewars, colloquially called *s&ast;&ast;tstorms*.
+
+In this post I will try to find an objective answer to the question ~~why vim is so much better than Emacs~~ which of the two editors is better.
+
+>disclaimer: I really enjoy working with vim, but I understand why people use Emacs, as it is also a very powerful text editor and it resembles vim in many aspects. At the end of the day, this is not a text editor that makes us good or bad developers and none of us is a specialist in using vim or emacs, because these tools are extremely rich in various functionalities. Your productivity depends in 95% on you, i.e. you skill in using the editor, your programming skills, and knowledge, but not on the editor itself.
+
+# 2. How I work
+
+As and the beginning of most of my projects, I am not sure if the data will give me enough information to tell you an interesting story. In other words, there is a risk that this project fails commpletely, i.e. vim will not come up any different to emacs, according to reddit (and later stackoverflow) users. If these editors do not differ enough, I want to know it as soon as possible.
+
+That is why first I will try to prove the most important concepts, before making the full analysis, i.e. if there is a chance that the two editors differ from each other. In result I will improve the analysis iteratively. At the first iteration I will make the following assumtions:
+
+* I will work on a small subset of data, hoping that the insights it provides
+me with will still be valid on a larger dataset.
+
+* I will let the praw package sample the subset, hoping that the sampling
+will not be biased.
+
+* Let's assume that all the posts concerning vim or emacs are contained is
+subreddits "vim" and "emacs".
+
+Hopefully I will be removing them one by one as the analysis will be proceeding.
+
+# 3. The dataset
+
+## reddit
+
+How do we find people's opinion on various subjects? We ask on the Internet. A very popular place to ask is [reddit](https://www.reddit.com/). I assume you have heard about it. Many developers share their thoughts and ask questions about text editors, so I will use this as a source of information on people's attitudes to vim and emacs.
+
+Let's download the data. I use Python for that purpose, becasue of a comfy package called [praw](https://praw.readthedocs.io/en/latest/), which makes downloading reddit posts easy.
+
+```python
+import praw
+import pandas as pd
+import os
+import json
+
+# 1
+home = os.environ['HOME']
+relative_path = 'cookbook/scratchpad/vim_vs_emacs/creds.json'
+reddit_creds_path = os.path.join(home, relative_path)
+with open(reddit_creds_path, 'r') as f:
+    reddit_creds = json.load(f)
+
+# 2
+reddit = praw.Reddit(client_id=reddit_creds['client_id'],
+                     client_secret=reddit_creds['client_secret'],
+                     user_agent='vim_vs_emacs',
+                     username=reddit_creds['username'],
+                     password=reddit_creds['password'])
+
+
+# 3
+def get_data(reddit, subreddit_name, n_posts):
+    subreddit = reddit.subreddit(subreddit_name)
+
+    top_subreddit = subreddit.top(limit=n_posts)
+
+    topics_dict = {"title": [], "score": [], "comms_num": [], "body": []}
+
+    for submission in top_subreddit:
+        topics_dict["title"].append(submission.title)
+        topics_dict["comms_num"].append(submission.num_comments)
+        topics_dict["score"].append(submission.score)
+        topics_dict["body"].append(submission.selftext)
+
+    topics_data = pd.DataFrame(topics_dict)
+
+    return topics_data
+
+
+# 4
+editors = ["Atom", "SublimeText", "vscode", "brackets", "notepadplusplus",
+           "vim", "emacs"]
+
+editors_posts = []
+for editor in editors:
+    editor_posts = get_data(reddit, subreddit_name=editor, n_posts=1000)
+    editor_posts['editor'] = editor
+    editors_posts.append(editor_posts)
+    print("downloading {} finished".format(editor))
+
+
+# 5
+result = pd.concat(editors_posts)
+save_path = os.path.join(home, 'cookbook/scratchpad/vim_vs_emacs')
+result.to_csv(os.path.join(save_path, 'posts_reddit.csv'), index=False)
+```
+
+1. In order to use the reddit's api, you have to sing up to reddit register you application [here](https://ssl.reddit.com/prefs/apps/).
+
+2. Connect to reddit
+
+3. A simple function to download the posts on a specific `subreddit_name`, which is a reddit's topic.
+
+4. I will download info on a few other editors, as it may come up useful in the future
+
+5. and save the downloaded data to a csv file.
+
+
+## stackoverflow
+
+Downloading posts from stackoverflow (this may resemble web-scraping, as the resuts are exactly the same, but using api is *so* much more comfortable) is as easy as from reddit. I used `stakexcahnge` package for python, which let's download posts from all the stack-something forums.
+
+```python
+import stackexchange
+import pandas as pd
+
+
+so = stackexchange.Site(stackexchange.StackOverflow)
+
+def download_posts(tag, n_posts):
+    titles = so.search(tagged=tag, filter="withbody")
+    posts = []
+    i = 0
+    for tit in titles:
+        i += 1
+        post = (tit.title, tit.score, tit.view_count, tit.body, tit.tags)
+        posts.append(post)
+        if i == n_posts:
+            break
+    posts = pd.DataFrame(posts)
+    posts.columns = ['title', 'score', 'view_count', 'body', 'tags']
+    posts['editor'] = tag
+    return posts
+
+
+editors = ['vim', 'emacs', 'atom-editor', 'visual-studio-code', 'sublimetext']
+# ides = ['pycharm', 'rstudio']
+
+posts = []
+
+for tag in editors:
+    posts.append(download_posts(tag=tag, n_posts=1000))
+
+result = pd.concat(posts)
+result.to_csv('posts_stack.csv', index=False)
+```
+
+The code above is really analogical to the code I used for downloading the reddit data, so I will not repeat myself describing it.
+
+# 4. Exploratory analysis
+
+> From now I will use R for the analysis, because I wanted to practice `dplyr` and there is a nice R package for text mining called `tidytext`, and `ggplot2`, and `plotly` ... It seems there are a lot of reasons. Besides, using dplyr, I will be able to easily move the analysis to the Big Data level using [sparklyr](https://tomis10.github.io/spark), which is compatible with [dplyr](http://tomis9.com/tidyverse/#dplyr).
+
+As we have the dataset ready, let's have a closer look at it.
+
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+library(plotly)
+
+posts_reddit <- read_csv("../data_raw/posts_reddit.csv")
+
+# 1
+posts_reddit <- posts_reddit %>%
+  group_by(editor) %>%
+  mutate(n = n()) %>%
+  filter(n > 500) %>%
+  ungroup()
+
+# 2
+gg_reddit <- posts_reddit %>%
+  group_by(editor) %>%
+  filter(!(abs(score - median(score)) > sd(score))) %>%
+  ungroup() %>%
+  ggplot(mapping = aes(x = score, color = editor)) +
+  geom_density() +
+  theme_light()
+
+ggplotly(gg_reddit)
+```
+
+1. First, I filtered out the least popular text editors, i.e. those who had less than 501 posts.
+
+2. Then I created a simple density plot to see, which of the editors posts gain the highest users' scores. It can be learly seen that emacs and vim have higher scores, which mean they are much more popular among reddit users. Or were popular. Reddit was founded in 2005, so a few years before stackoverfow (2008). Vim and emacs already existed and were very popular, but the other editors appeared much later, during the stackoveflow era, so their users may prefer to use stackoveflow than reddit.
+
+At this point I realised that I should be using the data from stackoverflow, not from reddit.
+
+```{r, message = FALSE}
+library(tidyverse)
+library(readr)
+library(ggplot2)
+
+posts_stack <- read_csv("../data_raw/posts_stack.csv")
+
+gg_stack <- posts_stack %>%
+  filter(score < quantile(score, 0.9)) %>%
+  ggplot(mapping = aes(x = score, color = editor)) +
+  geom_density(bw = 0.5) +
+  theme_light()
+
+ggplotly(gg_stack)
+```
+
+The differences between the scores seem to be much less significant, comparing to reddit's posts.
+
+*To be continued...*
+
+[inspiration 1](https://blog.insightdatascience.com/how-to-solve-90-of-nlp-problems-a-step-by-step-guide-fda605278e4e)
+
+[inspiration 2](https://docs.aws.amazon.com/AWSECommerceService/latest/DG/EX_RetrievingCustomerReviews.html)
+
+[inspiration 3](https://nlpforhackers.io/keras-intro/)
+
+[inspiration 4](https://realpython.com/python-keras-text-classification/)

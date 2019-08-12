@@ -1,0 +1,123 @@
+---
+title: "data.table"
+date: 2017-03-02T15:45:27+01:00
+draft: false
+categories: ["R"]
+tags: ["R", "data.table"]
+---
+
+## 1. What is data.table and why would you use it? 
+
+* data.table is an R packge which let's you work on tabular datasets quickly and easily;
+
+* comparing to base R or [dplyr](http://tomis9.com/tidyverse/#/dplyr) it's significantly faster;
+
+* data.table has a concise and SQL-like syntax.
+
+## 2. Basic functionalities 
+
+### Creating a data.table 
+
+```{r, message = FALSE}
+library(data.table)
+
+df <- data.frame(x = c("b","b","b","a","a"),
+                 v = rnorm(5))
+
+dt <- data.table(x = c("b","b","b","a","a"),
+                 v = rnorm(5))
+```
+
+is exactly the same as creating a data.frame. The method `as.data.table()` works exaclty the same as `as.data.frame()`.
+
+### Filtering 
+
+Let's create a sample dataset first, baased on mtcars table: 
+```{r}
+sample_dataset <- as.data.table(datasets::mtcars)
+```
+Yes, you already have *datasets* package installed.
+
+```{r}
+sample_dataset[cyl == 6]
+```
+
+What happened? We chose only those cars, which have 6 cylinders. Data.table already knew that we mean a column named `cyl`, not an object from outside of the square brackets.
+
+### Selecting columns 
+
+```{r}
+sample_dataset[, .(mpg, cyl, disp)][1:5]
+```
+
+What happened here?
+
+* we used a special fucntion from data.table package: `.()`, which works just like vectors, but inside data.tables square brackets it treats columns as separate objects, so to work on column `mpg`, you simply type `mpg` instead of `"mpg"` or `sample_dataset$mpg`
+
+* in square brackets we first provided a comma, as the first argument is always filtering. If we want to skip filtering, we simply write a comma;
+
+* we chose the first five elements from our dataset. We could write even more square brackets after the whole statement and it would work as a pipe, but this would be too dplyr-ish.
+
+### Grouping 
+
+```{r}
+sample_dataset[, .(mean_mpg = mean(mpg), count = .N), cyl]
+```
+* group by is the last statement inside the square brackets. In the example above, we group by column cyl;
+
+* in the select clause we do exactly the same thing as in SQL statements;
+
+* `.N` means *number of* or simply *count*.
+
+### Reading and writing data 
+
+data.table has the fastest reading and writing functions available in R. These are:
+
+```{r}
+fwrite(x = mtcars, file = 'mtcars.csv')
+ds <- fread(file = 'mtcars.csv')
+```
+
+`fread` is pretty clever. It recognises if a file has headers, columns datatypes and separators. What I like the most in these functions is that I literally *never* have to provide any details about the file. Object and file names are always enough for data.table.
+
+### Ordering data 
+
+Very easy.
+
+```{r}
+sample_dataset[order(-gear, cyl)][1:5]
+```
+
+### Updating data 
+
+In order to update our dataset we use the `:=` operator:
+
+```{r}
+sample_dataset[mpg > 30, carb := -1]
+```
+
+### Creating a new column 
+
+In the same way as updating we can create a new column in place:
+
+```{r}
+sample_dataset[, new_column := 0]
+print(sample_dataset[1:5])
+```
+
+But we don't have to do it in place:
+
+```{r}
+sample_dataset[, .(mpg, cyl, new_column2 = 0)][1:5]
+```
+
+
+## 3. Subjects still to cover: 
+
+* `.I`(TODO)
+
+* `.SD` + lapply (TODO)
+
+* `merge()` (TODO)
+
+* `setkey()` (TODO)

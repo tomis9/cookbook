@@ -1,0 +1,508 @@
+---
+title: "basic machine learning algorithms"
+date: 2019-04-22T18:05:21+02:00
+draft: false
+categories: ["Machine learning"]
+tags: []
+---
+
+
+
+<div id="what-is-machine-learning-and-why-would-you-use-it" class="section level2">
+<h2>1. What is machine learning and why would you use it?</h2>
+<ul>
+<li><p>it’s a rather complicated, yet beautiful tool for boldly going where no man has gone before.</p></li>
+<li><p>in other words, it enables you to extract valuable information from data.</p></li>
+</ul>
+</div>
+<div id="examples-of-the-most-popular-machine-learning-algorithms-in-python-and-r" class="section level2">
+<h2>2. Examples of the most popular machine learning algorithms in Python and R</h2>
+<p>We’ll be working on <code>iris</code> dataset, which is easily available in Python (<code>from sklearn import datasets; datasets.load_iris()</code>) and R (<code>data(iris)</code>).</p>
+<p>We will use a few of the most popular machine learning tools:</p>
+<ul>
+<li><p>R base,</p></li>
+<li><p>R caret,</p>
+<ul>
+<li><p><a href="https://cran.r-project.org/web/packages/caret/vignettes/caret.html">a short introduction to caret</a></p></li>
+<li><p><a href="http://topepo.github.io/caret/index.html">The <em>caret</em> package</a></p></li>
+</ul></li>
+<li><p>Python scikit-learn,</p></li>
+<li><p>Python API to <a href="http://tomis9.com/tensorflow">tensorflow</a>. <code>tensorflow</code> was used in very few cases, because it is designed mainly for neural networks, and we would have to implement the algorithms from scratch.</p></li>
+</ul>
+<p>Let’s prepare data for our algorithms. You can read more about data preparation in <a href="http://tomis9.com/useful_processing">this blog post</a>.</p>
+<div id="data-preparation" class="section level3">
+<h3>data preparation</h3>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn import datasets
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+boston = datasets.load_boston()
+# I will divide boston dataset to train and test later on</code></pre>
+<p><em>tensorflow</em></p>
+<p>You can use functions from <a href="https://medium.com/tensorflow/introducing-tensorflow-datasets-c7f01f7e19f3">tensorflow_datasets</a> module, but… does anybody use them?</p>
+<p><em>base R</em></p>
+<pre class="r"><code># unfortunately base R does not provide a function for train/test split
+train_test_split &lt;- function(test_size = 0.33, dataset) {
+    smp_size &lt;- floor(test_size * nrow(dataset))
+    test_ind &lt;- sample(seq_len(nrow(dataset)), size = smp_size)
+
+    test &lt;- dataset[test_ind, ]
+    train &lt;- dataset[-test_ind, ]
+    return(list(train = train, test = test))
+}
+
+library(gsubfn)
+list[train, test] &lt;- train_test_split(0.5, iris)</code></pre>
+<p><em>caret R</em></p>
+<pre class="r"><code># docs: ..., the random sampling is done within the
+# levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
+# distributions within the splits.
+# I provide package&#39;s name before function&#39;s name for clarity</code></pre>
+<pre class="r"><code>trainIndex &lt;- caret::createDataPartition(iris$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train &lt;- iris[trainIndex,]
+test &lt;- iris[-trainIndex,]</code></pre>
+</div>
+<div id="svm" class="section level3">
+<h3>SVM</h3>
+<p>The best description of SVM I found is in <em>Data mining and analysis - Zaki, Meira</em>. In general, I highly recommend this book.</p>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.svm import SVC  # support vector classification
+svc = SVC()
+svc.fit(X_train, y_train)
+print(accuracy_score(svc.predict(X_test), y_test))</code></pre>
+<pre><code>## 1.0</code></pre>
+<p>TODO: <a href="https://scikit-learn.org/0.18/auto_examples/svm/plot_iris.html">plotting svm in scikit</a></p>
+<p><em>“base” R</em></p>
+<pre class="r"><code>svc &lt;- e1071::svm(Species ~ ., train)
+
+pred &lt;- as.character(predict(svc, test[, 1:4]))
+mean(pred == test[&quot;Species&quot;])</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p><em>caret R</em></p>
+<pre class="r"><code>svm_linear &lt;- caret::train(Species ~ ., data = train, method = &quot;svmLinear&quot;)
+mean(predict(svm_linear, test) == test$Species)</code></pre>
+<pre><code>## [1] 0.9778</code></pre>
+</div>
+<div id="decision-trees" class="section level3">
+<h3>decision trees</h3>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.tree import DecisionTreeClassifier
+dtc = DecisionTreeClassifier()
+dtc.fit(X_train, y_train)
+print(accuracy_score(y_test, dtc.predict(X_test)))</code></pre>
+<pre><code>## 0.96</code></pre>
+<p>TODO: <a href="https://medium.com/@rnbrown/creating-and-visualizing-decision-trees-with-python-f8e8fa394176">an article on drawing decision trees in Python</a></p>
+<p><em>“base” R</em></p>
+<pre class="r"><code>dtc &lt;- rpart::rpart(Species ~ ., train)
+print(dtc)</code></pre>
+<pre><code>## n= 105 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+## 1) root 105 70 setosa (0.33333 0.33333 0.33333)  
+##   2) Petal.Length&lt; 2.45 35  0 setosa (1.00000 0.00000 0.00000) *
+##   3) Petal.Length&gt;=2.45 70 35 versicolor (0.00000 0.50000 0.50000)  
+##     6) Petal.Width&lt; 1.75 38  4 versicolor (0.00000 0.89474 0.10526) *
+##     7) Petal.Width&gt;=1.75 32  1 virginica (0.00000 0.03125 0.96875) *</code></pre>
+<pre class="r"><code>rpart.plot::rpart.plot(dtc)</code></pre>
+<p><img src="/ml_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>pred &lt;- predict(dtc, test[,1:4], type = &quot;class&quot;)
+mean(pred == test[[&quot;Species&quot;]])</code></pre>
+<pre><code>## [1] 0.9778</code></pre>
+<p><em>caret R</em></p>
+<pre class="r"><code>c_dtc &lt;- caret::train(Species ~ ., train, method = &quot;rpart&quot;)
+print(c_dtc)</code></pre>
+<pre><code>## CART 
+## 
+## 105 samples
+##   4 predictors
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## No pre-processing
+## Resampling: Bootstrapped (25 reps) 
+## Summary of sample sizes: 105, 105, 105, 105, 105, 105, ... 
+## Resampling results across tuning parameters:
+## 
+##   cp      Accuracy  Kappa 
+##   0.0000  0.9338    0.8988
+##   0.4286  0.7959    0.7003
+##   0.5000  0.4643    0.2303
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was cp = 0.</code></pre>
+<pre class="r"><code>rpart.plot::rpart.plot(c_dtc$finalModel)</code></pre>
+<p><img src="/ml_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>I described working with decision trees in R in more detail in <a href="http://tomis9.com/decision_trees/">another blog post</a>.</p>
+</div>
+<div id="random-forests" class="section level3">
+<h3>random forests</h3>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.ensemble import RandomForestClassifier</code></pre>
+<pre><code>## /usr/local/lib/python3.5/dist-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
+##   from numpy.core.umath_tests import inner1d</code></pre>
+<pre class="python"><code>rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
+print(accuracy_score(rfc.predict(X_test), y_test))</code></pre>
+<pre><code>## 0.98</code></pre>
+<p><em>“base” R</em></p>
+<pre class="r"><code>rf &lt;- randomForest::randomForest(Species ~ ., data = train)
+mean(predict(rf, test[, 1:4]) == test[[&quot;Species&quot;]])</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p><em>caret R</em></p>
+<pre class="r"><code>c_rf &lt;- caret::train(Species ~ ., train, method = &quot;rf&quot;)
+print(c_rf)</code></pre>
+<pre><code>## Random Forest 
+## 
+## 105 samples
+##   4 predictors
+##   3 classes: &#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39; 
+## 
+## No pre-processing
+## Resampling: Bootstrapped (25 reps) 
+## Summary of sample sizes: 105, 105, 105, 105, 105, 105, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  Accuracy  Kappa 
+##   2     0.9491    0.9224
+##   3     0.9501    0.9240
+##   4     0.9440    0.9146
+## 
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 3.</code></pre>
+<pre class="r"><code>print(c_dtc$finalModel)</code></pre>
+<pre><code>## n= 105 
+## 
+## node), split, n, loss, yval, (yprob)
+##       * denotes terminal node
+## 
+## 1) root 105 70 setosa (0.33333 0.33333 0.33333)  
+##   2) Petal.Length&lt; 2.45 35  0 setosa (1.00000 0.00000 0.00000) *
+##   3) Petal.Length&gt;=2.45 70 35 versicolor (0.00000 0.50000 0.50000)  
+##     6) Petal.Width&lt; 1.75 38  4 versicolor (0.00000 0.89474 0.10526) *
+##     7) Petal.Width&gt;=1.75 32  1 virginica (0.00000 0.03125 0.96875) *</code></pre>
+</div>
+<div id="knn" class="section level3">
+<h3>knn</h3>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier()
+knn.fit(X, y)
+print(accuracy_score(y, knn.predict(X)))</code></pre>
+<pre><code>## 0.9666666666666667</code></pre>
+<p><em>R</em></p>
+<pre class="r"><code>kn &lt;- class::knn(train[,1:4], test[,1:4], cl = train[,5], k = 3) 
+mean(kn == test[,5])</code></pre>
+<pre><code>## [1] 0.9778</code></pre>
+<p>TODO: caret r knn</p>
+</div>
+<div id="kmeans" class="section level3">
+<h3>kmeans</h3>
+<p>K-means can be nicely plotted in two dimensions with help of <a href="http://tomis9.com/dimensionality/#pca">PCA</a>.</p>
+<p><em>R</em></p>
+<pre class="r"><code>pca &lt;- prcomp(iris[,1:4], center = TRUE, scale. = TRUE)
+# devtools::install_github(&quot;vqv/ggbiplot&quot;)
+ggbiplot::ggbiplot(pca, obs.scale = 1, var.scale = 1, groups = iris$Species, 
+                   ellipse = TRUE, circle = TRUE)</code></pre>
+<p><img src="/ml_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre class="r"><code>iris_pca &lt;- scale(iris[,1:4]) %*% pca$rotation 
+iris_pca &lt;- as.data.frame(iris_pca)
+iris_pca &lt;- cbind(iris_pca, Species = iris$Species)
+
+ggplot2::ggplot(iris_pca, aes(x = PC1, y = PC2, color = Species)) +
+  geom_point()</code></pre>
+<p><img src="/ml_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+<pre class="r"><code>plot_kmeans &lt;- function(km, iris_pca) {
+  # we choose only first two components, so they could be plotted
+  plot(iris_pca[,1:2], col = km$cluster, pch = as.integer(iris_pca$Species))
+  points(km$centers, col = 1:2, pch = 8, cex = 2)
+}
+par(mfrow=c(1, 3))
+# we use 3 centers, because we already know that there are 3 species
+sapply(list(kmeans(iris_pca[,1], centers = 3),
+            kmeans(iris_pca[,1:2], centers = 3),
+            kmeans(iris_pca[,1:4], centers = 3)),
+       plot_kmeans, iris_pca = iris_pca)</code></pre>
+<p><img src="/ml_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
+<pre><code>## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL</code></pre>
+<p>interesting article - <a href="https://cran.r-project.org/web/packages/broom/vignettes/kmeans.html">kmeans with dplyr and broom</a></p>
+<p>TODO: caret r - kmeans</p>
+<p>TODO: python - kmeans</p>
+</div>
+<div id="linear-regression" class="section level3">
+<h3>linear regression</h3>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.linear_model import LinearRegression
+from sklearn import datasets
+X, y = boston.data, boston.target
+lr = LinearRegression()
+lr.fit(X, y)
+print(lr.intercept_)</code></pre>
+<pre><code>## 36.491103280361614</code></pre>
+<pre class="python"><code>print(lr.coef_)
+# TODO calculate this with iris dataset</code></pre>
+<pre><code>## [-1.07170557e-01  4.63952195e-02  2.08602395e-02  2.68856140e+00
+##  -1.77957587e+01  3.80475246e+00  7.51061703e-04 -1.47575880e+00
+##   3.05655038e-01 -1.23293463e-02 -9.53463555e-01  9.39251272e-03
+##  -5.25466633e-01]</code></pre>
+<p><em>tensorflow</em></p>
+<ul>
+<li>data preparation</li>
+</ul>
+<pre class="python"><code>import tensorflow as tf
+from sklearn.datasets import load_iris
+import numpy as np
+def get_data(tensorflow=True):
+    iris = load_iris()
+    data = iris.data
+    y = data[:, 0].reshape(150, 1)
+    x0 = np.ones(150).reshape(150, 1)
+    X = np.concatenate((x0, data[:, 1:]), axis=1)
+    if tensorflow:
+        y = tf.constant(y, name=&#39;y&#39;)
+        X = tf.constant(X, name=&#39;X&#39;)  # constant is a tensor
+    return X, y</code></pre>
+<ul>
+<li>using normal equations</li>
+</ul>
+<pre class="python"><code>def construct_beta_graph(X, y):
+    cov = tf.matmul(tf.transpose(X), X, name=&#39;cov&#39;)
+    inv_cov = tf.matrix_inverse(cov, name=&#39;inv_cov&#39;)
+    xy = tf.matmul(tf.transpose(X), y, name=&#39;xy&#39;)
+    beta = tf.matmul(inv_cov, xy, name=&#39;beta&#39;)
+    return beta
+X, y = get_data()
+beta = construct_beta_graph(X, y)
+mse = tf.reduce_mean(tf.square(y - tf.matmul(X, beta)))
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    init.run()
+    print(beta.eval())
+    print(mse.eval())</code></pre>
+<pre><code>## [[ 1.8450608 ]
+##  [ 0.65486424]
+##  [ 0.71106291]
+##  [-0.56256786]]
+## 0.09589065804790765</code></pre>
+<ul>
+<li>using gradient descent and mini-batches</li>
+</ul>
+<pre class="python"><code>learning_rate = 0.01
+n_iter = 1000
+X_train, y_train = get_data(tensorflow=False)
+X = tf.placeholder(&quot;float64&quot;, shape=(None, 4))  # placeholder -
+y = tf.placeholder(&quot;float64&quot;, shape=(None, 1))
+start_values = tf.random_uniform([4, 1], -1, 1, dtype=&quot;float64&quot;)
+beta = tf.Variable(start_values, name=&#39;beta&#39;)</code></pre>
+<pre><code>## --- Logging error ---
+## Traceback (most recent call last):
+##   File &quot;/usr/lib/python3.5/logging/__init__.py&quot;, line 982, in emit
+##     stream.write(msg)
+## ValueError: I/O operation on closed file
+## Call stack:
+##   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variables.py&quot;, line 213, in __call__
+##     return cls._variable_v1_call(*args, **kwargs)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variables.py&quot;, line 176, in _variable_v1_call
+##     aggregation=aggregation)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variables.py&quot;, line 155, in &lt;lambda&gt;
+##     previous_getter = lambda **kwargs: default_variable_creator(None, **kwargs)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variable_scope.py&quot;, line 2495, in default_variable_creator
+##     expected_shape=expected_shape, import_scope=import_scope)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variables.py&quot;, line 217, in __call__
+##     return super(VariableMetaclass, cls).__call__(*args, **kwargs)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variables.py&quot;, line 1395, in __init__
+##     constraint=constraint)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/variables.py&quot;, line 1547, in _init_from_args
+##     validate_shape=validate_shape).op
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/state_ops.py&quot;, line 223, in assign
+##     validate_shape=validate_shape)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/gen_state_ops.py&quot;, line 64, in assign
+##     use_locking=use_locking, name=name)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py&quot;, line 784, in _apply_op_helper
+##     with _MaybeColocateWith(must_colocate_inputs):
+##   File &quot;/usr/lib/python3.5/contextlib.py&quot;, line 59, in __enter__
+##     return next(self.gen)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py&quot;, line 263, in _MaybeColocateWith
+##     with ops.colocate_with(inputs[0]), _MaybeColocateWith(inputs[1:]):
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/util/deprecation.py&quot;, line 323, in new_func
+##     instructions)
+##   File &quot;/usr/local/lib/python3.5/dist-packages/tensorflow/python/platform/tf_logging.py&quot;, line 166, in warning
+##     get_logger().warning(msg, *args, **kwargs)
+## Message: &#39;From %s: %s (from %s) is deprecated and will be removed %s.\nInstructions for updating:\n%s&#39;
+## Arguments: (&#39;/usr/local/lib/python3.5/dist-packages/tensorflow/python/framework/op_def_library.py:263&#39;, &#39;colocate_with&#39;, &#39;tensorflow.python.framework.ops&#39;, &#39;in a future version&#39;, &#39;Colocations handled automatically by placer.&#39;)</code></pre>
+<pre class="python"><code>mse = tf.reduce_mean(tf.square(y - tf.matmul(X, beta)))
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+_training = optimizer.minimize(mse)
+batch_indexes = np.arange(150).reshape(5,30)
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    init.run()
+    for i in range(n_iter):
+        for batch_index in batch_indexes:
+            _training.run(feed_dict={X: X_train[batch_index],
+                                     y: y_train[batch_index]})
+        if not i % 100:
+            print(mse.eval(feed_dict={X: X_train, y: y_train}))
+    print(mse.eval(feed_dict={X: X_train, y: y_train}), &quot;- final score&quot;)
+    print(beta.eval())</code></pre>
+<pre><code>## 0.14925524585168892
+## 0.12590498478808837
+## 0.11572978193001619
+## 0.1102015789101948
+## 0.10686159094514819
+## 0.10462957359535513
+## 0.10301410538042623
+## 0.10177916478345073
+## 0.10080233345385256
+## 0.10001378325621904
+## 0.0993753593287536 - final score
+## [[ 1.27047771]
+##  [ 0.80108704]
+##  [ 0.7707112 ]
+##  [-0.64823739]]</code></pre>
+<p><em>base R</em></p>
+<pre class="r"><code>model &lt;- lm(Sepal.Length ~ ., train)
+summary(model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Sepal.Length ~ ., data = train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.8171 -0.2038  0.0081  0.2020  0.7294 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value             Pr(&gt;|t|)
+## (Intercept)         1.8887     0.3871    4.88            0.0000041
+## Sepal.Width         0.5714     0.1159    4.93            0.0000033
+## Petal.Length        0.8678     0.0829   10.47 &lt; 0.0000000000000002
+## Petal.Width        -0.5429     0.1865   -2.91               0.0044
+## Speciesversicolor  -0.4764     0.2971   -1.60               0.1121
+## Speciesvirginica   -0.6664     0.4128   -1.61               0.1096
+## 
+## Residual standard error: 0.312 on 99 degrees of freedom
+## Multiple R-squared:  0.868,  Adjusted R-squared:  0.861 
+## F-statistic:  130 on 5 and 99 DF,  p-value: &lt;0.0000000000000002</code></pre>
+<p><code>lm()</code> function automatically converts factor variables to one-hot encoded features.</p>
+<p><em>R caret</em></p>
+<pre class="r"><code>library(caret)
+
+m &lt;- train(Sepal.Length ~ ., data = train, method = &quot;lm&quot;)
+summary(m)  # exactly the same as lm()</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = .outcome ~ ., data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.8171 -0.2038  0.0081  0.2020  0.7294 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value             Pr(&gt;|t|)
+## (Intercept)         1.8887     0.3871    4.88            0.0000041
+## Sepal.Width         0.5714     0.1159    4.93            0.0000033
+## Petal.Length        0.8678     0.0829   10.47 &lt; 0.0000000000000002
+## Petal.Width        -0.5429     0.1865   -2.91               0.0044
+## Speciesversicolor  -0.4764     0.2971   -1.60               0.1121
+## Speciesvirginica   -0.6664     0.4128   -1.61               0.1096
+## 
+## Residual standard error: 0.312 on 99 degrees of freedom
+## Multiple R-squared:  0.868,  Adjusted R-squared:  0.861 
+## F-statistic:  130 on 5 and 99 DF,  p-value: &lt;0.0000000000000002</code></pre>
+</div>
+<div id="logistic-regression" class="section level3">
+<h3>logistic regression</h3>
+<p>In these examples I will present classification of a dummy variable.</p>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.linear_model import LogisticRegression
+cond = iris.target != 2
+X = iris.data[cond]
+y = iris.target[cond]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+lr = LogisticRegression()
+lr.fit(X_train, y_train)
+accuracy_score(lr.predict(X_test), y_test)</code></pre>
+<p><em>base R</em></p>
+<pre class="r"><code>species &lt;- c(&quot;setosa&quot;, &quot;versicolor&quot;)
+d &lt;- iris[iris$Species %in% species,]
+d$Species &lt;- factor(d$Species, levels = species)
+library(gsubfn)
+list[train, test] &lt;- train_test_split(0.5, d)
+
+m &lt;- glm(Species ~ Sepal.Length, train, family = binomial)
+# predictions - if prediction is bigger than 0.5, we assume it&#39;s a one, 
+# or success
+y_hat_test &lt;- predict(m, test[,1:4], type = &quot;response&quot;) &gt; 0.5
+
+# glm&#39;s doc:
+# For ‘binomial’ and ‘quasibinomial’ families the response can also
+# be specified as a ‘factor’ (when the first level denotes failure
+# and all others success) or as a two-column matrix with the columns
+# giving the numbers of successes and failures.
+# in our case - species[1] (&quot;setosa&quot;) is a failure (0) and species[2] 
+# (&quot;versicolor&quot;) is 1 (success)
+# successes:
+y_test &lt;- test$Species == species[2]
+
+mean(y_test == y_hat_test)</code></pre>
+<pre><code>## [1] 0.88</code></pre>
+<p><em>R caret</em></p>
+<pre class="r"><code>library(caret)
+m2 &lt;- train(Species ~ Sepal.Length, data = train, method = &quot;glm&quot;, family = binomial)
+mean(predict(m2, test) == test$Species)</code></pre>
+<pre><code>## [1] 0.88</code></pre>
+</div>
+<div id="xgboost" class="section level3">
+<h3>xgboost</h3>
+<p><em>Python</em></p>
+<pre class="python"><code>from xgboost import XGBClassifier
+cond = iris.target != 2
+X = iris.data[cond]
+y = iris.target[cond]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+xgb = XGBClassifier()
+xgb.fit(X_train, y_train)
+accuracy_score(xgb.predict(X_test), y_test)</code></pre>
+<pre><code>## /usr/local/lib/python3.5/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size &gt; 0` to check that an array is not empty.
+##   if diff:</code></pre>
+<p><em>“base” R</em></p>
+<pre class="r"><code>species &lt;- c(&quot;setosa&quot;, &quot;versicolor&quot;)
+d &lt;- iris[iris$Species %in% species,]
+d$Species &lt;- factor(d$Species, levels = species)
+library(gsubfn)
+list[train, test] &lt;- train_test_split(0.5, d)
+
+library(xgboost)
+m &lt;- xgboost(
+  data = as.matrix(train[,1:4]), 
+  label = as.integer(train$Species) - 1,
+  objective = &quot;binary:logistic&quot;,
+  nrounds = 2)</code></pre>
+<pre><code>## [1]  train-error:0.000000 
+## [2]  train-error:0.000000</code></pre>
+<pre class="r"><code>mean(predict(m, as.matrix(test[,1:4])) &gt; 0.5) == (as.integer(test$Species) - 1)</code></pre>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [45] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>TODO: R: xgb.save(), xgb.importance()</p>
+<p><em>caret R</em></p>
+<p>TODO: <a href="https://www.kaggle.com/pelkoja/visual-xgboost-tuning-with-caret">tuning xgboost with caret</a></p>
+</div>
+</div>

@@ -1,28 +1,29 @@
 # extensions
-*.pdf
-*.aux
-*.bbl
-*.blg
-*.docx
-*.fdb_latexmk
-*.fls
-*.log
-*.gz
-*.tex
-*.sty
-*.pyc
+hugo/*.pdf
+hugo/*.aux
+hugo/*.bbl
+hugo/*.blg
+hugo/*.docx
+hugo/*.fdb_latexmk
+hugo/*.fls
+hugo/*.log
+hugo/*.gz
+hugo/*.tex
+hugo/*.sty
+hugo/*.pyc
 
 # folders
-public
-static/*/*
+hugo/public
+hugo/static/*/*
+hugo/static/*/*/*
 venv
 __pycache__
 files_from_vagrant1
 datasets
-content/*.html
-content/*.csv
-scratchpad/*.csv
-scratchpad/*/*.csv
+hugo/content/*.html
+hugo/content/*.csv
+hugo/scratchpad/*.csv
+hugo/scratchpad/*/*.csv
 
 # other
 creds.json
