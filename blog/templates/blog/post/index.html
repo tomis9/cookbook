@@ -64,14 +64,19 @@
 
               <td id="all-posts-titles">
                  <a href="{{ post.get_absolute_url }}">
+                 <!-- TODO this is super inefficient -->
                      {% for category_post in category_posts %}
                          {% if category_post.post_slug == post %}
-                             {% if "scratchpad" in category_post.category_slug.category_slug %}
-                                 <span style="color: gray">
-                                    {{ post.title }}
+                             {% if category_post.category_slug.category_slug == "scratchpad" %}
+                                <span style="color: gray";>
+                             {% endif %}
+                         {% endif %}
+                     {% endfor %}
+                     {{ post.title }}
+                     {% for category_post in category_posts %}
+                         {% if category_post.post_slug == post %}
+                             {% if category_post.category_slug.category_slug == "scratchpad" %}
                                  </span>
-                             {% else %}
-                                 {{ post.title }}
                              {% endif %}
                          {% endif %}
                      {% endfor %}

@@ -80,11 +80,11 @@ print(data_t)
 ## # A tibble: 5 x 2
 ##   col_a col_b
 ##   <chr> <dbl>
-## 1 a        71
-## 2 b        90
-## 3 c        20
-## 4 d        88
-## 5 e        47
+## 1 a        44
+## 2 b        64
+## 3 c         9
+## 4 d         5
+## 5 e        24
 ```
 Tibbles do not differ much from data.frames, except (according to the documentation, i.e. `?tibble::tibble`):
 

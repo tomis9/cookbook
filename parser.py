@@ -164,8 +164,8 @@ if __name__ == '__main__':
         category_instance.save()
 
     HOME = os.environ['HOME']
-    path_from = os.path.join(HOME, 'cookbook/content')
-    path_to = os.path.join(HOME, 'cookbook/django/articles')
+    path_from = os.path.join(HOME, 'cookbook/hugo/content')
+    path_to = os.path.join(HOME, 'cookbook/articles')
 
     all_files = os.listdir(path_from)
     files = [os.path.join(path_from, file) for file in all_files

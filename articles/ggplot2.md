@@ -37,16 +37,16 @@ print(sample_data)
 
 ```
 ##    a  b color
-## 1  a  1 green
-## 2  b  7  blue
-## 3  c  9 green
-## 4  d  5 green
-## 5  e 10   red
-## 6  f  3 green
-## 7  g  2 green
-## 8  h  8 green
-## 9  i  6 green
-## 10 j  4  blue
+## 1  a  7  blue
+## 2  b  2  blue
+## 3  c  1  blue
+## 4  d  6 green
+## 5  e  5 green
+## 6  f  3  blue
+## 7  g  4  blue
+## 8  h  8   red
+## 9  i  9   red
+## 10 j 10 green
 ```
 
 The most basic plot:

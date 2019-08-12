@@ -4,12 +4,13 @@ from django.http import HttpResponse
 from django.db.models import Count
 
 # TODO providing category and category_posts by decorator
+
+
 def view_index(request):
     posts = Post.objects.all()
     categories = Category.objects.all()
     category_posts = CategoryPost.objects.all()
     cat_nums = CategoryPost.objects.values('category_slug').annotate(dcount=Count('category_slug'))
-    print(cat_nums)
     context = {'posts': posts, 'categories': categories,
                'category_posts': category_posts, 'cat_nums': cat_nums}
     return render(request, 'blog/post/index.html', context)
