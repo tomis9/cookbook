@@ -8,7 +8,7 @@ branches:
     - master
 
 before_install:
-  - docker pull tomis9/cookbook:0.2
+  - docker pull tomis9/cookbook:0.3
   - docker run -v /home/travis/build/tomis9/cookbook/hugo:/cookbook/hugo tomis9/cookbook:0.2
 
 deploy:
