@@ -40,3 +40,7 @@ r_tests.R
 env.sh
 .idea
 __pycache__
+deploy_db.sh
+
+articles
+media
