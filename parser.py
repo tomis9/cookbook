@@ -9,6 +9,9 @@ import shutil
 import textwrap
 import readtime
 
+import django
+django.setup()
+
 from blog.models import Post, Category, CategoryPost
 
 
@@ -155,6 +158,12 @@ class Article:
         print("category_post instance saved")
 
 
+def clear_db():
+    Post.objects.all().delete()
+    Category.objects.all().delete()
+    CategoryPost.objects.all().delete()
+
+
 if __name__ == '__main__':
     with open('categories.json', 'r') as f:
         categories = json.load(f)
@@ -178,7 +187,3 @@ if __name__ == '__main__':
         article.save_post_instance()
         article.save_category_post_instance()
 
-    def clear_db():
-        Post.objects.all().delete()
-        Category.objects.all().delete()
-        CategoryPost.objects.all().delete()
