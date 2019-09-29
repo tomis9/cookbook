@@ -6,11 +6,11 @@ categories: ["scratchpad"]
 tags: []
 ---
 
-So, after almost 3 years of using vim I've finally decided to switch to vim for the following reasons:
+So, after almost 3 years of using vim I've finally decided to switch to noevim for the following reasons:
 
 - I am a really *dark* vim user, i.e. I use a lot of plugins
 
-- many plugins were written in the era when vim could not run threads asynchronously (vim versions up to vim 8) and even though they are usually adapted to vim 8, they sometimes don't work properly
+- many plugins were written in the era when vim could not run tasks asynchronously (vim versions up to vim 8) and even though they are usually adapted to vim 8, they sometimes don't work properly
 
 - in my opinion vim works better for non-developers, like sysadmins or devops engineers. As I usually write code only on my laptop, I don't take advantage of the fact that vim is avalable on every linux machine, so I use it only locally, so I install many plugins (why not?), so eventually vim's brother (nvim) will be just like another vim;s plugin.
 
@@ -20,4 +20,4 @@ So, after almost 3 years of using vim I've finally decided to switch to vim for 
 
 Why am I explaining myself in so many words, as if I was guilty? I really wanted to stay with pure vim, but I just can't. I'm sorry, vim. It's not *you*, it's *me*.
 
-
+https://blog.hostonnet.com/neovim
