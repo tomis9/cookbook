@@ -20,4 +20,7 @@ So, after almost 3 years of using vim I've finally decided to switch to vim for 
 
 Why am I explaining myself in so many words, as if I was guilty? I really wanted to stay with pure vim, but I just can't. I'm sorry, vim. It's not *you*, it's *me*.
 
-
+```{bash}
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
