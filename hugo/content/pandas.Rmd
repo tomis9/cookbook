@@ -131,3 +131,19 @@ You may have noticed that pandas uses indexes extensively, which may be not very
 ```{python, engine.path = '/usr/bin/python3'}
 plt.scatter(iris.sepal_length, iris.sepal_width)
 ```
+
+# TODO
+
+```{python, engine.path = '/usr/bin/python3'}
+import numpy as np
+col1 = list('abcdefghij')
+start_date = pd.date_range(pd.datetime.today(), periods=10).tolist()
+end_date = pd.date_range(pd.datetime.today(), periods=10).tolist()
+
+df = pd.DataFrame(dict(col1=col1, start_date=start_date, end_date=end_date))
+
+df.melt(id_vars='col1', 
+        value_vars=['start_date', 'end_date'],
+        var_name='is_start_end',
+        value_name='date')
+```
