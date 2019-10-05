@@ -14,6 +14,7 @@ django.setup()
 
 from blog.models import Post, Category, CategoryPost
 
+# TODO md5 sums check
 
 class Article:
 
@@ -27,7 +28,7 @@ class Article:
     rmd_meta = textwrap.dedent('''
         ```{r setup, include = FALSE}
         knitr::opts_chunk$set(
-        fig.path = "./media/%s/"
+        fig.path = "./static/%s/"
         )
         ```
         ''')
@@ -134,6 +135,7 @@ class Article:
             if "</code>" in line:
                 line_end = ""
             body += line_end
+        body = re.sub('<img src="./', '<img src="/', body)
         return body
 
     def save_post_instance(self):
@@ -165,6 +167,9 @@ def clear_db():
 
 
 if __name__ == '__main__':
+
+    clear_db()
+
     with open('categories.json', 'r') as f:
         categories = json.load(f)
 
@@ -184,6 +189,6 @@ if __name__ == '__main__':
         article = Article(file)
         article.copy_file(path_to)
         article.parse_article()
-        article.save_post_instance()
-        article.save_category_post_instance()
-
+        if not article.article.get('draft'):
+            article.save_post_instance()
+            article.save_category_post_instance()

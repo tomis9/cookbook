@@ -30,6 +30,7 @@ creds.json
 tags
 .vagrant
 .idea
+.idea_old
 .Rhistory
 .RData
 tf_logs
@@ -44,3 +45,4 @@ deploy_db.sh
 
 articles
 media
+static
