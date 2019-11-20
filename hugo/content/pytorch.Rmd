@@ -1,8 +1,8 @@
 ---
 title: "pytorch"
 date: 2019-01-06T17:44:32+01:00
-draft: true
-categories: ["python", "Machine learning"]
+draft: false
+categories: ["Python", "Machine learning"]
 ---
 
 ## 1. What is `pytorch` and why would you use it?
@@ -27,9 +27,12 @@ x = np.random.rand(10) * 10
 y = x ** theta
 data = pd.DataFrame(dict(x=x, y=y))
 print(data)
+plt.figure(1)
 plt.scatter(x, y)
+plt.show()
 ```
-Theta () is a parameter we'll be estimating. We will see how close to 2 our optimization algorithm gets us.
+
+`theta` is a parameter we'll be estimating. We will see how close to 2 our optimization algorithm gets us.
 
 Estimating the value of theta:
 ```{python, engine.path = '/usr/bin/python3'}
@@ -76,14 +79,16 @@ print(theta_hat.data)
 Not bad! Let's see how the process of learning looked:
 
 ```{python, engine.path = '/usr/bin/python3'}
+plt.figure(2)
 plt.scatter(x=range(len(loss_history)), y=loss_history)
 plt.title("Loss history")
 plt.show()
 ```
 ```{python, engine.path = '/usr/bin/python3'}
+plt.figure(3)
 plt.scatter(x=range(len(theta_history)), y=theta_history)
 plt.title("Theta history")
 plt.show()
 ```
 
-
+Pytorch reached the correct estimation in about 200 iterations.
