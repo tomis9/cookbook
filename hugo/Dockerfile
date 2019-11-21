@@ -37,7 +37,7 @@ RUN apt-get install pandoc -y
 RUN Rscript -e "blogdown::install_hugo(version = '0.52')"
 
 RUN pip3 install matplotlib
-RUN pip3 install torch
+RUN pip3 install torch==1.0.0
 
 RUN mkdir -p /cookbook/hugo
 WORKDIR /cookbook/hugo
