@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>tomis9&#39;s cookbook</title>
+  <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  
+  <link rel="stylesheet" href="/css/bootstrap-toc.css">
+
+  
+  <link rel="stylesheet" href="/css/darcula.css">
+
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">        
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+</head>
+
+
+<body data-spy="scroll" data-target="#toc">
+
+
+
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Python</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/beautiful_soup/">beautiful soup</a>
+          
+            <a class="dropdown-item" href="/decorators/">decorators</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqlalchemy/">sqlAlchemy</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">R</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/cinr/">C in R</a>
+          
+            <a class="dropdown-item" href="/rmariadb/">RMariaDB (former RMySQL)</a>
+          
+            <a class="dropdown-item" href="/rcpp/">Rcpp</a>
+          
+            <a class="dropdown-item" href="/classess4/">classes - S4</a>
+          
+            <a class="dropdown-item" href="/data.table/">data.table</a>
+          
+            <a class="dropdown-item" href="/debugging/">debugging</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/lubridate/">lubridate</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/packages/">packages</a>
+          
+            <a class="dropdown-item" href="/rtags/">rTags</a>
+          
+            <a class="dropdown-item" href="/reshape2/">reshape2</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/rstanarm/">rstanarm</a>
+          
+            <a class="dropdown-item" href="/shiny/">shiny</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqldf/">sqldf</a>
+          
+            <a class="dropdown-item" href="/stringr/">stringr and regex</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/tidyverse/">tidyverse</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Data engineering</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/hadoop/">hadoop</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Machine learning</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/ml/">basic machine learning algorithms</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/validation/">model validation</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/docker/">docker</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/git/">git</a>
+          
+            <a class="dropdown-item" href="/heroku/">heroku</a>
+          
+            <a class="dropdown-item" href="/mesos/">mesos</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/vagrant/">vagrant</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/vim_vs_emacs/">vim vs emacs - text mining to settle the editor war</a>
+          
+            <a class="dropdown-item" href="/cookbook/">writing a cookbook</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">scratchpad</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/aws/">Aws</a>
+          
+            <a class="dropdown-item" href="/hugo/">Hugo</a>
+          
+            <a class="dropdown-item" href="/file/">Rmarkdown total basics</a>
+          
+            <a class="dropdown-item" href="/caffee/">caffee</a>
+          
+            <a class="dropdown-item" href="/cassandra/">cassandra</a>
+          
+            <a class="dropdown-item" href="/dimensionality/">dimensionality</a>
+          
+            <a class="dropdown-item" href="/django/">django</a>
+          
+            <a class="dropdown-item" href="/featuretools/">featuretools</a>
+          
+            <a class="dropdown-item" href="/gitlab_ci/">gitlab-ci</a>
+          
+            <a class="dropdown-item" href="/javascript/">javascript</a>
+          
+            <a class="dropdown-item" href="/kafka/">kafka</a>
+          
+            <a class="dropdown-item" href="/keras/">keras</a>
+          
+            <a class="dropdown-item" href="/machine_learning_problems/">machine learning problems</a>
+          
+            <a class="dropdown-item" href="/marathon/">marathon</a>
+          
+            <a class="dropdown-item" href="/nlp/">nlp</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/passing_arguments/">passing arguments to scripts</a>
+          
+            <a class="dropdown-item" href="/redis/">redis</a>
+          
+            <a class="dropdown-item" href="/regex/">regex</a>
+          
+            <a class="dropdown-item" href="/tensorflow_serving/">tensorflow_serving</a>
+          
+            <a class="dropdown-item" href="/theano/">theano</a>
+          
+            <a class="dropdown-item" href="/vim_as_ide/">vim as IDE</a>
+          
+        </div>
+      </li>
+    
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="/">tomis9&#39;s cookbook</a>
+  </div>
+
+  <p style="color: white;">data science tutorials and snippets prepared by tomis9</p> 
+
+</div>
+
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/r" role="button">R </a>
+    &emsp;
+  </br>
+</div>
+<div class="article-title">
+  
+  shiny
+
+</div>
+<div class="article-info">
+    Mar 24, 2017 &emsp;  &emsp; 2 minutes read
+</div>
+
+
+
+<h2 id="1-what-is-shiny-and-why-would-you-use-it">1. What is <code>shiny</code> and why would you use it?</h2>
+
+<ul>
+<li>shiny is an R package that let&rsquo;s you create dynamic web applications without any knowledge of html, css and javascript, php etc. Pure R.</li>
+</ul>
+
+<p>Sounds like a dream?</p>
+
+<ul>
+<li><p>Advantages:</p>
+
+<ul>
+<li><p>easy to learn the basics;</p></li>
+
+<li><p>easy to set up.</p></li>
+</ul></li>
+
+<li><p>Disadvantages:</p>
+
+<ul>
+<li><p>scalability;</p></li>
+
+<li><p>performance;</p></li>
+
+<li><p>in order to make the application work the way you want to, you have to involve javascript, html and css. This may be cumbersome, as the documentation is not very helpful;</p></li>
+
+<li><p>shiny is a nieche framework, so it&rsquo;s community is little. Stackoverflow disappoints annoyingly often;</p></li>
+
+<li><p>lack of a good book/tutorial. RStudio articles are not structured and I&rsquo;ve spent hard time finding a learning path.</p></li>
+</ul></li>
+</ul>
+
+<p>Concluding, I&rsquo;ve got mixed feelings about <code>shiny</code>. As a data scientist, maybe you should concentrate on fitting models and wrangling data instead of preparing a bright and shiny front-end.</p>
+
+<h2 id="2-a-hello-world-example">2. A &ldquo;Hello World&rdquo; example:</h2>
+
+<p>You can store your application in one file (e.g. &ldquo;app.R&rdquo;), like this:</p>
+
+<pre><code class="language-r">library(shiny)
+
+inputBins &lt;- 10
+
+ui &lt;- shinyUI(fluidPage(
+
+  titlePanel(&quot;Hello Shiny!&quot;),
+
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(&quot;bins&quot;,
+        &quot;Choose your favourite number:&quot;,
+        min = 1,
+        max = 50,
+        value = 30)
+    ),
+
+    mainPanel(
+      plotOutput(&quot;distPlot&quot;)
+    )
+  )
+))
+
+server &lt;- shinyServer(function(input, output) {
+
+    r &lt;- reactiveValues()
+
+    observeEvent(input$bins, {
+        r$bins &lt;- input$bins
+        output$distPlot &lt;- renderPlot(f())
+    })
+
+    f &lt;- function() {
+        x &lt;- faithful[, 2]
+        inputBins &lt;- r$bins
+        bins &lt;- seq(min(x), max(x), length.out = inputBins  + 1)
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    }
+
+})
+
+shinyApp(ui, server)
+</code></pre>
+
+<p>and run it with</p>
+
+<pre><code class="language-r">Rscript app.R
+</code></pre>
+
+<p>or divide it into two separate files:</p>
+
+<p>ui.R</p>
+
+<pre><code class="language-r">library(shiny)
+
+ui &lt;- shinyUI(fluidPage(
+
+  titlePanel(&quot;Hello Shiny!&quot;),
+
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(&quot;bins&quot;,
+        &quot;Choose your favourite number:&quot;,
+        min = 1,
+        max = 50,
+        value = 30)
+    ),
+
+    mainPanel(
+      plotOutput(&quot;distPlot&quot;)
+    )
+  )
+))
+</code></pre>
+
+<p>server.R</p>
+
+<pre><code class="language-r">library(shiny)
+
+inputBins &lt;- 10
+
+server &lt;- shinyServer(function(input, output) {
+
+    r &lt;- reactiveValues()
+
+    observeEvent(input$bins, {
+        r$bins &lt;- input$bins
+        output$distPlot &lt;- renderPlot(f())
+    })
+
+    f &lt;- function() {
+        x &lt;- faithful[, 2]
+        inputBins &lt;- r$bins
+        bins &lt;- seq(min(x), max(x), length.out = inputBins  + 1)
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    }
+
+})
+</code></pre>
+
+<p>and run it with</p>
+
+<pre><code class="language-r">Rscript -e &quot;shiny::runApp()&quot;
+</code></pre>
+
+<p>or from within the R console</p>
+
+<pre><code class="language-r">shiny::runApp()
+</code></pre>
+
+<h2 id="3-useful-links">3. Useful links</h2>
+
+<ul>
+<li><p><a href="https://shiny.rstudio.com/gallery/single-file-shiny-app.html">a one-file app</a></p></li>
+
+<li><p><a href="https://shiny.rstudio.com/articles/basics.html">a two-files app</a></p></li>
+
+<li><p><a href="https://shiny.rstudio.com/gallery/widget-gallery.html">various shiny widgets</a></p></li>
+
+<li><p><a href="https://stackoverflow.com/questions/36338779/unit-testing-shiny-apps">shinytest</a></p></li>
+</ul>
+
+</div>
+
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="/js/bootstrap-toc.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+$(window).scroll(function() {
+  
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>
+

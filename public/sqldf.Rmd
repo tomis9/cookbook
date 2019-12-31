@@ -1,0 +1,66 @@
+---
+title: "sqldf"
+date: 2017-03-01T13:07:39+01:00
+draft: false
+image: "sqldf.jpg"
+categories: ["R"]
+tags: ["R", "SQL"]
+---
+
+## 1. What is sqldf and why would you use it?
+
+`sqldf` package lets you treat any data.frame object as an sql table. You can write queries as if you were in a database. Pretty useless, comparing to, say, data.table or dplyr + tidyverse.
+
+Despite it's uselessness, it works like a charm.
+
+
+## 2. A few basic examples:
+
+Load the package:
+```{r, eval = FALSE}
+library(sqldf)
+```
+```{r, echo = FALSE}
+suppressPackageStartupMessages(library(sqldf))
+```
+
+Selecting specific columns:
+```{r}
+sqldf('select mpg, cyl, disp from mtcars where cyl = 6')
+```
+
+A simple where clause:
+```{r}
+sqldf('select * from mtcars where mpg > 21')
+```
+
+Group by and order by:
+```{r}
+sqldf('select cyl, count(*) number from mtcars group by cyl order by cyl')
+```
+
+Joins:
+```{r}
+customers <- data.frame(
+  id_customers = c(1, 2, 3),
+  name = c("Zidane", "Figo", "Beckham")
+)
+orders <- data.frame(
+  id_orders = c(1, 2, 3, 4, 5),
+  id_customers = c(1, 1, 2, 3, 1),
+  products = c("fotball", "shoes", "t-shirt", "shoes", "energy drink")
+)
+
+sqldf("select * from customers c join orders o on c.id_customers = o.id_customers")
+```
+
+Subqueries:
+```{r}
+sqldf('select a.mpg from (select mpg, cyl, disp from mtcars where cyl = 6) as a')
+```
+
+As you can see, all the sql operations are available in `sqldf`.
+
+## 3. Links
+
+A longer `sqldf` tutorial is available [here](http://jasdumas.com/tech-short-papers/sqldf_tutorial.html#).

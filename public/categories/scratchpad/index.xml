@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scratchpad on tomis9&#39;s cookbook</title>
+    <link>https://tomis9.github.io/categories/scratchpad/</link>
+    <description>Recent content in scratchpad on tomis9&#39;s cookbook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 May 2019 15:29:17 +0200</lastBuildDate>
+    
+	<atom:link href="https://tomis9.github.io/categories/scratchpad/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tensorflow_serving</title>
+      <link>https://tomis9.github.io/tensorflow_serving/</link>
+      <pubDate>Fri, 31 May 2019 15:29:17 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/tensorflow_serving/</guid>
+      <description>#!/usr/bin/python3 import tensorflow as tf from tensorflow.python.saved_model import builder as saved_model_builder from tensorflow.python.saved_model import signature_constants from tensorflow.python.saved_model import signature_def_utils from tensorflow.python.saved_model import tag_constants from tensorflow.python.saved_model.utils import build_tensor_info placeholder_name = &#39;a&#39; operation_name = &#39;add&#39; a = tf.placeholder(tf.int32, name=placeholder_name) b = tf.constant(10) # This is our model add = tf.add(a, b, name=operation_name) with tf.Session() as sess: # super complicated model ten_plus_two = sess.run(add, feed_dict={a: 2}) print(&#39;10 + 2 = {}&#39;.format(ten_plus_two)) # od tego momentu robimy wszystko, zeby zapisac model # inputy i outputy chcemy przetworzyc do zapisywalnego formatu # najpierw robimy z nich tensory a_tensor = sess.</description>
+    </item>
+    
+    <item>
+      <title>featuretools</title>
+      <link>https://tomis9.github.io/featuretools/</link>
+      <pubDate>Thu, 07 Feb 2019 11:27:29 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/featuretools/</guid>
+      <description>This is not a proper blog post yet, just my notes. featuretools (TODO) 
+https://blog.featurelabs.com/deep-feature-synthesis/
+https://towardsdatascience.com/why-automated-feature-engineering-will-change-the-way-you-do-machine-learning-5c15bf188b96
+https://docs.featuretools.com/#minute-quick-start
+https://blog.featurelabs.com/featuretools-on-spark-2/</description>
+    </item>
+    
+    <item>
+      <title>cassandra</title>
+      <link>https://tomis9.github.io/cassandra/</link>
+      <pubDate>Tue, 05 Feb 2019 17:33:24 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/cassandra/</guid>
+      <description>This is not a proper blog post yet, just my notes. cassandra (TODO) 
+Installation is described on the cassandra webpage, but it didn&amp;rsquo;t work for me, so I&amp;rsquo;ve decided to use cassandra&amp;rsquo;s docker image.
+This is a very nice tutorial of setting up a 3-node cluster of cassandra od docker, creating a simple table, populating it with data and retrieving results.
+Looks like a decent example of using cassandra on (docker with python)[https://mannekentech.</description>
+    </item>
+    
+    <item>
+      <title>passing arguments to scripts</title>
+      <link>https://tomis9.github.io/passing_arguments/</link>
+      <pubDate>Tue, 05 Feb 2019 09:34:23 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/passing_arguments/</guid>
+      <description>This is not a proper blog post yet, just my notes. passing arguments (TODO) 
+caffee
+R A good article on passing arguments to R scripts
+You can read the docs of commandArgs for more info, but the general use is very simple:
+args &amp;lt;- commandArgs(trailingOnly = TRUE) print(args) # args is a vector of values  Rscript file.R one two 3  If trailingOnly is set to FALSE, args will contain some other argument values, e.</description>
+    </item>
+    
+    <item>
+      <title>pandas</title>
+      <link>https://tomis9.github.io/pandas/</link>
+      <pubDate>Fri, 25 Jan 2019 13:46:12 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/pandas/</guid>
+      <description>This is not a proper blog post yet, just my notes. pandas (TODO)   1. What is pandas and why would you use it?  pandas is a Python package created for working with tables known as DataFrames;
+ it is the only reasonable Python package for this purpose, which makes Python a little modest comparing to R (base, data.table, dplyr - every one of them has a better interface than pandas) when we process tables;</description>
+    </item>
+    
+    <item>
+      <title>caffee</title>
+      <link>https://tomis9.github.io/caffee/</link>
+      <pubDate>Sun, 06 Jan 2019 19:44:53 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/caffee/</guid>
+      <description>This is not a proper blog post yet, just my notes. caffee (TODO) 
+caffee</description>
+    </item>
+    
+    <item>
+      <title>theano</title>
+      <link>https://tomis9.github.io/theano/</link>
+      <pubDate>Sun, 06 Jan 2019 19:36:46 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/theano/</guid>
+      <description>This is not a proper blog post yet, just my notes. theano (TODO) 
+theano vs tensorflow</description>
+    </item>
+    
+    <item>
+      <title>nlp</title>
+      <link>https://tomis9.github.io/nlp/</link>
+      <pubDate>Sun, 23 Dec 2018 15:44:02 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/nlp/</guid>
+      <description>This is not a proper blog post yet. nlp (TODO) 
+NLP (natural language processing) Tutorials: Tutorial describing basic tools and techniques used in NLP:  interpreting text as a group of characters/words/sentences and so on;
+ tokenisation;
+ token normalisation (stemming, lemmatisation).
+  Or this is actually beginnig of a playlist.
+ Example NLP usage in Python link to the article
+Text Mining Text mining in R - basic concepts in text mining, introduction to tidytext package and LDA</description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://tomis9.github.io/hugo/</link>
+      <pubDate>Fri, 09 Nov 2018 23:01:35 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/hugo/</guid>
+      <description>This is not a proper blog post yet, just my notes. hugo (TODO) 
+A short tutorial
+A really good introductory film:
+ And a &amp;hellip;
+Clone your favourite theme do /themes
+Update config.toml based on the themes&amp;rsquo; website
+moving your site to Amazon S3
+Why would you do this?
+ you want to have your own domain, like tomis9.com, not tomis9.github.io
+ you want to find out what Amazon offers for cloud computing - this is a good training project</description>
+    </item>
+    
+    <item>
+      <title>Rmarkdown total basics</title>
+      <link>https://tomis9.github.io/file/</link>
+      <pubDate>Fri, 09 Nov 2018 23:01:35 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/file/</guid>
+      <description>This is not a proper blog post yet, just my notes. Rmarkdown (TODO)  Before you begin, check out a very nice cheatsheet available at https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf
+Vim key mappings are rather intuitive, pretty similar to basic r filetype mappings:  open up a console window,  rmarkdown::render()s this file and shows the result in your favourite browser.
+In general, Rmarkdown is just markdown with a possibility to add R chunks of code and execute them.</description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://tomis9.github.io/redis/</link>
+      <pubDate>Sun, 21 Oct 2018 20:49:20 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/redis/</guid>
+      <description>This is not a proper blog post yet, just my notes. redis (TODO) 
+docker pull redis  import redis import pandas as pd # https://www.youtube.com/watch?v=Hbt56gFj998 # https://redis-py.readthedocs.io/en/latest/ # open up a redis-server session in redis/src/redis-server redis_host = &amp;quot;localhost&amp;quot; redis_port = 6379 redis_password = &amp;quot;&amp;quot; r = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_password, decode_responses=True) r.flushall() # save data to redis d = {key: str(value) for key, value in zip(list(&#39;abcdefghij&#39;), range(10))} for key, value in d.</description>
+    </item>
+    
+    <item>
+      <title>gitlab-ci</title>
+      <link>https://tomis9.github.io/gitlab_ci/</link>
+      <pubDate>Tue, 21 Aug 2018 17:56:38 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/gitlab_ci/</guid>
+      <description>This is not a proper blog post yet, just my notes. gitlab-ci (TODO) 
+or gitlab Continuous Integration &amp;amp; Deployment/Continuous Delivery
+link to documentation
+example of use in python and flask
+how aboout installing gitlab locally?
+https://medium.com/90seconds/continuous-integration-and-deployment-for-data-pipelines-at-90-seconds-53bf10521ea7</description>
+    </item>
+    
+    <item>
+      <title>kafka</title>
+      <link>https://tomis9.github.io/kafka/</link>
+      <pubDate>Sat, 18 Aug 2018 14:33:57 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/kafka/</guid>
+      <description>This is not a proper blog post yet, just my notes. kafka (TODO) 
+kafka tutorial
+A gentle Introduction to Stream Processing
+Kafka on docker</description>
+    </item>
+    
+    <item>
+      <title>marathon</title>
+      <link>https://tomis9.github.io/marathon/</link>
+      <pubDate>Sat, 18 Aug 2018 14:24:14 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/marathon/</guid>
+      <description>This is not a proper blog post yet, just my notes. marathon (TODO) 
+marathon If you want to have Marathon up and running, follow this tutorial.</description>
+    </item>
+    
+  </channel>
+</rss>

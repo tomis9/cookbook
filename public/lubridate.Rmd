@@ -1,0 +1,78 @@
+---
+title: "lubridate"
+date: 2017-03-03T13:46:45+01:00
+draft: false
+image: "lubridate.jpg"
+categories: ["R"]
+tags: ["lubridate", "R"]
+---
+
+## 1. What is lubridate and why would you use it?
+
+* it's an R package that makes working with dates easy;
+
+* because in basic, no-frills R working with dates may be a little bit daunting
+
+## 2. A few "Hello World" examples
+
+
+Load the package
+```{r, eval = FALSE}
+library(lubridate)
+```
+```{r, echo = FALSE}
+suppressPackageStartupMessages(library(lubridate))
+```
+
+Convert a string to class `Date`:
+```{r}
+# the base way
+d <- as.Date("2017-03-03")
+class(d)
+# the lubridate way
+d <- ymd("2017-03-03")
+class(d)
+```
+
+Extract year, month and day
+```{r}
+year(d)
+month(d)
+day(d)
+```
+
+You can also modify the date on the fly:
+```{r}
+year(d) <- 1410
+month(d) <- 7
+day(d) <- 15
+print(d)
+class(d)
+```
+
+Now, analogical to python's `datetime.now()`:
+```{r}
+# the base way
+n <- Sys.time()
+# the lubridate way
+n <- now()
+```
+
+Extracting hour, minute and second
+```{r}
+hour(n)
+minute(n)
+second(n)
+```
+
+Days of the week
+```{r}
+wday(d)  # numbering starts from Sunday! you can adjust it, read ?wday
+```
+
+Adding / subtracting dates:
+```{r}
+print(d)
+d + years(1)  # yearS - plural form
+d - months(2)
+```

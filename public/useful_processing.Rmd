@@ -1,0 +1,176 @@
+---
+title: "useful processing"
+date: 2019-05-17T15:44:38+02:00
+draft: false
+categories: ["Machine learning", "Data engineering"]
+tags: []
+---
+
+## 1. What is useful processing? 
+
+* many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, theses kinds of processing are useful.
+
+## 2. Examples 
+
+### one-hot encoding 
+
+*R*
+```{r, message = FALSE}
+# data.table
+dt_iris <- data.table::as.data.table(iris)
+mltools::one_hot(dt_iris)
+
+# caret
+library(caret)
+dummy <- caret::dummyVars(" ~ .", data = iris)
+head(predict(dummy, iris))
+
+# dplyr is not that clever
+library(dplyr)
+iris %>%
+  mutate("Species_setosa" = ifelse(Species == "setosa", 1, 0)) %>%
+  mutate("Species_virgninica" = ifelse(Species == "virgninica", 1, 0)) %>%
+  mutate("Species_versicolor" = ifelse(Species == "versicolor", 1, 0)) %>%
+  head()
+```
+
+As you can see, `caret` recognised dummy variables (`Species`) and processed them to binary variables.
+
+TODO: `library(dummies); library(onehot)`
+
+*Python*
+```{python, engine.path = '/usr/bin/python3'}
+# https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+from sklearn import datasets
+
+data = datasets.load_iris()
+y = [data.target_names[i] for i in data.target]
+
+# integer encode
+label_encoder = LabelEncoder()
+integer_encoded = label_encoder.fit_transform(y)
+print(integer_encoded[:5])
+# binary encode
+onehot_encoder = OneHotEncoder(sparse=False)
+integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
+onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
+print(onehot_encoded[:5])
+```
+
+### scaling 
+
+In R it's extremely simple.
+*base R*
+```{r}
+scale(1:5)
+mean(1:5)
+sd(1:5)
+
+sc <- scale(iris[,1:4])
+head(sc)
+attributes(sc)
+```
+
+*Python*
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.preprocessing import scale, StandardScaler
+from sklearn import datasets
+import numpy as np
+
+# simple approach
+sc = scale(np.arange(1, 6))
+print(np.std(sc))
+print(np.mean(sc))
+
+# and a way compatible with pandas
+data = datasets.load_iris()
+X, y = data.data, data.target
+
+scaler = StandardScaler()
+scaled_df = scaler.fit_transform(X)
+
+print(scaled_df.mean(axis=0))
+print(scaled_df.std(axis=0))
+```
+
+### splitting your dataset into train and test subsets 
+
+The idea for the following solution comes from [this post at stackoverflow](https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function).
+
+*base R*
+```{r, message = FALSE}
+train_test_split <- function(test_proportion = 0.75, dataset) {
+    smp_size <- floor(test_proportion * nrow(dataset))
+    train_ind <- sample(seq_len(nrow(dataset)), size = smp_size)
+
+    train <- dataset[train_ind, ]
+    test <- dataset[-train_ind, ]
+    return(list(train = train, test = test))
+}
+library(gsubfn)
+list[train, test] <- train_test_split(0.8, iris)
+```
+
+*caret R*
+```{r}
+library(caret)
+# ..., the random sampling is done within the
+# levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
+# distributions within the splits.
+# I provide package's name before function's name for clarity
+trainIndex <- caret::createDataPartition(iris$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train <- iris[trainIndex,]
+test <- iris[-trainIndex,]
+```
+
+*Python - sklearn*
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+data = datasets.load_iris()
+
+X, y = data.data, data.target
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+```
+
+*Python - pandas*
+```{python, engine.path = '/usr/bin/python3'}
+import pandas as pd
+
+# data = pd.DataFrame(data)
+# train = data.sample(frac=0.8)
+# test = data.drop(train.index)
+```
+
+### sklearn pipeline 
+
+- [a short article about sklearn pipelines](https://towardsdatascience.com/a-simple-example-of-pipeline-in-machine-learning-with-scikit-learn-e726ffbb6976)
+
+```{python, engine.path = '/usr/bin/python3'}
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets
+
+data = datasets.load_iris()
+X, y = data.data, data.target
+
+# one way
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+svc = SVC()
+svc.fit(X_scaled, y)
+
+# or another - with pipeline
+from sklearn.pipeline import Pipeline
+
+svc = Pipeline([('scaler', StandardScaler()), ('SVM', SVC())])
+svc.fit(X, y)
+```
+
+TODO: `pd.get_dummies()`

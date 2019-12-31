@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>tomis9&#39;s cookbook</title>
+  <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  
+  <link rel="stylesheet" href="/css/bootstrap-toc.css">
+
+  
+  <link rel="stylesheet" href="/css/darcula.css">
+
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">        
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+</head>
+
+
+<body data-spy="scroll" data-target="#toc">
+
+
+
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Python</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/beautiful_soup/">beautiful soup</a>
+          
+            <a class="dropdown-item" href="/decorators/">decorators</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqlalchemy/">sqlAlchemy</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">R</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/cinr/">C in R</a>
+          
+            <a class="dropdown-item" href="/rmariadb/">RMariaDB (former RMySQL)</a>
+          
+            <a class="dropdown-item" href="/rcpp/">Rcpp</a>
+          
+            <a class="dropdown-item" href="/classess4/">classes - S4</a>
+          
+            <a class="dropdown-item" href="/data.table/">data.table</a>
+          
+            <a class="dropdown-item" href="/debugging/">debugging</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/lubridate/">lubridate</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/packages/">packages</a>
+          
+            <a class="dropdown-item" href="/rtags/">rTags</a>
+          
+            <a class="dropdown-item" href="/reshape2/">reshape2</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/rstanarm/">rstanarm</a>
+          
+            <a class="dropdown-item" href="/shiny/">shiny</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqldf/">sqldf</a>
+          
+            <a class="dropdown-item" href="/stringr/">stringr and regex</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/tidyverse/">tidyverse</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Data engineering</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/hadoop/">hadoop</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Machine learning</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/ml/">basic machine learning algorithms</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/validation/">model validation</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/docker/">docker</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/git/">git</a>
+          
+            <a class="dropdown-item" href="/heroku/">heroku</a>
+          
+            <a class="dropdown-item" href="/mesos/">mesos</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/vagrant/">vagrant</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/vim_vs_emacs/">vim vs emacs - text mining to settle the editor war</a>
+          
+            <a class="dropdown-item" href="/cookbook/">writing a cookbook</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">scratchpad</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/aws/">Aws</a>
+          
+            <a class="dropdown-item" href="/hugo/">Hugo</a>
+          
+            <a class="dropdown-item" href="/file/">Rmarkdown total basics</a>
+          
+            <a class="dropdown-item" href="/caffee/">caffee</a>
+          
+            <a class="dropdown-item" href="/cassandra/">cassandra</a>
+          
+            <a class="dropdown-item" href="/dimensionality/">dimensionality</a>
+          
+            <a class="dropdown-item" href="/django/">django</a>
+          
+            <a class="dropdown-item" href="/featuretools/">featuretools</a>
+          
+            <a class="dropdown-item" href="/gitlab_ci/">gitlab-ci</a>
+          
+            <a class="dropdown-item" href="/javascript/">javascript</a>
+          
+            <a class="dropdown-item" href="/kafka/">kafka</a>
+          
+            <a class="dropdown-item" href="/keras/">keras</a>
+          
+            <a class="dropdown-item" href="/machine_learning_problems/">machine learning problems</a>
+          
+            <a class="dropdown-item" href="/marathon/">marathon</a>
+          
+            <a class="dropdown-item" href="/nlp/">nlp</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/passing_arguments/">passing arguments to scripts</a>
+          
+            <a class="dropdown-item" href="/redis/">redis</a>
+          
+            <a class="dropdown-item" href="/regex/">regex</a>
+          
+            <a class="dropdown-item" href="/tensorflow_serving/">tensorflow_serving</a>
+          
+            <a class="dropdown-item" href="/theano/">theano</a>
+          
+            <a class="dropdown-item" href="/vim_as_ide/">vim as IDE</a>
+          
+        </div>
+      </li>
+    
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="/">tomis9&#39;s cookbook</a>
+  </div>
+
+  <p style="color: white;">data science tutorials and snippets prepared by tomis9</p> 
+
+</div>
+
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/machine-learning" role="button">Machine learning </a>
+    &emsp;
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/data-engineering" role="button">Data engineering </a>
+    &emsp;
+  </br>
+</div>
+<div class="article-title">
+  
+  useful processing
+
+</div>
+<div class="article-info">
+    May 17, 2019 &emsp;  &emsp; 5 minutes read
+</div>
+
+
+
+
+<div id="what-is-useful-processing" class="section level2">
+<h2>1. What is useful processing?</h2>
+<ul>
+<li>many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, theses kinds of processing are useful.</li>
+</ul>
+</div>
+<div id="examples" class="section level2">
+<h2>2. Examples</h2>
+<div id="one-hot-encoding" class="section level3">
+<h3>one-hot encoding</h3>
+<p><em>R</em></p>
+<pre class="r"><code># data.table
+dt_iris &lt;- data.table::as.data.table(iris)
+mltools::one_hot(dt_iris)</code></pre>
+<pre><code>##      Sepal.Length Sepal.Width Petal.Length Petal.Width Species_setosa
+##   1:          5.1         3.5          1.4         0.2              1
+##   2:          4.9         3.0          1.4         0.2              1
+##   3:          4.7         3.2          1.3         0.2              1
+##   4:          4.6         3.1          1.5         0.2              1
+##   5:          5.0         3.6          1.4         0.2              1
+##  ---                                                                 
+## 146:          6.7         3.0          5.2         2.3              0
+## 147:          6.3         2.5          5.0         1.9              0
+## 148:          6.5         3.0          5.2         2.0              0
+## 149:          6.2         3.4          5.4         2.3              0
+## 150:          5.9         3.0          5.1         1.8              0
+##      Species_versicolor Species_virginica
+##   1:                  0                 0
+##   2:                  0                 0
+##   3:                  0                 0
+##   4:                  0                 0
+##   5:                  0                 0
+##  ---                                     
+## 146:                  0                 1
+## 147:                  0                 1
+## 148:                  0                 1
+## 149:                  0                 1
+## 150:                  0                 1</code></pre>
+<pre class="r"><code># caret
+library(caret)
+dummy &lt;- caret::dummyVars(&quot; ~ .&quot;, data = iris)
+head(predict(dummy, iris))</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species.setosa
+## 1          5.1         3.5          1.4         0.2              1
+## 2          4.9         3.0          1.4         0.2              1
+## 3          4.7         3.2          1.3         0.2              1
+## 4          4.6         3.1          1.5         0.2              1
+## 5          5.0         3.6          1.4         0.2              1
+## 6          5.4         3.9          1.7         0.4              1
+##   Species.versicolor Species.virginica
+## 1                  0                 0
+## 2                  0                 0
+## 3                  0                 0
+## 4                  0                 0
+## 5                  0                 0
+## 6                  0                 0</code></pre>
+<pre class="r"><code># dplyr is not that clever
+library(dplyr)
+iris %&gt;%
+  mutate(&quot;Species_setosa&quot; = ifelse(Species == &quot;setosa&quot;, 1, 0)) %&gt;%
+  mutate(&quot;Species_virgninica&quot; = ifelse(Species == &quot;virgninica&quot;, 1, 0)) %&gt;%
+  mutate(&quot;Species_versicolor&quot; = ifelse(Species == &quot;versicolor&quot;, 1, 0)) %&gt;%
+  head()</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Species_setosa
+## 1          5.1         3.5          1.4         0.2  setosa              1
+## 2          4.9         3.0          1.4         0.2  setosa              1
+## 3          4.7         3.2          1.3         0.2  setosa              1
+## 4          4.6         3.1          1.5         0.2  setosa              1
+## 5          5.0         3.6          1.4         0.2  setosa              1
+## 6          5.4         3.9          1.7         0.4  setosa              1
+##   Species_virgninica Species_versicolor
+## 1                  0                  0
+## 2                  0                  0
+## 3                  0                  0
+## 4                  0                  0
+## 5                  0                  0
+## 6                  0                  0</code></pre>
+<p>As you can see, <code>caret</code> recognised dummy variables (<code>Species</code>) and processed them to binary variables.</p>
+<p>TODO: <code>library(dummies); library(onehot)</code></p>
+<p><em>Python</em></p>
+<pre class="python"><code># https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+from sklearn import datasets
+data = datasets.load_iris()
+y = [data.target_names[i] for i in data.target]
+# integer encode
+label_encoder = LabelEncoder()
+integer_encoded = label_encoder.fit_transform(y)
+print(integer_encoded[:5])
+# binary encode</code></pre>
+<pre><code>## [0 0 0 0 0]</code></pre>
+<pre class="python"><code>onehot_encoder = OneHotEncoder(sparse=False)
+integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
+onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
+print(onehot_encoded[:5])</code></pre>
+<pre><code>## [[1. 0. 0.]
+##  [1. 0. 0.]
+##  [1. 0. 0.]
+##  [1. 0. 0.]
+##  [1. 0. 0.]]</code></pre>
+</div>
+<div id="scaling" class="section level3">
+<h3>scaling</h3>
+<p>In R it’s extremely simple. <em>base R</em></p>
+<pre class="r"><code>scale(1:5)</code></pre>
+<pre><code>##         [,1]
+## [1,] -1.2649
+## [2,] -0.6325
+## [3,]  0.0000
+## [4,]  0.6325
+## [5,]  1.2649
+## attr(,&quot;scaled:center&quot;)
+## [1] 3
+## attr(,&quot;scaled:scale&quot;)
+## [1] 1.581</code></pre>
+<pre class="r"><code>mean(1:5)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>sd(1:5)</code></pre>
+<pre><code>## [1] 1.581</code></pre>
+<pre class="r"><code>sc &lt;- scale(iris[,1:4])
+head(sc)</code></pre>
+<pre><code>##      Sepal.Length Sepal.Width Petal.Length Petal.Width
+## [1,]      -0.8977     1.01560       -1.336      -1.311
+## [2,]      -1.1392    -0.13154       -1.336      -1.311
+## [3,]      -1.3807     0.32732       -1.392      -1.311
+## [4,]      -1.5015     0.09789       -1.279      -1.311
+## [5,]      -1.0184     1.24503       -1.336      -1.311
+## [6,]      -0.5354     1.93331       -1.166      -1.049</code></pre>
+<pre class="r"><code>attributes(sc)</code></pre>
+<pre><code>## $dim
+## [1] 150   4
+## 
+## $dimnames
+## $dimnames[[1]]
+## NULL
+## 
+## $dimnames[[2]]
+## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot; 
+## 
+## 
+## $`scaled:center`
+## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##        5.843        3.057        3.758        1.199 
+## 
+## $`scaled:scale`
+## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##       0.8281       0.4359       1.7653       0.7622</code></pre>
+<p><em>Python</em></p>
+<pre class="python"><code>from sklearn.preprocessing import scale, StandardScaler
+from sklearn import datasets
+import numpy as np
+# simple approach
+sc = scale(np.arange(1, 6))</code></pre>
+<pre><code>## /usr/local/lib/python3.5/dist-packages/sklearn/utils/validation.py:444: DataConversionWarning: Data with input dtype int64 was converted to float64 by the scale function.
+##   warnings.warn(msg, DataConversionWarning)</code></pre>
+<pre class="python"><code>print(np.std(sc))</code></pre>
+<pre><code>## 0.9999999999999999</code></pre>
+<pre class="python"><code>print(np.mean(sc))
+# and a way compatible with pandas</code></pre>
+<pre><code>## 0.0</code></pre>
+<pre class="python"><code>data = datasets.load_iris()
+X, y = data.data, data.target
+scaler = StandardScaler()
+scaled_df = scaler.fit_transform(X)
+print(scaled_df.mean(axis=0))</code></pre>
+<pre><code>## [-1.69031455e-15 -1.63702385e-15 -1.48251781e-15 -1.62314606e-15]</code></pre>
+<pre class="python"><code>print(scaled_df.std(axis=0))</code></pre>
+<pre><code>## [1. 1. 1. 1.]</code></pre>
+</div>
+<div id="splitting-your-dataset-into-train-and-test-subsets" class="section level3">
+<h3>splitting your dataset into train and test subsets</h3>
+<p>The idea for the following solution comes from <a href="https://stackoverflow.com/questions/17200114/how-to-split-data-into-training-testing-sets-using-sample-function">this post at stackoverflow</a>.</p>
+<p><em>base R</em></p>
+<pre class="r"><code>train_test_split &lt;- function(test_proportion = 0.75, dataset) {
+    smp_size &lt;- floor(test_proportion * nrow(dataset))
+    train_ind &lt;- sample(seq_len(nrow(dataset)), size = smp_size)
+
+    train &lt;- dataset[train_ind, ]
+    test &lt;- dataset[-train_ind, ]
+    return(list(train = train, test = test))
+}
+library(gsubfn)
+list[train, test] &lt;- train_test_split(0.8, iris)</code></pre>
+<p><em>caret R</em></p>
+<pre class="r"><code>library(caret)
+# ..., the random sampling is done within the
+# levels of ‘y’ when ‘y’ is a factor in an attempt to balance the class
+# distributions within the splits.
+# I provide package&#39;s name before function&#39;s name for clarity
+trainIndex &lt;- caret::createDataPartition(iris$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train &lt;- iris[trainIndex,]
+test &lt;- iris[-trainIndex,]</code></pre>
+<p><em>Python - sklearn</em></p>
+<pre class="python"><code>from sklearn import datasets
+from sklearn.model_selection import train_test_split
+data = datasets.load_iris()
+X, y = data.data, data.target
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)</code></pre>
+<p><em>Python - pandas</em></p>
+<pre class="python"><code>import pandas as pd
+# data = pd.DataFrame(data)
+# train = data.sample(frac=0.8)
+# test = data.drop(train.index)</code></pre>
+</div>
+<div id="sklearn-pipeline" class="section level3">
+<h3>sklearn pipeline</h3>
+<ul>
+<li><a href="https://towardsdatascience.com/a-simple-example-of-pipeline-in-machine-learning-with-scikit-learn-e726ffbb6976">a short article about sklearn pipelines</a></li>
+</ul>
+<pre class="python"><code>from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets
+data = datasets.load_iris()
+X, y = data.data, data.target
+# one way
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+svc = SVC()
+svc.fit(X_scaled, y)
+# or another - with pipeline
+from sklearn.pipeline import Pipeline
+svc = Pipeline([(&#39;scaler&#39;, StandardScaler()), (&#39;SVM&#39;, SVC())])
+svc.fit(X, y)</code></pre>
+<p>TODO: <code>pd.get_dummies()</code></p>
+</div>
+</div>
+
+</div>
+
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="/js/bootstrap-toc.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+$(window).scroll(function() {
+  
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>
+

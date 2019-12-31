@@ -1,0 +1,11 @@
+---
+title: "matplotlib"
+date: 2019-09-27T16:21:30+02:00
+draft: true
+---
+
+# 1. What is `matplotlib` and why would you use it?
+
+https://towardsdatascience.com/matplotlib-tutorial-learn-basics-of-pythons-powerful-plotting-library-b5d1b8f67596
+
+https://www.datacamp.com/community/tutorials/matplotlib-tutorial-python

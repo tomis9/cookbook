@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>tomis9&#39;s cookbook</title>
+  <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  
+  <link rel="stylesheet" href="/css/bootstrap-toc.css">
+
+  
+  <link rel="stylesheet" href="/css/darcula.css">
+
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">        
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+</head>
+
+
+<body data-spy="scroll" data-target="#toc">
+
+
+
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Python</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/beautiful_soup/">beautiful soup</a>
+          
+            <a class="dropdown-item" href="/decorators/">decorators</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqlalchemy/">sqlAlchemy</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">R</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/cinr/">C in R</a>
+          
+            <a class="dropdown-item" href="/rmariadb/">RMariaDB (former RMySQL)</a>
+          
+            <a class="dropdown-item" href="/rcpp/">Rcpp</a>
+          
+            <a class="dropdown-item" href="/classess4/">classes - S4</a>
+          
+            <a class="dropdown-item" href="/data.table/">data.table</a>
+          
+            <a class="dropdown-item" href="/debugging/">debugging</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/lubridate/">lubridate</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/packages/">packages</a>
+          
+            <a class="dropdown-item" href="/rtags/">rTags</a>
+          
+            <a class="dropdown-item" href="/reshape2/">reshape2</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/rstanarm/">rstanarm</a>
+          
+            <a class="dropdown-item" href="/shiny/">shiny</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqldf/">sqldf</a>
+          
+            <a class="dropdown-item" href="/stringr/">stringr and regex</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/tidyverse/">tidyverse</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Data engineering</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/hadoop/">hadoop</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Machine learning</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/ml/">basic machine learning algorithms</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/validation/">model validation</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/docker/">docker</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/git/">git</a>
+          
+            <a class="dropdown-item" href="/heroku/">heroku</a>
+          
+            <a class="dropdown-item" href="/mesos/">mesos</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/vagrant/">vagrant</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/vim_vs_emacs/">vim vs emacs - text mining to settle the editor war</a>
+          
+            <a class="dropdown-item" href="/cookbook/">writing a cookbook</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">scratchpad</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/aws/">Aws</a>
+          
+            <a class="dropdown-item" href="/hugo/">Hugo</a>
+          
+            <a class="dropdown-item" href="/file/">Rmarkdown total basics</a>
+          
+            <a class="dropdown-item" href="/caffee/">caffee</a>
+          
+            <a class="dropdown-item" href="/cassandra/">cassandra</a>
+          
+            <a class="dropdown-item" href="/dimensionality/">dimensionality</a>
+          
+            <a class="dropdown-item" href="/django/">django</a>
+          
+            <a class="dropdown-item" href="/featuretools/">featuretools</a>
+          
+            <a class="dropdown-item" href="/gitlab_ci/">gitlab-ci</a>
+          
+            <a class="dropdown-item" href="/javascript/">javascript</a>
+          
+            <a class="dropdown-item" href="/kafka/">kafka</a>
+          
+            <a class="dropdown-item" href="/keras/">keras</a>
+          
+            <a class="dropdown-item" href="/machine_learning_problems/">machine learning problems</a>
+          
+            <a class="dropdown-item" href="/marathon/">marathon</a>
+          
+            <a class="dropdown-item" href="/nlp/">nlp</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/passing_arguments/">passing arguments to scripts</a>
+          
+            <a class="dropdown-item" href="/redis/">redis</a>
+          
+            <a class="dropdown-item" href="/regex/">regex</a>
+          
+            <a class="dropdown-item" href="/tensorflow_serving/">tensorflow_serving</a>
+          
+            <a class="dropdown-item" href="/theano/">theano</a>
+          
+            <a class="dropdown-item" href="/vim_as_ide/">vim as IDE</a>
+          
+        </div>
+      </li>
+    
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="/">tomis9&#39;s cookbook</a>
+  </div>
+
+  <p style="color: white;">data science tutorials and snippets prepared by tomis9</p> 
+
+</div>
+
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/r" role="button">R </a>
+    &emsp;
+  </br>
+</div>
+<div class="article-title">
+  
+  debugging
+
+</div>
+<div class="article-info">
+    Feb 15, 2018 &emsp;  &emsp; 3 minutes read
+</div>
+
+
+
+
+<div id="what-is-debugging-and-why-would-use-use-it" class="section level2">
+<h2>1. What is debugging and why would use use it?</h2>
+<ul>
+<li><p>According to <a href="https://en.wikipedia.org/wiki/Debugging">Wikipedia</a>, “Debugging is the process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system”.</p></li>
+<li><p>R provides a couple of useful functions, which may be used not only for debugging purposes, but also for testing and even developing code.</p></li>
+<li><p>All the functions present below are already available within basic packages (no installation required).</p></li>
+</ul>
+</div>
+<div id="functions-frequently-used-for-debugging-purposes" class="section level2">
+<h2>2. Functions frequently used for debugging purposes</h2>
+<ul>
+<li><h3 id="browser"><code>browser()</code></h3></li>
+</ul>
+<p>Rarely used directly, but important to understand how <code>debug()</code> works.</p>
+<p>A short example:</p>
+<p>Let’s say that function <code>my_function</code> returns an error. (In this case we cause an error intentionally.)</p>
+<pre class="r"><code>my_function &lt;- function(x) {
+  print(x)
+  stop(&quot;This is an error.&quot;)
+  print(x + 10)
+}
+my_function(x = 2)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## Error in my_function(x = 2): This is an error.</code></pre>
+<p>In order to find out where exactly the error occured, i.e. which statement caused it, we may enter the function’s body and run the statements line by line.</p>
+<pre class="r"><code>my_function &lt;- function(x) {
+  browser()  # just add this line of code into your function&#39;s definition 
+  print(x)
+  stop(&quot;This is an error.&quot;)
+  print(x + 10)
+}
+my_function(x = 2)</code></pre>
+<p>Right now you are in <code>my_function()</code>’s environment, which you can check by typing <code>environment()</code> or <code>ls()</code>. You can also see that the prompt has changed. Type <kbd>n</kbd> until you get to the line of code which produces an error.</p>
+<p><em>Tip</em>: To skip a loop, type <kbd>c</kbd>.</p>
+<p>To quit <code>browser()</code> earlier, type <kbd>q</kbd> and hit <kbd>Enter</kbd>.</p>
+<ul>
+<li><h3 id="debug-undebug-and-debugonce"><code>debug()</code>, <code>undebug()</code> and <code>debugonce()</code></h3></li>
+</ul>
+<p>Or the most useful debugging functions.</p>
+<p>Let’s assume that you invoke a function inside of a function:</p>
+<pre class="r"><code>my_inside_function &lt;- function(x_inside) {
+  print(paste(&quot;x_inside: &quot;, x_inside + 10))
+  print(&quot;after error&quot;)
+}
+my_function &lt;- function(x) {
+  print(x)
+  my_inside_function(&quot;some text&quot;)
+  print(x + 10)
+}
+my_function(x = 2)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## Error in x_inside + 10: non-numeric argument to binary operator</code></pre>
+<p>which produces an error. You don’t know yet where exactly the error ocurred, so now you should write:</p>
+<pre class="r"><code>debug(my_function)
+my_function(x = 2)</code></pre>
+<p>to start searching for the bug right from the top function. A new, weird-looking prompt appears: it is the same prompt as invoked by the <code>browser()</code> function, inside <code>my_function</code>. Type <code>ls()</code> and you will see that you actually <em>are</em> inside of <code>my_function</code>’s environment. Hit <kbd>n</kbd> a couple of times until you reach the error. You can see that it was <code>my_inside_function</code> that caused an error. Debugging <code>my_inside_function</code> will lead you straight to the statement which caused an error, but before entering <code>my_inside_function</code>, stop observing <code>my_function</code>:</p>
+<pre class="r"><code>undebug(my_function)</code></pre>
+<p>And then debug <code>my_inside_function</code>:</p>
+<pre class="r"><code>debug(my_inside_function)
+my_function(x = 2)</code></pre>
+<p>After you find an error, don’t forget to stop observing the function:</p>
+<pre class="r"><code>undebug(my_inside_function)</code></pre>
+<p>You can also use <code>debugonce()</code>, the name of which is rather self-explanatory.</p>
+<ul>
+<li><h3 id="traceback"><code>traceback()</code></h3></li>
+</ul>
+<p>A quick view of where the bug may come from.</p>
+<p>(from R docs)</p>
+<p>Our example code:</p>
+<pre class="r"><code>foo &lt;- function(x) { print(1); bar(2) }
+bar &lt;- function(x) { x + a.variable.which.does.not.exist }
+foo(2)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre><code>## Error in bar(2): object &#39;a.variable.which.does.not.exist&#39; not found</code></pre>
+<p>produces a strange error.</p>
+<pre class="r"><code>traceback()
+## End(Not run)
+## 2: bar(2)
+## 1: foo(2)</code></pre>
+<p>As you can see, <code>traceback()</code> immediately points at the line where the error occured.</p>
+<ul>
+<li><h3 id="other-debugging-functions">Other debugging functions</h3></li>
+</ul>
+<p>There are two other functions that may be used for debugging, but as they are rarely used, I will not describe them in detail.</p>
+<ul>
+<li><p><code>trace()</code></p></li>
+<li><p><code>recover()</code></p></li>
+</ul>
+</div>
+<div id="useful-links" class="section level2">
+<h2>3. Useful links:</h2>
+<ul>
+<li>A good tutorial is available <a href="https://www.youtube.com/watch?v=-yy_3htRHdU">here</a>.</li>
+<li>A good article about debugging in R is available <a href="http://seananderson.ca/2013/08/23/debugging-r.html">here</a>.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="/js/bootstrap-toc.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+$(window).scroll(function() {
+  
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>
+

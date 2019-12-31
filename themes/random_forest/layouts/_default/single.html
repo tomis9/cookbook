@@ -1,0 +1,27 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  {{ range .Params.categories }}
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="{{ "categories/" | absLangURL }}{{ . | urlize }}" role="button">{{ . }} </a>
+    &emsp;
+  {{end}}</br>
+</div>
+<div class="article-title">
+  <!-- TODO https://codepen.io/zitrusfrisch/pen/fjbal -->
+  {{ .Title }}
+
+</div>
+<div class="article-info">
+    {{ dateFormat "Jan 2, 2006" .Date }} &emsp;  &emsp; {{ .ReadingTime }} minutes read
+</div>
+
+{{ .Content }}
+</div>
+
+{{ partial "footer.html" . }}

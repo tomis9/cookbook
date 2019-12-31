@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on tomis9&#39;s cookbook</title>
+    <link>https://tomis9.github.io/categories/r/</link>
+    <description>Recent content in R on tomis9&#39;s cookbook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 11 Jan 2019 21:18:57 +0100</lastBuildDate>
+    
+	<atom:link href="https://tomis9.github.io/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>decision trees</title>
+      <link>https://tomis9.github.io/decision_trees/</link>
+      <pubDate>Fri, 11 Jan 2019 21:18:57 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/decision_trees/</guid>
+      <description>1. What are decision trees and why would you use them?  decision trees are among the most popular classification algorithms;
+ they divide the dataset hierarchically starting from the full dataset, until the stop criterium is met, e.g. the minimum size of a leaf and the purity of leaf;
+ in general they are easy to understand, interpret and visualise
+ however they are not very efficient, but they can scale, i.</description>
+    </item>
+    
+    <item>
+      <title>rstanarm</title>
+      <link>https://tomis9.github.io/rstanarm/</link>
+      <pubDate>Sun, 23 Dec 2018 20:19:18 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/rstanarm/</guid>
+      <description>1. What is rstanarm and why would you use it?  it&amp;rsquo;s an R interface to stan
+ it&amp;rsquo;s better than rstan, because (according to rstanarm webpage)
+ models are specified with formula syntax,
+ data is provided as a data frame, and
+ additional arguments are available to specify priors.
+  in a nutshell, rstanarm let&amp;rsquo;s you estimate various Bayesian models and examine them with shinystan.
+  2.</description>
+    </item>
+    
+    <item>
+      <title>rocker</title>
+      <link>https://tomis9.github.io/rocker/</link>
+      <pubDate>Sun, 16 Dec 2018 15:47:35 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/rocker/</guid>
+      <description>1. What is rocker and why would you use it?  rocker is docker container specially prepared for working with R programming language;
+ it is useful if your R model is a part of a microservice system based on docker containers;
+ you can run R/shiny-server/rstudio-server on any machine you want. The only requirement is docker.
+  2. Rocker versions An official site of rocker proposes a few versions of r images.</description>
+    </item>
+    
+    <item>
+      <title>spark</title>
+      <link>https://tomis9.github.io/spark/</link>
+      <pubDate>Fri, 23 Nov 2018 12:58:49 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/spark/</guid>
+      <description>1. What is spark and why would use use it?  Spark is a smooth framework for working with big data, i.e. hdfs;
+ it can be accessed from Python, R, scala (spark is actually written in scala) and java;
+ it is probably the most popular big data tool nowadays for data scientists.
+  2. A few &amp;ldquo;Hello World&amp;rdquo; examples a) pyspark Prerequisites Installation of pyspark In this tutorial we will work on a development python version of spark.</description>
+    </item>
+    
+    <item>
+      <title>logging</title>
+      <link>https://tomis9.github.io/logging/</link>
+      <pubDate>Sat, 20 Oct 2018 00:15:21 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/logging/</guid>
+      <description>1. What is logging and why would you use it?  Logging, in general, sends information about the execution of a program to the outside of the program, e.g. to stdout or to a file. Why would that be useful?
+ You may get the information of how and when the program was executed, e.g. who was using it&amp;rsquo;s functionalities and if all the pieces of your program finished correctly.</description>
+    </item>
+    
+    <item>
+      <title>debugging</title>
+      <link>https://tomis9.github.io/debugging/</link>
+      <pubDate>Thu, 15 Feb 2018 15:17:57 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/debugging/</guid>
+      <description>1. What is debugging and why would use use it?  According to Wikipedia, “Debugging is the process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system”.
+ R provides a couple of useful functions, which may be used not only for debugging purposes, but also for testing and even developing code.
+ All the functions present below are already available within basic packages (no installation required).</description>
+    </item>
+    
+    <item>
+      <title>RMariaDB (former RMySQL)</title>
+      <link>https://tomis9.github.io/rmariadb/</link>
+      <pubDate>Mon, 12 Feb 2018 12:17:56 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/rmariadb/</guid>
+      <description>1. What is RMariaDB and why would you use it?  RMariaDB is an R package available at CRAN that let’s you connect to various SQL databases easily.  Why did I switch from RMySQL to RMariaDB? Because of invalid long integer format when downloading data from a database. A pretty nasty bug in RMySQL, which was resolved in RMariaDB.
+ 2. Usage First you have to create a connection to the database.</description>
+    </item>
+    
+    <item>
+      <title>rTags</title>
+      <link>https://tomis9.github.io/rtags/</link>
+      <pubDate>Sun, 11 Feb 2018 13:47:00 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/rtags/</guid>
+      <description>1. What are rTags and why would you use them? rTags let you jump directly to the definition of a function under your cursor. Modern IDE&amp;rsquo;s provide this functionality, so why wouldn&amp;rsquo;t you have it in vim?
+2. How to use them? You don&amp;rsquo;t necessarily have to read the articles from #3 (unless you want to understand what you are doing). All you have to do is run :RBuildTags, Nvim-R will create a tags file in your current directory and vim will automatically read this file each time you open any .</description>
+    </item>
+    
+    <item>
+      <title>C in R</title>
+      <link>https://tomis9.github.io/cinr/</link>
+      <pubDate>Tue, 06 Feb 2018 22:07:51 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/cinr/</guid>
+      <description>1. Why would you extend R with C language?  some parts of your program may run too slowly. One of the possible solutions is to rewrite them into C;
+ if you create a library and you want it to be extremely fast, you will probably end up writing most of your functions in C.;
+ it&amp;rsquo;s worth learning even the basic example, as most basic R functions are written in C.</description>
+    </item>
+    
+    <item>
+      <title>packages</title>
+      <link>https://tomis9.github.io/packages/</link>
+      <pubDate>Sun, 04 Feb 2018 12:06:07 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/packages/</guid>
+      <description>1. What are R packages and why would you use them?  R packaging is a convenient way to store and share your R code.
+ It lets you incorporate testing with testthat specially prepared tools (you can use testthat without creating a package, but it&amp;rsquo;s slightly more complicated).
+ It lets you easily list dependencies with packrat. You can also achieve this without using a package.
+ You can easily version your code.</description>
+    </item>
+    
+    <item>
+      <title>Rcpp</title>
+      <link>https://tomis9.github.io/rcpp/</link>
+      <pubDate>Sun, 04 Feb 2018 12:03:14 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/rcpp/</guid>
+      <description>1. What is Rcpp and why would you use it?  Rcpp is a R library which let’s you embed C++ code inside your R program.
+ Useful when you have a bottleneck in your code which makes the execution last forever. In that case you can rewrite in into super-fast C++.
+  Or you can switch to Python. Or data.table. Or write it in C.
+ 2. A “Hello World” example Example taken from Avanced R by Hadley Wickam (link).</description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://tomis9.github.io/testing/</link>
+      <pubDate>Sun, 04 Feb 2018 12:02:23 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/testing/</guid>
+      <description>1. What is testing and why would you use it?  testing or test-driven development (TDD) is a discipline, which relies on writing a test for every functionality before creating it;
+ at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fulfill this functionality, so the test will pass.
+  In reality you modify your tests as you create the functionality or even write the tests after you are finished writing it.</description>
+    </item>
+    
+    <item>
+      <title>classes - S4</title>
+      <link>https://tomis9.github.io/classess4/</link>
+      <pubDate>Sun, 04 Feb 2018 12:00:04 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/classess4/</guid>
+      <description>1. Why would you use OOP in R? Object oriented programming in R is unfortunately rather complicated comparing to Python (which seems to be the only reasonable alternative for data science programming).
+However, there are certain cases when OOP may come up helpful:
+ when you write your own package and you want users to work on an object that your function returns (print, summary, plot);
+ learning OOP in R is a good investment, because it let’s you understand better how functions like print, plot etc.</description>
+    </item>
+    
+    <item>
+      <title>nls</title>
+      <link>https://tomis9.github.io/nls/</link>
+      <pubDate>Sun, 28 Jan 2018 22:52:21 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/nls/</guid>
+      <description>1. What is nls and why would you use it?  nls, or nonlinear least squares is a statistical method used to describe a process as a nonlinear function of deterministic variables and a random variable;
+ you may think of it as an older and stronger brother of linear regression - more robust, powerful, smarter and difficult to understand ;)
+   2. A “Hello World” example Let’s assume we want to model US population as a function of year.</description>
+    </item>
+    
+    <item>
+      <title>tidyverse</title>
+      <link>https://tomis9.github.io/tidyverse/</link>
+      <pubDate>Mon, 11 Dec 2017 14:26:39 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/tidyverse/</guid>
+      <description>1. What is tidyverse and why would you use it?  tidyverse is a collection of R packages that make working on data a much nicer experience than using base R;
+ it consists of tidyr, dplyr, ggplot2, tibble and a few more.
+  To be honest, I prefer data.table to tidyverse, as it resembles basic R data.frames, is faster, more concise and, IMHO, more SQL-ish. But it takes longer to master and may be more difficult to understand, even your own code after some time.</description>
+    </item>
+    
+    <item>
+      <title>shiny</title>
+      <link>https://tomis9.github.io/shiny/</link>
+      <pubDate>Fri, 24 Mar 2017 09:13:23 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/shiny/</guid>
+      <description>1. What is shiny and why would you use it?  shiny is an R package that let&amp;rsquo;s you create dynamic web applications without any knowledge of html, css and javascript, php etc. Pure R.  Sounds like a dream?
+ Advantages:
+ easy to learn the basics;
+ easy to set up.
+  Disadvantages:
+ scalability;
+ performance;
+ in order to make the application work the way you want to, you have to involve javascript, html and css.</description>
+    </item>
+    
+    <item>
+      <title>ggplot(2)</title>
+      <link>https://tomis9.github.io/ggplot2/</link>
+      <pubDate>Fri, 24 Mar 2017 09:03:49 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/ggplot2/</guid>
+      <description>1. What is ggplot(2) and why would you use it?  ggplot2 is an R package which makes creating nice-looking plots easy;
+ the plots you create are highly customizable;
+  Once you learn ggplot2, you will not make any production plots using basic R. However, due to it’s verbosity, for simple exploratory analysis I still use basic functions: plot, lines, hist and boxplot.</description>
+    </item>
+    
+    <item>
+      <title>lubridate</title>
+      <link>https://tomis9.github.io/lubridate/</link>
+      <pubDate>Fri, 03 Mar 2017 13:46:45 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/lubridate/</guid>
+      <description>1. What is lubridate and why would you use it?  it’s an R package that makes working with dates easy;
+ because in basic, no-frills R working with dates may be a little bit daunting
+   2. A few “Hello World” examples Load the package
+library(lubridate) Convert a string to class Date:
+# the base way d &amp;lt;- as.Date(&amp;quot;2017-03-03&amp;quot;) class(d) ## [1] &amp;quot;Date&amp;quot; # the lubridate way d &amp;lt;- ymd(&amp;quot;2017-03-03&amp;quot;) class(d) ## [1] &amp;quot;Date&amp;quot; Extract year, month and day</description>
+    </item>
+    
+    <item>
+      <title>data.table</title>
+      <link>https://tomis9.github.io/data.table/</link>
+      <pubDate>Thu, 02 Mar 2017 15:45:27 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/data.table/</guid>
+      <description>1. What is data.table and why would you use it?  data.table is an R packge which let’s you work on tabular datasets quickly and easily;
+ comparing to base R or dplyr it’s significantly faster;
+ data.table has a concise and SQL-like syntax.
+   2. Basic functionalities Creating a data.table library(data.table) df &amp;lt;- data.frame(x = c(&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;a&amp;quot;), v = rnorm(5)) dt &amp;lt;- data.table(x = c(&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;a&amp;quot;), v = rnorm(5)) is exactly the same as creating a data.</description>
+    </item>
+    
+    <item>
+      <title>reshape2</title>
+      <link>https://tomis9.github.io/reshape2/</link>
+      <pubDate>Wed, 01 Mar 2017 13:07:39 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/reshape2/</guid>
+      <description>1. What is reshape2 and why would you use it? reshape2 is an R package that let’s you change the shape of any dataframe, i.e. to pivot and to “unpivot”.
+Keep in mind that if your favourite R package for dataframes manipulation is data.table, functions dcast and melt are already in this package and work exactly the same as those in reshape2.
+ 2. A “Hello World” example In fact there are only two functions worth mentioning: dcast, which is equivalent to MS Excel pivot table, and melt, which does the opposite or unpivots a table.</description>
+    </item>
+    
+    <item>
+      <title>sqldf</title>
+      <link>https://tomis9.github.io/sqldf/</link>
+      <pubDate>Wed, 01 Mar 2017 13:07:39 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/sqldf/</guid>
+      <description>1. What is sqldf and why would you use it? sqldf package lets you treat any data.frame object as an sql table. You can write queries as if you were in a database. Pretty useless, comparing to, say, data.table or dplyr + tidyverse.
+Despite it’s uselessness, it works like a charm.
+ 2. A few basic examples: Load the package:
+library(sqldf) Selecting specific columns:
+sqldf(&amp;#39;select mpg, cyl, disp from mtcars where cyl = 6&amp;#39;) ## mpg cyl disp ## 1 21.</description>
+    </item>
+    
+  </channel>
+</rss>

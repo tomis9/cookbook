@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>tomis9&#39;s cookbook</title>
+  <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  
+  <link rel="stylesheet" href="/css/bootstrap-toc.css">
+
+  
+  <link rel="stylesheet" href="/css/darcula.css">
+
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">        
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+</head>
+
+
+<body data-spy="scroll" data-target="#toc">
+
+
+
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Python</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/beautiful_soup/">beautiful soup</a>
+          
+            <a class="dropdown-item" href="/decorators/">decorators</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqlalchemy/">sqlAlchemy</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">R</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/cinr/">C in R</a>
+          
+            <a class="dropdown-item" href="/rmariadb/">RMariaDB (former RMySQL)</a>
+          
+            <a class="dropdown-item" href="/rcpp/">Rcpp</a>
+          
+            <a class="dropdown-item" href="/classess4/">classes - S4</a>
+          
+            <a class="dropdown-item" href="/data.table/">data.table</a>
+          
+            <a class="dropdown-item" href="/debugging/">debugging</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/lubridate/">lubridate</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/packages/">packages</a>
+          
+            <a class="dropdown-item" href="/rtags/">rTags</a>
+          
+            <a class="dropdown-item" href="/reshape2/">reshape2</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/rstanarm/">rstanarm</a>
+          
+            <a class="dropdown-item" href="/shiny/">shiny</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqldf/">sqldf</a>
+          
+            <a class="dropdown-item" href="/stringr/">stringr and regex</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/tidyverse/">tidyverse</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Data engineering</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/hadoop/">hadoop</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Machine learning</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/ml/">basic machine learning algorithms</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/validation/">model validation</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/docker/">docker</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/git/">git</a>
+          
+            <a class="dropdown-item" href="/heroku/">heroku</a>
+          
+            <a class="dropdown-item" href="/mesos/">mesos</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/vagrant/">vagrant</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/vim_vs_emacs/">vim vs emacs - text mining to settle the editor war</a>
+          
+            <a class="dropdown-item" href="/cookbook/">writing a cookbook</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">scratchpad</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/aws/">Aws</a>
+          
+            <a class="dropdown-item" href="/hugo/">Hugo</a>
+          
+            <a class="dropdown-item" href="/file/">Rmarkdown total basics</a>
+          
+            <a class="dropdown-item" href="/caffee/">caffee</a>
+          
+            <a class="dropdown-item" href="/cassandra/">cassandra</a>
+          
+            <a class="dropdown-item" href="/dimensionality/">dimensionality</a>
+          
+            <a class="dropdown-item" href="/django/">django</a>
+          
+            <a class="dropdown-item" href="/featuretools/">featuretools</a>
+          
+            <a class="dropdown-item" href="/gitlab_ci/">gitlab-ci</a>
+          
+            <a class="dropdown-item" href="/javascript/">javascript</a>
+          
+            <a class="dropdown-item" href="/kafka/">kafka</a>
+          
+            <a class="dropdown-item" href="/keras/">keras</a>
+          
+            <a class="dropdown-item" href="/machine_learning_problems/">machine learning problems</a>
+          
+            <a class="dropdown-item" href="/marathon/">marathon</a>
+          
+            <a class="dropdown-item" href="/nlp/">nlp</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/passing_arguments/">passing arguments to scripts</a>
+          
+            <a class="dropdown-item" href="/redis/">redis</a>
+          
+            <a class="dropdown-item" href="/regex/">regex</a>
+          
+            <a class="dropdown-item" href="/tensorflow_serving/">tensorflow_serving</a>
+          
+            <a class="dropdown-item" href="/theano/">theano</a>
+          
+            <a class="dropdown-item" href="/vim_as_ide/">vim as IDE</a>
+          
+        </div>
+      </li>
+    
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="/">tomis9&#39;s cookbook</a>
+  </div>
+
+  <p style="color: white;">data science tutorials and snippets prepared by tomis9</p> 
+
+</div>
+
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/python" role="button">Python </a>
+    &emsp;
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/devops" role="button">DevOps </a>
+    &emsp;
+  </br>
+</div>
+<div class="article-title">
+  
+  flask
+
+</div>
+<div class="article-info">
+    Aug 13, 2018 &emsp;  &emsp; 4 minutes read
+</div>
+
+
+
+<h2 id="1-what-is-flask-and-why-would-you-use-it">1. What is flask and why would you use it?</h2>
+
+<ul>
+<li><p>flask is a python framwework for creating web applications and apis;</p></li>
+
+<li><p>it provides a full and simple support for backend, while you still create the frontend with html+css+javascript.</p></li>
+</ul>
+
+<p>For production use it is not as popular as Django, as id does not scale that well to huge projects. However in data science you will not create such huge webservices and flask, with it&rsquo;s simplicity, reliability, clearness and great community support is more than enough.</p>
+
+<p>This is an absolutely <a href="https://www.oreilly.com/library/view/flask-web-development/9781491991725/">fantastic book</a> to learn flask and even more.</p>
+
+<h2 id="2-a-hello-world-example">2. A &ldquo;Hello World&rdquo; example</h2>
+
+<p>Let&rsquo;s start with a very simple flask application (hello.py):</p>
+
+<pre><code class="language-python">from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+</code></pre>
+
+<p>which prints out &ldquo;Hello, World!&rdquo; on the screen.
+Start the application with</p>
+
+<pre><code class="language-bash">python3 hello.py
+</code></pre>
+
+<p>Everything should go smooth as long as you use python3 and have flask installed (if not, <code>pip3 install flask</code> should do the job).</p>
+
+<p>So, this is the simplest possible application in flask. How about some explanation?</p>
+
+<ul>
+<li><p>we create an instance of class <code>Flask</code> named <code>app</code>. Which is a pretty good name for an app;</p></li>
+
+<li><p>if anybody <em>requests</em> our app via &lsquo;/&rsquo; route, our <em>response</em> will be &ldquo;Hello, World!&rdquo;. For a local server at 127.0.0.1 host, &lsquo;/&rsquo; route is just 127.0.0.1/;</p></li>
+
+<li><p>finally, if we run this application non-interactively (via ipython-console, for example), so it&rsquo;s <code>__name__</code> would be <code>__main__</code>, the <code>app</code> instance we created in the first step, will <code>run</code>.</p></li>
+</ul>
+
+<p>Now you can see the app&rsquo;s greeting to the world in your web browser at 127.0.0.1:5000 or you can send a request by curl:</p>
+
+<pre><code class="language-bash">curl 127.0.0.1:5000
+</code></pre>
+
+<p>and receive this response.</p>
+
+<h2 id="3-more-advanced-subjects">3. More advanced subjects</h2>
+
+<h3 id="a-minimal-example-of-flask-jsonrpc">A minimal example of flask-JSONRPC</h3>
+
+<p>Say you want to create an api and let users send requests to this api providing some additional information of what they want. An easy way to structure this information is using json format, e.g.:</p>
+
+<pre><code>{
+    &quot;iWantToRunFunction&quot;: &quot;Function1&quot;, 
+    &quot;withParameters&quot;: { &quot;Par1&quot;: &quot;Val1&quot;, &quot;Par2&quot;, &quot;Val2&quot; }
+}
+</code></pre>
+
+<p>Flask-JSONRPC will enable us to do it. A short example:</p>
+
+<p>app.py:</p>
+
+<pre><code class="language-python">from flask import Flask
+from flask_jsonrpc import JSONRPC
+
+# Flask application
+app = Flask(__name__)
+
+# Flask-JSONRPC
+jsonrpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
+
+
+@jsonrpc.method('App.index')
+def index():
+    return 'Welcome to Flask JSON-RPC'
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
+</code></pre>
+
+<p>As you can see, we no longer use <code>app.route</code> decorator, but <code>jsonrpc.method</code> declared earlier. Compare the app.py script to the curl request below and you will see  which parts of the code provide which information.</p>
+
+<pre><code class="language-bash">curl -i -X POST \
+   -H &quot;Content-Type: application/json; indent=4&quot; \
+   -d '{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;App.index&quot;,
+    &quot;params&quot;: {},
+    &quot;id&quot;: &quot;1&quot;
+}' http://localhost:5000/api
+</code></pre>
+
+<p><a href="https://github.com/cenobites/flask-jsonrpc">Here</a> is a nice and short intro to flask-JSONRPC.</p>
+
+<h3 id="a-minimal-example-of-flask-blueprint">A minimal example of flask blueprint</h3>
+
+<p>Blueprints let you divide your application into several files.
+Here&rsquo;s an example:</p>
+
+<p>app.py:</p>
+
+<pre><code class="language-python">from flask import Flask
+from simple_page import blueprint
+
+app = Flask(__name__)
+app.register_blueprint(blueprint)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+</code></pre>
+
+<p>simple_page.py:</p>
+
+<pre><code class="language-python">from flask import Blueprint
+
+blueprint = Blueprint('simple_page', __name__)
+
+
+@blueprint.route('/')
+def show():
+    return &quot;Hello from blueprint\n&quot;
+</code></pre>
+
+<p>As you can see:</p>
+
+<ul>
+<li><p>in a separate file called <em>simple_page.py</em> we created a fucntion <code>show()</code> and we wanted to make it available from <em>app.py</em>, where the <code>app.run()</code> statement runs the whole app;</p></li>
+
+<li><p>in <em>simple_page.py</em> we created a <code>blueprint</code> object, which is analogical to an <code>app()</code> object, but can be imported to <em>app.py</em> with <code>from simple page import blueprint</code> and added as a method to <code>app</code> with <code>app.register_blueprint()</code> method.</p></li>
+</ul>
+
+<h2 id="3-gunicorn">3. Gunicorn</h2>
+
+<p>Every flask tutorial I read mentioned that I shouldn&rsquo;t use flask&rsquo;s development server as a production server. One of the alternatives is python&rsquo;s <code>gunicorn</code> package, installable with pip. Having gunicorn installed, you can launch your application with</p>
+
+<pre><code class="language-bash">gunicorn -b 0.0.0.0:8000 app:app
+</code></pre>
+
+<p>instead of <code>python3 app.py</code>.</p>
+
+<h2 id="4-docker">4. Docker</h2>
+
+<p>An even better prooduction solution than gunicorn is gunicorn and <a href="http://tomis9.com/docker">docker</a>. It let&rsquo;s you run your application in a specific environment (<a href="http://tomis9.com/pyenv">pyenv</a> is a similar concept, but docker is used for production, and pyenv for development). When you have your image ready, run your application with:</p>
+
+<pre><code class="language-bash">docker run -p 8000:8000 -d my_app_image:0.1 gunicorn -b 0.0.0.0:8000 app:app
+</code></pre>
+
+<h2 id="5-other-subjects-to-cover">5. Other subjects to cover</h2>
+
+<ul>
+<li><p>templates</p></li>
+
+<li><p>jinja2</p></li>
+
+<li><p>logging with gunicorn</p></li>
+</ul>
+
+</div>
+
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="/js/bootstrap-toc.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+$(window).scroll(function() {
+  
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>
+

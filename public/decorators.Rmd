@@ -1,0 +1,84 @@
+---
+title: "decorators"
+date: 2018-08-12T15:30:35+02:00
+draft: false
+categories: ["Python"]
+tags: ["Python", "decorators"]
+---
+
+## 1. What are decorators and why would you use them?
+
+* decorators in Python are special functions that take a function as an argument and slightly change it's behaviour, e.g. it's return value;
+
+* you can write your own decorators, which is rather easy (I highly recommend [Fluent Python](http://shop.oreilly.com/product/0636920032519.do) as a reference)
+
+* but there are already many useful decorators available in Python.
+
+I am not going to describe here how to write your own decorator as, to be honest, I used them only twice in my career. In fact, I didn't have to do that, I just wanted to try them out ;)
+
+## 2. Useful built-in decorators
+
+### @property
+
+#### Why would you use property?
+
+You crate a class with a specific attribute, say, `name`. At the beginning you are happy to use it only as:
+```
+object.name = 'Tomek'
+print(object.name)
+```
+
+but after a while you realise that you need something else happening during setting a name and getting a name, something in the background, e.g. printing *you've just set a name* and *you've just got a name*. This would be easy if you had defined separate `getters` and `setters`, but you didn't and there are folks who already use this class, so they wouldn't be happy if they had to change their code. 
+
+So you're on your own. Here's how you solve this problem:
+
+```{python, engine.path = '/usr/bin/python3'}
+class SomeFolk:
+
+    def __init__(self, name):
+        self._name = name
+
+    @property
+    def name(self):
+        """this is just our previous, default behaviour"""
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """this is our brand new setter"""
+        self._name = name
+        print("you've just set a name to {}".format(self._name))  # log message
+
+    @name.getter
+    def name(self):
+        """this is our brand new getter"""
+        print("you've just got a name")  # log message
+        return self._name
+```
+
+Let's create an instance of this class:
+```{python, engine.path = '/usr/bin/python3'}
+me = SomeFolk('Tomek')
+```
+
+Here's what happens when you get a name:
+```{python, engine.path = '/usr/bin/python3'}
+_some_variable = me.name
+```
+
+And when you set a name:
+```{python, engine.path = '/usr/bin/python3'}
+me.name = "tomis9"
+```
+
+Magic.
+
+### @classmethod and @staticmethod
+
+Here's a great tutorial describing the difference and usage:
+
+<iframe width="853" height="480" src="https://www.youtube.com/embed/rq8cL2XMM5M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## 3. TODO
+
+* an example of a self-made decorator

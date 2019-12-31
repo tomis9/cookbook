@@ -1,0 +1,22 @@
+---
+title: "dimensionality"
+date: 2019-05-22T19:26:32+02:00
+draft: true
+categories: ["scratchpad"]
+---
+
+<center>
+# This is not a proper blog post yet.
+
+dimensionality (TODO)
+</center>
+
+Contents:
+
+[PCA](#pca) 
+
+[lasso](#lasso) 
+
+1. PCA 
+
+* lasso 

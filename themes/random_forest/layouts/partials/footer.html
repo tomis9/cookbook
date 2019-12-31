@@ -1,0 +1,56 @@
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+<!-- highlightjs syntax highlighting -->
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- table of contents -->
+<script src="/js/bootstrap-toc.js"></script>
+
+<!-- KaTeX -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+<!-- navbar always on top -->
+<script>
+$(window).scroll(function() {
+  // 100 = The point you would like to fade the nav in.
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>

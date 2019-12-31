@@ -1,0 +1,48 @@
+<!-- special version of body for proper table of contents working -->
+<body data-spy="scroll" data-target="#toc">
+
+
+<!-- NAVBAR -->
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  <!-- empty link for "Menu" on the right side -->
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ $.Site.BaseURL }}">Home</a>
+      </li>
+      {{ range $.Site.Menus.main }}
+      {{ $current_cat := .Name }}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">{{ .Name }}</a>
+        <div class="dropdown-menu scrollable-menu">
+          {{ range sort (where $.Site.Pages "Params.categories" "intersect" (slice $current_cat)) "Title" }}
+            <a class="dropdown-item" href="{{ .Permalink }}">{{ .Title }}</a>
+          {{end}}
+        </div>
+      </li>
+    {{ end }}
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+<!-- HEADING -->
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="{{ $.Site.BaseURL }}">{{ $.Site.Params.title }}</a>
+  </div>
+
+  <p style="color: white;">{{ $.Site.Params.description }}</p> 
+
+</div>

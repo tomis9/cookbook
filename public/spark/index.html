@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>tomis9&#39;s cookbook</title>
+  <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  
+  <link rel="stylesheet" href="/css/bootstrap-toc.css">
+
+  
+  <link rel="stylesheet" href="/css/darcula.css">
+
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">        
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+</head>
+
+
+<body data-spy="scroll" data-target="#toc">
+
+
+
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Python</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/beautiful_soup/">beautiful soup</a>
+          
+            <a class="dropdown-item" href="/decorators/">decorators</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqlalchemy/">sqlAlchemy</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">R</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/cinr/">C in R</a>
+          
+            <a class="dropdown-item" href="/rmariadb/">RMariaDB (former RMySQL)</a>
+          
+            <a class="dropdown-item" href="/rcpp/">Rcpp</a>
+          
+            <a class="dropdown-item" href="/classess4/">classes - S4</a>
+          
+            <a class="dropdown-item" href="/data.table/">data.table</a>
+          
+            <a class="dropdown-item" href="/debugging/">debugging</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/lubridate/">lubridate</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/packages/">packages</a>
+          
+            <a class="dropdown-item" href="/rtags/">rTags</a>
+          
+            <a class="dropdown-item" href="/reshape2/">reshape2</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/rstanarm/">rstanarm</a>
+          
+            <a class="dropdown-item" href="/shiny/">shiny</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqldf/">sqldf</a>
+          
+            <a class="dropdown-item" href="/stringr/">stringr and regex</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/tidyverse/">tidyverse</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Data engineering</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/hadoop/">hadoop</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Machine learning</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/ml/">basic machine learning algorithms</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/validation/">model validation</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/docker/">docker</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/git/">git</a>
+          
+            <a class="dropdown-item" href="/heroku/">heroku</a>
+          
+            <a class="dropdown-item" href="/mesos/">mesos</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/vagrant/">vagrant</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/vim_vs_emacs/">vim vs emacs - text mining to settle the editor war</a>
+          
+            <a class="dropdown-item" href="/cookbook/">writing a cookbook</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">scratchpad</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/aws/">Aws</a>
+          
+            <a class="dropdown-item" href="/hugo/">Hugo</a>
+          
+            <a class="dropdown-item" href="/file/">Rmarkdown total basics</a>
+          
+            <a class="dropdown-item" href="/caffee/">caffee</a>
+          
+            <a class="dropdown-item" href="/cassandra/">cassandra</a>
+          
+            <a class="dropdown-item" href="/dimensionality/">dimensionality</a>
+          
+            <a class="dropdown-item" href="/django/">django</a>
+          
+            <a class="dropdown-item" href="/featuretools/">featuretools</a>
+          
+            <a class="dropdown-item" href="/gitlab_ci/">gitlab-ci</a>
+          
+            <a class="dropdown-item" href="/javascript/">javascript</a>
+          
+            <a class="dropdown-item" href="/kafka/">kafka</a>
+          
+            <a class="dropdown-item" href="/keras/">keras</a>
+          
+            <a class="dropdown-item" href="/machine_learning_problems/">machine learning problems</a>
+          
+            <a class="dropdown-item" href="/marathon/">marathon</a>
+          
+            <a class="dropdown-item" href="/nlp/">nlp</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/passing_arguments/">passing arguments to scripts</a>
+          
+            <a class="dropdown-item" href="/redis/">redis</a>
+          
+            <a class="dropdown-item" href="/regex/">regex</a>
+          
+            <a class="dropdown-item" href="/tensorflow_serving/">tensorflow_serving</a>
+          
+            <a class="dropdown-item" href="/theano/">theano</a>
+          
+            <a class="dropdown-item" href="/vim_as_ide/">vim as IDE</a>
+          
+        </div>
+      </li>
+    
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="/">tomis9&#39;s cookbook</a>
+  </div>
+
+  <p style="color: white;">data science tutorials and snippets prepared by tomis9</p> 
+
+</div>
+
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/data-engineering" role="button">Data engineering </a>
+    &emsp;
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/python" role="button">Python </a>
+    &emsp;
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/r" role="button">R </a>
+    &emsp;
+  </br>
+</div>
+<div class="article-title">
+  
+  spark
+
+</div>
+<div class="article-info">
+    Nov 23, 2018 &emsp;  &emsp; 4 minutes read
+</div>
+
+
+
+<h2 id="1-what-is-spark-and-why-would-use-use-it">1. What is spark and why would use use it?</h2>
+
+<ul>
+<li><p>Spark is a smooth framework for working with big data, i.e. <a href="http://tomis9.com/hadoop">hdfs</a>;</p></li>
+
+<li><p>it can be accessed from Python, R, scala (spark is actually written in scala) and java;</p></li>
+
+<li><p>it is probably the most popular big data tool nowadays for data scientists.</p></li>
+</ul>
+
+<h2 id="2-a-few-hello-world-examples">2. A few &ldquo;Hello World&rdquo; examples</h2>
+
+<h3 id="a-pyspark">a) pyspark</h3>
+
+<h4 id="prerequisites">Prerequisites</h4>
+
+<h5 id="installation-of-pyspark">Installation of pyspark</h5>
+
+<p>In this tutorial we will work on a development python version of spark. You can istall it with:</p>
+
+<pre><code class="language-python">sudo pip3 install pyspark
+</code></pre>
+
+<p>You will not notice any difference between this spark version and a production version installed on a cluster, except for performance.</p>
+
+<h5 id="example-file">Example file</h5>
+
+<p>During the tutorial we will work on an example file:</p>
+
+<p>example.csv:</p>
+
+<pre><code>UserCode,GroupCode
+1051,123
+1150,234
+1152,345
+</code></pre>
+
+<p>Clearly not a big data case.</p>
+
+<h4 id="initialisation">Initialisation</h4>
+
+<p>First, let&rsquo;s import SparkSession from pyspark.sql module, which enables us to ceoonect with spark from python. If you do not specifically provide details of spark installation on cluster/server/laptop you use, pyspark will use it&rsquo;s own, development spark session.</p>
+
+<pre><code>from pyspark.sql import SparkSession
+</code></pre>
+
+<p>In order to work with spark, we have to initialize the spark session and give it a nice name</p>
+
+<pre><code>spark = SparkSession \
+    .builder \
+    .appName(&quot;Python Spark basic example&quot;) \
+    .getOrCreate()
+</code></pre>
+
+<p>or an ugly name. Up to you.</p>
+
+<p>From now you can watch your tasks execution in a web interface available at <a href="http://127.0.0.1:4040">http://127.0.0.1:4040</a>.</p>
+
+<h4 id="basic-information-about-dataframe">Basic information about dataframe</h4>
+
+<p>Let&rsquo;s read some data to spark and enjoy it&rsquo;s incredibly fast performance.</p>
+
+<pre><code>df = spark.read.csv('example.csv', header=True)
+</code></pre>
+
+<p>Printing columns&rsquo; names and datatypes are not spark jobs yet, co you can not observer their execution in spark&rsquo;s web interface.</p>
+
+<pre><code>df.printSchema()
+df.columns
+</code></pre>
+
+<p>These are spark jobs, so open up web interface and check out the &ldquo;jobs&rdquo; tab.</p>
+
+<p>head of our dataframe</p>
+
+<pre><code>df.head()
+</code></pre>
+
+<p>number of rows</p>
+
+<pre><code>df.count()
+</code></pre>
+
+<p>some statistics of our dataframe, similar to R&rsquo;s <code>summary</code></p>
+
+<pre><code>df.describe().show()
+</code></pre>
+
+<h4 id="sql-queries">SQL queries</h4>
+
+<p>How about being able to use sql to query our table? First we have to declare our data as a table in spark.</p>
+
+<pre><code>df.createOrReplaceTempView(&quot;example&quot;)
+</code></pre>
+
+<p>It&rsquo;s time to check the &ldquo;SQL&rdquo; tab in GUI and then we can move on to sql. An example query:</p>
+
+<pre><code>df2 = spark.sql(&quot;select * from example&quot;)
+df2.show()
+</code></pre>
+
+<h4 id="query-expressions">Query expressions</h4>
+
+<p>Selecting</p>
+
+<pre><code>user_code3 = df.select('UserCode', 'UserCode', 'Usercode')
+user_code3.show()
+</code></pre>
+
+<p>Filtering</p>
+
+<pre><code>filtered = df.filter(&quot;UserCode = 1051&quot;)
+filtered.show()
+</code></pre>
+
+<h4 id="saving-dataframes">Saving dataframes</h4>
+
+<p>In general, you will save your data to parquet files, as they are optimised for reading from and for writing to spark.</p>
+
+<pre><code>df.write.parquet('file.parquet')
+</code></pre>
+
+<p>But you can always save the data to csv.</p>
+
+<pre><code>df.write.csv('file.csv')
+</code></pre>
+
+<h5 id="saving-tips-tricks">saving tips &amp; tricks</h5>
+
+<p>You will often want to write your files in a specific way. Here is a list of the most popular parameters:</p>
+
+<pre><code>df.coalesce(1). \
+    write. \
+    mode('overwrite'). \
+    option(&quot;header&quot;, &quot;true&quot;). \
+    csv(&quot;result.csv&quot;)
+</code></pre>
+
+<p>and their descriptions:</p>
+
+<ul>
+<li><p>use partition or save to one file</p></li>
+
+<li><p>let&rsquo;s move to the writing file part</p></li>
+
+<li><p>overwrite if exists</p></li>
+
+<li><p>write the header</p></li>
+
+<li><p>file extension</p></li>
+</ul>
+
+<h3 id="b-sparklyr-spark-dplyr">b) sparklyr (spark + dplyr)</h3>
+
+<p>There are two popular R libraries, which enable you to connect to spark from R: SparkR and sparklyr. I found sparklyr much nicer, as it is compatible with all the fancy functions from <a href="http://tomis9.com/tidyverse">dplyr</a>, which makes manipulating dataframes familiar and easy (+ 1 big point for dplyr in it&rsquo;s fight against <a href="http://tomis9.com/data.table">data.table</a>).</p>
+
+<p>Here&rsquo;s a quick example of reading a parquet file from <a href="http://tomis9.com/hadoop">hdfs</a> into spark.</p>
+
+<p>First, check if you use a proper version of spark:</p>
+
+<pre><code>Sys.getnev(&quot;SPARK_HOME&quot;)
+</code></pre>
+
+<p>If the function above returns an empty string, you may set the path of the spark installation manually with:</p>
+
+<pre><code>Sys.setenv(SPARK_HOME=&quot;&lt;spark_home_path&gt;&quot;)
+</code></pre>
+
+<p>so that R will use production version of spark installed on the cluster. If you do not set it, sparklyr will use the default, testing version of spark (as long as you installed it with <code>spark_install()</code>) or will throw an error if it does not find any available version of spark.</p>
+
+<p>Let&rsquo;s get to the point:</p>
+
+<pre><code class="language-r">Sys.setenv(SPARK_HOME=&quot;&lt;spark_home_path&gt;&quot;)
+
+library(dplyr)
+library(sparklyr)
+
+sc &lt;- spark_connect(master = &quot;local[*]&quot;)
+
+parquet_path &lt;- &quot;hdfs:///user/...&quot;
+d &lt;- spark_read_parquet(sc, name = &quot;my_df_name&quot;, path = parquet_path)
+</code></pre>
+
+<blockquote>
+<p>Tip: you can check the details of spark conenction by typing <code>sc</code>.</p>
+</blockquote>
+
+<p>After reading the dataframe to the variable <code>d</code>, you can run any <code>dplyr</code> function on this dataframe, e.g.:</p>
+
+<pre><code>d %&gt;% count()
+</code></pre>
+
+<p>You will find more useful information on <a href="https://www.datacamp.com/courses/introduction-to-spark-in-r-using-sparklyr">datacamp sparklyr course</a>.</p>
+
+<h3 id="c-sparkr">c) SparkR</h3>
+
+<p>A short example of setting up SparkR:</p>
+
+<pre><code class="language-r">SPARK_HOME &lt;- &quot;&quot;
+lib.loc &lt;- file.path(SPARK_HOME, &quot;R&quot;, &quot;lib&quot;)
+Sys.setenv(SPARK_HOME = SPARK_HOME) 
+# library(rJava)  # may be necessary
+library(SparkR, lib.loc = lib.loc)
+sparkR.session(master = &quot;local[*]&quot;, sparkConfig = list(spark.driver.memory = &quot;2g&quot;))
+</code></pre>
+
+<p>and reading a parquet file from hdfs:</p>
+
+<pre><code class="language-r">parquet_path &lt;- &quot;hdfs:///user/...&quot;
+df &lt;- read.parquet(parquet_path)
+# collect() downloads SparkDataFrame to local memory; beware of function 
+# names' conflict: tidyverse::collect() and SparkR::collect()
+SparkR::collect(df)  
+</code></pre>
+
+<p><a href="https://spark.apache.org/docs/latest/sparkr.html">Here</a> you can find a SparkR programming guide.</p>
+
+<h2 id="3-useful-links">3. Useful links</h2>
+
+<ul>
+<li><p><a href="https://dzone.com/articles/introduction-to-spark-with-python-pyspark-for-begi">a nice introductory article</a></p></li>
+
+<li><p><a href="https://runawayhorse001.github.io/LearningApacheSpark/pyspark.pdf">a goo book on pyspark</a></p></li>
+
+<li><p><a href="https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/">SparkR vs sparklyr</a></p></li>
+</ul>
+
+<h2 id="4-subjects-still-to-cover">4. Subjects still to cover</h2>
+
+<ul>
+<li><p>MLlib (TODO)</p></li>
+
+<li><p>importing table directly from database - jdbc (TODO), both for pyspark and sparklyr (<a href="https://rdrr.io/cran/sparklyr/man/spark_read_jdbc.html">https://rdrr.io/cran/sparklyr/man/spark_read_jdbc.html</a>)</p></li>
+</ul>
+
+<p>[<a href="https://stackoverflow.com/questions/45420958/how-to-use-a-predicate-while-reading-from-jdbc-connection">https://stackoverflow.com/questions/45420958/how-to-use-a-predicate-while-reading-from-jdbc-connection</a>]</p>
+
+<p>[<a href="https://stackoverflow.com/questions/41966814/transfer-data-from-database-to-spark-using-sparklyr">https://stackoverflow.com/questions/41966814/transfer-data-from-database-to-spark-using-sparklyr</a>]</p>
+
+<ul>
+<li><p>pyspark communication with hdfs (TODO)</p></li>
+
+<li><p>spark-submit (TODO)</p></li>
+
+<li><p>sparklyr + sql (TODO) [<a href="https://spark.rstudio.com/">https://spark.rstudio.com/</a>]</p></li>
+
+<li><p>(TODO) sparkR and sparklyr comparison [<a href="https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/">https://eddjberry.netlify.com/post/2017-12-05-sparkr-vs-sparklyr/</a>]</p></li>
+
+<li><p>collect() (TODO)</p></li>
+</ul>
+
+</div>
+
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="/js/bootstrap-toc.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+$(window).scroll(function() {
+  
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>
+

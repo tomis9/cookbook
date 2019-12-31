@@ -1,0 +1,53 @@
+---
+title: "reshape2"
+date: 2017-03-01T13:07:39+01:00
+draft: false
+image: "reshape.jpg"
+categories: ["R"]
+tags: ["R", "data.table", "dataframes"]
+---
+
+## 1. What is reshape2 and why would you use it?
+
+`reshape2` is an R package that let's you change the shape of any dataframe, i.e. to pivot and to "unpivot".
+
+Keep in mind that if your favourite R package for dataframes manipulation is [data.table](http://tomis9.com/data.table), functions *dcast* and *melt* are already in this package and work exactly the same as those in `reshape2`.
+
+## 2. A "Hello World" example
+
+In fact there are only two functions worth mentioning: *dcast*, which is equivalent to MS Excel pivot table, and *melt*, which does the opposite or unpivots a table.
+
+An example dataframe:
+```{r}
+d <- data.frame(
+  account_no = paste(rep(7, 5), 1:5, sep=""),
+  Jan = rnorm(5, 10, 1),
+  Feb = rnorm(5, 10, 2),
+  Mar = rnorm(5, 10, 3)
+)
+print(d)
+```
+
+Transormation into a normalized table (unpivot):
+```{r}
+dn <- reshape2::melt(
+  data = d, 
+  id.vars = "account_no", 
+  variable.name = "month", 
+  value.name = "revenue"
+)
+print(dn)
+```
+
+And back to the previous format using a pivot:
+```{r}
+reshape2::dcast(
+  data = dn, 
+  formula = account_no ~ month, 
+  value.var = "revenue"
+)
+```
+
+## 3. Links
+
+A pretty nice and much longer tutorial is available [here](https://seananderson.ca/2013/10/19/reshape/).

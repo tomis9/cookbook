@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on tomis9&#39;s cookbook</title>
+    <link>https://tomis9.github.io/categories/devops/</link>
+    <description>Recent content in DevOps on tomis9&#39;s cookbook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 13 Aug 2019 19:10:08 +0200</lastBuildDate>
+    
+	<atom:link href="https://tomis9.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>heroku</title>
+      <link>https://tomis9.github.io/heroku/</link>
+      <pubDate>Tue, 13 Aug 2019 19:10:08 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/heroku/</guid>
+      <description>1. What is heroku and why would you use it?  heroku is a platform which lets you run your django app on a server for free. Or at least this is how I use it ;)
+ available at heroku.com
+  2. Curiosities  deployment of your app is very simple. You write yor code, test it locally and push to the repo. The app is automatically deployed, as long as you set heroku to be one of your remote git repos.</description>
+    </item>
+    
+    <item>
+      <title>rocker</title>
+      <link>https://tomis9.github.io/rocker/</link>
+      <pubDate>Sun, 16 Dec 2018 15:47:35 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/rocker/</guid>
+      <description>1. What is rocker and why would you use it?  rocker is docker container specially prepared for working with R programming language;
+ it is useful if your R model is a part of a microservice system based on docker containers;
+ you can run R/shiny-server/rstudio-server on any machine you want. The only requirement is docker.
+  2. Rocker versions An official site of rocker proposes a few versions of r images.</description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://tomis9.github.io/git/</link>
+      <pubDate>Mon, 03 Dec 2018 15:01:35 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/git/</guid>
+      <description>1. What is git and why would you use it?  Git is a totally basic program if you think seriously about programming. Seriously.
+ It&amp;rsquo;s a version control system, which makes:
+ working on the same project with many people simple;
+ remembers the whole history of the projects, i.e. all it&amp;rsquo;s chages as long as you follow git&amp;rsquo;s discipline
+   2. A &amp;ldquo;Hello world&amp;rdquo; example As you may have noticed, my posts usually contain a section called &amp;lsquo;A &amp;ldquo;Hello World&amp;rdquo; example&amp;rsquo;, but not this time.</description>
+    </item>
+    
+    <item>
+      <title>vagrant</title>
+      <link>https://tomis9.github.io/vagrant/</link>
+      <pubDate>Tue, 14 Aug 2018 14:25:43 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/vagrant/</guid>
+      <description>1. What is vagrant and why would you use it?  Vagrant let&amp;rsquo;s you setup and use virtual machines easily and quickly.
+ You store full configuration of your VM in one text file (Vagrantfile), which makes it easily portable and trackable with git(hub).
+ Vagrant may be useful for testing new tools and software. It&amp;rsquo;s more convenient than a traditional VM with a full GUI.
+  2. Installation First of all, check if you have virtualbox installed: type virtualbox and if no box pops up, install virtualbox:</description>
+    </item>
+    
+    <item>
+      <title>flask</title>
+      <link>https://tomis9.github.io/flask/</link>
+      <pubDate>Mon, 13 Aug 2018 20:19:17 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/flask/</guid>
+      <description>1. What is flask and why would you use it?  flask is a python framwework for creating web applications and apis;
+ it provides a full and simple support for backend, while you still create the frontend with html+css+javascript.
+  For production use it is not as popular as Django, as id does not scale that well to huge projects. However in data science you will not create such huge webservices and flask, with it&amp;rsquo;s simplicity, reliability, clearness and great community support is more than enough.</description>
+    </item>
+    
+    <item>
+      <title>pyenv, virtualenv, freeze</title>
+      <link>https://tomis9.github.io/pyenv/</link>
+      <pubDate>Sun, 12 Aug 2018 15:32:40 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/pyenv/</guid>
+      <description>1. What are pyenv, virtualenv and freeze and why would you use them?  these three Python packages let you install your favourite Python version with your favourite Python packages&amp;rsquo; versions on any machine independently to those already installed on the system; you can even store many Python versions and Python packages&amp;rsquo; versions;
+ pyenv let&amp;rsquo;s you install any Python version you like;
+ virtualenv let&amp;rsquo;s you install any Python&amp;rsquo;s package version you like;</description>
+    </item>
+    
+    <item>
+      <title>mesos</title>
+      <link>https://tomis9.github.io/mesos/</link>
+      <pubDate>Sun, 12 Aug 2018 15:29:44 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/mesos/</guid>
+      <description>1. What is Mesos and why would you use it?  It lets you setup and manage a cluster of machines &amp;ldquo;easily&amp;rdquo; (when you know how to use it, which is not very straightforward).
+ combined with Marathon it provides you with a nice interface to setup and manage docker containers and even build a whole system based on a microservice architecture.
+  2. Useful links  A quick introduction to Apache Mesos</description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://tomis9.github.io/docker/</link>
+      <pubDate>Sun, 12 Aug 2018 15:29:16 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/docker/</guid>
+      <description>1. What is docker and why would you use it?  &amp;ldquo;In simpler words, Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux.&amp;rdquo; Comparing to Python, it&amp;rsquo;s basically a virtualenv, but for the whole OS. Or this is some sort of a virtual machine;
+ it&amp;rsquo;s a program, which lets you to encapsulate your software into its own, the most basic &amp;ldquo;OS&amp;rdquo; (known as &amp;ldquo;container&amp;rdquo; in docker&amp;rsquo;s world) and run it on any machine/server, which has docker installed;</description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://tomis9.github.io/testing/</link>
+      <pubDate>Sun, 04 Feb 2018 12:02:23 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/testing/</guid>
+      <description>1. What is testing and why would you use it?  testing or test-driven development (TDD) is a discipline, which relies on writing a test for every functionality before creating it;
+ at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fulfill this functionality, so the test will pass.
+  In reality you modify your tests as you create the functionality or even write the tests after you are finished writing it.</description>
+    </item>
+    
+  </channel>
+</rss>

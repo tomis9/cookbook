@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on tomis9&#39;s cookbook</title>
+    <link>https://tomis9.github.io/categories/projects/</link>
+    <description>Recent content in Projects on tomis9&#39;s cookbook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 26 Jul 2019 17:58:33 +0200</lastBuildDate>
+    
+	<atom:link href="https://tomis9.github.io/categories/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>writing a cookbook</title>
+      <link>https://tomis9.github.io/cookbook/</link>
+      <pubDate>Fri, 26 Jul 2019 17:58:33 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/cookbook/</guid>
+      <description>1. Why writing a cookbook/blog? In 2016, when I decided to become a data scientist, I was overwhelmed by the number of skills I had to possess to start this sort of career. Reading job offers convinced me that I should be a specialist in:
+ statistics and mathematics (which I learned at the univerity),
+ machine learning and data mining (which are fairly easy to learn by yourself if you have a statistical background),</description>
+    </item>
+    
+    <item>
+      <title>vim vs emacs - text mining to settle the editor war</title>
+      <link>https://tomis9.github.io/vim_vs_emacs/</link>
+      <pubDate>Sat, 26 Jan 2019 14:12:24 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/vim_vs_emacs/</guid>
+      <description>This project is not finished and will be developed over time.
+ 0. Why I’m making this project  I want to try out new programming and statistical tools that I read or heard about (tidytext, nlp, laser) on a subject that I find interesting (text editors).
+ If somebody asks me if vim is a good choice for a text editor, I want to have objective arguments to prove my statement.</description>
+    </item>
+    
+  </channel>
+</rss>

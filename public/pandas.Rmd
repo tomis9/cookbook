@@ -1,0 +1,149 @@
+---
+title: "pandas"
+date: 2019-01-25T13:46:12+01:00
+draft: false
+categories: ["Python", "Data engineering", "scratchpad"]
+tags: []
+---
+
+<center>
+# This is not a proper blog post yet, just my notes.
+
+pandas (TODO)
+</center>
+
+# 1. What is `pandas` and why would you use it?
+
+* `pandas` is a Python package created for working with tables known as `DataFrame`s;
+
+* it is the only reasonable Python package for this purpose, which makes Python a little modest comparing to R (base, data.table, dplyr - every one of them has a better interface than pandas) when we process tables;
+
+Even though I use pandas almost every day, there are certain solutions that I constantly forget about.
+
+
+# 2. Examples
+
+One of the simplest, yet powerful interfaces to work with tables has SQL, so I will describe `pandas`' equivalents to SQL's functions.
+
+But first let's prepare a dataset:
+
+```{python, engine.path = '/usr/bin/python3'}
+import pandas as pd
+import re
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def prepare_iris_as_in_r():
+    iris_raw = load_iris()
+    colnames = [re.sub(' ', '_', re.sub(' \(cm\)', '', x))
+                for x in iris_raw.feature_names]
+    iris = pd.DataFrame(iris_raw.data, columns=colnames)
+    species = pd.DataFrame({'species_index': range(3),
+                            'species': iris_raw.target_names})
+    iris['species_index'] = iris_raw.target
+    iris = pd.merge(iris, species, on='species_index')
+    iris.drop('species_index', axis=1, inplace=True)
+    return iris
+```
+
+We've been working on this dataset in almost every post I wrote for this blog. It's rather small and simple, so we will not take advantage of `pandas`'s processing efficiency.
+
+```{python, engine.path = '/usr/bin/python3'}
+iris = prepare_iris_as_in_r()
+```
+
+## reading data from a file
+
+In our examples we will not be doing this, because we have already loeaded the data from `sklearn`. You can do it with:
+
+```{python, engine.path = '/usr/bin/python3', eval = FALSE}
+data = pd.read_csv()
+```
+
+>Don't name your datasets `data`. Everything we work on is data, so this name conveys no information. I named our dataset that way for the same reason as in most tutorials the default password is "password".
+
+useful parameters:
+
+* `sep`
+
+* `delimiter`
+
+* `header`
+
+Parameters are rather self-explanatory. And yes, I know that in SQL we don't read files ;)
+
+## WHERE filtering
+
+The easiest way to filter a `DataFrame` is by using:
+
+```
+iris[iris.species == "setosa"].head()
+iris[~iris.sepal_length.isna()].head()
+```
+
+# SELECT 2 selecting
+
+```{python, engine.path = '/usr/bin/python3'}
+iris[['species', 'sepal_width']]
+```
+
+# proper ways of selection + filtering
+
+# `loc` - you may use ranges as well as names
+```{python, engine.path = '/usr/bin/python3'}
+iris.loc[:10, ['species', 'sepal_length']]
+```
+
+# `iloc` - you can use unly ranges
+```{python, engine.path = '/usr/bin/python3'}
+iris.iloc[:10, :3]
+```
+
+# GROUP BY 3 aggregating
+
+```{python, engine.path = '/usr/bin/python3'}
+iris.groupby('species').agg({'sepal_length': sum, 'petal_length': np.median})
+```
+
+```
+pd.DataFrame({'count' : df1.groupby( [ "Name", "City"] ).size()}).reset_index()
+```
+
+# JOIN 4 joining
+
+# plotting
+
+```{python, engine.path = '/usr/bin/python3'}
+iris.groupby('species').size().plot.bar()
+plt.show()
+```
+
+# ordering
+
+# pivot table
+
+# indexes, or Series vs. DataFrame
+
+You may have noticed that pandas uses indexes extensively, which may be not very intuitive if you come with R or SQL background (especially that index in pandas is means something different than in SQL, which *is* misleading).  In general the easiest way to cope with their problematic nature is trying to avoid them.
+
+```{python, engine.path = '/usr/bin/python3'}
+plt.scatter(iris.sepal_length, iris.sepal_width)
+```
+
+# TODO
+
+```{python, engine.path = '/usr/bin/python3'}
+import numpy as np
+col1 = list('abcdefghij')
+start_date = pd.date_range(pd.datetime.today(), periods=10).tolist()
+end_date = pd.date_range(pd.datetime.today(), periods=10).tolist()
+
+df = pd.DataFrame(dict(col1=col1, start_date=start_date, end_date=end_date))
+
+df.melt(id_vars='col1', 
+        value_vars=['start_date', 'end_date'],
+        var_name='is_start_end',
+        value_name='date')
+```

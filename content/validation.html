@@ -1,0 +1,162 @@
+---
+title: "model validation"
+date: 2019-05-23T12:46:03+02:00
+draft: false
+categories: ["Machine learning"]
+tags: []
+---
+
+
+
+<div id="what-is-model-validation-and-why-would-you-do-it" class="section level2">
+<h2>1. What is model validation and why would you do it?</h2>
+<p>You learned your model and naturally you are wondering how good it is. There are several ways to find out, like measuring the accuracy of predictions, but you may also want to check where exactly particular predictions come from, as this is far from obvious for “black box” models.</p>
+</div>
+<div id="examples" class="section level2">
+<h2>2. Examples</h2>
+<div id="cross-validation" class="section level3">
+<h3>cross-validation</h3>
+</div>
+<div id="confusion-matrix" class="section level3">
+<h3>confusion matrix</h3>
+<p><a href="https://www.rdocumentation.org/packages/caret/versions/3.45/topics/confusionMatrix" class="uri">https://www.rdocumentation.org/packages/caret/versions/3.45/topics/confusionMatrix</a></p>
+<p>Confusion matrix is confusing at all as the name may suggest.</p>
+<ul>
+<li><p>base R</p></li>
+<li><p>dataset preparation (described in more detail <a href="http://tomis9.com/useful_processing">here</a>)</p></li>
+</ul>
+<pre class="r"><code># prepare the dataset
+library(caret)</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>species &lt;- c(&quot;setosa&quot;, &quot;versicolor&quot;)
+d &lt;- iris[iris$Species %in% species,]
+d$Species &lt;- factor(d$Species, levels = species)
+trainIndex &lt;- caret::createDataPartition(d$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train &lt;- d[trainIndex,]
+test &lt;- d[-trainIndex,]
+y_test &lt;- test$Species == species[2]</code></pre>
+<p>and the logistic regression itself:</p>
+<pre class="r"><code>m &lt;- glm(Species ~ Sepal.Length, train, family = &quot;binomial&quot;)
+y_hat_test &lt;- predict(m, test[,1:4], type = &quot;response&quot;) &gt; 0.5</code></pre>
+<p>We’ve prepared our predictions, as well as testing target, as vectors of binary values:</p>
+<pre class="r"><code>y_test[1:10]</code></pre>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>y_hat_test[1:10]</code></pre>
+<pre><code>##     3     4     5     9    19    21    22    25    26    33 
+## FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+<p>so now we may use a simple <code>table()</code> function to create a confusion matrix:</p>
+<pre class="r"><code>table(y_hat_test, y_test)</code></pre>
+<pre><code>##           y_test
+## y_hat_test FALSE TRUE
+##      FALSE    11    1
+##      TRUE      4   14</code></pre>
+<ul>
+<li>R caret</li>
+</ul>
+<p><code>caret</code> provides a much broader summary of confusion matrix:</p>
+<pre class="r"><code>library(caret)
+m2 &lt;- train(Species ~ Sepal.Length, train, method = &quot;glm&quot;, family = binomial)
+confusionMatrix(predict(m2, test), test$Species)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##             Reference
+## Prediction   setosa versicolor
+##   setosa         11          1
+##   versicolor      4         14
+##                                         
+##                Accuracy : 0.833         
+##                  95% CI : (0.653, 0.944)
+##     No Information Rate : 0.5           
+##     P-Value [Acc &gt; NIR] : 0.000162      
+##                                         
+##                   Kappa : 0.667         
+##                                         
+##  Mcnemar&#39;s Test P-Value : 0.371093      
+##                                         
+##             Sensitivity : 0.733         
+##             Specificity : 0.933         
+##          Pos Pred Value : 0.917         
+##          Neg Pred Value : 0.778         
+##              Prevalence : 0.500         
+##          Detection Rate : 0.367         
+##    Detection Prevalence : 0.400         
+##       Balanced Accuracy : 0.833         
+##                                         
+##        &#39;Positive&#39; Class : setosa        
+## </code></pre>
+<pre class="python"><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
+iris = load_iris()
+cond = iris.target != 0
+X = iris.data[cond]
+y = iris.target[cond]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.33, random_state=42)
+lr = LogisticRegression()
+lr.fit(X_train, y_train)
+accuracy_score(lr.predict(X_test), y_test)
+print(confusion_matrix(lr.predict(X_test), y_test))</code></pre>
+<pre><code>## [[16  0]
+##  [ 3 14]]</code></pre>
+</div>
+<div id="roc-auc" class="section level3">
+<h3>ROC, AUC</h3>
+<p>Let’s say you created a simple classifier, e.g. using logistic regression. The classifier does not return classes though, but the probability that this particular observation belongs to class 1. As what we need are classes, not probabilities, we have to somehow <em>map</em> these probabilities into classes. The easiest way to achieve this is by using a function like:</p>
+<p><span class="math display">\[ f(t) = \begin{cases} 1 &amp; \text{when $p \geqslant t$} \\ 0 &amp; \text{when $p &lt; t$} \\ \end{cases} \]</span></p>
+<p>where <span class="math inline">\(t\)</span> is a threshold set by <em>you</em>. Choose wisely ;)</p>
+<p>Choosing a proper value of <span class="math inline">\(t\)</span> is known as a “Precision / Recall tradeoff”:</p>
+<ul>
+<li><p><a href="https://towardsdatascience.com/precision-vs-recall-386cf9f89488">a wonderful, intuitive article</a></p></li>
+<li><p><a href="https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c">another good article</a></p></li>
+<li><p><a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5">A wonderful article about AUC and ROC curves</a>. There is no nedd to duplicate it.</p></li>
+</ul>
+<p>Different values of TPR and FPR for various <span class="math inline">\(t\)</span> create a ROC curve. Area Under this Curve is called AUC.</p>
+<p><em>R - using ROCR package</em></p>
+<pre class="r"><code>library(ROCR)
+plot_roc_get_auc &lt;- function(pred, test_labels) {
+  roc_pred &lt;- ROCR::prediction(pred, test_labels)
+  roc_perf &lt;- ROCR::performance(roc_pred, measure = &quot;tpr&quot;, x.measure = &quot;fpr&quot;)
+  ROCR::plot(roc_perf, col = 1:10)
+  abline(a = 0, b = 1)
+  auc_perf &lt;- ROCR::performance(roc_pred, measure = &quot;auc&quot;, x.measure = &quot;fpr&quot;)
+  return(auc_perf@y.values[[1]])
+}
+
+species &lt;- c(&quot;setosa&quot;, &quot;versicolor&quot;)
+iris_bin &lt;- iris[iris$Species %in% species,]
+iris_bin$Species &lt;- factor(iris_bin$Species, levels = species)
+trainIndex &lt;- caret::createDataPartition(iris_bin$Species, p=0.7, list = FALSE, 
+                                         times = 1)
+train &lt;- iris_bin[trainIndex,]
+test &lt;- iris_bin[-trainIndex,]
+
+
+m &lt;- glm(Species ~ Sepal.Length, train, family = binomial)
+plot_roc_get_auc(
+  pred = predict(m, test[,1:4], type = &quot;response&quot;),
+  test_labels = as.integer(test[[&quot;Species&quot;]]) - 1)</code></pre>
+<p><img src="/validation_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>## [1] 0.9378</code></pre>
+<pre class="r"><code>rf &lt;- randomForest::randomForest(Species ~ ., data = train)
+plot_roc_get_auc(
+  pred = predict(rf, test[, 1:4], type = &quot;prob&quot;)[,&#39;versicolor&#39;],
+  test_labels = as.integer(test[[&quot;Species&quot;]]) - 1)</code></pre>
+<p><img src="/validation_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
+<pre><code>## [1] 1</code></pre>
+<p><a href="https://towardsdatascience.com/supervised-machine-learning-model-validation-a-step-by-step-approach-771109ae0253" class="uri">https://towardsdatascience.com/supervised-machine-learning-model-validation-a-step-by-step-approach-771109ae0253</a></p>
+<p>ROC - TPR vs FPR, where</p>
+<p><span class="math display">\[ \textrm{TPR} = \frac{\textrm{TP}}{\textrm{TP} + \textrm{FP}} \]</span></p>
+<p>TPR - True Positive Rate TP - True Positive FP - False Positive</p>
+<p>parameter search</p>
+<p><a href="https://scikit-learn.org/stable/modules/grid_search.html#tuning-the-hyper-parameters-of-an-estimator" class="uri">https://scikit-learn.org/stable/modules/grid_search.html#tuning-the-hyper-parameters-of-an-estimator</a></p>
+<p>TODO: <a href="https://rviews.rstudio.com/2019/03/01/some-r-packages-for-roc-curves/" class="uri">https://rviews.rstudio.com/2019/03/01/some-r-packages-for-roc-curves/</a></p>
+<p>TODO: <a href="https://www.saedsayad.com/model_evaluation_c.htm" class="uri">https://www.saedsayad.com/model_evaluation_c.htm</a></p>
+<p>TODO: <a href="https://eli5.readthedocs.io/en/latest/" class="uri">https://eli5.readthedocs.io/en/latest/</a></p>
+<p>TODO: <a href="https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e" class="uri">https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e</a></p>
+<p>TODO: <a href="https://github.com/slundberg/shap" class="uri">https://github.com/slundberg/shap</a></p>
+</div>
+</div>

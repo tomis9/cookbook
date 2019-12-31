@@ -1,0 +1,87 @@
+---
+title: "pytorch"
+date: 2019-01-06T17:44:32+01:00
+draft: false
+categories: ["Python", "Machine learning"]
+---
+
+
+
+<div id="what-is-pytorch-and-why-would-you-use-it" class="section level2">
+<h2>1. What is <code>pytorch</code> and why would you use it?</h2>
+<ul>
+<li><p>pytorch is a python package which makes learning deep neaural networks relatively easy and fast</p></li>
+<li><p>it’s main “rival” is tensorflow, as pytorch was released by Facebook, but tensorflow by Google</p></li>
+</ul>
+</div>
+<div id="hello-world-example" class="section level2">
+<h2>2. “Hello world” example</h2>
+<blockquote>
+<p>inspired by <a href="https://towardsdatascience.com/pytorch-vs-tensorflow-spotting-the-difference-25c75777377b">this article</a></p>
+</blockquote>
+<p>Let’s define some data:</p>
+<pre class="python"><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+theta = 2
+x = np.random.rand(10) * 10
+y = x ** theta
+data = pd.DataFrame(dict(x=x, y=y))
+print(data)</code></pre>
+<pre><code>##           x          y
+## 0  8.149627  66.416424
+## 1  2.777501   7.714514
+## 2  3.320059  11.022793
+## 3  1.097359   1.204196
+## 4  3.898380  15.197367
+## 5  5.875902  34.526226
+## 6  9.484025  89.946733
+## 7  2.873263   8.255638
+## 8  0.664069   0.440988
+## 9  3.069305   9.420631</code></pre>
+<pre class="python"><code>plt.figure(1)
+plt.scatter(x, y)
+plt.show()</code></pre>
+<p><img src="/pytorch_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><code>theta</code> is a parameter we’ll be estimating. We will see how close to 2 our optimization algorithm gets us.</p>
+<p>Estimating the value of theta:</p>
+<pre class="python"><code>import torch
+from torch.autograd import Variable
+def rmse(y, y_hat):
+    &quot;&quot;&quot;Compute root mean squared error&quot;&quot;&quot;
+    return torch.sqrt(torch.mean((y - y_hat).pow(2).sum()))
+def forward(x, e):
+    &quot;&quot;&quot;Forward pass for our fuction&quot;&quot;&quot;
+    return x.pow(e.repeat(x.size(0)))
+# initial settings
+learning_rate = 0.00005
+x = Variable(torch.FloatTensor(data[&#39;x&#39;]), requires_grad=False)
+y = Variable(torch.FloatTensor(data[&#39;y&#39;]), requires_grad=False)
+# should be a random value, but don&#39;t know how to set seed in pytorch
+theta_hat = Variable(torch.FloatTensor([1]), requires_grad=True)
+loss_history = []
+theta_history = []
+for i in range(0, 600):
+    y_hat = forward(x, theta_hat)
+    loss = rmse(y, y_hat)
+    loss_history.append(loss.data.item())
+    loss.backward()
+    theta_hat.data -= learning_rate * theta_hat.grad.data
+    theta_hat.grad.data.zero_()
+    theta_history.append(theta_hat.data.item())</code></pre>
+<p>And the estimation is…</p>
+<pre class="python"><code>print(theta_hat.data)</code></pre>
+<pre><code>## tensor([2.0119])</code></pre>
+<p>Not bad! Let’s see how the process of learning looked:</p>
+<pre class="python"><code>plt.figure(2)
+plt.scatter(x=range(len(loss_history)), y=loss_history)
+plt.title(&quot;Loss history&quot;)
+plt.show()</code></pre>
+<p><img src="/pytorch_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="python"><code>plt.figure(3)
+plt.scatter(x=range(len(theta_history)), y=theta_history)
+plt.title(&quot;Theta history&quot;)
+plt.show()</code></pre>
+<p><img src="/pytorch_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Pytorch reached the correct estimation in about 200 iterations.</p>
+</div>

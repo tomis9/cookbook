@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data engineering on tomis9&#39;s cookbook</title>
+    <link>https://tomis9.github.io/categories/data-engineering/</link>
+    <description>Recent content in Data engineering on tomis9&#39;s cookbook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 17 May 2019 15:44:38 +0200</lastBuildDate>
+    
+	<atom:link href="https://tomis9.github.io/categories/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>useful processing</title>
+      <link>https://tomis9.github.io/useful_processing/</link>
+      <pubDate>Fri, 17 May 2019 15:44:38 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/useful_processing/</guid>
+      <description>1. What is useful processing?  many machine learning algorithms require the same kinds of data preprocessing in order for them to work properly. In other words, theses kinds of processing are useful.   2. Examples one-hot encoding R
+# data.table dt_iris &amp;lt;- data.table::as.data.table(iris) mltools::one_hot(dt_iris) ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species_setosa ## 1: 5.1 3.5 1.4 0.2 1 ## 2: 4.9 3.0 1.4 0.2 1 ## 3: 4.7 3.</description>
+    </item>
+    
+    <item>
+      <title>pandas</title>
+      <link>https://tomis9.github.io/pandas/</link>
+      <pubDate>Fri, 25 Jan 2019 13:46:12 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/pandas/</guid>
+      <description>This is not a proper blog post yet, just my notes. pandas (TODO)   1. What is pandas and why would you use it?  pandas is a Python package created for working with tables known as DataFrames;
+ it is the only reasonable Python package for this purpose, which makes Python a little modest comparing to R (base, data.table, dplyr - every one of them has a better interface than pandas) when we process tables;</description>
+    </item>
+    
+    <item>
+      <title>hadoop</title>
+      <link>https://tomis9.github.io/hadoop/</link>
+      <pubDate>Tue, 04 Dec 2018 21:32:35 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/hadoop/</guid>
+      <description>1. What is hadoop and why would you use it?  hadoop is the first popular big data tool ever;
+ it let&amp;rsquo;s you &amp;ldquo;quickly&amp;rdquo; compute huge amounts of data thanks to dividing computation into many machines (a cluster of machines); &amp;ldquo;quickly&amp;rdquo; comparing to a standard, one-machine approach;
+ you can store and easily access huge amounts of data thanks to hadoop&amp;rsquo;s distributed file system (hdfs);
+ in general, hadoop is a cornerstone of big data.</description>
+    </item>
+    
+    <item>
+      <title>spark</title>
+      <link>https://tomis9.github.io/spark/</link>
+      <pubDate>Fri, 23 Nov 2018 12:58:49 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/spark/</guid>
+      <description>1. What is spark and why would use use it?  Spark is a smooth framework for working with big data, i.e. hdfs;
+ it can be accessed from Python, R, scala (spark is actually written in scala) and java;
+ it is probably the most popular big data tool nowadays for data scientists.
+  2. A few &amp;ldquo;Hello World&amp;rdquo; examples a) pyspark Prerequisites Installation of pyspark In this tutorial we will work on a development python version of spark.</description>
+    </item>
+    
+    <item>
+      <title>logging</title>
+      <link>https://tomis9.github.io/logging/</link>
+      <pubDate>Sat, 20 Oct 2018 00:15:21 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/logging/</guid>
+      <description>1. What is logging and why would you use it?  Logging, in general, sends information about the execution of a program to the outside of the program, e.g. to stdout or to a file. Why would that be useful?
+ You may get the information of how and when the program was executed, e.g. who was using it&amp;rsquo;s functionalities and if all the pieces of your program finished correctly.</description>
+    </item>
+    
+    <item>
+      <title>airflow</title>
+      <link>https://tomis9.github.io/airflow/</link>
+      <pubDate>Tue, 14 Aug 2018 11:51:12 +0200</pubDate>
+      
+      <guid>https://tomis9.github.io/airflow/</guid>
+      <description>1. What is airflow and why would you use it?  airflow lets you manage your dataflow as a graph (direct acyclic graph or DAG), wchich consists of separate Tasks, and schedule them  Wait, you may say, I can do that with cron!
+Yes, you can, but with airflow:
+ you can easily divide your app into smaller tasks and monitor their reliability and execution duration;
+ the performance is more transparent;</description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://tomis9.github.io/testing/</link>
+      <pubDate>Sun, 04 Feb 2018 12:02:23 +0100</pubDate>
+      
+      <guid>https://tomis9.github.io/testing/</guid>
+      <description>1. What is testing and why would you use it?  testing or test-driven development (TDD) is a discipline, which relies on writing a test for every functionality before creating it;
+ at first the test will fail, as we have not provided the proper functionality yet. Our goal is to fulfill this functionality, so the test will pass.
+  In reality you modify your tests as you create the functionality or even write the tests after you are finished writing it.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>tomis9&#39;s cookbook</title>
+  <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  
+  <link rel="stylesheet" href="/css/bootstrap-toc.css">
+
+  
+  <link rel="stylesheet" href="/css/darcula.css">
+
+  
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">        
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+</head>
+
+
+<body data-spy="scroll" data-target="#toc">
+
+
+
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-hide transition">
+
+  
+  <a class="navbar-brand"></a>
+
+  <button class="navbar-toggler float-xs-right" data-toggle="collapse" data-target="#collapsibleNavbar">
+    Menu
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Python</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/beautiful_soup/">beautiful soup</a>
+          
+            <a class="dropdown-item" href="/decorators/">decorators</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqlalchemy/">sqlAlchemy</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">R</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/cinr/">C in R</a>
+          
+            <a class="dropdown-item" href="/rmariadb/">RMariaDB (former RMySQL)</a>
+          
+            <a class="dropdown-item" href="/rcpp/">Rcpp</a>
+          
+            <a class="dropdown-item" href="/classess4/">classes - S4</a>
+          
+            <a class="dropdown-item" href="/data.table/">data.table</a>
+          
+            <a class="dropdown-item" href="/debugging/">debugging</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/ggplot2/">ggplot(2)</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/lubridate/">lubridate</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/packages/">packages</a>
+          
+            <a class="dropdown-item" href="/rtags/">rTags</a>
+          
+            <a class="dropdown-item" href="/reshape2/">reshape2</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/rstanarm/">rstanarm</a>
+          
+            <a class="dropdown-item" href="/shiny/">shiny</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/sqldf/">sqldf</a>
+          
+            <a class="dropdown-item" href="/stringr/">stringr and regex</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/tidyverse/">tidyverse</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Data engineering</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/airflow/">airflow</a>
+          
+            <a class="dropdown-item" href="/hadoop/">hadoop</a>
+          
+            <a class="dropdown-item" href="/logging/">logging</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/spark/">spark</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Machine learning</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/ml/">basic machine learning algorithms</a>
+          
+            <a class="dropdown-item" href="/decision_trees/">decision trees</a>
+          
+            <a class="dropdown-item" href="/learning_tensorflow/">learning tensorflow</a>
+          
+            <a class="dropdown-item" href="/validation/">model validation</a>
+          
+            <a class="dropdown-item" href="/nls/">nls</a>
+          
+            <a class="dropdown-item" href="/pytorch/">pytorch</a>
+          
+            <a class="dropdown-item" href="/tensorflow/">tensorflow</a>
+          
+            <a class="dropdown-item" href="/useful_processing/">useful processing</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">DevOps</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/docker/">docker</a>
+          
+            <a class="dropdown-item" href="/flask/">flask</a>
+          
+            <a class="dropdown-item" href="/git/">git</a>
+          
+            <a class="dropdown-item" href="/heroku/">heroku</a>
+          
+            <a class="dropdown-item" href="/mesos/">mesos</a>
+          
+            <a class="dropdown-item" href="/pyenv/">pyenv, virtualenv, freeze</a>
+          
+            <a class="dropdown-item" href="/rocker/">rocker</a>
+          
+            <a class="dropdown-item" href="/testing/">testing</a>
+          
+            <a class="dropdown-item" href="/vagrant/">vagrant</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">Projects</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/vim_vs_emacs/">vim vs emacs - text mining to settle the editor war</a>
+          
+            <a class="dropdown-item" href="/cookbook/">writing a cookbook</a>
+          
+        </div>
+      </li>
+    
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">scratchpad</a>
+        <div class="dropdown-menu scrollable-menu">
+          
+            <a class="dropdown-item" href="/aws/">Aws</a>
+          
+            <a class="dropdown-item" href="/hugo/">Hugo</a>
+          
+            <a class="dropdown-item" href="/file/">Rmarkdown total basics</a>
+          
+            <a class="dropdown-item" href="/caffee/">caffee</a>
+          
+            <a class="dropdown-item" href="/cassandra/">cassandra</a>
+          
+            <a class="dropdown-item" href="/dimensionality/">dimensionality</a>
+          
+            <a class="dropdown-item" href="/django/">django</a>
+          
+            <a class="dropdown-item" href="/featuretools/">featuretools</a>
+          
+            <a class="dropdown-item" href="/gitlab_ci/">gitlab-ci</a>
+          
+            <a class="dropdown-item" href="/javascript/">javascript</a>
+          
+            <a class="dropdown-item" href="/kafka/">kafka</a>
+          
+            <a class="dropdown-item" href="/keras/">keras</a>
+          
+            <a class="dropdown-item" href="/machine_learning_problems/">machine learning problems</a>
+          
+            <a class="dropdown-item" href="/marathon/">marathon</a>
+          
+            <a class="dropdown-item" href="/nlp/">nlp</a>
+          
+            <a class="dropdown-item" href="/pandas/">pandas</a>
+          
+            <a class="dropdown-item" href="/passing_arguments/">passing arguments to scripts</a>
+          
+            <a class="dropdown-item" href="/redis/">redis</a>
+          
+            <a class="dropdown-item" href="/regex/">regex</a>
+          
+            <a class="dropdown-item" href="/tensorflow_serving/">tensorflow_serving</a>
+          
+            <a class="dropdown-item" href="/theano/">theano</a>
+          
+            <a class="dropdown-item" href="/vim_as_ide/">vim as IDE</a>
+          
+        </div>
+      </li>
+    
+    </ul>
+
+  </div>  
+
+</nav>
+
+
+
+<div class="jumbotron text-center" id="header">
+
+  <div id="header-title">
+      <a href="/">tomis9&#39;s cookbook</a>
+  </div>
+
+  <p style="color: white;">data science tutorials and snippets prepared by tomis9</p> 
+
+</div>
+
+
+<nav id="toc" data-toggle="toc" class="sticky-top d-none d-xl-block"></nav>
+
+<div class="article">
+
+<div class="article-categories">
+  
+    <object style="vertical-align:middle" type="image/svg+xml" data="/folder.svg" height="15px" width="15px"></object> 
+    <a href="/categories/r" role="button">R </a>
+    &emsp;
+  </br>
+</div>
+<div class="article-title">
+  
+  rstanarm
+
+</div>
+<div class="article-info">
+    Dec 23, 2018 &emsp;  &emsp; 3 minutes read
+</div>
+
+
+
+<h2 id="1-what-is-rstanarm-and-why-would-you-use-it">1. What is rstanarm and why would you use it?</h2>
+
+<ul>
+<li><p>it&rsquo;s an R interface to <a href="https://mc-stan.org/">stan</a></p></li>
+
+<li><p>it&rsquo;s better than rstan, because (according to <a href="https://mc-stan.org/users/interfaces/rstanarm">rstanarm webpage</a>)</p>
+
+<ul>
+<li><p>models are specified with formula syntax,</p></li>
+
+<li><p>data is provided as a data frame, and</p></li>
+
+<li><p>additional arguments are available to specify priors.</p></li>
+</ul></li>
+
+<li><p>in a nutshell, rstanarm let&rsquo;s you estimate various Bayesian models and examine them with <a href="https://mc-stan.org/users/interfaces/shinystan">shinystan</a>.</p></li>
+</ul>
+
+<h2 id="2-a-hello-world-example">2. A &ldquo;Hello World&rdquo; example</h2>
+
+<p>Let&rsquo;s begin our adventure with rstanarm with a package on which rstanarm is built, i.e. rstan. Why was rstanarm even created? It provides a nice R interface for many rstan fucntions, in particular, you do not have to keep your model definition in a separate &ldquo;.stan&rdquo; file nor in a string, but you write it just as you did in R, with a function + formula syntax.</p>
+
+<p>In the following examples we will calculate coefficients of the simplest statistical model, which is linear regression.</p>
+
+<h3 id="rstan-example">rstan example</h3>
+
+<p>Let&rsquo;s see how we can estimate coefficients of linear regression in rstan.</p>
+
+<p><em>based on <a href="http://thestatsgeek.com/2015/06/08/my-first-foray-with-stan/">http://thestatsgeek.com/2015/06/08/my-first-foray-with-stan/</a></em></p>
+
+<pre><code>model_code &lt;- &quot;
+data {
+  int N;
+  vector[N] x;
+  vector[N] y;
+}
+parameters {
+  real alpha;
+  real beta;
+  real sigma;
+}
+model {
+  y ~ normal(alpha + beta * x, sigma);
+}
+&quot;
+
+set.seed(123)
+n &lt;- 100
+x &lt;- rnorm(n)
+y &lt;- x + rnorm(n)
+mydata &lt;- list(N = n, y = y, x=x)
+
+library(rstan)
+fit &lt;- stan(model_code = model_code, data = mydata, 
+            iter = 1000, chains = 4)
+fit
+
+summary(lm(y~x))
+</code></pre>
+
+<p>Having the coefs estimated, let&rsquo;s see the results in a graphical, interactive form:</p>
+
+<p><em>base on <a href="http://mc-stan.org/shinystan/articles/shinystan-package.html">http://mc-stan.org/shinystan/articles/shinystan-package.html</a></em></p>
+
+<pre><code>library(shinystan)
+my_sso &lt;- launch_shinystan(fit)
+</code></pre>
+
+<p>What happened here?</p>
+
+<ul>
+<li><p>we defined <code>model_code</code>, in which we provided all the important information about estimation of the model; we could have save it in a <code>.stan</code> file;</p></li>
+
+<li><p>we created a sample dataset and saved it into a list <code>mydata</code>;</p></li>
+
+<li><p>we fitted the model with <code>stan</code>;</p></li>
+
+<li><p>we may compare it&rsquo;s results with a regular model estimated with <code>lm()</code>;</p></li>
+
+<li><p>we launched the <code>shinystan</code> GUI to look into the model.</p></li>
+</ul>
+
+<p>Concluding, modelling in rstan does not really resemble R programming language that we use every day.</p>
+
+<h3 id="rstanarm-example">rstanarm example</h3>
+
+<p>Let&rsquo;s use the dataset from the previous section (rstan example) for estimating coefficients of linear regression.</p>
+
+<p><em>based on <a href="http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm">http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm</a></em></p>
+
+<pre><code>library(rstanarm)
+
+mydata_df &lt;- data.frame(y = y, x = x)
+fit2 &lt;- stan_glm(y ~ x, data = mydata_df, iter=1000, chains = 4)
+fit2
+
+library(shinystan)
+launch_shinystan(fit2)
+</code></pre>
+
+<p>What happened here?</p>
+
+<ul>
+<li><p>we loaded <code>rstanarm</code> package;</p></li>
+
+<li><p>we created a <code>data.frame</code>, which contains our vectors from previous section;</p></li>
+
+<li><p>we fitted a generalised linear model with <code>glm()</code></p></li>
+
+<li><p>and launched <code>shinystan</code> to view it in GUI.</p></li>
+</ul>
+
+<p>Rstanarm provides a much more familiar syntax, comparing to rstan.</p>
+
+<h2 id="3-useful-links">3. Useful links</h2>
+
+<h4 id="rstan">rstan</h4>
+
+<ul>
+<li><p><a href="http://thestatsgeek.com/2015/06/08/my-first-foray-with-stan/">example of least squares in rstan</a></p></li>
+
+<li><p><a href="https://mc-stan.org/users/interfaces/rstan.html">RStan</a></p></li>
+</ul>
+
+<h4 id="rstanarm">rstanarm</h4>
+
+<ul>
+<li><p><a href="http://m-clark.github.io/workshops/bayesian/04_R.html#rstanarm">a very good introductory article</a></p></li>
+
+<li><p><a href="https://cran.r-project.org/web/packages/rstanarm/vignettes/rstanarm.html">tutorial/documentation/vignette</a></p></li>
+
+<li><p><a href="http://mc-stan.org/rstanarm/articles/">other vignettes</a></p></li>
+
+<li><p><a href="http://kemacdonald.com/materials/langcog_rstanarm_tutorial_sleep.nb.html">rstanarm + mixed effects</a></p></li>
+
+<li><p><a href="https://www.datacamp.com/courses/bayesian-regression-modeling-with-rstanarm">datacamp course of rstanarm</a></p></li>
+
+<li><p><a href="http://www.tqmp.org/RegularArticles/vol14-2/p099/p099.pdf">User-friendly Bayesian regression modeling: A tutorial with rstanarm and shinystan</a></p></li>
+</ul>
+
+<h4 id="bayes">Bayes</h4>
+
+<ul>
+<li><a href="https://www.goodreads.com/book/show/9003187-doing-bayesian-data-analysis">Doing Bayesian Data Analysis</a> - <em>probably</em> the best book to learn the Bayesian philosophy</li>
+</ul>
+
+</div>
+
+<div class="jumbotron text-center" id="footer">
+
+  made using &emsp;
+  <br class="d-xl-none">
+  <a href="https://gohugo.io/">Hugo</a> |
+  <a href="https://getbootstrap.com/">Bootstrap</a> |
+  <a href="https://highlightjs.org/">highlightjs</a> |
+  <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> |
+  <a href="https://fonts.google.com/">Google fonts</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://github.com/tomis9/cookbook">github</a> |
+  <a href="https://travis-ci.org/tomis9/cookbook">travis-ci</a> <a href="https://travis-ci.org/tomis9/cookbook"><img src="https://api.travis-ci.org/tomis9/cookbook.png"></img></a> |
+  <a href="https://hub.docker.com/r/tomis9/cookbook">docker hub</a> &emsp;
+  <br class="d-xl-none">
+  <a href="https://aws.amazon.com/s3">Amazon S3</a> |
+  <a href="https://aws.amazon.com/route53/">Amazon Route 53</a> &emsp;
+  <br class="d-xl-none">
+  Copyright &copy; 2019 tomis9
+
+</div>
+
+</body>
+
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="/js/bootstrap-toc.js"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+$(window).scroll(function() {
+  
+  if ($(window).scrollTop() > 100 ) {
+    $('.navbar').removeClass('navbar-hide');
+    $('.navbar').addClass('navbar-show');
+  } else {
+    $('.navbar').removeClass('navbar-show');
+    $('.navbar').addClass('navbar-hide');
+  };   	
+});
+</script>
+
+</html>
+

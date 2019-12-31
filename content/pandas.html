@@ -1,0 +1,120 @@
+---
+title: "pandas"
+date: 2019-01-25T13:46:12+01:00
+draft: false
+categories: ["Python", "Data engineering", "scratchpad"]
+tags: []
+---
+
+
+
+<center>
+<div id="this-is-not-a-proper-blog-post-yet-just-my-notes." class="section level1">
+<h1>This is not a proper blog post yet, just my notes.</h1>
+pandas (TODO)
+</center>
+</div>
+<div id="what-is-pandas-and-why-would-you-use-it" class="section level1">
+<h1>1. What is <code>pandas</code> and why would you use it?</h1>
+<ul>
+<li><p><code>pandas</code> is a Python package created for working with tables known as <code>DataFrame</code>s;</p></li>
+<li><p>it is the only reasonable Python package for this purpose, which makes Python a little modest comparing to R (base, data.table, dplyr - every one of them has a better interface than pandas) when we process tables;</p></li>
+</ul>
+<p>Even though I use pandas almost every day, there are certain solutions that I constantly forget about.</p>
+</div>
+<div id="examples" class="section level1">
+<h1>2. Examples</h1>
+<p>One of the simplest, yet powerful interfaces to work with tables has SQL, so I will describe <code>pandas</code>’ equivalents to SQL’s functions.</p>
+<p>But first let’s prepare a dataset:</p>
+<pre class="python"><code>import pandas as pd
+import re
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+import numpy as np
+def prepare_iris_as_in_r():
+    iris_raw = load_iris()
+    colnames = [re.sub(&#39; &#39;, &#39;_&#39;, re.sub(&#39; \(cm\)&#39;, &#39;&#39;, x))
+                for x in iris_raw.feature_names]
+    iris = pd.DataFrame(iris_raw.data, columns=colnames)
+    species = pd.DataFrame({&#39;species_index&#39;: range(3),
+                            &#39;species&#39;: iris_raw.target_names})
+    iris[&#39;species_index&#39;] = iris_raw.target
+    iris = pd.merge(iris, species, on=&#39;species_index&#39;)
+    iris.drop(&#39;species_index&#39;, axis=1, inplace=True)
+    return iris</code></pre>
+<p>We’ve been working on this dataset in almost every post I wrote for this blog. It’s rather small and simple, so we will not take advantage of <code>pandas</code>’s processing efficiency.</p>
+<pre class="python"><code>iris = prepare_iris_as_in_r()</code></pre>
+<div id="reading-data-from-a-file" class="section level2">
+<h2>reading data from a file</h2>
+<p>In our examples we will not be doing this, because we have already loeaded the data from <code>sklearn</code>. You can do it with:</p>
+<pre class="python"><code>data = pd.read_csv()</code></pre>
+<blockquote>
+<p>Don’t name your datasets <code>data</code>. Everything we work on is data, so this name conveys no information. I named our dataset that way for the same reason as in most tutorials the default password is “password”.</p>
+</blockquote>
+<p>useful parameters:</p>
+<ul>
+<li><p><code>sep</code></p></li>
+<li><p><code>delimiter</code></p></li>
+<li><p><code>header</code></p></li>
+</ul>
+<p>Parameters are rather self-explanatory. And yes, I know that in SQL we don’t read files ;)</p>
+</div>
+<div id="where-filtering" class="section level2">
+<h2>WHERE filtering</h2>
+<p>The easiest way to filter a <code>DataFrame</code> is by using:</p>
+<pre><code>iris[iris.species == &quot;setosa&quot;].head()
+iris[~iris.sepal_length.isna()].head()</code></pre>
+</div>
+</div>
+<div id="select-2-selecting" class="section level1">
+<h1>SELECT 2 selecting</h1>
+<pre class="python"><code>iris[[&#39;species&#39;, &#39;sepal_width&#39;]]</code></pre>
+</div>
+<div id="proper-ways-of-selection-filtering" class="section level1">
+<h1>proper ways of selection + filtering</h1>
+</div>
+<div id="loc---you-may-use-ranges-as-well-as-names" class="section level1">
+<h1><code>loc</code> - you may use ranges as well as names</h1>
+<pre class="python"><code>iris.loc[:10, [&#39;species&#39;, &#39;sepal_length&#39;]]</code></pre>
+</div>
+<div id="iloc---you-can-use-unly-ranges" class="section level1">
+<h1><code>iloc</code> - you can use unly ranges</h1>
+<pre class="python"><code>iris.iloc[:10, :3]</code></pre>
+</div>
+<div id="group-by-3-aggregating" class="section level1">
+<h1>GROUP BY 3 aggregating</h1>
+<pre class="python"><code>iris.groupby(&#39;species&#39;).agg({&#39;sepal_length&#39;: sum, &#39;petal_length&#39;: np.median})</code></pre>
+<pre><code>pd.DataFrame({&#39;count&#39; : df1.groupby( [ &quot;Name&quot;, &quot;City&quot;] ).size()}).reset_index()</code></pre>
+</div>
+<div id="join-4-joining" class="section level1">
+<h1>JOIN 4 joining</h1>
+</div>
+<div id="plotting" class="section level1">
+<h1>plotting</h1>
+<pre class="python"><code>iris.groupby(&#39;species&#39;).size().plot.bar()
+plt.show()</code></pre>
+<p><img src="/pandas_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="ordering" class="section level1">
+<h1>ordering</h1>
+</div>
+<div id="pivot-table" class="section level1">
+<h1>pivot table</h1>
+</div>
+<div id="indexes-or-series-vs.dataframe" class="section level1">
+<h1>indexes, or Series vs. DataFrame</h1>
+<p>You may have noticed that pandas uses indexes extensively, which may be not very intuitive if you come with R or SQL background (especially that index in pandas is means something different than in SQL, which <em>is</em> misleading). In general the easiest way to cope with their problematic nature is trying to avoid them.</p>
+<pre class="python"><code>plt.scatter(iris.sepal_length, iris.sepal_width)</code></pre>
+</div>
+<div id="todo" class="section level1">
+<h1>TODO</h1>
+<pre class="python"><code>import numpy as np
+col1 = list(&#39;abcdefghij&#39;)
+start_date = pd.date_range(pd.datetime.today(), periods=10).tolist()
+end_date = pd.date_range(pd.datetime.today(), periods=10).tolist()
+df = pd.DataFrame(dict(col1=col1, start_date=start_date, end_date=end_date))
+df.melt(id_vars=&#39;col1&#39;, 
+        value_vars=[&#39;start_date&#39;, &#39;end_date&#39;],
+        var_name=&#39;is_start_end&#39;,
+        value_name=&#39;date&#39;)</code></pre>
+</div>
