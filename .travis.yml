@@ -9,14 +9,15 @@ branches:
 
 before_install:
   - docker pull tomis9/cookbook:0.5
-  - docker run -v /home/travis/build/tomis9/cookbook/hugo:/cookbook/hugo tomis9/cookbook:0.5
-
-
-
+  - docker run -v /home/travis/build/tomis9/cookbook:/cookbook tomis9/cookbook:0.5
 
 deploy:
-  local_dir: hugo/public
-  provider: pages
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: tomis9.com
+  region: eu-central-1
+  local_dir: public
   repo: tomis9/tomis9.github.io 
   target_branch: master 
   skip_cleanup: true
