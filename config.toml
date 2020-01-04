@@ -1,4 +1,4 @@
-baseURL                    = "http://tomis9.com"
+baseURL                    = "tomis9.com"
 builddrafts                = false
 canonifyurls               = true
 contentdir                 = "content"
