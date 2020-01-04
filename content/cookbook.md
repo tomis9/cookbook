@@ -56,5 +56,12 @@ In the same way as every project you make. Start with something simple and make 
 
 * by then I was using one of Hugo's free blog templates ([link](https://github.com/orianna-zzo/AllinOne)), but it didn't work properly on mobile devices, so I wrote [my own template](https://github.com/tomis9/random_forest)
 
+* I migrated this blog to django and hosted in on [heroku](https://heroku.com). My goals were:
 
-In the future I am planning to move this cookbook to django, because I would like to be able to mark a few articles as my favourites and have easy access to them. And keep on writing posts, obviously :)
+    * to learn django, with help of an excellent book [Django 2 by Example](https://www.amazon.com/Django-Example-powerful-reliable-applications/dp/1788472489)
+
+    * to add some extra functionalities, e.g. user accounts and maybe even article recommendations.
+
+Eventually I managed to accomplish only the first goal, as Django turned out to be very complex and as a data scientist I see no point in delving any deeper into this subject for fun. I already spent a lot of time on this, and I have more interesting projects on my TODO list. Besides django does not seem to be as popular in industry as I expected: PHP, Ruby, even flask are still super-popular.
+
+* Having learnt django, I migrated back to hosting a static blog on s3. There was no point in spending 7 bucks a month for functionalities which I have for free on Amazon S3.
