@@ -39,7 +39,7 @@ RUN Rscript -e "blogdown::install_hugo(version = '0.52')"
 RUN pip3 install matplotlib
 RUN pip3 install torch==1.0.0
 
-RUN mkdir -p /cookbook/hugo
-WORKDIR /cookbook/hugo
+RUN mkdir -p /cookbook
+WORKDIR /cookbook
 
 CMD Rscript -e 'blogdown::build_site()'

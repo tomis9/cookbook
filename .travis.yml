@@ -8,8 +8,8 @@ branches:
     - master
 
 before_install:
-  - docker pull tomis9/cookbook:0.5
-  - docker run -v /home/travis/build/tomis9/cookbook:/cookbook tomis9/cookbook:0.5
+  - docker pull tomis9/cookbook:0.6
+  - docker run -v /home/travis/build/tomis9/cookbook:/cookbook tomis9/cookbook:0.6
 
 deploy:
   provider: s3
