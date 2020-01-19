@@ -21,15 +21,17 @@ RUN Rscript -e 'install.packages(c("lubridate", "dplyr", "reshape2", "car", "dat
 RUN Rscript -e 'devtools::install_github("tomis9/decisionTree")'
 RUN Rscript -e 'devtools::install_github("vqv/ggbiplot")'
 
+# TODO which version is installed?
 RUN apt-get install python3-pip -y
 
+# TODO versions into requirements.txt
 RUN pip3 install --upgrade pip
 RUN pip3 install setuptools
 RUN pip3 show setuptools
 RUN pip3 install --upgrade setuptools
 RUN pip3 install sklearn
 RUN pip3 install xgboost
-RUN pip3 install tensorflow
+RUN pip3 install tensorflow==1.13.1
 RUN pip3 install pandas
 
 RUN apt-get install pandoc -y
@@ -42,4 +44,4 @@ RUN pip3 install torch==1.0.0
 RUN mkdir -p /cookbook
 WORKDIR /cookbook
 
-CMD Rscript -e 'blogdown::build_site()'
+CMD source deploy.sh prod build; source deploy.sh prod serve
