@@ -37,6 +37,8 @@ tf_logs
 py_tests.py
 r_tests.R
 
+sample_data.csv
+
 # django
 env.sh
 .idea

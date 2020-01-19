@@ -1,4 +1,5 @@
 baseURL                    = "http://tomis9.com"
+# baseURL                    = ""
 builddrafts                = false
 canonifyurls               = true
 contentdir                 = "content"
