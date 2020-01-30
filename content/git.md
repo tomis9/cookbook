@@ -52,7 +52,7 @@ In it's consequences, `git rebase` is equivalent to merge, but there are certain
 
 * in merge, you usually checkout to master and run `git merge dev`, in rebase you checkout to dev and run `git rebase master`;
 
-* DON'T REBASE PUBLIC BRANCHES, unless you want to die in the pain :)
+* DON'T REBASE PUBLIC BRANCHES, unless you want to die in pain :)
 
 In general, when  you work on a specific project with your colleagues, I recommed using rebase, as chronological order is not that important. Thanks to rebase you can scroll the repo log and see the next functionalities (branches) appearing in order. If you even decide to give them special tags, boy, it really helps to kepp order!
 
