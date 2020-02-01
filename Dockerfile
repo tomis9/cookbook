@@ -44,4 +44,4 @@ RUN pip3 install torch==1.0.0
 RUN mkdir -p /cookbook
 WORKDIR /cookbook
 
-CMD source deploy.sh prod build; source deploy.sh prod serve
+CMD /bin/bash /cookbook/deploy.sh prod build; /bin/bash /cookbook/deploy.sh prod serve
