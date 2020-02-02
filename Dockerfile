@@ -23,9 +23,8 @@ RUN Rscript -e 'devtools::install_github("vqv/ggbiplot")'
 
 # TODO which version is installed?
 RUN apt-get install python3-pip -y
-
-# TODO versions into requirements.txt
 RUN pip3 install --upgrade pip
+
 RUN pip3 install setuptools
 RUN pip3 show setuptools
 RUN pip3 install --upgrade setuptools
@@ -44,4 +43,4 @@ RUN pip3 install torch==1.0.0
 RUN mkdir -p /cookbook
 WORKDIR /cookbook
 
-CMD /bin/bash /cookbook/deploy.sh prod build; /bin/bash /cookbook/deploy.sh prod serve
+CMD /bin/bash /cookbook/deploy.sh prod build
