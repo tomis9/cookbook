@@ -1,8 +1,8 @@
 ---
-title: "Neural networks vs stock market"
+title: "neural networks vs stock market"
 date: 2020-01-19T20:17:16+01:00
 draft: false
-categories: ["projects"]
+categories: ["Projects"]
 ---
 
 ## 1. Intro
