@@ -58,7 +58,7 @@ In general, when  you work on a specific project with your colleagues, I recomme
 
 Here are a few links which contain more information about rebasing: [one](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase), [two](https://benmarshall.me/git-rebase/).
 
-#### completely remove a submodule
+* completely remove a submodule
 
 Just replace the `<name>` with your submodule's name.
 
@@ -69,15 +69,35 @@ rm -rf .git/modules/$submodule
 git rm -f $submodule
 </textarea><br>
 
-#### remove a remote branch
+* remove a remote branch
 
-Once you do rebase and merge, before push your changes you may want to delete the merged branch first. You can do it with:
+Once you do rebase and merge, before pushing your changes you may want to delete the merged branch first. You can do it with:
 
 <textarea rows = "2" cols = "50" name = "git_submodule" style='font-family: "Courier New"; color: #505050;'>
 git push origin -\-delete <branch_name>
 </textarea><br>
 
-## 5. Subjects still to cover:
+## 5. Interesting commands
+
+Let's face the truth, after a long period of working on a project, dozens of branches appear and the repo is a complete mess. There are a few commands though, which make cleaning things up easier:
+
+* `git log --follow --oneline content/git.md` - **--follow** shows log of the changes made on this particular file. **--oneline** show only a few first characters of SHA and commit message.
+
+* `git log --name-only --oneline` - **--name-only** shows only names of the files that were changed. Works also with git diff:
+
+* `git diff --name-only HEAD~2`
+
+* `git log --decorate` **--decorate** prints the names of all the pointers (HEAD, branches and tags) near commits SHAs. You can also use `gitk --all`. If you're not using gitka, start using it. It's good.
+
+* `git log --graph` - **--graph** draws commits in a form of a graph/tree.
+
+* `git log --all` - **--all** shows all commits, not only those on a branch you are on right now.
+
+* to summarise: `git log --oneline --decorate --all --graph`
+
+* `git checkout master; git merge develop` - **merge** branches when you are on a target branch. Seems obvious, but once I started working with rebasing and making merge requests on remote repo, I get a little confused sometimes.
+
+## 6. Subjects still to cover:
 
 * git revert (TODO)
 
