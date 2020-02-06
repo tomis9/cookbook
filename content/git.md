@@ -82,3 +82,5 @@ git push origin -\-delete <branch_name>
 * git revert (TODO)
 
 * [GitFlow (branching strategies)](https://gitversion.readthedocs.io/en/latest/git-branching-strategies/gitflow/) (TODO)
+
+* reset, solving conflicts (which tools), interactive rebasing, cherrypicking, rebase, stash, submodules
